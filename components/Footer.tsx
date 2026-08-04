@@ -1,21 +1,15 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
+import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { FacebookIcon, LinkedinIcon, InstagramIcon } from "@/components/icons";
+import ModalButton from "@/components/ModalButton";
 import {
   OFFICES,
   CONTACT_EMAIL,
   SERVICE_AREAS,
-} from "@/app/lib/contact";
-// import { CONTACT_EMAIL, CONTACT_NUMBER } from "@/constants";
+} from "@/constants";
 
-interface FooterProps {
-  onOpenModal: () => void;
-}
-
-export default function Footer({ onOpenModal }: FooterProps) {
+export default function Footer() {
   return (
     <footer className="border-t border-zinc-200 bg-zinc-50 pt-16 pb-10 text-zinc-600 min-[400px]:pt-20 md:pt-24">
       <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
@@ -23,68 +17,69 @@ export default function Footer({ onOpenModal }: FooterProps) {
           {/* Brand */}
           <div className="flex flex-col items-center space-y-5 lg:items-start">
             <div className="relative h-18 w-44 min-[400px]:w-52">
-              <Image
-                src="/logo.svg"
-                alt="Zento Logo"
-                fill
-                sizes="(max-width: 400px) 160px, 192px"
-                className="object-contain object-center lg:object-left"
-              />
+              <Link href="/" aria-label="Zento Care home">
+                <Image
+                  src="/logo.svg"
+                  alt="Zento Logo"
+                  fill
+                  sizes="(max-width: 400px) 160px, 192px"
+                  className="object-contain object-center lg:object-left"
+                />
+              </Link>
             </div>
             <p className="text-sm leading-relaxed text-zinc-500">
               Nurse-led home care across Edinburgh, Lothian, and Perthshire. Registered with the Care Inspectorate.
             </p>
             <div className="flex justify-center gap-3 lg:justify-start">
-              <motion.a
+              <a
                 href="#"
-                whileHover={{ y: -4, scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-zinc-400 shadow-md transition-colors hover:bg-primary hover:text-white"
+                aria-label="Facebook"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-zinc-400 shadow-md transition-all hover:-translate-y-1 hover:bg-primary hover:text-white"
               >
                 <FacebookIcon />
-              </motion.a>
-              <motion.a
+              </a>
+              <a
                 href="#"
-                whileHover={{ y: -4, scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-zinc-400 shadow-md transition-colors hover:bg-primary hover:text-white"
+                aria-label="LinkedIn"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-zinc-400 shadow-md transition-all hover:-translate-y-1 hover:bg-primary hover:text-white"
               >
                 <LinkedinIcon />
-              </motion.a>
-              <motion.a
+              </a>
+              <a
                 href="#"
-                whileHover={{ y: -4, scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-zinc-400 shadow-md transition-colors hover:bg-primary hover:text-white"
+                aria-label="Instagram"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-zinc-400 shadow-md transition-all hover:-translate-y-1 hover:bg-primary hover:text-white"
               >
                 <InstagramIcon />
-              </motion.a>
+              </a>
             </div>
           </div>
 
           {/* Explore */}
           <div className="space-y-5">
-            <h4 className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Explore</h4>
-            <ul className="space-y-2.5">
-              {[
-                { name: "Home", href: "#" },
-                { name: "About Us", href: "#about-us" },
-                { name: "Our Services", href: "#services" },
-                { name: "How It Works", href: "#how-it-works" },
-                { name: "Contact", href: "#contact" },
-              ].map((link) => (
-                <li key={link.name}>
-                  <a href={link.href} className="text-sm font-medium transition-colors hover:text-primary">
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Explore</p>
+            <nav aria-label="Footer navigation">
+              <ul className="space-y-2.5">
+                {[
+                  { name: "Home", href: "/" },
+                  { name: "About Us", href: "/#about-us" },
+                  { name: "Our Services", href: "/#services" },
+                  { name: "How It Works", href: "/#how-it-works" },
+                  { name: "Contact", href: "/contact" },
+                ].map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="text-sm font-medium transition-colors hover:text-primary">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
 
           {/* Services */}
           <div className="space-y-5">
-            <h4 className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Services</h4>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Services</p>
             <ul className="space-y-2.5">
               {["Personal Care", "Dementia Support", "Live-In Care", "Respite Care", "Complex Needs"].map((item) => (
                 <li key={item}>
@@ -96,7 +91,7 @@ export default function Footer({ onOpenModal }: FooterProps) {
 
           {/* Get in Touch */}
           <div className="space-y-5">
-            <h4 className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Get in Touch</h4>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Get in Touch</p>
             <div className="space-y-4">
               {OFFICES.map((office) => (
                 <div key={office.name} className="space-y-1">
@@ -122,12 +117,12 @@ export default function Footer({ onOpenModal }: FooterProps) {
               <Mail className="h-4 w-4 text-primary" />
               {CONTACT_EMAIL}
             </a>
-            <button
-              onClick={onOpenModal}
-              className="rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary/90"
+            <ModalButton
+              type="general"
+              className="rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary/90 cursor-pointer"
             >
               Send us a Message
-            </button>
+            </ModalButton>
           </div>
         </div>
 

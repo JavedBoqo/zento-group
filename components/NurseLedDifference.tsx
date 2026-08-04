@@ -1,13 +1,10 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 
 export default function NurseLedDifference() {
   return (
     <section className="bg-secondary py-24 text-white overflow-hidden relative">
-      {/* Subtle background glow */}
+      {/* Background glow */}
       <div className="absolute top-1/2 -right-24 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]"></div>
 
       <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24 relative z-10">
@@ -24,40 +21,28 @@ export default function NurseLedDifference() {
                 "Clear communication with families",
                 "Reliable, consistent carers",
                 "Responsive and flexible support",
-                "Book a consultation available"
+                "Book a consultation available",
               ].map((item, index) => (
-                <motion.div 
-                  key={index} 
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-4 justify-start"
-                >
+                <div key={index} className="flex items-start gap-4 justify-start">
                   <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary shrink-0 shadow-lg shadow-primary/20 mt-0.5">
                     <CheckCircle2 className="w-4 h-4 text-white" />
                   </div>
                   <span className="text-lg font-bold tracking-tight text-left">{item}</span>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative aspect-square w-full max-w-xl flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl"
-          >
+          <div className="relative aspect-square w-full max-w-xl flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl">
             <div className="relative h-full w-full overflow-hidden rounded-[1.8rem]">
-              <Image 
-                src="/brand-image.png" 
-                alt="Zento Trusted Team" 
-                fill 
+              <Image
+                src="/brand-image.png"
+                alt="Zento Trusted Caregiver and Client Team"
+                fill
                 sizes="(max-width: 768px) 100vw, 600px"
-                className="object-cover" 
+                className="object-cover"
               />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,18 +1,13 @@
-"use client";
-
 import Image from "next/image";
 import { Phone, Mail, MapPin } from "lucide-react";
+import ModalButton from "@/components/ModalButton";
 import {
   OFFICES,
   SERVICE_AREAS,
   PERTHSHIRE_TAGLINE,
-} from "@/app/lib/contact";
+} from "@/constants";
 
-interface ContactSectionProps {
-  onOpenModal: () => void;
-}
-
-export default function ContactSection({ onOpenModal }: ContactSectionProps) {
+export default function ContactSection() {
   return (
     <section id="contact" className="py-24">
       <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
@@ -20,7 +15,7 @@ export default function ContactSection({ onOpenModal }: ContactSectionProps) {
           <div className="relative aspect-[4/3] w-full max-w-2xl overflow-hidden rounded-3xl bg-zinc-100 shadow-2xl lg:aspect-square lg:w-1/2">
             <Image
               src="/brand-image.png"
-              alt="Zento care team"
+              alt="Zento care team in Edinburgh and Perthshire"
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
               className="object-cover"
@@ -73,12 +68,12 @@ export default function ContactSection({ onOpenModal }: ContactSectionProps) {
               Serving {SERVICE_AREAS}
             </p>
 
-            <button
-              onClick={onOpenModal}
-              className="rounded-full bg-primary px-10 py-4 font-bold text-white shadow-xl shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90"
+            <ModalButton
+              type="general"
+              className="rounded-full bg-primary px-10 py-4 font-bold text-white shadow-xl shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
             >
               Send us a Message
-            </button>
+            </ModalButton>
           </div>
         </div>
       </div>

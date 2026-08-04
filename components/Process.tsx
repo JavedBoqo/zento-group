@@ -1,8 +1,4 @@
-"use client";
-
-interface ProcessProps {
-  onOpenModal: () => void;
-}
+import ModalButton from "@/components/ModalButton";
 
 const steps = [
   { step: "01", title: "Book a Consultation", desc: "A Registered Nurse visits to understand your needs and preferences." },
@@ -11,7 +7,7 @@ const steps = [
   { step: "04", title: "Regular Reviews", desc: "Continuous clinical oversight to ensure safety and quality." },
 ];
 
-export default function Process({ onOpenModal }: ProcessProps) {
+export default function Process() {
   return (
     <section id="how-it-works" className="bg-zinc-50 py-24">
       <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
@@ -31,12 +27,12 @@ export default function Process({ onOpenModal }: ProcessProps) {
           ))}
         </div>
         <div className="flex justify-center">
-          <button 
-            onClick={onOpenModal}
-            className="rounded-full bg-primary px-10 py-4 font-bold text-white shadow-xl shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90"
+          <ModalButton
+            type="assessment"
+            className="rounded-full bg-primary px-10 py-4 font-bold text-white shadow-xl shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
           >
             Start Your Journey Today
-          </button>
+          </ModalButton>
         </div>
       </div>
     </section>
