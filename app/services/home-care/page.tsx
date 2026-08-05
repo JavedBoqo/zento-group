@@ -28,14 +28,14 @@ export const metadata: Metadata = {
   description:
     "Nurse-led home care services across Edinburgh, Lothian and Perthshire. Personal care, dementia support, respite and more — all overseen by registered nurses. Call us today.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/home-care/",
+    canonical: "https://zentogroup.co.uk/services/home-care/",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Home Care Services | Nurse-Led Care at Home | Zento",
     description:
       "Nurse-led home care services across Edinburgh, Lothian and Perthshire. Personal care, dementia support, respite and more — all overseen by registered nurses.",
-    url: "https://zentogroup.co.uk/home-care/",
+    url: "https://zentogroup.co.uk/services/home-care/",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -54,51 +54,51 @@ export const metadata: Metadata = {
 const homeCareServices = [
   {
     name: "Personal Care",
-    href: "/home-care/personal-care/",
+    href: "/services/home-care/personal-care/",
     desc: "Support with bathing, dressing, continence, mobility and personal hygiene, delivered with patience and dignity.",
-    ctaLabel: "Explore personal care at home",
+    ctaLabel: "Learn more",
     icon: Heart,
   },
   {
     name: "Medication Support",
-    href: "/home-care/medication-support/",
+    href: "/services/home-care/medication-support/",
     desc: "Prompting, administering and monitoring medication under the oversight of a registered nurse.",
-    ctaLabel: "Explore medication support at home",
+    ctaLabel: "Learn more",
     icon: ShieldCheck,
   },
   {
     name: "Companionship",
-    href: "/home-care/companionship/",
+    href: "/services/home-care/companionship/",
     desc: "Regular social visits to reduce isolation, maintain routines and enjoy meaningful conversation and activities.",
-    ctaLabel: "Explore companionship care at home",
+    ctaLabel: "Learn more",
     icon: Users,
   },
   {
     name: "Meal Preparation",
-    href: "/home-care/meal-preparation/",
+    href: "/services/home-care/meal-preparation/",
     desc: "Nutritious meals planned around dietary needs and personal preferences, prepared in the client's own kitchen.",
-    ctaLabel: "Explore meal preparation support",
+    ctaLabel: "Learn more",
     icon: Utensils,
   },
   {
     name: "Hospital Discharge Support",
-    href: "/home-care/hospital-discharge/",
+    href: "/services/home-care/hospital-discharge/",
     desc: "Short-term intensive care to help your loved one settle back home safely after a hospital stay.",
-    ctaLabel: "Explore hospital discharge care",
+    ctaLabel: "Learn more",
     icon: Building2,
   },
   {
     name: "Dementia Care",
-    href: "/home-care/dementia-care/",
+    href: "/services/home-care/dementia-care/",
     desc: "Consistent carers and familiar routines to support people living with dementia at every stage.",
-    ctaLabel: "Explore dementia care at home",
+    ctaLabel: "Learn more",
     icon: Brain,
   },
   {
     name: "Respite Care",
-    href: "/home-care/respite-care/",
+    href: "/services/home-care/respite-care/",
     desc: "Planned or emergency cover so family carers can take a genuine break, knowing their loved one is safe.",
-    ctaLabel: "Explore respite care at home",
+    ctaLabel: "Learn more",
     icon: Sun,
   },
 ];
@@ -204,7 +204,7 @@ export default function HomeCarePage() {
       "West Lothian",
       "Perthshire",
     ],
-    url: "https://zentogroup.co.uk/home-care/",
+    url: "https://zentogroup.co.uk/services/home-care/",
   };
 
   /* ── JSON-LD: FAQPage schema ── */
@@ -236,7 +236,7 @@ export default function HomeCarePage() {
         "@type": "ListItem",
         position: 2,
         name: "Home Care",
-        item: "https://zentogroup.co.uk/home-care/",
+        item: "https://zentogroup.co.uk/services/home-care/",
       },
     ],
   };
@@ -402,18 +402,19 @@ export default function HomeCarePage() {
         <section className="bg-zinc-50/50 py-24">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             {/* Header */}
-            <div className="mb-12 max-w-3xl">
+            <div className="mb-12 text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 Our Services
               </span>
               <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl mb-4">
                 Home care services we provide
               </h2>
-              <p className="text-base leading-relaxed text-zinc-600">
+              <p className="text-base leading-relaxed text-zinc-600 max-w-2xl mx-auto">
                 We offer a full range of visiting home care services, each planned by our nursing
                 team and delivered by trained carers who know your family. Select a service below
                 for full details.
               </p>
+              <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
             </div>
 
             {/* Cards grid */}
@@ -554,13 +555,14 @@ export default function HomeCarePage() {
         <section className="bg-zinc-50 py-24">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             {/* Header */}
-            <div className="mb-16 max-w-2xl">
+            <div className="mb-16 text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 Getting Started
               </span>
               <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl">
                 How to get started with home care
               </h2>
+              <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
             </div>
 
             {/* Steps */}
@@ -596,7 +598,7 @@ export default function HomeCarePage() {
                 type="assessment"
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-10 py-4 font-bold text-white shadow-xl shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
               >
-                Start with a free call — no pressure, just honest advice <ArrowRight className="w-5 h-5" />
+                Start with a free call <ArrowRight className="w-5 h-5" />
               </ModalButton>
             </div>
           </div>
@@ -670,14 +672,15 @@ export default function HomeCarePage() {
         ════════════════════════════════════════════════════════ */}
         <section className="border-t border-zinc-100 bg-zinc-50 py-20">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-3xl">
+            <div className="text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 Coverage
               </span>
-              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl mb-6">
+              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl mb-4">
                 Where we provide home care
               </h2>
-              <p className="text-base leading-relaxed text-zinc-600 mb-8">
+              <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary mb-6" />
+              <p className="text-base leading-relaxed text-zinc-600 mb-4 max-w-2xl mx-auto">
                 Zento delivers home care services from two offices. Our Edinburgh team covers all
                 City of Edinburgh postcodes (EH1–EH17), plus Midlothian, East Lothian and West
                 Lothian. Our Crieff team serves Crieff, Comrie, Muthill, Braco and the surrounding
@@ -686,7 +689,7 @@ export default function HomeCarePage() {
               <p className="text-sm font-semibold text-secondary mb-4">
                 Find detailed coverage and local team information for your area:
               </p>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-3 justify-center">
                 {locationLinks.map((loc) => (
                   <Link
                     key={loc.label}
@@ -762,36 +765,36 @@ export default function HomeCarePage() {
 
             <div className="grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
               {/* Edinburgh card */}
-              <div className="group rounded-3xl border border-zinc-200/80 bg-white p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10">
+              <div className="group flex flex-col rounded-3xl border border-zinc-200/80 bg-white p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10">
                 <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                   <Home className="w-7 h-7" />
                 </div>
                 <h3 className="text-xl font-bold text-secondary mb-3">Edinburgh</h3>
-                <p className="text-sm leading-relaxed text-zinc-600 mb-6">
+                <p className="text-sm leading-relaxed text-zinc-600 mb-6 flex-1">
                   Our Edinburgh office serves all City of Edinburgh postcodes, Midlothian, East
                   Lothian and West Lothian.
                 </p>
                 <Link
                   href="/locations/edinburgh/"
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-bold text-white shadow-md shadow-primary/20 transition-all hover:bg-primary/90"
+                  className="mt-auto flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-bold text-white shadow-md shadow-primary/20 transition-all hover:bg-primary/90"
                 >
                   View Edinburgh home care <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
 
               {/* Perthshire card */}
-              <div className="group rounded-3xl border border-zinc-200/80 bg-white p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-2xl hover:shadow-secondary/10">
+              <div className="group flex flex-col rounded-3xl border border-zinc-200/80 bg-white p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-2xl hover:shadow-secondary/10">
                 <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-secondary/10 text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
                   <MapPin className="w-7 h-7" />
                 </div>
                 <h3 className="text-xl font-bold text-secondary mb-3">Perthshire</h3>
-                <p className="text-sm leading-relaxed text-zinc-600 mb-6">
+                <p className="text-sm leading-relaxed text-zinc-600 mb-6 flex-1">
                   Our Crieff office serves Crieff, Comrie, Muthill, Braco and surrounding
                   Perthshire villages.
                 </p>
                 <Link
                   href="/locations/perthshire/"
-                  className="inline-flex items-center gap-2 rounded-full bg-secondary px-7 py-3 text-sm font-bold text-white shadow-md shadow-secondary/20 transition-all hover:bg-secondary/90"
+                  className="mt-auto flex items-center justify-center gap-2 rounded-full bg-secondary px-7 py-3 text-sm font-bold text-white shadow-md shadow-secondary/20 transition-all hover:bg-secondary/90"
                 >
                   View Perthshire home care <ArrowRight className="w-4 h-4" />
                 </Link>

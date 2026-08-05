@@ -17,7 +17,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="flex flex-col items-center space-y-5 lg:items-start">
             <div className="relative h-18 w-44 min-[400px]:w-52">
-              <Link href="/" aria-label="Zento Care home">
+              <Link href="/" aria-label="Zento Care home" className="relative block h-full w-full">
                 <Image
                   src="/logo.svg"
                   alt="Zento Logo"

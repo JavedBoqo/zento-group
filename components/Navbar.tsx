@@ -20,6 +20,7 @@ import {
   Clock4,
   ArrowRight,
   Sparkles,
+  MapPin,
 } from "lucide-react";
 import { OFFICES, CONTACT_EMAIL } from "@/constants";
 import { useModal } from "@/components/ModalContext";
@@ -49,43 +50,43 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
   const homeCareServices = [
     {
       name: "Personal Care",
-      href: "/home-care/personal-care/",
+      href: "/services/home-care/personal-care/",
       desc: "Washing, dressing & mobility support",
       icon: Heart,
     },
     {
       name: "Medication Support",
-      href: "/home-care/medication-support/",
+      href: "/services/home-care/medication-support/",
       desc: "Nurse-monitored administration",
       icon: ShieldCheck,
     },
     {
       name: "Dementia Care",
-      href: "/home-care/dementia-care/",
+      href: "/services/home-care/dementia-care/",
       desc: "Structured, familiar daily routines",
       icon: Brain,
     },
     {
       name: "Companionship",
-      href: "/home-care/companionship/",
+      href: "/services/home-care/companionship/",
       desc: "Social engagement & activities",
       icon: Users,
     },
     {
       name: "Meal Preparation",
-      href: "/home-care/meal-preparation/",
+      href: "/services/home-care/meal-preparation/",
       desc: "Nutritional support & meal planning",
       icon: Utensils,
     },
     {
       name: "Hospital Discharge",
-      href: "/home-care/hospital-discharge/",
+      href: "/services/home-care/hospital-discharge/",
       desc: "Safe transition back home",
       icon: Building2,
     },
     {
       name: "Respite Care",
-      href: "/home-care/respite-care/",
+      href: "/services/home-care/respite-care/",
       desc: "Short-term relief for family carers",
       icon: Sun,
     },
@@ -94,21 +95,45 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
   const liveInCareServices = [
     {
       name: "Live-in Care Overview",
-      href: "/live-in-care/",
+      href: "/services/live-in-care/",
       desc: "Round-the-clock dedicated caregiver",
       icon: Home,
     },
     {
       name: "Overnight Care",
-      href: "/live-in-care/overnight-care/",
+      href: "/services/live-in-care/overnight-care/",
       desc: "Sleep-in or waking night support",
       icon: Moon,
     },
     {
       name: "24-Hour Care",
-      href: "/live-in-care/24-hour-care/",
+      href: "/services/live-in-care/24-hour-care/",
       desc: "Continuous 24/7 rotational care",
       icon: Clock4,
+    },
+  ];
+
+  const locationGroups = [
+    {
+      region: "Edinburgh",
+      href: "/locations/edinburgh/",
+      desc: "All Edinburgh postcodes",
+      icon: Home,
+      color: "primary" as const,
+    },
+    {
+      region: "Lothian",
+      href: "/locations/lothian/",
+      desc: "Midlothian, East & West Lothian",
+      icon: MapPin,
+      color: "primary" as const,
+    },
+    {
+      region: "Perthshire",
+      href: "/locations/perthshire/",
+      desc: "Crieff, Comrie & surrounds",
+      icon: MapPin,
+      color: "secondary" as const,
     },
   ];
 
@@ -148,7 +173,7 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="relative h-12 w-36 min-[400px]:w-40 overflow-hidden rounded-lg transition-all duration-300">
-              <Link href="/" aria-label="Zento Care home">
+              <Link href="/" aria-label="Zento Care home" className="relative block h-full w-full">
                 <Image
                   src="/logo.svg"
                   alt="Zento Logo"
@@ -189,7 +214,7 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
                     <div className="col-span-6 space-y-3">
                       <div className="flex items-center justify-between border-b border-zinc-100 pb-3">
                         <Link
-                          href="/home-care/"
+                          href="/services/home-care/"
                           className="flex items-center gap-2.5 group/cat shrink-0"
                         >
                           <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover/cat:bg-primary group-hover/cat:text-white">
@@ -235,7 +260,7 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
                       <div>
                         <div className="flex items-center justify-between border-b border-zinc-100 pb-3">
                           <Link
-                            href="/live-in-care/"
+                            href="/services/live-in-care/"
                             className="flex items-center gap-2.5 group/cat shrink-0"
                           >
                             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-secondary/10 text-secondary transition-colors group-hover/cat:bg-secondary group-hover/cat:text-white">
@@ -299,17 +324,62 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
               </div>
             </div>
 
+            {/* 3. Locations Dropdown */}
+            <div className="relative group py-2">
+              <Link
+                href="/locations/"
+                className="flex items-center gap-1 font-semibold text-secondary hover:text-primary transition-colors"
+              >
+                Locations
+                <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180 text-zinc-400 group-hover:text-primary" />
+              </Link>
+
+              {/* Locations Dropdown */}
+              <div className="absolute top-full -left-4 w-72 pt-3 opacity-0 invisible translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
+                <div className="overflow-hidden rounded-3xl border border-zinc-200/80 bg-white/98 backdrop-blur-2xl p-4 shadow-2xl ring-1 ring-black/5">
+                  <Link
+                    href="/locations/"
+                    className="flex items-center gap-2 mb-3 pb-3 border-b border-zinc-100 group/all"
+                  >
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover/all:bg-primary group-hover/all:text-white">
+                      <MapPin className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-secondary group-hover/all:text-primary transition-colors">All Service Areas</p>
+                      <p className="text-[11px] text-zinc-500">View all locations</p>
+                    </div>
+                  </Link>
+
+                  <div className="space-y-1">
+                    {locationGroups.map((group) => {
+                      const IconComp = group.icon;
+                      return (
+                        <div key={group.region}>
+                          <Link
+                            href={group.href}
+                            className="group/loc flex items-center gap-2.5 rounded-xl p-2 transition-all hover:bg-primary/5"
+                          >
+                            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-zinc-100 text-zinc-600 transition-colors group-hover/loc:bg-primary group-hover/loc:text-white">
+                              <IconComp className="w-3.5 h-3.5" />
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <p className="text-xs font-bold text-secondary group-hover/loc:text-primary transition-colors">{group.region}</p>
+                              <p className="text-[11px] text-zinc-500 truncate">{group.desc}</p>
+                            </div>
+                          </Link>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <Link
               href="/#about-us"
               className="font-semibold text-secondary hover:text-primary transition-colors"
             >
               About Us
-            </Link>
-            <Link
-              href="/#how-it-works"
-              className="font-semibold text-secondary hover:text-primary transition-colors"
-            >
-              How It Works
             </Link>
             <Link
               href="/contact"

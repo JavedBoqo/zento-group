@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Phone, Mail, ChevronDown, Home, Clock4 } from "lucide-react";
+import { X, Phone, Mail, ChevronDown, Home, Clock4, MapPin } from "lucide-react";
 import { OFFICES, CONTACT_EMAIL } from "@/constants";
 
 interface MobileMenuProps {
@@ -15,22 +15,30 @@ interface MobileMenuProps {
 
 export default function MobileMenu({ isOpen, onClose, onOpenModal }: MobileMenuProps) {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isLocationsOpen, setIsLocationsOpen] = useState(false);
 
   const homeCareLinks = [
-    { name: "Home Care Overview", href: "/home-care/" },
-    { name: "Personal Care", href: "/home-care/personal-care/" },
-    { name: "Medication Support", href: "/home-care/medication-support/" },
-    { name: "Dementia Care", href: "/home-care/dementia-care/" },
-    { name: "Companionship", href: "/home-care/companionship/" },
-    { name: "Meal Preparation", href: "/home-care/meal-preparation/" },
-    { name: "Hospital Discharge", href: "/home-care/hospital-discharge/" },
-    { name: "Respite Care", href: "/home-care/respite-care/" },
+    { name: "Home Care Overview", href: "/services/home-care/" },
+    { name: "Personal Care", href: "/services/home-care/personal-care/" },
+    { name: "Medication Support", href: "/services/home-care/medication-support/" },
+    { name: "Dementia Care", href: "/services/home-care/dementia-care/" },
+    { name: "Companionship", href: "/services/home-care/companionship/" },
+    { name: "Meal Preparation", href: "/services/home-care/meal-preparation/" },
+    { name: "Hospital Discharge", href: "/services/home-care/hospital-discharge/" },
+    { name: "Respite Care", href: "/services/home-care/respite-care/" },
   ];
 
   const liveInCareLinks = [
-    { name: "Live-in Care Overview", href: "/live-in-care/" },
-    { name: "Overnight Care", href: "/live-in-care/overnight-care/" },
-    { name: "24-Hour Care", href: "/live-in-care/24-hour-care/" },
+    { name: "Live-in Care Overview", href: "/services/live-in-care/" },
+    { name: "Overnight Care", href: "/services/live-in-care/overnight-care/" },
+    { name: "24-Hour Care", href: "/services/live-in-care/24-hour-care/" },
+  ];
+
+  const locationLinks = [
+    { name: "All Service Areas", href: "/locations/" },
+    { name: "Edinburgh", href: "/locations/edinburgh/" },
+    { name: "Lothian", href: "/locations/lothian/" },
+    { name: "Perthshire", href: "/locations/perthshire/" },
   ];
 
   return (
@@ -45,7 +53,7 @@ export default function MobileMenu({ isOpen, onClose, onOpenModal }: MobileMenuP
           {/* Header Row */}
           <div className="flex items-center justify-between px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="relative h-18 w-44 min-[400px]:w-52">
-              <Link href="/" onClick={onClose} aria-label="Zento Care Home">
+              <Link href="/" onClick={onClose} aria-label="Zento Care Home" className="relative block h-full w-full">
                 <Image
                   src="/logo.svg"
                   alt="Zento Logo"
@@ -130,8 +138,44 @@ export default function MobileMenu({ isOpen, onClose, onOpenModal }: MobileMenuP
                 )}
               </div>
 
+              {/* Collapsible Locations Section */}
+              <div>
+                <button
+                  type="button"
+                  onClick={() => setIsLocationsOpen(!isLocationsOpen)}
+                  className="flex w-full items-center justify-between text-sm font-black uppercase tracking-[0.3em] text-secondary hover:text-primary transition-colors cursor-pointer"
+                >
+                  <span>Locations</span>
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform duration-200 ${
+                      isLocationsOpen ? "rotate-180 text-primary" : "text-zinc-400"
+                    }`}
+                  />
+                </button>
+
+                {isLocationsOpen && (
+                  <div className="mt-3 rounded-2xl bg-zinc-50 p-4 border border-zinc-100">
+                    <p className="flex items-center gap-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-2">
+                      <MapPin className="w-3.5 h-3.5" /> Service Areas
+                    </p>
+                    <div className="space-y-1.5 pl-2 border-l-2 border-primary/20">
+                      {locationLinks.map((link) => (
+                        <Link
+                          key={link.name}
+                          href={link.href}
+                          onClick={onClose}
+                          className="block text-xs font-semibold text-zinc-700 hover:text-primary transition-colors py-0.5"
+                        >
+                          {link.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
               {/* Other Navigation Links */}
-              {["About Us", "How It Works", "Contact"].map((item) => (
+              {["About Us", "Contact"].map((item) => (
                 <Link
                   key={item}
                   href={item === "Contact" ? "/contact" : `/#${item.toLowerCase().replace(/\s+/g, "-")}`}
