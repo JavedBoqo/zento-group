@@ -22,7 +22,8 @@ import {
   Sparkles,
   MapPin,
 } from "lucide-react";
-import { OFFICES, CONTACT_EMAIL } from "@/constants";
+import { OFFICES, CONTACT_EMAIL, SOCIAL_LINKS } from "@/constants";
+import { FacebookIcon, InstagramIcon, LinkedinIcon } from "@/components/icons";
 import { useModal } from "@/components/ModalContext";
 
 interface NavbarProps {
@@ -33,9 +34,16 @@ interface NavbarProps {
 export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
   const { openModal: contextOpenModal, openMobileMenu: contextOpenMenu } = useModal();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [expandedRegion, setExpandedRegion] = useState<string | null>(null);
 
   const handleOpenModal = onOpenModal || (() => contextOpenModal("assessment"));
   const handleOpenMenu = onMenuOpen || contextOpenMenu;
+
+  const toggleRegion = (region: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setExpandedRegion((prev) => (prev === region ? null : region));
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,43 +58,43 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
   const homeCareServices = [
     {
       name: "Personal Care",
-      href: "/services/home-care/personal-care/",
+      href: "/home-care/personal-care/",
       desc: "Washing, dressing & mobility support",
       icon: Heart,
     },
     {
       name: "Medication Support",
-      href: "/services/home-care/medication-support/",
+      href: "/home-care/medication-support/",
       desc: "Nurse-monitored administration",
       icon: ShieldCheck,
     },
     {
       name: "Dementia Care",
-      href: "/services/home-care/dementia-care/",
+      href: "/home-care/dementia-care/",
       desc: "Structured, familiar daily routines",
       icon: Brain,
     },
     {
       name: "Companionship",
-      href: "/services/home-care/companionship/",
+      href: "/home-care/companionship/",
       desc: "Social engagement & activities",
       icon: Users,
     },
     {
       name: "Meal Preparation",
-      href: "/services/home-care/meal-preparation/",
+      href: "/home-care/meal-preparation/",
       desc: "Nutritional support & meal planning",
       icon: Utensils,
     },
     {
       name: "Hospital Discharge",
-      href: "/services/home-care/hospital-discharge/",
+      href: "/home-care/hospital-discharge/",
       desc: "Safe transition back home",
       icon: Building2,
     },
     {
       name: "Respite Care",
-      href: "/services/home-care/respite-care/",
+      href: "/home-care/respite-care/",
       desc: "Short-term relief for family carers",
       icon: Sun,
     },
@@ -95,19 +103,19 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
   const liveInCareServices = [
     {
       name: "Live-in Care Overview",
-      href: "/services/live-in-care/",
+      href: "/live-in-care/",
       desc: "Round-the-clock dedicated caregiver",
       icon: Home,
     },
     {
       name: "Overnight Care",
-      href: "/services/live-in-care/overnight-care/",
+      href: "/live-in-care/overnight-care/",
       desc: "Sleep-in or waking night support",
       icon: Moon,
     },
     {
       name: "24-Hour Care",
-      href: "/services/live-in-care/24-hour-care/",
+      href: "/live-in-care/24-hour-care/",
       desc: "Continuous 24/7 rotational care",
       icon: Clock4,
     },
@@ -127,6 +135,12 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
       desc: "Midlothian, East & West Lothian",
       icon: MapPin,
       color: "primary" as const,
+      subAreas: [
+        { name: "Lothian Region Hub", href: "/locations/lothian/", desc: "All Lothian regional care" },
+        { name: "Midlothian", href: "/locations/lothian/midlothian/", desc: "Dalkeith, Penicuik, Bonnyrigg" },
+        { name: "East Lothian", href: "/locations/lothian/east-lothian/", desc: "Musselburgh, Haddington, N. Berwick" },
+        { name: "West Lothian", href: "/locations/lothian/west-lothian/", desc: "Livingston, Bathgate, Linlithgow" },
+      ],
     },
     {
       region: "Perthshire",
@@ -134,6 +148,11 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
       desc: "Crieff, Comrie & surrounds",
       icon: MapPin,
       color: "secondary" as const,
+      subAreas: [
+        { name: "Perthshire Region Hub", href: "/locations/perthshire/", desc: "All Perthshire regional care" },
+        { name: "Crieff", href: "/locations/perthshire/crieff/", desc: "Perthshire office & surrounds" },
+        { name: "Comrie", href: "/locations/perthshire/comrie/", desc: "Comrie, St Fillans & surrounds" },
+      ],
     },
   ];
 
@@ -141,7 +160,7 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
     <>
       {/* Top Bar */}
       <div className="hidden bg-secondary py-2 text-white sm:block" id="home">
-        <div className="container mx-auto flex justify-between px-6 sm:px-6 md:px-12 lg:px-24 text-sm font-medium">
+        <div className="container mx-auto flex items-center justify-between px-6 sm:px-6 md:px-12 lg:px-24 text-sm font-medium">
           <div className="flex flex-wrap gap-x-6 gap-y-1">
             {OFFICES.map((office) => (
               <a
@@ -160,14 +179,31 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
               <Mail className="w-4 h-4 shrink-0" /> {CONTACT_EMAIL}
             </a>
           </div>
+
+          {/* Social Links */}
+          <div className="flex items-center gap-3">
+            {SOCIAL_LINKS.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.name}
+                className="hover:text-primary transition-colors flex items-center justify-center"
+              >
+                {social.iconName === "facebook" && <FacebookIcon />}
+                {social.iconName === "instagram" && <InstagramIcon />}
+                {social.iconName === "linkedin" && <LinkedinIcon />}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Header */}
       <header
-        className={`sticky top-0 z-50 border-b border-zinc-200 bg-white/95 backdrop-blur-md transition-all duration-300 ${
-          isScrolled ? "shadow-sm" : ""
-        }`}
+        className={`sticky top-0 z-50 border-b border-zinc-200 bg-white/95 backdrop-blur-md transition-all duration-300 ${isScrolled ? "shadow-sm" : ""
+          }`}
       >
         <div className="container mx-auto flex items-center justify-between px-6 sm:px-6 md:px-12 lg:px-24 py-2 sm:py-2.5 transition-all duration-300">
           {/* Logo */}
@@ -199,7 +235,7 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
             {/* 2. Services Link with Mega-Dropdown */}
             <div className="relative group py-2">
               <Link
-                href="/#services"
+                href="/services"
                 className="flex items-center gap-1 font-semibold text-secondary hover:text-primary transition-colors"
               >
                 Services
@@ -214,7 +250,7 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
                     <div className="col-span-6 space-y-3">
                       <div className="flex items-center justify-between border-b border-zinc-100 pb-3">
                         <Link
-                          href="/services/home-care/"
+                          href="/home-care/"
                           className="flex items-center gap-2.5 group/cat shrink-0"
                         >
                           <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover/cat:bg-primary group-hover/cat:text-white">
@@ -260,7 +296,7 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
                       <div>
                         <div className="flex items-center justify-between border-b border-zinc-100 pb-3">
                           <Link
-                            href="/services/live-in-care/"
+                            href="/live-in-care/"
                             className="flex items-center gap-2.5 group/cat shrink-0"
                           >
                             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-secondary/10 text-secondary transition-colors group-hover/cat:bg-secondary group-hover/cat:text-white">
@@ -335,8 +371,8 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
               </Link>
 
               {/* Locations Dropdown */}
-              <div className="absolute top-full -left-4 w-72 pt-3 opacity-0 invisible translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
-                <div className="overflow-hidden rounded-3xl border border-zinc-200/80 bg-white/98 backdrop-blur-2xl p-4 shadow-2xl ring-1 ring-black/5">
+              <div className="absolute top-full left-0 w-72 sm:w-80 pt-3 opacity-0 invisible translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-[60]">
+                <div className="rounded-3xl border border-zinc-200/80 bg-white p-4 shadow-2xl ring-1 ring-black/5">
                   <Link
                     href="/locations/"
                     className="flex items-center gap-2 mb-3 pb-3 border-b border-zinc-100 group/all"
@@ -353,20 +389,67 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
                   <div className="space-y-1">
                     {locationGroups.map((group) => {
                       const IconComp = group.icon;
+                      const hasSubAreas = group.subAreas && group.subAreas.length > 0;
+
+                      const isExpanded = expandedRegion === group.region;
+
                       return (
                         <div key={group.region}>
-                          <Link
-                            href={group.href}
-                            className="group/loc flex items-center gap-2.5 rounded-xl p-2 transition-all hover:bg-primary/5"
-                          >
-                            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-zinc-100 text-zinc-600 transition-colors group-hover/loc:bg-primary group-hover/loc:text-white">
-                              <IconComp className="w-3.5 h-3.5" />
+                          <div className="flex items-stretch gap-1 rounded-xl transition-all hover:bg-primary/5">
+                            <Link
+                              href={group.href}
+                              className="group/loc flex items-center gap-2.5 rounded-xl p-2 flex-1 min-w-0"
+                            >
+                              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-zinc-100 text-zinc-600 transition-colors group-hover/loc:bg-primary group-hover/loc:text-white">
+                                <IconComp className="w-3.5 h-3.5" />
+                              </div>
+                              <div className="min-w-0 flex-1">
+                                <p className="text-xs font-bold text-secondary group-hover/loc:text-primary transition-colors">
+                                  {group.region}
+                                </p>
+                                <p className="text-[11px] text-zinc-500 truncate">
+                                  {group.desc}
+                                </p>
+                              </div>
+                            </Link>
+                            {hasSubAreas && (
+                              <button
+                                type="button"
+                                onClick={(e) => toggleRegion(group.region, e)}
+                                aria-expanded={isExpanded}
+                                aria-label={`${isExpanded ? "Collapse" : "Expand"} ${group.region} sub-areas`}
+                                className="shrink-0 flex items-center justify-center w-8 rounded-xl text-zinc-400 hover:text-primary hover:bg-primary/10 transition-all cursor-pointer my-1"
+                              >
+                                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} />
+                              </button>
+                            )}
+                          </div>
+
+                          {hasSubAreas && (
+                            <div className={`grid overflow-hidden transition-all duration-200 ease-out ${isExpanded ? "grid-rows-[1fr] mt-1" : "grid-rows-[0fr]"}`}>
+                              <div className="min-h-0 overflow-hidden">
+                                <div className="ml-9 mr-2 border-l border-zinc-200 pl-3 space-y-1 pb-1">
+                                  {group.subAreas.map((sub) => (
+                                    <Link
+                                      key={sub.name}
+                                      href={sub.href}
+                                      className="group/item flex items-center justify-between rounded-lg py-1.5 px-2 transition-all hover:bg-primary/5"
+                                    >
+                                      <div className="min-w-0 flex-1">
+                                        <p className="text-[11px] font-bold text-secondary truncate group-hover/item:text-primary transition-colors">
+                                          {sub.name}
+                                        </p>
+                                        <p className="text-[10px] text-zinc-500 truncate leading-tight">
+                                          {sub.desc}
+                                        </p>
+                                      </div>
+                                      <ArrowRight className="w-3 h-3 text-zinc-400 group-hover/item:text-primary group-hover/item:translate-x-0.5 transition-all shrink-0" />
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
                             </div>
-                            <div className="min-w-0 flex-1">
-                              <p className="text-xs font-bold text-secondary group-hover/loc:text-primary transition-colors">{group.region}</p>
-                              <p className="text-[11px] text-zinc-500 truncate">{group.desc}</p>
-                            </div>
-                          </Link>
+                          )}
                         </div>
                       );
                     })}
@@ -376,10 +459,16 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
             </div>
 
             <Link
-              href="/#about-us"
+              href="/about-us/"
               className="font-semibold text-secondary hover:text-primary transition-colors"
             >
               About Us
+            </Link>
+            <Link
+              href="/blog/"
+              className="font-semibold text-secondary hover:text-primary transition-colors"
+            >
+              Blog
             </Link>
             <Link
               href="/contact"

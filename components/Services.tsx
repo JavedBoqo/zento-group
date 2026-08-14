@@ -26,7 +26,7 @@ const homeCareServices: ServiceItem[] = [
   {
     name: "Personal Care",
     category: "Home Care",
-    href: "/services/home-care/personal-care/",
+    href: "/home-care/personal-care/",
     icon: Heart,
     description:
       "Support with daily routines including washing, dressing, continence care, and mobility.",
@@ -34,7 +34,7 @@ const homeCareServices: ServiceItem[] = [
   {
     name: "Medication Support",
     category: "Home Care",
-    href: "/services/home-care/medication-support/",
+    href: "/home-care/medication-support/",
     icon: ShieldCheck,
     description:
       "Safe prompting, administration, and monitoring with nurse-led oversight.",
@@ -42,7 +42,7 @@ const homeCareServices: ServiceItem[] = [
   {
     name: "Dementia Care",
     category: "Home Care",
-    href: "/services/home-care/dementia-care/",
+    href: "/home-care/dementia-care/",
     icon: Brain,
     description:
       "Calm, structured routines delivered by consistent carers to support safety and familiarity.",
@@ -50,7 +50,7 @@ const homeCareServices: ServiceItem[] = [
   {
     name: "Companionship",
     category: "Home Care",
-    href: "/services/home-care/companionship/",
+    href: "/home-care/companionship/",
     icon: Users,
     description:
       "Meaningful engagement, activities, and emotional support to reduce loneliness.",
@@ -58,21 +58,21 @@ const homeCareServices: ServiceItem[] = [
   {
     name: "Meal Preparation",
     category: "Home Care",
-    href: "/services/home-care/meal-preparation/",
+    href: "/home-care/meal-preparation/",
     icon: Utensils,
     description: "Nutritional support, hydration, and routine meal planning.",
   },
   {
     name: "Hospital Discharge",
     category: "Home Care",
-    href: "/services/home-care/hospital-discharge/",
+    href: "/home-care/hospital-discharge/",
     icon: Building2,
     description: "Helping clients transition safely back home after hospital stays.",
   },
   {
     name: "Respite Care",
     category: "Home Care",
-    href: "/services/home-care/respite-care/",
+    href: "/home-care/respite-care/",
     icon: Sun,
     description:
       "Short-term support to give families rest, reassurance, and peace of mind.",
@@ -83,7 +83,7 @@ const liveInCareServices: ServiceItem[] = [
   {
     name: "Live-in Care",
     category: "Live-in Care",
-    href: "/services/live-in-care/",
+    href: "/live-in-care/",
     icon: Home,
     description:
       "Round-the-clock dedicated caregiver living in your home for complete peace of mind.",
@@ -91,7 +91,7 @@ const liveInCareServices: ServiceItem[] = [
   {
     name: "Overnight Care",
     category: "Live-in Care",
-    href: "/services/live-in-care/overnight-care/",
+    href: "/live-in-care/overnight-care/",
     icon: Moon,
     description:
       "Sleep-in or waking night care for safety, reassurance, and peace of mind.",
@@ -99,7 +99,7 @@ const liveInCareServices: ServiceItem[] = [
   {
     name: "24-Hour Care",
     category: "Live-in Care",
-    href: "/services/live-in-care/24-hour-care/",
+    href: "/live-in-care/24-hour-care/",
     icon: Clock4,
     description:
       "Continuous 24/7 rotational care team for complex medical or high-dependency needs.",

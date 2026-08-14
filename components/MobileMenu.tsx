@@ -18,27 +18,42 @@ export default function MobileMenu({ isOpen, onClose, onOpenModal }: MobileMenuP
   const [isLocationsOpen, setIsLocationsOpen] = useState(false);
 
   const homeCareLinks = [
-    { name: "Home Care Overview", href: "/services/home-care/" },
-    { name: "Personal Care", href: "/services/home-care/personal-care/" },
-    { name: "Medication Support", href: "/services/home-care/medication-support/" },
-    { name: "Dementia Care", href: "/services/home-care/dementia-care/" },
-    { name: "Companionship", href: "/services/home-care/companionship/" },
-    { name: "Meal Preparation", href: "/services/home-care/meal-preparation/" },
-    { name: "Hospital Discharge", href: "/services/home-care/hospital-discharge/" },
-    { name: "Respite Care", href: "/services/home-care/respite-care/" },
+    { name: "Home Care Overview", href: "/home-care/" },
+    { name: "Personal Care", href: "/home-care/personal-care/" },
+    { name: "Medication Support", href: "/home-care/medication-support/" },
+    { name: "Dementia Care", href: "/home-care/dementia-care/" },
+    { name: "Companionship", href: "/home-care/companionship/" },
+    { name: "Meal Preparation", href: "/home-care/meal-preparation/" },
+    { name: "Hospital Discharge", href: "/home-care/hospital-discharge/" },
+    { name: "Respite Care", href: "/home-care/respite-care/" },
   ];
 
   const liveInCareLinks = [
-    { name: "Live-in Care Overview", href: "/services/live-in-care/" },
-    { name: "Overnight Care", href: "/services/live-in-care/overnight-care/" },
-    { name: "24-Hour Care", href: "/services/live-in-care/24-hour-care/" },
+    { name: "Live-in Care Overview", href: "/live-in-care/" },
+    { name: "Overnight Care", href: "/live-in-care/overnight-care/" },
+    { name: "24-Hour Care", href: "/live-in-care/24-hour-care/" },
   ];
 
-  const locationLinks = [
+  const mobileLocationGroups = [
     { name: "All Service Areas", href: "/locations/" },
     { name: "Edinburgh", href: "/locations/edinburgh/" },
-    { name: "Lothian", href: "/locations/lothian/" },
-    { name: "Perthshire", href: "/locations/perthshire/" },
+    {
+      name: "Lothian Region",
+      href: "/locations/lothian/",
+      subAreas: [
+        { name: "Midlothian", href: "/locations/lothian/midlothian/" },
+        { name: "East Lothian", href: "/locations/lothian/east-lothian/" },
+        { name: "West Lothian", href: "/locations/lothian/west-lothian/" },
+      ],
+    },
+    {
+      name: "Perthshire Region",
+      href: "/locations/perthshire/",
+      subAreas: [
+        { name: "Crieff", href: "/locations/perthshire/crieff/" },
+        { name: "Comrie", href: "/locations/perthshire/comrie/" },
+      ],
+    },
   ];
 
   return (
@@ -158,16 +173,31 @@ export default function MobileMenu({ isOpen, onClose, onOpenModal }: MobileMenuP
                     <p className="flex items-center gap-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-2">
                       <MapPin className="w-3.5 h-3.5" /> Service Areas
                     </p>
-                    <div className="space-y-1.5 pl-2 border-l-2 border-primary/20">
-                      {locationLinks.map((link) => (
-                        <Link
-                          key={link.name}
-                          href={link.href}
-                          onClick={onClose}
-                          className="block text-xs font-semibold text-zinc-700 hover:text-primary transition-colors py-0.5"
-                        >
-                          {link.name}
-                        </Link>
+                    <div className="space-y-2 pl-2 border-l-2 border-primary/20">
+                      {mobileLocationGroups.map((group) => (
+                        <div key={group.name} className="space-y-1">
+                          <Link
+                            href={group.href}
+                            onClick={onClose}
+                            className="block text-xs font-bold text-secondary hover:text-primary transition-colors py-0.5"
+                          >
+                            {group.name}
+                          </Link>
+                          {group.subAreas && (
+                            <div className="pl-3 border-l border-zinc-200 space-y-1 my-1">
+                              {group.subAreas.map((sub) => (
+                                <Link
+                                  key={sub.name}
+                                  href={sub.href}
+                                  onClick={onClose}
+                                  className="block text-[11px] font-medium text-zinc-600 hover:text-primary transition-colors py-0.5"
+                                >
+                                  {sub.name}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -175,16 +205,27 @@ export default function MobileMenu({ isOpen, onClose, onOpenModal }: MobileMenuP
               </div>
 
               {/* Other Navigation Links */}
-              {["About Us", "Contact"].map((item) => (
-                <Link
-                  key={item}
-                  href={item === "Contact" ? "/contact" : `/#${item.toLowerCase().replace(/\s+/g, "-")}`}
-                  onClick={onClose}
-                  className="text-sm font-black uppercase tracking-[0.3em] text-secondary hover:text-primary transition-colors"
-                >
-                  {item}
-                </Link>
-              ))}
+              <Link
+                href="/about-us/"
+                onClick={onClose}
+                className="text-sm font-black uppercase tracking-[0.3em] text-secondary hover:text-primary transition-colors"
+              >
+                About Us
+              </Link>
+              <Link
+                href="/blog/"
+                onClick={onClose}
+                className="text-sm font-black uppercase tracking-[0.3em] text-secondary hover:text-primary transition-colors"
+              >
+                Blog
+              </Link>
+              <Link
+                href="/contact"
+                onClick={onClose}
+                className="text-sm font-black uppercase tracking-[0.3em] text-secondary hover:text-primary transition-colors"
+              >
+                Contact
+              </Link>
             </div>
 
             {/* Integrated Contact Section */}

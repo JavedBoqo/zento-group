@@ -7,6 +7,7 @@ import {
   OFFICES,
   CONTACT_EMAIL,
   SERVICE_AREAS,
+  SOCIAL_LINKS,
 } from "@/constants";
 
 export default function Footer() {
@@ -31,27 +32,20 @@ export default function Footer() {
               Nurse-led home care across Edinburgh, Lothian, and Perthshire. Registered with the Care Inspectorate.
             </p>
             <div className="flex justify-center gap-3 lg:justify-start">
-              <a
-                href="#"
-                aria-label="Facebook"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-zinc-400 shadow-md transition-all hover:-translate-y-1 hover:bg-primary hover:text-white"
-              >
-                <FacebookIcon />
-              </a>
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-zinc-400 shadow-md transition-all hover:-translate-y-1 hover:bg-primary hover:text-white"
-              >
-                <LinkedinIcon />
-              </a>
-              <a
-                href="#"
-                aria-label="Instagram"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-zinc-400 shadow-md transition-all hover:-translate-y-1 hover:bg-primary hover:text-white"
-              >
-                <InstagramIcon />
-              </a>
+              {SOCIAL_LINKS.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-zinc-400 shadow-md transition-all hover:-translate-y-1 hover:bg-primary hover:text-white"
+                >
+                  {social.iconName === "facebook" && <FacebookIcon />}
+                  {social.iconName === "instagram" && <InstagramIcon />}
+                  {social.iconName === "linkedin" && <LinkedinIcon />}
+                </a>
+              ))}
             </div>
           </div>
 

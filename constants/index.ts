@@ -61,3 +61,22 @@ export const SERVICE_AREAS =
 
 export const PERTHSHIRE_TAGLINE =
   "Now caring for Crieff, Comrie & Perthshire — from our new East High Street office";
+
+export interface SocialLink {
+  name: string;
+  href: string;
+  iconName: "facebook" | "instagram" | "linkedin";
+}
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/zentogroupuk/",
+    iconName: "facebook",
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/zento_groupuk/",
+    iconName: "instagram",
+  },
+];

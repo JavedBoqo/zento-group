@@ -63,7 +63,7 @@ const edinburghServices = [
     desc: "Live-in care allows an older person to remain in their Edinburgh home with a dedicated carer present around the clock — an alternative to a care home that many Edinburgh families are choosing. Rather than uprooting someone from a home they know, a familiar street, a GP surgery they trust, and a community they belong to, live-in care brings full-time support directly to them.",
     extraDesc:
       "Our Edinburgh nursing team matches each client with a live-in carer suited to their personality, care needs and daily routine. The carer is supported and supervised by a registered nurse, who reviews the care plan regularly and adjusts it as the client's needs change. Live-in care is available for older adults, those recovering from illness or surgery, and people living with dementia or other long-term conditions.",
-    href: "/services/live-in-care/",
+    href: "/live-in-care/",
     linkText: "Full details about live-in care",
     icon: Home,
   },
@@ -77,7 +77,7 @@ const edinburghServices = [
       text: "VOCAL Edinburgh (vocallothian.org.uk)",
       href: "https://www.vocallothian.org.uk/",
     },
-    href: "/services/home-care/respite-care/",
+    href: "/home-care/respite-care/",
     linkText: "Full details about respite care at home",
     icon: Sun,
   },
@@ -87,7 +87,7 @@ const edinburghServices = [
     desc: "For Edinburgh families where a loved one needs support during the night but does not require full-time live-in care, overnight care provides a practical and reassuring solution. We offer two types: sleep-in care, where a carer stays overnight and is available if needed; and waking-night care, where the carer remains awake and active throughout.",
     extraDesc:
       "Overnight care is often needed following a period of illness or hospital discharge, when night-time confusion, falls risk or medication needs make unsupervised nights unsafe. It is also commonly arranged for people living with dementia, where wandering or disorientation overnight is a concern. Our Edinburgh nursing team will advise which option suits your situation and can arrange an assessment at short notice when needed.",
-    href: "/services/live-in-care/overnight-care/",
+    href: "/live-in-care/overnight-care/",
     linkText: "Full details about overnight care",
     icon: Clock4,
   },
@@ -97,7 +97,7 @@ const edinburghServices = [
     desc: "Remaining at home, in a familiar environment, surrounded by personal belongings and established routines, makes a meaningful difference to the wellbeing of someone living with dementia. Zento provides dementia care at home across Edinburgh — keeping people connected to the places, people and patterns that are important to them.",
     extraDesc:
       "Our approach to dementia care focuses on carer consistency — the same carer, or a small team of familiar faces, visiting reliably so that your loved one is never met by a stranger. Our nursing team develops care plans specifically for each person's stage of dementia and the behaviours it produces, and reviews them regularly as the condition progresses. We liaise with families, GPs and Edinburgh-based memory services to ensure care remains appropriate.",
-    href: "/services/home-care/dementia-care/",
+    href: "/home-care/dementia-care/",
     linkText: "Full details about dementia care at home",
     icon: Brain,
   },
@@ -107,7 +107,7 @@ const edinburghServices = [
     desc: "Personal care covers the daily tasks that become difficult with age, illness or reduced mobility — washing, dressing, continence support, grooming and getting ready for the day. These are the most intimate forms of care, and the quality of the person delivering them matters enormously.",
     extraDesc:
       "Zento's personal care visits in Edinburgh are delivered by trained carers who approach each client with patience, dignity and a genuine understanding of what it means to need help with private tasks. Every carer is recruited, trained and supervised by our nursing team. Visits are scheduled around the client's preferred routine — not around what is convenient for us. For many Edinburgh families, a daily personal care visit is the foundation around which other support is built.",
-    href: "/services/home-care/personal-care/",
+    href: "/home-care/personal-care/",
     linkText: "Full details about personal care at home",
     icon: Heart,
   },
@@ -117,7 +117,7 @@ const edinburghServices = [
     desc: "When a loved one is discharged from the Royal Infirmary of Edinburgh or the Western General Hospital, the first days at home are often the most uncertain. Physical recovery continues at home, but the level of support at home does not always match what was available in hospital. Zento works with Edinburgh families — and with discharge teams at NHS Lothian — to bridge that gap.",
     extraDesc:
       "Our hospital discharge service provides short-term intensive care designed around what was actually needed on the ward. This can include personal care, medication management, mobility support, meal preparation and overnight assistance. Our nurses liaise directly with hospital discharge coordinators and community nurses at NHS Lothian to ensure the transition home is safe and well supported. Care can be arranged within 48 hours of a planned discharge.",
-    href: "/services/home-care/hospital-discharge/",
+    href: "/home-care/hospital-discharge/",
     linkText: "Full details about hospital discharge care",
     icon: Building2,
   },
@@ -367,7 +367,7 @@ export default function EdinburghLocationPage() {
           <div className="pointer-events-none absolute -bottom-32 -left-32 h-[480px] w-[480px] rounded-full bg-secondary/5 blur-[100px]" />
 
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24 relative z-10 text-center">
-            <div className="mx-auto max-w-4xl space-y-6">
+            <div className="mx-auto max-w-5xl space-y-6">
               <div>
                 <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs sm:text-sm font-bold text-primary mb-4">
                   Nurse-Led Home Care · City of Edinburgh &amp; The Lothians
@@ -488,14 +488,7 @@ export default function EdinburghLocationPage() {
                 loved one, they travel from our Edinburgh office. When care visits begin, your carer is
                 managed locally, not remotely.
               </p>
-              <div className="pt-2">
-                <Link
-                  href="/about/our-team/"
-                  className="inline-flex items-center gap-2 rounded-full bg-secondary px-7 py-3 text-sm font-bold text-white shadow-md transition-all hover:bg-secondary/90 hover:scale-105"
-                >
-                  Meet our Edinburgh team <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
+
             </div>
           </div>
         </section>
@@ -680,14 +673,7 @@ export default function EdinburghLocationPage() {
                     manages all home care services across Edinburgh and the Lothians from this
                     location.
                   </p>
-                  <div className="pt-2">
-                    <Link
-                      href="/about/our-team/"
-                      className="inline-flex items-center gap-2 text-xs font-bold text-primary hover:underline"
-                    >
-                      Meet our care team <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
+
                 </div>
 
                 {/* NAP Card */}
@@ -801,12 +787,6 @@ export default function EdinburghLocationPage() {
             </div>
 
             <div className="flex flex-col items-center gap-4 text-center">
-              <Link
-                href="/how-it-works/"
-                className="text-xs font-bold text-primary hover:underline inline-flex items-center gap-1"
-              >
-                Learn more about our assessment process <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
               <ModalButton
                 type="assessment"
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-10 py-4 font-bold text-white shadow-xl shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"

@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Phone, Calendar, ClipboardList } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { getRecaptchaToken } from "@/app/lib/recaptcha";
 import { useToast } from "@/components/ToastProvider";
 
@@ -17,8 +17,21 @@ export default function ContactModal({ isOpen, onClose, type }: ContactModalProp
   const [submissionStatus, setSubmissionStatus] = useState<"idle" | "success">("idle");
   const [successMessage, setSuccessMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   const handleClose = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
     setSubmissionStatus("idle");
     setSuccessMessage("");
     setIsSubmitting(false);
@@ -117,7 +130,7 @@ export default function ContactModal({ isOpen, onClose, type }: ContactModalProp
         setSuccessMessage(
           data.message || "Thank you. Our team will be in touch shortly."
         );
-        setTimeout(() => {
+        timeoutRef.current = setTimeout(() => {
           setSubmissionStatus("idle");
           setSuccessMessage("");
           handleClose();

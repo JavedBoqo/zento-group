@@ -4,18 +4,13 @@ import Image from "next/image";
 import {
   ArrowRight,
   Phone,
-  Heart,
-  ShieldCheck,
-  Brain,
-  Users,
-  Utensils,
-  Building2,
-  Sun,
-  Home,
   CheckCircle2,
   Star,
   ChevronDown,
   MapPin,
+  Home,
+  Moon,
+  Clock4,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -24,82 +19,47 @@ import { OFFICES, CONTACT_NUMBER } from "@/constants";
 
 /* ─────────────────────────── SEO METADATA ─────────────────────────── */
 export const metadata: Metadata = {
-  title: "Home Care Services | Nurse-Led Care at Home | Zento",
+  title: "Live-In Care at Home | Nurse-Led 24/7 Support | Zento",
   description:
-    "Nurse-led home care services across Edinburgh, Lothian and Perthshire. Personal care, dementia support, respite and more — all overseen by registered nurses. Call us today.",
+    "Live-in care from our nurse-led team across Edinburgh, Lothian and Perthshire. Consistent carers, 24/7 support and genuine clinical oversight. Call us.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/services/home-care/",
+    canonical: "https://zentogroup.co.uk/live-in-care/",
   },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Home Care Services | Nurse-Led Care at Home | Zento",
+    title: "Live-In Care at Home | Nurse-Led 24/7 Support | Zento",
     description:
-      "Nurse-led home care services across Edinburgh, Lothian and Perthshire. Personal care, dementia support, respite and more — all overseen by registered nurses.",
-    url: "https://zentogroup.co.uk/services/home-care/",
+      "Live-in care from our nurse-led team across Edinburgh, Lothian and Perthshire. Consistent carers, 24/7 support and genuine clinical oversight.",
+    url: "https://zentogroup.co.uk/live-in-care/",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
-    images: [{ url: "/brand-image.png", width: 1200, height: 630, alt: "Zento Nurse-Led Home Care" }],
+    images: [{ url: "/brand-image.png", width: 1200, height: 630, alt: "Zento Nurse-Led Live-In Care" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Home Care Services | Nurse-Led Care at Home | Zento",
+    title: "Live-In Care at Home | Nurse-Led 24/7 Support | Zento",
     description:
-      "Nurse-led home care services across Edinburgh, Lothian and Perthshire. All care overseen by registered nurses.",
+      "Live-in care from our nurse-led team across Edinburgh, Lothian and Perthshire. Consistent carers, 24/7 support and genuine clinical oversight.",
     images: ["/brand-image.png"],
   },
 };
 
 /* ─────────────────────────── DATA ─────────────────────────── */
-const homeCareServices = [
+const liveInCareServices = [
   {
-    name: "Personal Care",
-    href: "/services/home-care/personal-care/",
-    desc: "Support with bathing, dressing, continence, mobility and personal hygiene, delivered with patience and dignity.",
+    name: "Overnight Care",
+    href: "/live-in-care/overnight-care/",
+    desc: "A trained carer present through the night — either a sleep-in carer, available if woken, or a waking-night carer, alert and monitoring throughout. Suited to families who need reliable night-time cover, sometimes alongside daytime visits.",
     ctaLabel: "Learn more",
-    icon: Heart,
+    icon: Moon,
   },
   {
-    name: "Medication Support",
-    href: "/services/home-care/medication-support/",
-    desc: "Prompting, administering and monitoring medication under the oversight of a registered nurse.",
+    name: "24-Hour Home Care",
+    href: "/live-in-care/24-hour-care/",
+    desc: "A small team of carers working rotating shifts, so someone is always fully awake and alert — day and night, with no gaps. Suited to more complex or unpredictable needs, where waiting for a carer to wake isn't an option.",
     ctaLabel: "Learn more",
-    icon: ShieldCheck,
-  },
-  {
-    name: "Companionship",
-    href: "/services/home-care/companionship/",
-    desc: "Regular social visits to reduce isolation, maintain routines and enjoy meaningful conversation and activities.",
-    ctaLabel: "Learn more",
-    icon: Users,
-  },
-  {
-    name: "Meal Preparation",
-    href: "/services/home-care/meal-preparation/",
-    desc: "Nutritious meals planned around dietary needs and personal preferences, prepared in the client's own kitchen.",
-    ctaLabel: "Learn more",
-    icon: Utensils,
-  },
-  {
-    name: "Hospital Discharge Support",
-    href: "/services/home-care/hospital-discharge/",
-    desc: "Short-term intensive care to help your loved one settle back home safely after a hospital stay.",
-    ctaLabel: "Learn more",
-    icon: Building2,
-  },
-  {
-    name: "Dementia Care",
-    href: "/services/home-care/dementia-care/",
-    desc: "Consistent carers and familiar routines to support people living with dementia at every stage.",
-    ctaLabel: "Learn more",
-    icon: Brain,
-  },
-  {
-    name: "Respite Care",
-    href: "/services/home-care/respite-care/",
-    desc: "Planned or emergency cover so family carers can take a genuine break, knowing their loved one is safe.",
-    ctaLabel: "Learn more",
-    icon: Sun,
+    icon: Clock4,
   },
 ];
 
@@ -107,96 +67,106 @@ const steps = [
   {
     step: "01",
     title: "Free Consultation",
-    desc: "Call us or complete our enquiry form. We will listen carefully and answer any questions your family has, with no pressure and no obligation.",
+    desc: "Call us or complete our enquiry form. A conversation about your loved one's situation — no pressure, no commitment.",
   },
   {
     step: "02",
     title: "Nursing Assessment",
-    desc: "One of our registered nurses visits your loved one at home to understand their needs, preferences and daily routine.",
-    link: { label: "Learn more about our assessment process", href: "/how-it-works/" },
+    desc: "A registered nurse assesses what's genuinely needed. We look honestly at whether overnight support or full 24-hour care is the right fit, based on the actual clinical picture.",
   },
   {
     step: "03",
-    title: "Care Plan Written",
-    desc: "Your nurse writes a personalised care plan and selects a carer matched to your loved one's personality and needs. You review and approve the plan before anything begins.",
+    title: "Carer Match or Team Built",
+    desc: "We match a carer or build a team. Carers are matched for compatibility, not just availability, and briefed thoroughly before anyone moves in or starts a shift.",
   },
   {
     step: "04",
     title: "Care Begins",
-    desc: "Your regular carer starts visits on a schedule that works for your family. Our nursing team reviews the plan regularly and adjusts it as needs change.",
+    desc: "Care begins, with regular nurse review. Support starts on an agreed schedule. Our nursing team reviews the arrangement as circumstances change.",
   },
 ];
 
 const testimonials = [
   {
     quote:
-      "The nurse who came to assess my mother was thorough in a way we had not experienced before — she spotted issues with her medication that two previous agencies had missed. That gave us enormous confidence before care even started.",
-    author: "Sandra M.",
-    location: "Morningside",
+      "We looked at care homes for Mum and Dad and the numbers just didn't add up — two separate places would have cost nearly double what one live-in carer costs for both of them together. More importantly, they got to stay in the house they've lived in for forty years. The nurse who matched their carer clearly thought hard about who would actually suit them.",
+    author: "Fiona L.",
+    location: "Edinburgh",
   },
   {
     quote:
-      "We tried another agency first and the carers kept changing. With Zento, the same two carers have been visiting my father for six months. He knows their names, looks forward to their visits, and that consistency has made a real difference to his wellbeing.",
-    author: "James R.",
-    location: "Portobello",
-  },
-  {
-    quote:
-      "After my husband's stroke, hospital discharge felt overwhelming. Zento had a care plan ready within 48 hours and the transition home was far smoother than I thought possible. The nursing team stayed in touch throughout the first two weeks to make sure everything was right.",
-    author: "Catherine B.",
-    location: "Crieff",
+      "Dad's dementia meant a care home felt like it would be genuinely distressing for him. Live-in care let him stay somewhere familiar, with one carer he came to know well rather than a rotating staff team. The consistency made an enormous difference to how settled he was.",
+    author: "Robert T.",
+    location: "Perth",
   },
 ];
 
 const faqs = [
   {
-    q: "What is the difference between home care and a care home?",
-    a: "Home care is professional support delivered in a person's own home, while a care home is a residential facility where the person moves in permanently or for a short stay. Home care allows your loved one to remain in familiar surroundings, keep their daily routines and stay close to family, friends and their local community. Many families choose home care because it preserves independence and can be more cost-effective than residential alternatives, particularly when Scotland's Free Personal Care funding is applied.",
+    q: "What is the difference between live-in care and visiting home care?",
+    a: "Visiting home care involves scheduled visits throughout the day, with the client alone between them. Live-in care means a carer is present in the home continuously, including overnight, providing support whenever it's needed rather than only during set visit times. It suits people whose needs are less predictable or who need reassurance that someone is always close by.",
   },
   {
-    q: "What does nurse-led home care mean?",
-    a: "Nurse-led home care means that every care plan is written, reviewed and supervised by a registered nurse rather than a non-clinical coordinator. At Zento, our nurses assess each client personally, design care around their specific medical and personal needs, train the carers who deliver that care, and conduct regular clinical reviews. This provides a level of oversight that standard care agencies do not typically offer.",
+    q: "Is live-in care cheaper than a care home?",
+    a: "It depends on individual circumstances, but for couples specifically, live-in care is often considerably more cost-effective, since one carer can support two people under a single arrangement, whereas care homes charge per person. For a single individual, costs are broadly comparable, though live-in care also means remaining in a familiar home. Our team can talk through the specifics honestly.",
   },
   {
-    q: "How do I arrange home care for a parent or family member?",
-    a: "Start by contacting us for a free, no-obligation consultation. One of our registered nurses will arrange a home visit to assess your loved one's needs, after which we write a personalised care plan and match a carer to your family. The whole process from initial call to the first care visit can be completed within days, depending on urgency. Emergency or short-notice arrangements are also possible.",
+    q: "What is the difference between overnight care and 24-hour care?",
+    a: "Overnight care provides a trained carer through the night only — either a sleep-in carer or a waking-night carer — sometimes alongside separate daytime visits. 24-hour care provides a small team of carers working rotating shifts, so someone is always fully awake and alert throughout the day and night, with no gaps. The right choice depends on how predictable and frequent your loved one's needs are.",
   },
   {
-    q: "What home care services are available for someone with dementia?",
-    a: "Zento provides specialist dementia care at home, focusing on consistent carer matching, familiar daily routines and medication management under nurse supervision. Our carers are trained in person-centred dementia care, and our nursing team reviews each care plan regularly as the condition progresses. Keeping a person with dementia in their own home, surrounded by what they know, often supports their wellbeing more than an unfamiliar residential setting.",
+    q: "How does Zento match a live-in carer to a client?",
+    a: "Matching is led by our nursing team, who consider clinical needs alongside personality, routine and what's likely to make the arrangement work well day to day. Because a live-in carer shares the home, compatibility matters as much as competence. Carers are introduced before the arrangement begins.",
   },
   {
-    q: "Is home care available on evenings, weekends and overnight?",
-    a: "Zento provides care visits at any time of day, including early mornings, evenings, weekends and public holidays. For families who need overnight support, we offer both sleep-in and waking-night care options. Round-the-clock support is available through our live-in care service, where a dedicated carer stays in the client's home. Our nursing team builds a schedule that fits around your family's life.",
-  },
-  {
-    q: "How is home care funded in Scotland?",
-    a: "In Scotland, Free Personal Care provides funding for the personal care element of home care for eligible adults aged 65 and over, regardless of income or savings. Younger adults may also qualify under Frank's Law. Additional funding options include a council care needs assessment, Self-Directed Support and Direct Payments. Many families also choose to fund care privately, either in full or alongside council support. Our team will help you understand which routes apply to your situation.",
+    q: "Can live-in care be arranged quickly, for example after a hospital stay?",
+    a: "Yes. In many cases we can have live-in care in place within a few days, and more urgently where needed — for example following a hospital discharge. Our nursing team can assess needs quickly and arrange the right level of support without unnecessary delay.",
   },
 ];
 
 const locationLinks = [
   { label: "Edinburgh", href: "/locations/edinburgh/" },
-  { label: "Midlothian", href: "/locations/lothian/midlothian/" },
-  { label: "East Lothian", href: "/locations/lothian/east-lothian/" },
-  { label: "West Lothian", href: "/locations/lothian/west-lothian/" },
+  { label: "Lothian", href: "/locations/lothian/" },
   { label: "Perthshire", href: "/locations/perthshire/" },
-  { label: "Crieff", href: "/locations/perthshire/crieff/" },
+];
+
+const relatedServices = [
+  {
+    name: "Overnight Care at Home",
+    href: "/live-in-care/overnight-care/",
+    desc: "Sleep-in or waking-night support, alone or alongside daytime visits.",
+    icon: Moon,
+    accent: "primary",
+  },
+  {
+    name: "24-Hour Home Care",
+    href: "/live-in-care/24-hour-care/",
+    desc: "A rotating team for continuous, always-alert support — day and night.",
+    icon: Clock4,
+    accent: "secondary",
+  },
+  {
+    name: "Home Care Services",
+    href: "/home-care/",
+    desc: "Visiting care for personal care, medication, companionship and more.",
+    icon: Home,
+    accent: "primary",
+  },
 ];
 
 /* ─────────────────────────── PAGE ─────────────────────────── */
-export default function HomeCarePage() {
+export default function LiveInCarePage() {
   /* ── JSON-LD: Service schema ── */
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Nurse-Led Home Care Services",
+    name: "Nurse-Led Live-In Care Services",
     provider: {
       "@type": "Organization",
       "@id": "https://zentogroup.co.uk/#organization",
       name: "Zento Group",
     },
-    serviceType: "Home Care",
+    serviceType: "Live-In Care",
     areaServed: [
       "City of Edinburgh",
       "Midlothian",
@@ -204,7 +174,7 @@ export default function HomeCarePage() {
       "West Lothian",
       "Perthshire",
     ],
-    url: "https://zentogroup.co.uk/services/home-care/",
+    url: "https://zentogroup.co.uk/live-in-care/",
   };
 
   /* ── JSON-LD: FAQPage schema ── */
@@ -235,8 +205,8 @@ export default function HomeCarePage() {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Home Care",
-        item: "https://zentogroup.co.uk/services/home-care/",
+        name: "Live-In Care",
+        item: "https://zentogroup.co.uk/live-in-care/",
       },
     ],
   };
@@ -274,7 +244,7 @@ export default function HomeCarePage() {
                 <li aria-hidden="true" className="text-zinc-300">/</li>
                 <li>
                   <span className="font-semibold text-secondary" aria-current="page">
-                    Home Care
+                    Live-In Care
                   </span>
                 </li>
               </ol>
@@ -291,45 +261,44 @@ export default function HomeCarePage() {
           <div className="pointer-events-none absolute -bottom-32 -left-32 h-[480px] w-[480px] rounded-full bg-secondary/5 blur-[100px]" />
 
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24 relative z-10 text-center">
-            <div className="mx-auto max-w-4xl space-y-6">
+            <div className="mx-auto max-w-5xl space-y-6">
               <div>
                 {/* Badge */}
                 <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs sm:text-sm font-bold text-primary mb-4">
-                  Nurse-Led Home Care · Edinburgh, Lothian &amp; Perthshire
+                  Nurse-Led Live-In Care · Edinburgh, Lothian &amp; Perthshire
                 </span>
 
                 {/* H1 */}
                 <h1 className="text-3xl font-black leading-tight text-secondary min-[400px]:text-4xl sm:text-5xl lg:text-6xl mb-6">
-                  Our Home Care Services —{" "}
-                  <span className="text-primary">Personal, Visiting</span> and Daily Living Care
+                  <span className="text-primary">Live-In Care at Home</span>{" "}
+                  — 24-Hour Support From a Nurse-Led Team
                 </h1>
 
                 {/* Lead paragraph */}
                 <p className="text-base sm:text-lg leading-relaxed text-zinc-600 max-w-3xl mx-auto">
-                  Zento provides nurse-led home care services for older adults across Edinburgh,
-                  Lothian and Perthshire. Every care plan is written by a registered nurse, not a
-                  coordinator, and every visit is backed by clinical oversight that most care
-                  agencies simply do not offer. Whether your family needs a few hours of personal
-                  care each week or daily support to stay safely at home, our team is here.
+                  Live-in care means your loved one is never without support — day and night, in their own home, rather than moving somewhere unfamiliar. At Zento, every live-in arrangement is planned by a registered nurse and delivered by carers matched for genuine compatibility, not just availability.
                 </p>
               </div>
 
-              {/* 2 CTAs Only */}
-              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              {/* CTAs */}
+              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap">
                 <ModalButton
                   type="assessment"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-bold text-white shadow-xl shadow-primary/30 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
                 >
-                  Arrange a free consultation <ArrowRight className="w-5 h-5" />
+                  Speak to our team <ArrowRight className="w-5 h-5" />
                 </ModalButton>
 
-                <a
-                  href={OFFICES[0]?.phoneHref || `tel:${CONTACT_NUMBER.replace(/\s+/g, "")}`}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-secondary px-8 py-3.5 text-base font-bold text-secondary transition-all hover:bg-secondary hover:text-white"
-                >
-                  <Phone className="w-4 h-4 shrink-0" />
-                  Call Now: {CONTACT_NUMBER}
-                </a>
+                {OFFICES.map((office) => (
+                  <a
+                    key={office.id}
+                    href={office.phoneHref}
+                    className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-secondary px-8 py-3.5 text-base font-bold text-secondary transition-all hover:bg-secondary hover:text-white"
+                  >
+                    <Phone className="w-4 h-4 shrink-0" />
+                    Call {office.shortName}: {office.phone}
+                  </a>
+                ))}
               </div>
 
               {/* Trust bar */}
@@ -367,28 +336,17 @@ export default function HomeCarePage() {
               {/* Text Column */}
               <div className="flex-1 space-y-6">
                 <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">
-                  What are home care services?
+                  What is live-in care?
                 </h2>
                 <div className="space-y-6 text-base leading-relaxed text-zinc-600">
                   <p>
-                    Home care services are professional care and support delivered in a person&apos;s
-                    own home, allowing older adults to remain independent in familiar surroundings
-                    rather than moving into a residential or nursing home. A home care package
-                    typically includes help with personal care such as washing and dressing, medication
-                    support, meal preparation, companionship and household tasks — tailored to the
-                    individual&apos;s needs and preferences.
+                    Live-in care is support that extends into the night, not just through the day — a genuine alternative to moving into a care home. Instead of your loved one relocating to an unfamiliar residential setting, care comes to them, delivered by carers who know their routine, their preferences and their home.
                   </p>
                   <p>
-                    Home care can range from a single weekly visit to multiple daily calls, or even
-                    round-the-clock live-in support. In Scotland, eligible adults aged 65 and over can
-                    access Free Personal Care, which covers the cost of personal care at home regardless
-                    of income. A care needs assessment through your local council is the first step.
+                    It suits people who need more than daytime visits can provide: those with complex or unpredictable needs, higher falls risk, dementia-related night-time confusion, or simply a level of reassurance that comes from knowing someone capable is always close by. It's also, for many families, the option that best preserves independence and dignity — staying in a familiar home, with familiar belongings, familiar neighbours and a familiar routine.
                   </p>
                   <p>
-                    What sets one provider apart from another is how that care is planned and
-                    supervised. At Zento, every care plan is developed and regularly reviewed by a
-                    registered nurse — a standard of clinical oversight that goes beyond what most
-                    domiciliary care agencies provide.
+                    Live-in care isn't one fixed package. It ranges from overnight-only support layered onto daytime visits, through to a full round-the-clock team for the highest-need situations. The right level depends entirely on the individual — which is why a proper nursing assessment, not a generic recommendation, is the right place to start.
                   </p>
                 </div>
               </div>
@@ -397,29 +355,30 @@ export default function HomeCarePage() {
         </section>
 
         {/* ════════════════════════════════════════════════════════
-            SECTION 4 — SERVICE GRID
+            SECTION 3 — SERVICE GRID
         ════════════════════════════════════════════════════════ */}
         <section className="bg-zinc-50/50 py-24">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             {/* Header */}
             <div className="mb-12 text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
-                Our Services
+                Choose the Right Type
               </span>
               <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl mb-4">
-                Home care services we provide
+                Which type of live-in care is right for your family?
               </h2>
               <p className="text-base leading-relaxed text-zinc-600 max-w-2xl mx-auto">
-                We offer a full range of visiting home care services, each planned by our nursing
-                team and delivered by trained carers who know your family. Select a service below
-                for full details.
+                Zento offers two distinct forms of live-in care, and the right one depends on how much support is genuinely needed overnight and beyond. A nursing assessment can help you decide — but here's the honest difference between the two.
+              </p>
+              <p className="text-base leading-relaxed text-zinc-600 max-w-2xl mx-auto mt-4 font-medium">
+                Not sure which applies to your situation? Our nursing team can assess this honestly, based on actual need — not a sales target.
               </p>
               <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
             </div>
 
             {/* Cards grid */}
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {homeCareServices.map((service) => {
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 max-w-4xl mx-auto">
+              {liveInCareServices.map((service) => {
                 const IconComp = service.icon;
                 return (
                   <div
@@ -454,23 +413,33 @@ export default function HomeCarePage() {
               })}
             </div>
 
-            {/* Live-in Care note */}
-            <div className="mt-10 rounded-2xl border border-secondary/20 bg-secondary/5 p-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            {/* Speak to our team CTA */}
+            <div className="mt-10 flex justify-center">
+              <ModalButton
+                type="assessment"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-10 py-4 font-bold text-white shadow-xl shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
+              >
+                Speak to our team <ArrowRight className="w-5 h-5" />
+              </ModalButton>
+            </div>
+
+            {/* Home Care cross-sell note */}
+            <div className="mt-10 rounded-2xl border border-primary/20 bg-primary/5 p-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-sm font-medium text-secondary leading-relaxed">
-                Looking for overnight or 24-hour support?
+                Looking for hourly or daytime-only visits instead of live-in support?
               </p>
               <Link
-                href="/live-in-care/"
-                className="inline-flex items-center gap-2 rounded-full bg-secondary px-6 py-3 text-sm font-bold text-white shadow-md transition-all hover:bg-secondary/90 hover:scale-105 shrink-0"
+                href="/home-care/"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-md transition-all hover:bg-primary/90 hover:scale-105 shrink-0"
               >
-                See our live-in care services <ArrowRight className="w-4 h-4" />
+                See our visiting home care services <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
         </section>
 
         {/* ════════════════════════════════════════════════════════
-            SECTION 5 — NURSE-LED DIFFERENTIATOR (dark bg)
+            SECTION 4 — LIVE-IN CARE VS A CARE HOME (dark bg)
         ════════════════════════════════════════════════════════ */}
         <section className="bg-secondary py-24 text-white overflow-hidden relative">
           {/* Background glow */}
@@ -482,33 +451,22 @@ export default function HomeCarePage() {
               {/* Text Column */}
               <div className="flex-1">
                 <span className="inline-block rounded-full bg-primary/20 px-4 py-2 text-sm font-bold text-primary mb-6">
-                  The Zento Difference
+                  Honest Comparison
                 </span>
                 <h2 className="text-3xl font-black leading-tight min-[400px]:text-4xl sm:text-5xl mb-8">
-                  Why nurse-led home care{" "}
-                  <span className="text-primary">makes a difference</span>
+                  Live-in care vs a care home —{" "}
+                  <span className="text-primary">what's actually different</span>
                 </h2>
 
                 <div className="space-y-5 text-base leading-relaxed text-white/80 mb-10">
                   <p>
-                    Most home care agencies use coordinators or managers with no clinical background
-                    to plan and review care. At Zento, that role is filled by registered nurses.
+                    Cost is usually the first question families ask, and the honest answer is that live-in care is often more cost-effective than people assume — particularly for couples. Because one carer can support two people living together, live-in care frequently works out considerably cheaper than two separate care home places, which are charged individually.
                   </p>
                   <p>
-                    This means the person writing your loved one&apos;s care plan has the clinical
-                    knowledge to spot early warning signs, adjust medication routines safely, manage
-                    complex health conditions and liaise directly with GPs and hospital teams. It also
-                    means the carers delivering care in your home are trained and supervised to a
-                    clinical standard, not just a general one.
+                    Consistency is the other major difference. In a care home, residents are typically supported by a large, frequently rotating staff team across different shifts. Live-in care means one or two familiar carers, matched specifically to your loved one — which matters enormously for anyone who finds unfamiliar faces disorientating, particularly with dementia.
                   </p>
                   <p>
-                    Every care package at Zento is assessed, planned and regularly reviewed by our
-                    nursing team. We are registered with the Care Inspectorate (registration numbers{" "}
-                    <span className="text-white font-semibold">CS2026000326</span> (Support Service)
-                    and{" "}
-                    <span className="text-white font-semibold">CS2026000325</span> (Housing Support
-                    Service)) and proud that nursing oversight is built into every level of the
-                    service we provide.
+                    Neither option is automatically right. Some families' needs are better met by residential care, particularly where clinical needs are very complex. Our nursing team will always give an honest view — including if live-in care isn't the right fit — rather than steer every conversation toward a sale.
                   </p>
                 </div>
 
@@ -516,21 +474,12 @@ export default function HomeCarePage() {
                 <blockquote className="relative rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8 mb-10 backdrop-blur-sm">
                   <div className="absolute -top-3 left-6 text-5xl text-primary leading-none font-black">&ldquo;</div>
                   <p className="pt-4 text-base md:text-lg leading-relaxed italic text-white/90">
-                    I became a nurse because I believe everyone deserves clinical-quality care — not
-                    just in a hospital ward, but at home, where it matters most. That is what we
-                    deliver at Zento every single day.
+                    Our nursing team will always tell you what's actually right for your family — even if that means live-in care isn't the answer. Honesty matters more than making a sale.
                   </p>
                   <footer className="mt-4 text-sm font-bold text-primary not-italic">
                     — Our Clinical Lead, Zento Group
                   </footer>
                 </blockquote>
-
-                <Link
-                  href="/about/our-team/"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-primary px-7 py-3.5 text-sm font-bold text-white transition-all hover:bg-primary hover:text-white"
-                >
-                  Meet our nursing team <ArrowRight className="w-4 h-4" />
-                </Link>
               </div>
 
               {/* Brand Image Card */}
@@ -550,6 +499,44 @@ export default function HomeCarePage() {
         </section>
 
         {/* ════════════════════════════════════════════════════════
+            SECTION 5 — THE NURSE-LED DIFFERENCE
+        ════════════════════════════════════════════════════════ */}
+        <section className="bg-white py-20">
+          <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
+            <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
+              {/* Text Column */}
+              <div className="flex-1 space-y-6">
+                <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-2">
+                  The Zento Difference
+                </span>
+                <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">
+                  Why nurse-led live-in care matters
+                </h2>
+                <div className="space-y-6 text-base leading-relaxed text-zinc-600">
+                  <p>
+                    Matching matters more in live-in care than in almost any other type of support, because this is someone sharing a home, not visiting it briefly. At Zento, a registered nurse leads that matching process — assessing not just care needs, but routine, personality and what will actually make the arrangement work day to day.
+                  </p>
+                  <p>
+                    Once care begins, the plan doesn't sit still. Our nursing team reviews it regularly, adjusting as needs change — because a live-in arrangement that suited someone six months ago may need to look different today.
+                  </p>
+                </div>
+              </div>
+
+              {/* Image Column */}
+              <div className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
+                <Image
+                  src="/about-image.png"
+                  alt="Nurse-led care team supporting client at home"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 500px"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════════
             SECTION 6 — HOW IT WORKS
         ════════════════════════════════════════════════════════ */}
         <section className="bg-zinc-50 py-24">
@@ -560,14 +547,22 @@ export default function HomeCarePage() {
                 Getting Started
               </span>
               <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl">
-                How to get started with home care
+                How to arrange live-in care with Zento
               </h2>
               <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
             </div>
 
             {/* Steps */}
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mb-16">
-              {steps.map((item, index) => (
+              {steps.map((item:{
+                step:string,
+                title:string,
+                desc:string,
+                link?:{
+                  href:string,
+                  label:string
+                }
+              }, index) => (
                 <div key={index} className="relative flex flex-col">
                   {/* Connector line for desktop */}
                   {index < steps.length - 1 && (
@@ -579,7 +574,7 @@ export default function HomeCarePage() {
                   <div className="text-center">
                     <h3 className="mb-3 text-lg font-bold text-secondary">{item.title}</h3>
                     <p className="text-sm leading-relaxed text-zinc-600">{item.desc}</p>
-                    {item.link && (
+                    {item?.link && (
                       <Link
                         href={item.link.href}
                         className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline"
@@ -605,9 +600,46 @@ export default function HomeCarePage() {
         </section>
 
         {/* ════════════════════════════════════════════════════════
-            SECTION 7 — TESTIMONIALS
+            SECTION 7 — COSTS & FUNDING
         ════════════════════════════════════════════════════════ */}
         <section className="bg-white py-24">
+          <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
+            {/* Header */}
+            <div className="mb-12 text-center">
+              <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
+                Costs &amp; Funding
+              </span>
+              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl mb-6">
+                How much does live-in care cost in Scotland?
+              </h2>
+              <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary mb-6" />
+            </div>
+
+            <div className="max-w-3xl mx-auto space-y-6 text-base leading-relaxed text-zinc-600 mb-12">
+              <p>
+                Live-in care is typically priced weekly, with cost depending on whether overnight-only support or full 24-hour cover is needed.
+              </p>
+              <p>
+                Several funding routes may apply. Scotland's Free Personal Care scheme can support personal care elements for eligible over-65s, and council-funded assessments or Self-Directed Support may also contribute. For the highest-complexity needs, NHS Continuing Care — administered through local Health Boards such as NHS Lothian or NHS Tayside — may fund some or all of the cost where eligibility criteria are met.
+              </p>
+            </div>
+
+            {/* CTA */}
+            <div className="flex justify-center">
+              <ModalButton
+                type="assessment"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-10 py-4 font-bold text-white shadow-xl shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
+              >
+                Speak to our team <ArrowRight className="w-5 h-5" />
+              </ModalButton>
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════════
+            SECTION 8 — TESTIMONIALS
+        ════════════════════════════════════════════════════════ */}
+        <section className="bg-zinc-50 py-24">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             {/* Header */}
             <div className="mb-12 text-center">
@@ -615,17 +647,17 @@ export default function HomeCarePage() {
                 Families We&apos;ve Supported
               </span>
               <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl">
-                What families say about Zento&apos;s home care
+                What families say about Zento&apos;s live-in care
               </h2>
               <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
             </div>
 
             {/* Testimonial cards */}
-            <div className="grid gap-6 md:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
               {testimonials.map((t, i) => (
                 <div
                   key={i}
-                  className="flex flex-col rounded-3xl border border-zinc-200/80 bg-zinc-50 p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
+                  className="flex flex-col rounded-3xl border border-zinc-200/80 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
                 >
                   {/* Stars */}
                   <div className="mb-5 flex gap-1">
@@ -670,21 +702,18 @@ export default function HomeCarePage() {
         {/* ════════════════════════════════════════════════════════
             SECTION 9 — COVERAGE AREA
         ════════════════════════════════════════════════════════ */}
-        <section className="border-t border-zinc-100 bg-zinc-50 py-20">
+        <section className="border-t border-zinc-100 bg-white py-20">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 Coverage
               </span>
               <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl mb-4">
-                Where we provide home care
+                Where we provide live-in care
               </h2>
               <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary mb-6" />
               <p className="text-base leading-relaxed text-zinc-600 mb-4 max-w-2xl mx-auto">
-                Zento delivers home care services from two offices. Our Edinburgh team covers all
-                City of Edinburgh postcodes (EH1–EH17), plus Midlothian, East Lothian and West
-                Lothian. Our Crieff team serves Crieff, Comrie, Muthill, Braco and the surrounding
-                Perthshire villages.
+                Zento provides nurse-led live-in care across Edinburgh and the Lothians from our Edinburgh office, and across Perthshire from our Crieff office.
               </p>
               <p className="text-sm font-semibold text-secondary mb-4">
                 Find detailed coverage and local team information for your area:
@@ -708,7 +737,7 @@ export default function HomeCarePage() {
         {/* ════════════════════════════════════════════════════════
             SECTION 10 — FAQ
         ════════════════════════════════════════════════════════ */}
-        <section className="bg-white py-24">
+        <section className="bg-zinc-50 py-24">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="max-w-3xl mx-auto">
               {/* Header */}
@@ -717,7 +746,7 @@ export default function HomeCarePage() {
                   FAQs
                 </span>
                 <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl">
-                  Frequently asked questions about home care services
+                  Frequently asked questions about live-in care
                 </h2>
                 <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
               </div>
@@ -727,7 +756,7 @@ export default function HomeCarePage() {
                 {faqs.map((faq, i) => (
                   <details
                     key={i}
-                    className="group rounded-2xl border border-zinc-200 bg-zinc-50 open:bg-white open:border-primary/30 open:shadow-lg open:shadow-primary/5 transition-all duration-200"
+                    className="group rounded-2xl border border-zinc-200 bg-white open:bg-white open:border-primary/30 open:shadow-lg open:shadow-primary/5 transition-all duration-200"
                   >
                     <summary className="flex cursor-pointer items-center justify-between gap-4 p-6 list-none">
                       <h3 className="text-base font-bold text-secondary group-open:text-primary transition-colors">
@@ -746,59 +775,52 @@ export default function HomeCarePage() {
         </section>
 
         {/* ════════════════════════════════════════════════════════
-            SECTION 11 — FIND HOME CARE NEAR YOU
+            SECTION 11 — RELATED / EXPLORE OPTIONS
         ════════════════════════════════════════════════════════ */}
-        <section className="bg-zinc-50 py-20 border-t border-zinc-100">
+        <section className="bg-white py-20 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="mb-10 text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-3">
-                Local Offices
+                Explore Options
               </span>
               <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">
-                Find home care near you
+                Explore our live-in care options
               </h2>
               <p className="mt-3 text-sm text-zinc-600 max-w-xl mx-auto">
-                We provide home care services from two local offices. Select your area to see
-                detailed coverage, meet your local team and get in touch.
+                Learn more about each type of live-in care, or explore our visiting home care services for daytime-only support.
               </p>
             </div>
 
-            <div className="grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
-              {/* Edinburgh card */}
-              <div className="group flex flex-col rounded-3xl border border-zinc-200/80 bg-white p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                  <Home className="w-7 h-7" />
-                </div>
-                <h3 className="text-xl font-bold text-secondary mb-3">Edinburgh</h3>
-                <p className="text-sm leading-relaxed text-zinc-600 mb-6 flex-1">
-                  Our Edinburgh office serves all City of Edinburgh postcodes, Midlothian, East
-                  Lothian and West Lothian.
-                </p>
-                <Link
-                  href="/locations/edinburgh/"
-                  className="mt-auto flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-bold text-white shadow-md shadow-primary/20 transition-all hover:bg-primary/90"
-                >
-                  View Edinburgh home care <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-
-              {/* Perthshire card */}
-              <div className="group flex flex-col rounded-3xl border border-zinc-200/80 bg-white p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-2xl hover:shadow-secondary/10">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-secondary/10 text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
-                  <MapPin className="w-7 h-7" />
-                </div>
-                <h3 className="text-xl font-bold text-secondary mb-3">Perthshire</h3>
-                <p className="text-sm leading-relaxed text-zinc-600 mb-6 flex-1">
-                  Our Crieff office serves Crieff, Comrie, Muthill, Braco and surrounding
-                  Perthshire villages.
-                </p>
-                <Link
-                  href="/locations/perthshire/"
-                  className="mt-auto flex items-center justify-center gap-2 rounded-full bg-secondary px-7 py-3 text-sm font-bold text-white shadow-md shadow-secondary/20 transition-all hover:bg-secondary/90"
-                >
-                  View Perthshire home care <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+              {relatedServices.map((service) => {
+                const IconComp = service.icon;
+                const accentBg = service.accent === "primary" ? "bg-primary" : "bg-secondary";
+                const accentBgLight = service.accent === "primary" ? "bg-primary/10" : "bg-secondary/10";
+                const accentText = service.accent === "primary" ? "text-primary" : "text-secondary";
+                const accentShadow = service.accent === "primary" ? "shadow-primary/20" : "shadow-secondary/20";
+                const accentBorder = service.accent === "primary" ? "hover:border-primary/30" : "hover:border-secondary/30";
+                const accentShadowHover = service.accent === "primary" ? "hover:shadow-primary/10" : "hover:shadow-secondary/10";
+                return (
+                  <div
+                    key={service.name}
+                    className={`group flex flex-col rounded-3xl border border-zinc-200/80 bg-zinc-50 p-8 text-center transition-all duration-300 hover:-translate-y-1 ${accentBorder} hover:shadow-2xl ${accentShadowHover}`}
+                  >
+                    <div className={`mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl ${accentBgLight} ${accentText} group-hover:${accentBg} group-hover:text-white transition-colors`}>
+                      <IconComp className="w-7 h-7" />
+                    </div>
+                    <h3 className="text-xl font-bold text-secondary mb-3">{service.name}</h3>
+                    <p className="text-sm leading-relaxed text-zinc-600 mb-6 flex-1">
+                      {service.desc}
+                    </p>
+                    <Link
+                      href={service.href}
+                      className={`mt-auto flex items-center justify-center gap-2 rounded-full ${accentBg} px-7 py-3 text-sm font-bold text-white shadow-md ${accentShadow} transition-all hover:opacity-90`}
+                    >
+                      Learn more <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -815,16 +837,13 @@ export default function HomeCarePage() {
 
               <div className="relative z-10 mx-auto max-w-3xl space-y-6">
                 <h2 className="text-3xl font-black leading-tight min-[400px]:text-4xl sm:text-5xl lg:text-6xl">
-                  Speak to our nursing team today
+                  Speak to our team about live-in care
                 </h2>
                 <p className="text-base sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
-                  Finding the right care for someone you love is rarely straightforward. Our nursing
-                  team is here to listen, answer your questions and give you an honest picture of
-                  what support is possible — whether that is a few visits a week or full-time care
-                  at home.
+                  Whether you need overnight support or full round-the-clock care, our nursing team can help you find the right fit — with no pressure and no obligation.
                 </p>
                 <p className="text-sm font-semibold text-white/70 italic">
-                  No pressure. No obligation. Honest advice from registered nurses.
+                  No pressure. No obligation. Honest advice from our registered nurses.
                 </p>
 
                 <div className="flex flex-col items-center justify-center gap-4 pt-2 sm:flex-row sm:flex-wrap">
@@ -832,7 +851,7 @@ export default function HomeCarePage() {
                     type="assessment"
                     className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-bold text-primary shadow-xl transition-all hover:scale-105 cursor-pointer"
                   >
-                    Book a free consultation <ArrowRight className="w-5 h-5" />
+                    Book a free assessment <ArrowRight className="w-5 h-5" />
                   </ModalButton>
                   {OFFICES.map((office) => (
                     <a
@@ -841,7 +860,7 @@ export default function HomeCarePage() {
                       className="inline-flex items-center gap-2 rounded-full border-2 border-white/50 bg-transparent px-7 py-3.5 text-sm font-bold text-white transition-all hover:bg-white/10"
                     >
                       <Phone className="w-4 h-4 shrink-0" />
-                      {office.shortName}: {office.phone}
+                      Call {office.shortName}: {office.phone}
                     </a>
                   ))}
                 </div>
