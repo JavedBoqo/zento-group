@@ -16,7 +16,11 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ModalButton from "@/components/ModalButton";
+import SignsSectionGrid from "@/components/SignsSectionGrid";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import { getTestimonials } from "@/lib/testimonials";
 import { OFFICES } from "@/constants";
+import AnimateContainer, { AnimateItem } from "@/components/AnimateContainer";
 
 /* ─────────────────────────── SEO METADATA ─────────────────────────── */
 export const metadata: Metadata = {
@@ -88,23 +92,6 @@ const steps = [
     step: "04",
     title: "Visits begin, and we stay in touch",
     desc: "Regular visits start on your agreed schedule. Our team checks in periodically to make sure the arrangement is genuinely working.",
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      "After Dad passed, Mum went from a busy social life to being on her own most days. She wouldn't admit she was struggling, but we could tell. Her companion visits her twice a week now — they do the crossword together, sometimes go for a walk. It's given her something to look forward to, and honestly, it's given us peace of mind too.",
-    author: "Fiona M.",
-    location: "Bruntsfield, Edinburgh",
-    source: "Google Review",
-  },
-  {
-    quote:
-      "What stood out to me was that this wasn't just someone sitting with Mum for an hour. Her companion noticed she'd gone quiet about things she used to talk about constantly, and mentioned it to us. It turned out to be the early stages of something we hadn't picked up on ourselves. That kind of attentiveness matters.",
-    author: "Robert K.",
-    location: "Musselburgh, East Lothian",
-    source: "homecare.co.uk",
   },
 ];
 
@@ -232,7 +219,7 @@ export default function CompanionshipCarePage() {
           <div className="pointer-events-none absolute -bottom-32 -left-32 h-[480px] w-[480px] rounded-full bg-secondary/5 blur-[100px]" />
 
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24 relative z-10 text-center">
-            <div className="mx-auto max-w-5xl space-y-6">
+            <AnimateContainer animation="fade-up" className="mx-auto max-w-5xl space-y-6">
               <div>
                 <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs sm:text-sm font-bold text-primary mb-4">
                   Companionship Care · Edinburgh, Lothian &amp; Perthshire
@@ -249,33 +236,23 @@ export default function CompanionshipCarePage() {
                 </p>
               </div>
 
-              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <div className="page-cta-group">
                 <ModalButton
                   type="assessment"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-bold text-white shadow-xl shadow-primary/30 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
+                  className="page-cta-primary"
                 >
                   Speak to our team <ArrowRight className="w-5 h-5" />
                 </ModalButton>
                 <a
                   href={OFFICES[0]?.phoneHref}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-secondary px-8 py-3.5 text-base font-bold text-secondary transition-all hover:bg-secondary hover:text-white"
+                  className="page-cta-phone"
                 >
                   <Phone className="w-4 h-4 shrink-0" />
                   Call Edinburgh: {OFFICES[0]?.phone}
                 </a>
               </div>
 
-              <div className="pt-2 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">Consistent, matched carers</span>
-                </div>
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">Nurse-informed wellbeing awareness</span>
-                </div>
-              </div>
-            </div>
+            </AnimateContainer>
           </div>
         </section>
 
@@ -285,7 +262,7 @@ export default function CompanionshipCarePage() {
         <section className="bg-white py-20">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
-              <div className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
+              <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
                   src="/about-image.png"
                   alt="Carer providing warm companionship to an elderly person at home"
@@ -293,8 +270,8 @@ export default function CompanionshipCarePage() {
                   sizes="(max-width: 768px) 100vw, 500px"
                   className="object-cover"
                 />
-              </div>
-              <div className="flex-1 space-y-6">
+              </AnimateContainer>
+              <AnimateContainer animation="fade-left" delay={0.1} className="flex-1 space-y-6">
                 <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">
                   What is companionship care at home?
                 </h2>
@@ -318,7 +295,7 @@ export default function CompanionshipCarePage() {
                     rates of depression, cognitive decline and physical health problems.
                   </p>
                 </div>
-              </div>
+              </AnimateContainer>
             </div>
           </div>
         </section>
@@ -326,46 +303,21 @@ export default function CompanionshipCarePage() {
         {/* ════════════════════════════════════════════════════════
             SECTION 3 — SIGNS YOUR LOVED ONE MAY NEED COMPANIONSHIP
         ════════════════════════════════════════════════════════ */}
-        <section className="bg-zinc-50 py-20 border-t border-zinc-100">
-          <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-3xl mx-auto">
-              <div className="mb-10 text-center">
-                <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
-                  Signs to Look For
-                </span>
-                <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl mb-4">
-                  Signs your loved one may benefit from companionship care
-                </h2>
-                <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
-              </div>
-              <div className="space-y-3 mb-10">
-                {signs.map((sign, i) => (
-                  <div key={i} className="flex items-start gap-3 rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-sm">
-                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 mt-0.5">
-                      <CheckCircle2 className="w-4 h-4 text-primary" />
-                    </div>
-                    <p className="text-sm leading-relaxed text-zinc-700">{sign}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="text-center">
-                <ModalButton
-                  type="assessment"
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 font-bold text-white shadow-xl shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
-                >
-                  Speak to our team <ArrowRight className="w-5 h-5" />
-                </ModalButton>
-              </div>
-            </div>
-          </div>
-        </section>
+        <SignsSectionGrid
+          category="Signs to Look For"
+          title="Signs your loved one may benefit from companionship care"
+          subtitle="Social isolation and loneliness can develop gradually. If you are noticing changes in your loved one's engagement, mood or confidence, our team is here to support you."
+          signs={signs}
+          ctaText="Speak to our team"
+          ctaType="assessment"
+        />
 
         {/* ════════════════════════════════════════════════════════
             SECTION 4 — WHAT'S INCLUDED
         ════════════════════════════════════════════════════════ */}
         <section className="bg-white py-24 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="mb-12 text-center">
+            <AnimateContainer animation="fade-up" className="mb-12 text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 What We Provide
               </span>
@@ -373,17 +325,17 @@ export default function CompanionshipCarePage() {
                 What our companionship service includes
               </h2>
               <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2 max-w-4xl mx-auto mb-8">
+            </AnimateContainer>
+            <AnimateContainer animation="stagger" className="grid gap-4 sm:grid-cols-2 max-w-4xl mx-auto mb-8">
               {included.map((item, i) => (
-                <div key={i} className="flex items-start gap-3 rounded-2xl border border-zinc-200/80 bg-zinc-50 p-5 transition-all hover:border-primary/20 hover:bg-white hover:shadow-md">
+                <AnimateItem key={i} className="flex items-start gap-3 rounded-2xl border border-zinc-200/80 bg-zinc-50 p-5 transition-all hover:border-primary/20 hover:bg-white hover:shadow-md">
                   <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 mt-0.5">
                     <Users className="w-3.5 h-3.5 text-primary" />
                   </div>
                   <p className="text-sm leading-relaxed text-zinc-700">{item}</p>
-                </div>
+                </AnimateItem>
               ))}
-            </div>
+            </AnimateContainer>
             <div className="max-w-4xl mx-auto rounded-2xl border border-secondary/20 bg-secondary/5 p-6">
               <p className="text-sm leading-relaxed text-secondary font-medium text-center">
                 Every companionship care plan is built around the individual — their interests, their routine and what genuinely matters to them. It&apos;s not a script. It&apos;s a relationship.
@@ -401,7 +353,7 @@ export default function CompanionshipCarePage() {
 
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24 relative z-10">
             <div className="flex flex-col items-center gap-16 lg:flex-row lg:items-center lg:gap-20">
-              <div className="flex-1">
+              <AnimateContainer animation="fade-left" delay={0.1} className="flex-1">
                 <span className="inline-block rounded-full bg-primary/20 px-4 py-2 text-sm font-bold text-primary mb-6">
                   The Zento Difference
                 </span>
@@ -424,8 +376,8 @@ export default function CompanionshipCarePage() {
                     trained pair of eyes on your loved one&apos;s overall wellbeing.
                   </p>
                 </div>
-              </div>
-              <div className="relative aspect-square w-full max-w-xl flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl">
+              </AnimateContainer>
+              <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-xl flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl">
                 <div className="relative h-full w-full overflow-hidden rounded-[1.8rem]">
                   <Image
                     src="/brand-image.png"
@@ -435,7 +387,7 @@ export default function CompanionshipCarePage() {
                     className="object-cover"
                   />
                 </div>
-              </div>
+              </AnimateContainer>
             </div>
           </div>
         </section>
@@ -445,7 +397,7 @@ export default function CompanionshipCarePage() {
         ════════════════════════════════════════════════════════ */}
         <section className="bg-zinc-50 py-24">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="mb-16 text-center">
+            <AnimateContainer animation="fade-up" className="mb-16 text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 Getting Started
               </span>
@@ -453,10 +405,10 @@ export default function CompanionshipCarePage() {
                 How to arrange companionship care with Zento
               </h2>
               <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
-            </div>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mb-16">
+            </AnimateContainer>
+            <AnimateContainer animation="stagger" className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mb-16">
               {steps.map((item, index) => (
-                <div key={index} className="relative flex flex-col">
+                <AnimateItem key={index} className="relative flex flex-col">
                   {index < steps.length - 1 && (
                     <div className="absolute top-8 left-[calc(50%+2rem)] hidden w-[calc(100%-4rem)] h-px bg-primary/20 lg:block" />
                   )}
@@ -467,9 +419,9 @@ export default function CompanionshipCarePage() {
                     <h3 className="mb-3 text-lg font-bold text-secondary">{item.title}</h3>
                     <p className="text-sm leading-relaxed text-zinc-600">{item.desc}</p>
                   </div>
-                </div>
+                </AnimateItem>
               ))}
-            </div>
+            </AnimateContainer>
             <div className="flex justify-center">
               <ModalButton
                 type="assessment"
@@ -486,7 +438,7 @@ export default function CompanionshipCarePage() {
         ════════════════════════════════════════════════════════ */}
         <section className="bg-white py-20 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-3xl mx-auto text-center">
+            <AnimateContainer animation="fade-up" className="max-w-3xl mx-auto text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 Funding &amp; Cost
               </span>
@@ -508,78 +460,52 @@ export default function CompanionshipCarePage() {
               </div>
               <ModalButton
                 type="assessment"
-                className="inline-flex items-center gap-2 rounded-full bg-secondary px-8 py-3.5 font-bold text-white shadow-lg transition-all hover:scale-105 hover:bg-secondary/90 cursor-pointer"
+                className="page-cta-secondary-inline"
               >
                 Speak to our team <ArrowRight className="w-5 h-5" />
               </ModalButton>
-            </div>
+            </AnimateContainer>
           </div>
         </section>
 
         {/* ════════════════════════════════════════════════════════
             SECTION 8 — TESTIMONIALS
         ════════════════════════════════════════════════════════ */}
-        <section className="bg-zinc-50 py-24 border-t border-zinc-100">
-          <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="mb-12 text-center">
-              <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-3">
-                Families We&apos;ve Supported
-              </span>
-              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl">
-                What families say about Zento&apos;s companionship care
-              </h2>
-              <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
-            </div>
-            <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
-              {testimonials.map((t, i) => (
-                <div key={i} className="flex flex-col rounded-3xl border border-zinc-200/80 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10">
-                  <div className="mb-5 flex gap-1">
-                    {Array.from({ length: 5 }).map((_, si) => (
-                      <Star key={si} className="w-4 h-4 fill-primary text-primary" />
-                    ))}
-                  </div>
-                  <p className="flex-1 text-sm leading-relaxed text-zinc-600 italic mb-6">&ldquo;{t.quote}&rdquo;</p>
-                  <div className="border-t border-zinc-200 pt-5 flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-base font-black text-primary">
-                      {t.author.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-secondary">{t.author}</p>
-                      <p className="text-xs text-zinc-500 flex items-center gap-1">
-                        <MapPin className="w-3 h-3 text-primary" /> {t.location} · {t.source}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <TestimonialsSection
+          category="Families We've Supported"
+          title="What families say about Zento's companionship care"
+          subtitle="Real stories from families across Edinburgh, Lothian, and Perthshire who saw their loved ones regain companionship and joy."
+          testimonials={getTestimonials("homeCare.companionship")}
+        />
 
         {/* ════════════════════════════════════════════════════════
             SECTION 9 — COVERAGE AREA
         ════════════════════════════════════════════════════════ */}
         <section className="border-t border-zinc-100 bg-white py-20">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24 text-center">
-            <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
-              Coverage
-            </span>
-            <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl mb-4">
-              Where we provide companionship care
-            </h2>
-            <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary mb-6" />
-            <p className="text-base leading-relaxed text-zinc-600 mb-6 max-w-2xl mx-auto">
-              Zento provides companionship care across Edinburgh and the Lothians from our Edinburgh office, and
-              across Perthshire from our Crieff office.
-            </p>
-            <div className="flex flex-wrap gap-3 justify-center">
-              {locationLinks.map((loc) => (
-                <Link key={loc.label} href={loc.href} className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-50 px-5 py-2.5 text-sm font-bold text-secondary shadow-sm transition-all hover:border-primary/30 hover:bg-primary/5 hover:text-primary hover:shadow-md">
-                  <MapPin className="w-3.5 h-3.5 text-primary" />
-                  {loc.label}
-                </Link>
-              ))}
-            </div>
+            <AnimateContainer animation="fade-up">
+              <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
+                Coverage
+              </span>
+              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl mb-4">
+                Where we provide companionship care
+              </h2>
+              <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary mb-6" />
+              <p className="text-base leading-relaxed text-zinc-600 mb-6 max-w-2xl mx-auto">
+                Zento provides companionship care across Edinburgh and the Lothians from our Edinburgh office, and
+                across Perthshire from our Crieff office.
+              </p>
+              <AnimateContainer animation="stagger" className="flex flex-wrap gap-3 justify-center">
+                {locationLinks.map((loc) => (
+                  <AnimateItem key={loc.label}>
+                    <Link href={loc.href} className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-50 px-5 py-2.5 text-sm font-bold text-secondary shadow-sm transition-all hover:border-primary/30 hover:bg-primary/5 hover:text-primary hover:shadow-md">
+                      <MapPin className="w-3.5 h-3.5 text-primary" />
+                      {loc.label}
+                    </Link>
+                  </AnimateItem>
+                ))}
+              </AnimateContainer>
+            </AnimateContainer>
           </div>
         </section>
 
@@ -589,7 +515,7 @@ export default function CompanionshipCarePage() {
         <section className="bg-zinc-50 py-24 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="max-w-3xl mx-auto">
-              <div className="mb-12 text-center">
+              <AnimateContainer animation="fade-up" className="mb-12 text-center">
                 <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-3">
                   FAQs
                 </span>
@@ -597,20 +523,22 @@ export default function CompanionshipCarePage() {
                   Frequently asked questions about companionship care
                 </h2>
                 <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
-              </div>
-              <div className="space-y-3">
+              </AnimateContainer>
+              <AnimateContainer animation="stagger" className="space-y-3">
                 {faqs.map((faq, i) => (
-                  <details key={i} className="group rounded-2xl border border-zinc-200 bg-white open:bg-white open:border-primary/30 open:shadow-lg open:shadow-primary/5 transition-all duration-200">
-                    <summary className="flex cursor-pointer items-center justify-between gap-4 p-6 list-none">
-                      <h3 className="text-base font-bold text-secondary group-open:text-primary transition-colors">{faq.q}</h3>
-                      <ChevronDown className="w-5 h-5 shrink-0 text-zinc-400 transition-transform duration-300 group-open:rotate-180 group-open:text-primary" />
-                    </summary>
-                    <div className="px-6 pb-6">
-                      <p className="text-sm leading-relaxed text-zinc-600">{faq.a}</p>
-                    </div>
-                  </details>
+                  <AnimateItem key={i}>
+                    <details className="group rounded-2xl border border-zinc-200 bg-white open:bg-white open:border-primary/30 open:shadow-lg open:shadow-primary/5 transition-all duration-200">
+                      <summary className="flex cursor-pointer items-center justify-between gap-4 p-6 list-none">
+                        <h3 className="text-base font-bold text-secondary group-open:text-primary transition-colors">{faq.q}</h3>
+                        <ChevronDown className="w-5 h-5 shrink-0 text-zinc-400 transition-transform duration-300 group-open:rotate-180 group-open:text-primary" />
+                      </summary>
+                      <div className="px-6 pb-6">
+                        <p className="text-sm leading-relaxed text-zinc-600">{faq.a}</p>
+                      </div>
+                    </details>
+                  </AnimateItem>
                 ))}
-              </div>
+              </AnimateContainer>
             </div>
           </div>
         </section>
@@ -620,7 +548,7 @@ export default function CompanionshipCarePage() {
         ════════════════════════════════════════════════════════ */}
         <section className="bg-white py-20 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="mb-10 text-center">
+            <AnimateContainer animation="fade-up" className="mb-10 text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 Related Services
               </span>
@@ -628,26 +556,28 @@ export default function CompanionshipCarePage() {
                 Families often combine companionship with...
               </h2>
               <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
-            </div>
-            <div className="grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto">
+            </AnimateContainer>
+            <AnimateContainer animation="stagger" className="grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto">
               {relatedServices.map((service) => {
                 const IconComp = service.icon;
                 return (
-                  <Link key={service.title} href={service.href} className="group flex flex-col rounded-3xl border border-zinc-200/80 bg-zinc-50 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:bg-white hover:shadow-xl hover:shadow-primary/10">
-                    <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
-                      <IconComp className="w-5 h-5" />
-                    </div>
-                    <h3 className="mb-2 text-base font-bold text-secondary group-hover:text-primary transition-colors">{service.title}</h3>
-                    <p className="text-sm leading-relaxed text-zinc-600 flex-1">{service.desc}</p>
-                    <div className="mt-4 pt-4 border-t border-zinc-100">
-                      <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary">
-                        Learn more <ArrowRight className="w-3.5 h-3.5" />
-                      </span>
-                    </div>
-                  </Link>
+                  <AnimateItem key={service.title} className="h-full">
+                    <Link href={service.href} className="group flex flex-col rounded-3xl border border-zinc-200/80 bg-zinc-50 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:bg-white hover:shadow-xl hover:shadow-primary/10">
+                      <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                        <IconComp className="w-5 h-5" />
+                      </div>
+                      <h3 className="mb-2 text-base font-bold text-secondary group-hover:text-primary transition-colors">{service.title}</h3>
+                      <p className="text-sm leading-relaxed text-zinc-600 flex-1">{service.desc}</p>
+                      <div className="mt-4 pt-4 border-t border-zinc-100">
+                        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary">
+                          Learn more <ArrowRight className="w-3.5 h-3.5" />
+                        </span>
+                      </div>
+                    </Link>
+                  </AnimateItem>
                 );
               })}
-            </div>
+            </AnimateContainer>
           </div>
         </section>
 
@@ -659,7 +589,7 @@ export default function CompanionshipCarePage() {
             <div className="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-primary via-primary/90 to-primary/75 py-16 px-8 text-center text-white shadow-2xl shadow-primary/20 md:py-24">
               <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
               <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-secondary/20 blur-3xl" />
-              <div className="relative z-10 mx-auto max-w-3xl space-y-6">
+              <AnimateContainer animation="fade-up" className="relative z-10 mx-auto max-w-3xl space-y-6">
                 <h2 className="text-3xl font-black leading-tight min-[400px]:text-4xl sm:text-5xl lg:text-6xl">
                   Speak to our team about companionship care
                 </h2>
@@ -670,21 +600,21 @@ export default function CompanionshipCarePage() {
                 <p className="text-sm font-semibold text-white/70 italic">
                   No pressure. No obligation. Honest advice from our registered nurses.
                 </p>
-                <div className="flex flex-col items-center justify-center gap-4 pt-2 sm:flex-row sm:flex-wrap">
+                <div className="page-cta-group-dark">
                   <ModalButton
                     type="assessment"
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-bold text-primary shadow-xl transition-all hover:scale-105 cursor-pointer"
+                    className="page-cta-on-dark-primary"
                   >
                     Book a free assessment <ArrowRight className="w-5 h-5" />
                   </ModalButton>
                   {OFFICES.map((office) => (
-                    <a key={office.id} href={office.phoneHref} className="inline-flex items-center gap-2 rounded-full border-2 border-white/50 bg-transparent px-7 py-3.5 text-sm font-bold text-white transition-all hover:bg-white/10">
+                    <a key={office.id} href={office.phoneHref} className="page-cta-on-dark-outline">
                       <Phone className="w-4 h-4 shrink-0" />
                       {office.shortName}: {office.phone}
                     </a>
                   ))}
                 </div>
-              </div>
+              </AnimateContainer>
             </div>
           </div>
         </section>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { FacebookIcon, LinkedinIcon, InstagramIcon } from "@/components/icons";
 import ModalButton from "@/components/ModalButton";
 import {
@@ -10,11 +10,37 @@ import {
   SOCIAL_LINKS,
 } from "@/constants";
 
+const featuredServices = [
+  { name: "Home Care", href: "/home-care/" },
+  { name: "Live-in Care", href: "/live-in-care/" },
+  { name: "Personal Care", href: "/home-care/personal-care/" },
+  { name: "Dementia Care", href: "/home-care/dementia-care/" },
+  // { name: "Medication Support", href: "/home-care/medication-support/" },
+  // { name: "Respite Care", href: "/home-care/respite-care/" },
+];
+
+const featuredLocations = [
+  { name: "Edinburgh", href: "/locations/edinburgh/" },
+  { name: "Lothian", href: "/locations/lothian/" },
+  { name: "Perthshire", href: "/locations/perthshire/" },
+  { name: "Crieff", href: "/locations/perthshire/crieff/" },
+  // { name: "Comrie", href: "/locations/perthshire/comrie/" },
+];
+
+const exploreLinks = [
+  { name: "Home", href: "/" },
+  { name: "About Us", href: "/about-us/" },
+  { name: "Our Services", href: "/services/" },
+  // { name: "How It Works", href: "/#how-it-works" },
+  { name: "Blog", href: "/blog/" },
+  { name: "Contact", href: "/contact/" },
+];
+
 export default function Footer() {
   return (
     <footer className="border-t border-zinc-200 bg-zinc-50 pt-16 pb-10 text-zinc-600 min-[400px]:pt-20 md:pt-24">
       <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-        <div className="grid grid-cols-1 items-start gap-10 text-center sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:text-left xl:gap-12">
+        <div className="grid grid-cols-1 items-start gap-10 text-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 lg:gap-8 lg:text-left xl:gap-10">
           {/* Brand */}
           <div className="flex flex-col items-center space-y-5 lg:items-start">
             <div className="relative h-18 w-44 min-[400px]:w-52">
@@ -54,13 +80,7 @@ export default function Footer() {
             <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Explore</p>
             <nav aria-label="Footer navigation">
               <ul className="space-y-2.5">
-                {[
-                  { name: "Home", href: "/" },
-                  { name: "About Us", href: "/#about-us" },
-                  { name: "Our Services", href: "/#services" },
-                  { name: "How It Works", href: "/#how-it-works" },
-                  { name: "Contact", href: "/contact" },
-                ].map((link) => (
+                {exploreLinks.map((link) => (
                   <li key={link.name}>
                     <Link href={link.href} className="text-sm font-medium transition-colors hover:text-primary">
                       {link.name}
@@ -74,13 +94,47 @@ export default function Footer() {
           {/* Services */}
           <div className="space-y-5">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Services</p>
-            <ul className="space-y-2.5">
-              {["Personal Care", "Dementia Support", "Live-In Care", "Respite Care", "Complex Needs"].map((item) => (
-                <li key={item}>
-                  <span className="text-sm font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
+            <nav aria-label="Footer services">
+              <ul className="space-y-2.5">
+                {featuredServices.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-sm font-medium transition-colors hover:text-primary">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/services/"
+                className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-primary transition-colors hover:text-secondary"
+              >
+                View all services
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </nav>
+          </div>
+
+          {/* Locations */}
+          <div className="space-y-5">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Locations</p>
+            <nav aria-label="Footer locations">
+              <ul className="space-y-2.5">
+                {featuredLocations.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-sm font-medium transition-colors hover:text-primary">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/locations/"
+                className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-primary transition-colors hover:text-secondary"
+              >
+                View all locations
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </nav>
           </div>
 
           {/* Get in Touch */}

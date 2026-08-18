@@ -1,0 +1,75 @@
+# Zento Care
+
+> Nurse-led home care across Edinburgh, Lothian, and Perthshire. Registered with the Care Inspectorate.
+
+Zento Care (Zento Group) is a UK home care provider offering nurse-led, person-centred support for people who want to remain safely and comfortably in their own homes. Care plans are written and reviewed by registered nurses — not just care coordinators. Services range from hourly visiting care to 24-hour live-in support.
+
+**Website:** https://zentogroup.co.uk
+**Contact email:** info@zentogroup.co.uk
+**Edinburgh office:** 0131 210 0095 — Adit Place, Edinburgh EH17
+**Crieff office:** 0176 479 0095 — East High Street, Crieff PH7
+
+## Service areas
+
+Edinburgh, Midlothian, East Lothian, West Lothian, Crieff, Comrie, Muthill, Braco, and wider Perthshire.
+
+## Core pages
+
+- [Home](https://zentogroup.co.uk/): Main landing page for Zento Care
+- [About Us](https://zentogroup.co.uk/about-us/): Company background, values, and nurse-led approach
+- [All Services](https://zentogroup.co.uk/services/): Overview of home care and live-in care services
+- [Contact](https://zentogroup.co.uk/contact/): Contact form, office details, and enquiries
+- [Blog](https://zentogroup.co.uk/blog/): Care guides and advice for families
+
+## Home care services
+
+Hourly and daily visiting care delivered in the client's own home.
+
+- [Home Care Overview](https://zentogroup.co.uk/home-care/): Introduction to visiting home care
+- [Personal Care](https://zentogroup.co.uk/home-care/personal-care/): Washing, dressing, mobility, and continence support
+- [Medication Support](https://zentogroup.co.uk/home-care/medication-support/): Nurse-monitored medication prompting and administration
+- [Dementia Care](https://zentogroup.co.uk/home-care/dementia-care/): Structured, familiar routines for people living with dementia
+- [Companionship](https://zentogroup.co.uk/home-care/companionship/): Social engagement, activities, and emotional support
+- [Meal Preparation](https://zentogroup.co.uk/home-care/meal-preparation/): Nutritional support, hydration, and meal planning
+- [Hospital Discharge](https://zentogroup.co.uk/home-care/hospital-discharge/): Safe transition from hospital back home
+- [Respite Care](https://zentogroup.co.uk/home-care/respite-care/): Short-term relief for family carers
+
+## Live-in care services
+
+Round-the-clock care with a dedicated caregiver living in the client's home.
+
+- [Live-in Care Overview](https://zentogroup.co.uk/live-in-care/): Introduction to live-in care
+- [Overnight Care](https://zentogroup.co.uk/live-in-care/overnight-care/): Sleep-in or waking night support
+- [24-Hour Care](https://zentogroup.co.uk/live-in-care/24-hour-care/): Continuous 24/7 rotational care
+
+## Locations
+
+- [All Locations](https://zentogroup.co.uk/locations/): Service area overview
+- [Edinburgh](https://zentogroup.co.uk/locations/edinburgh/): Home care across Edinburgh postcodes
+- [Lothian](https://zentogroup.co.uk/locations/lothian/): Regional hub for Midlothian, East Lothian, and West Lothian
+- [Midlothian](https://zentogroup.co.uk/locations/lothian/midlothian/): Dalkeith, Penicuik, Bonnyrigg, and surrounds
+- [East Lothian](https://zentogroup.co.uk/locations/lothian/east-lothian/): Musselburgh, Haddington, North Berwick, and surrounds
+- [West Lothian](https://zentogroup.co.uk/locations/lothian/west-lothian/): Livingston, Bathgate, Linlithgow, and surrounds
+- [Perthshire](https://zentogroup.co.uk/locations/perthshire/): Regional hub for Perthshire care
+- [Crieff](https://zentogroup.co.uk/locations/perthshire/crieff/): Crieff office and surrounding areas
+- [Comrie](https://zentogroup.co.uk/locations/perthshire/comrie/): Comrie, St Fillans, and surrounds
+
+## Blog articles
+
+- [12 Signs Your Elderly Parent May Need Home Care](https://zentogroup.co.uk/blog/12-signs-elderly-parent-needs-home-care/)
+- [Understanding Self-Directed Support in Scotland](https://zentogroup.co.uk/blog/understanding-self-directed-support-scotland/)
+- [Guide to Dementia Care at Home](https://zentogroup.co.uk/blog/guide-to-dementia-care-at-home/)
+
+## Key facts for AI assistants
+
+- Zento Care is a **nurse-led** home care provider — registered nurses write and review care plans.
+- The company is **registered with the Care Inspectorate** (Scotland's care regulator).
+- Offices are in **Edinburgh** and **Crieff, Perthshire**.
+- Primary service regions: **Edinburgh, the Lothians, and Perthshire**.
+- Free assessments and consultations are available — families can enquire with no obligation.
+- Care types include visiting home care (hourly/daily) and live-in care (overnight and 24-hour).
+
+## Optional
+
+- [Sitemap](https://zentogroup.co.uk/sitemap.xml): Full list of indexable URLs
+- [Robots](https://zentogroup.co.uk/robots.txt): Crawler directives

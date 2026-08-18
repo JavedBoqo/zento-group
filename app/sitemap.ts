@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { getAllArticles } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://zentogroup.co.uk";
@@ -143,5 +144,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    ...getAllArticles().map((article) => ({
+      url: `${baseUrl}/blog/${article.slug}`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
   ];
 }

@@ -4,15 +4,11 @@ import Image from "next/image";
 import {
   ArrowRight,
   Phone,
-  Mail,
   Heart,
   ShieldCheck,
   Brain,
   Home,
   CheckCircle2,
-  Star,
-  ChevronDown,
-  MapPin,
   Clock4,
   Building2,
   Utensils,
@@ -22,6 +18,13 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ModalButton from "@/components/ModalButton";
+import AnimateContainer, { AnimateItem } from "@/components/AnimateContainer";
+import SectionHeader from "@/components/SectionHeader";
+import SignsSectionGrid from "@/components/SignsSectionGrid";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import { getTestimonials } from "@/lib/testimonials";
+import FaqAccordion from "@/components/FaqAccordion";
+import FinalCTASection from "@/components/FinalCTASection";
 import { OFFICES } from "@/constants";
 
 export const metadata: Metadata = {
@@ -119,6 +122,15 @@ const comrieServices = [
   },
 ];
 
+const comrieSigns = [
+  "Concerns over winter mobility or navigating village homes in Comrie and St Fillans.",
+  "Medication challenges or delays in collecting repeat prescriptions.",
+  "Nutritional issues — Skipping meals, reduced appetite, or difficulty cooking.",
+  "Personal hygiene or dressing becoming unsafe without supportive help.",
+  "Memory lapses or nighttime disorientation causing concern for family living away.",
+  "Family carer strain in rural Perthshire — Needing compassionate, reliable local respite.",
+];
+
 const comrieSteps = [
   {
     step: "01",
@@ -148,11 +160,11 @@ const comrieFaqs = [
   },
   {
     q: "Do you cover St Fillans as well as Comrie?",
-    a: "Yes. Our coverage from the Crieff office extends to St Fillans, Strowan and the surrounding area around Comrie. If you're unsure whether we cover your specific location, call us on 0176 479 0095 and we'll confirm directly.",
+    a: "Yes. We provide home care in St Fillans and along the Loch Earn corridor, managed by our Crieff nursing team.",
   },
   {
-    q: "Is care in Comrie managed locally or from a national office?",
-    a: "Locally. Care for Comrie clients is managed entirely from our Crieff office, by a nursing team based in Perthshire — not a national call centre or remote administrative office.",
+    q: "Can you provide live-in care in Comrie?",
+    a: "Yes. We provide full-time, 24-hour live-in care across Comrie and the wider Perthshire countryside, clinically managed and reviewed by registered nurses.",
   },
 ];
 
@@ -160,10 +172,10 @@ export default function ComrieLocationPage() {
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://zentogroup.co.uk/locations/perthshire/comrie/#comrie-service",
-    name: "Zento Group — Comrie Home Care",
+    "@id": "https://zentogroup.co.uk/locations/perthshire/comrie/#crieff-office",
+    name: "Zento Group — Comrie & Perthshire Care",
     telephone: "0176 479 0095",
-    email: "perthshire@zentogroup.co.uk",
+    email: "info@zentogroup.co.uk",
     url: "https://zentogroup.co.uk/locations/perthshire/comrie/",
     address: {
       "@type": "PostalAddress",
@@ -172,14 +184,13 @@ export default function ComrieLocationPage() {
       postalCode: "PH7",
       addressCountry: "GB",
     },
-    areaServed: ["Comrie", "St Fillans", "Strowan"],
+    areaServed: ["Comrie", "St Fillans", "Strowan", "Perthshire"],
     serviceType: "Nurse-Led Home Care",
     parentOrganization: {
       "@type": "Organization",
       "@id": "https://zentogroup.co.uk/#organization",
       name: "Zento Group",
     },
-    identifier: "CS2026000326",
   };
 
   const faqJsonLd = {
@@ -295,69 +306,42 @@ export default function ComrieLocationPage() {
           <div className="pointer-events-none absolute -top-32 -right-32 h-[480px] w-[480px] rounded-full bg-primary/5 blur-[100px]" />
           <div className="pointer-events-none absolute -bottom-32 -left-32 h-[480px] w-[480px] rounded-full bg-secondary/5 blur-[100px]" />
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24 relative z-10 text-center">
-            <div className="mx-auto max-w-5xl space-y-6">
+            <AnimateContainer animation="fade-up" className="mx-auto max-w-5xl space-y-6">
               <div>
-                <span className="inline-block rounded-full bg-secondary/10 px-4 py-1.5 text-xs sm:text-sm font-bold text-secondary mb-4">
-                  Nurse-Led Home Care &middot; Comrie
+                <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs sm:text-sm font-bold text-primary mb-4">
+                  Nurse-Led Home Care &middot; Comrie &amp; West Perthshire
                 </span>
                 <h1 className="text-3xl font-black leading-tight text-secondary min-[400px]:text-4xl sm:text-5xl lg:text-6xl mb-6">
                   Home Care in Comrie &mdash;{" "}
                   <span className="text-primary">
-                    Care From Our Crieff Team, Right on Your Doorstep
+                    Nurse-Led Care from Our Nearby Crieff Team
                   </span>
                 </h1>
                 <p className="text-base sm:text-lg leading-relaxed text-zinc-600 max-w-3xl mx-auto">
-                  Comrie is a short drive from our Crieff office, and that
-                  closeness shows in how we work &mdash; the same registered nurses,
-                  the same consistent carers, with none of the delay that comes
-                  from a provider based further away.
+                  Zento provides nurse-led home care in Comrie, St Fillans and
+                  surrounding West Perthshire villages, managed from our office
+                  on East High Street in Crieff. Consistent carers, clinical
+                  nursing plans and personal support.
                 </p>
               </div>
 
-              {/* Trust Bar */}
-              <div className="pt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-xs">
-                  <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">
-                    Care Inspectorate Registered
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-xs">
-                  <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">
-                    Nurse-Led Care
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-xs">
-                  <MapPin className="w-4 h-4 text-secondary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">
-                    Crieff Office: East High Street, Crieff PH7
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-xs">
-                  <Phone className="w-4 h-4 text-secondary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">
-                    0176 479 0095
-                  </span>
-                </div>
-              </div>
 
-              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row pt-2">
+              <div className="page-cta-group pt-2">
                 <ModalButton
                   type="assessment"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-bold text-white shadow-xl shadow-primary/30 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
+                  className="page-cta-primary"
                 >
                   Speak to our team <ArrowRight className="w-5 h-5" />
                 </ModalButton>
                 <a
                   href={`tel:${crieffOffice.phone.replace(/\s+/g, "")}`}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-secondary px-8 py-3.5 text-base font-bold text-secondary transition-all hover:bg-secondary hover:text-white"
+                  className="page-cta-phone"
                 >
-                  <Phone className="w-4 h-4 shrink-0" /> Call us:{" "}
+                  <Phone className="w-4 h-4 shrink-0" /> Call Crieff:{" "}
                   {crieffOffice.phone}
                 </a>
               </div>
-            </div>
+            </AnimateContainer>
           </div>
         </section>
 
@@ -365,17 +349,17 @@ export default function ComrieLocationPage() {
         <section className="bg-white py-20 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
-              <div className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
+              <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/hero-image.png"
+                  src="/about-image.png"
                   alt="Registered nurse conducting home care assessment in Comrie"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
                   className="object-cover"
                 />
-              </div>
-              <div className="flex-1 space-y-6">
-                <span className="inline-block rounded-full bg-secondary/10 px-4 py-1.5 text-xs font-bold text-secondary uppercase tracking-wider">
+              </AnimateContainer>
+              <AnimateContainer animation="fade-left" delay={0.1} className="flex-1 space-y-6">
+                <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider">
                   Area Overview
                 </span>
                 <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">
@@ -383,122 +367,121 @@ export default function ComrieLocationPage() {
                 </h2>
                 <div className="space-y-4 text-base leading-relaxed text-zinc-600">
                   <p>
-                    Our Crieff-based nursing team provides home care to families
-                    in Comrie and the surrounding villages. Every care plan is
-                    written by a registered nurse and reviewed regularly &mdash;
-                    the same clinical standard we apply across all of Perthshire.
+                    Comrie is just minutes from our Crieff office, meaning
+                    families in Comrie, St Fillans and Strowan receive prompt,
+                    local attention from nurses and carers who know the area
+                    well.
+                  </p>
+                  <p>
+                    Every care arrangement is assessed and planned by a
+                    registered nurse. We ensure consistency of carers so that
+                    your loved one builds a trusting, familiar relationship with
+                    the people visiting their home.
                   </p>
                 </div>
-              </div>
+              </AnimateContainer>
             </div>
           </div>
         </section>
 
-        {/* SECTION 3 — AREAS WE COVER */}
+        {/* SECTION 3 — VILLAGES COVERED */}
         <section className="bg-zinc-50 py-20 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="max-w-4xl mx-auto space-y-8">
-              <div className="text-center space-y-4">
-                <span className="inline-block rounded-full bg-secondary/10 px-4 py-1.5 text-xs font-bold text-secondary uppercase tracking-wider">
+              <AnimateContainer animation="fade-up" className="text-center space-y-4">
+                <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider">
                   Coverage
                 </span>
                 <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">
-                  Comrie and surrounding villages
+                  Villages and areas we cover in West Perthshire
                 </h2>
-                <div className="mx-auto h-1.5 w-24 rounded-full bg-secondary" />
+                <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
                 <p className="text-base text-zinc-600">
-                  Our team provides home care in:
+                  From our nearby Crieff office, we provide home care
+                  throughout:
                 </p>
-              </div>
+              </AnimateContainer>
 
-              <div className="rounded-3xl border border-zinc-200/80 bg-white p-8 shadow-sm">
+              <AnimateContainer animation="stagger" className="rounded-3xl border border-zinc-200/80 bg-white p-8 shadow-sm">
                 <div className="flex flex-wrap justify-center gap-3">
                   {comrieVillages.map((village) => (
-                    <span
-                      key={village}
-                      className="rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-semibold text-zinc-800 shadow-xs"
-                    >
-                      {village}
-                    </span>
+                    <AnimateItem key={village}>
+                      <span
+                        className="rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-semibold text-zinc-800 shadow-xs"
+                      >
+                        {village}
+                      </span>
+                    </AnimateItem>
                   ))}
                   <span className="rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-semibold text-zinc-500 italic">
-                    &amp; surrounding areas
+                    &amp; surrounding West Perthshire
                   </span>
                 </div>
-              </div>
+              </AnimateContainer>
 
-              <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-xs leading-relaxed text-sm text-zinc-600">
+              <AnimateContainer animation="fade-up" className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-xs leading-relaxed text-sm text-zinc-600">
                 <p>
-                  Care assessments for Comrie residents are coordinated through
-                  Perth and Kinross Health and Social Care Partnership, the same
-                  body covering Crieff and the wider South locality. If you&apos;re
-                  not sure whether we cover your specific address, call us on{" "}
+                  If you reside outside the main village boundary, please
+                  contact our Crieff team on{" "}
                   <a
                     href={`tel:${crieffOffice.phone.replace(/\s+/g, "")}`}
-                    className="font-bold text-secondary hover:underline"
+                    className="font-bold text-primary hover:underline"
                   >
                     0176 479 0095
                   </a>{" "}
-                  and we&apos;ll confirm right away.
+                  to confirm availability.
                 </p>
-              </div>
+              </AnimateContainer>
             </div>
           </div>
         </section>
 
-        {/* SECTION 4 — SERVICES IN THIS AREA */}
+        {/* SECTION 4 — SERVICES */}
         <section className="bg-white py-24 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="mb-16 text-center">
-              <span className="inline-block rounded-full bg-secondary/10 px-4 py-1.5 text-xs font-bold text-secondary uppercase tracking-wider mb-4">
-                Available Support
-              </span>
-              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl mb-4">
-                Home care services available in Comrie
-              </h2>
-              <div className="mx-auto h-1.5 w-24 rounded-full bg-secondary mb-6" />
-              <p className="text-base leading-relaxed text-zinc-600 max-w-2xl mx-auto">
-                Our Comrie clients have access to the full range of Zento
-                services, all delivered under nurse-led oversight:
-              </p>
-            </div>
+            <SectionHeader
+              badge="Available Support"
+              title="Home care services available in Comrie"
+              subtitle="From visiting personal care to 24-hour live-in support, our team provides comprehensive nurse-led care:"
+            />
 
-            <div className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto mb-12">
+            <AnimateContainer animation="stagger" className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto mb-12">
               {comrieServices.map((service) => {
                 const IconComp = service.icon;
                 return (
-                  <div
-                    key={service.name}
-                    className="flex flex-col justify-between rounded-3xl border border-zinc-200/80 bg-zinc-50/50 p-6 transition-all duration-300 hover:border-secondary/30 hover:bg-white hover:shadow-xl hover:shadow-secondary/5"
-                  >
-                    <div className="space-y-3">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/10 text-secondary">
-                        <IconComp className="w-5 h-5" />
+                  <AnimateItem key={service.name} className="h-full">
+                    <div
+                      className="flex h-full flex-col justify-between rounded-3xl border border-zinc-200/80 bg-zinc-50/50 p-6 transition-all duration-300 hover:border-primary/30 hover:bg-white hover:shadow-xl hover:shadow-primary/5"
+                    >
+                      <div className="space-y-3">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                          <IconComp className="w-5 h-5" />
+                        </div>
+                        <h3 className="text-lg font-bold text-secondary">
+                          {service.name}
+                        </h3>
+                        <p className="text-xs text-zinc-600 leading-relaxed">
+                          {service.desc}
+                        </p>
                       </div>
-                      <h3 className="text-lg font-bold text-secondary">
-                        {service.name}
-                      </h3>
-                      <p className="text-xs text-zinc-600 leading-relaxed">
-                        {service.desc}
-                      </p>
+                      <div className="mt-4 pt-3 border-t border-zinc-200/60">
+                        <Link
+                          href={service.href}
+                          className="inline-flex items-center gap-1 text-xs font-bold text-primary hover:text-secondary transition-colors"
+                        >
+                          Learn more <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
                     </div>
-                    <div className="mt-4 pt-3 border-t border-zinc-200/60">
-                      <Link
-                        href={service.href}
-                        className="inline-flex items-center gap-1 text-xs font-bold text-secondary hover:text-primary transition-colors"
-                      >
-                        Learn more <ArrowRight className="w-3.5 h-3.5" />
-                      </Link>
-                    </div>
-                  </div>
+                  </AnimateItem>
                 );
               })}
-            </div>
+            </AnimateContainer>
 
             <div className="text-center">
               <Link
                 href="/home-care/"
-                className="inline-flex items-center gap-2 rounded-full bg-secondary px-8 py-3.5 text-sm font-bold text-white shadow-md transition-all hover:bg-secondary/90 hover:scale-105"
+                className="page-cta-secondary-inline"
               >
                 See all home care services <ArrowRight className="w-4 h-4" />
               </Link>
@@ -506,94 +489,41 @@ export default function ComrieLocationPage() {
           </div>
         </section>
 
-        {/* SECTION 5 — NURSE-LED IN COMRIE */}
-        <section className="bg-zinc-50 py-20 border-t border-zinc-100">
-          <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-3xl mx-auto text-center space-y-6">
-              <span className="inline-block rounded-full bg-secondary/10 px-4 py-1.5 text-xs font-bold text-secondary uppercase tracking-wider">
-                Clinical Standard
-              </span>
-              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">
-                What nurse-led care means in Comrie
-              </h2>
-              <div className="mx-auto h-1.5 w-24 rounded-full bg-secondary" />
-              <p className="text-base leading-relaxed text-zinc-600">
-                Being close to Crieff means our nurses can visit Comrie easily
-                and often &mdash; there&apos;s no sense of being at the edge of our
-                coverage area. Care plans are reviewed with the same regularity
-                as anywhere else we work.
-              </p>
-              <div className="pt-2">
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* SECTION 5 — SIGNS SECTION (Using SignsSectionGrid) */}
+        <SignsSectionGrid
+          category="Comrie Care Assessment"
+          title="Signs your loved one in Comrie may need support at home"
+          subtitle="Recognising when an elderly relative in Comrie or St Fillans requires compassionate home care. Our nurses provide free assessments."
+          signs={comrieSigns}
+          ctaText="Book a Comrie assessment"
+          ctaType="assessment"
+        />
 
-        {/* SECTION 6 — LOCAL TESTIMONIAL */}
-        <section className="bg-white py-20 border-t border-zinc-100">
-          <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-3xl mx-auto text-center space-y-6">
-              <span className="inline-block rounded-full bg-secondary/10 px-4 py-1.5 text-xs font-bold text-secondary uppercase tracking-wider">
-                Local Feedback
-              </span>
-              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">
-                What Comrie families say
-              </h2>
-              <div className="mx-auto h-1.5 w-24 rounded-full bg-secondary" />
-
-              <div className="rounded-3xl border border-zinc-200/80 bg-zinc-50/50 p-8 shadow-sm text-left">
-                <div className="mb-4 flex gap-1">
-                  {Array.from({ length: 5 }).map((_, si) => (
-                    <Star
-                      key={si}
-                      className="w-5 h-5 fill-secondary text-secondary"
-                    />
-                  ))}
-                </div>
-                <p className="text-base leading-relaxed text-zinc-700 italic mb-6">
-                  &ldquo;Living in Comrie, we half-expected to be treated as out
-                  of the way. The opposite was true &mdash; the nurse visited within
-                  days of our call, and Dad&apos;s carer has never once seemed
-                  rushed, even though she has a bit of a drive to get here. It
-                  genuinely doesn&apos;t feel like being on the edge of anyone&apos;s
-                  patch.&rdquo;
-                </p>
-                <div className="border-t border-zinc-200/60 pt-4 flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary/10 text-base font-black text-secondary">
-                    W
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-secondary">
-                      William D.
-                    </p>
-                    <p className="text-xs text-zinc-500 flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-secondary" /> Comrie,
-                      Perthshire &middot; Google Review
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* SECTION 6 — TESTIMONIALS (Using TestimonialsSection) */}
+        <TestimonialsSection
+          category="Comrie Feedback"
+          title="What Comrie families say"
+          subtitle="Direct experiences from families in Comrie and St Fillans who trust our nurse-led care team."
+          testimonials={getTestimonials("locations.perthshire.comrie")}
+        />
 
         {/* SECTION 7 — GETTING STARTED */}
         <section className="bg-zinc-50 py-24 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="mb-16 text-center">
-              <span className="inline-block rounded-full bg-secondary/10 px-4 py-1.5 text-xs font-bold text-secondary uppercase tracking-wider mb-4">
+            <AnimateContainer animation="fade-up" className="mb-16 text-center">
+              <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 3-Step Process
               </span>
               <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl">
                 How to arrange home care in Comrie
               </h2>
-              <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-secondary" />
-            </div>
+              <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
+            </AnimateContainer>
 
-            <div className="grid gap-8 md:grid-cols-3 max-w-4xl mx-auto mb-12">
+            <AnimateContainer animation="stagger" className="grid gap-8 md:grid-cols-3 max-w-4xl mx-auto mb-12">
               {comrieSteps.map((item, index) => (
-                <div key={index} className="relative flex flex-col text-center">
-                  <div className="mx-auto mb-6 flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white text-2xl font-black text-secondary shadow-md ring-1 ring-secondary/10">
+                <AnimateItem key={index} className="relative flex flex-col text-center">
+                  <div className="mx-auto mb-6 flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white text-2xl font-black text-primary shadow-md ring-1 ring-primary/10">
                     {item.step}
                   </div>
                   <h3 className="mb-3 text-lg font-bold text-secondary">
@@ -602,14 +532,14 @@ export default function ComrieLocationPage() {
                   <p className="text-sm leading-relaxed text-zinc-600">
                     {item.desc}
                   </p>
-                </div>
+                </AnimateItem>
               ))}
-            </div>
+            </AnimateContainer>
 
             <div className="flex justify-center">
               <ModalButton
                 type="assessment"
-                className="inline-flex items-center gap-2 rounded-full bg-secondary px-8 py-3.5 font-bold text-white shadow-xl shadow-secondary/20 transition-all hover:scale-105 hover:bg-secondary/90 cursor-pointer"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 font-bold text-white shadow-xl shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
               >
                 Start with a free call <ArrowRight className="w-5 h-5" />
               </ModalButton>
@@ -620,116 +550,66 @@ export default function ComrieLocationPage() {
         {/* SECTION 8 — FAQ */}
         <section className="bg-white py-24 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-3xl mx-auto">
-              <div className="mb-12 text-center">
-                <span className="inline-block rounded-full bg-secondary/10 px-4 py-1.5 text-xs font-bold text-secondary uppercase tracking-wider mb-3">
-                  Comrie FAQs
-                </span>
-                <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl">
-                  Frequently asked questions about home care in Comrie
-                </h2>
-                <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-secondary" />
-              </div>
-              <div className="space-y-3">
-                {comrieFaqs.map((faq, i) => (
-                  <details
-                    key={i}
-                    className="group rounded-2xl border border-zinc-200 bg-white open:border-secondary/30 open:shadow-lg open:shadow-secondary/5 transition-all duration-200"
-                  >
-                    <summary className="flex cursor-pointer items-center justify-between gap-4 p-6 list-none">
-                      <h3 className="text-base font-bold text-secondary group-open:text-primary transition-colors">
-                        {faq.q}
-                      </h3>
-                      <ChevronDown className="w-5 h-5 shrink-0 text-zinc-400 transition-transform duration-300 group-open:rotate-180 group-open:text-secondary" />
-                    </summary>
-                    <div className="px-6 pb-6">
-                      <p className="text-sm leading-relaxed text-zinc-600">
-                        {faq.a}
-                      </p>
-                    </div>
-                  </details>
-                ))}
-              </div>
-            </div>
+            <FaqAccordion
+              badge="Comrie FAQs"
+              title="Frequently asked questions about home care in Comrie"
+              faqs={comrieFaqs}
+            />
           </div>
         </section>
 
         {/* SECTION 9 — NEARBY AREAS & FINAL CTA */}
         <section className="bg-zinc-50 py-20 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-4xl mx-auto text-center space-y-6 mb-16">
-              <span className="inline-block rounded-full bg-secondary/10 px-4 py-1.5 text-xs font-bold text-secondary uppercase tracking-wider">
-                Explore Regional Care
+            <AnimateContainer animation="fade-up" className="max-w-4xl mx-auto text-center space-y-6 mb-16">
+              <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider">
+                Perthshire Locations
               </span>
               <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">
                 Nearby areas
               </h2>
-              <div className="mx-auto h-1.5 w-24 rounded-full bg-secondary" />
-              <div className="grid gap-4 sm:grid-cols-2 max-w-2xl mx-auto pt-4 text-left">
+              <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
+              <div className="grid gap-4 sm:grid-cols-2 pt-4 text-left">
                 <Link
                   href="/locations/perthshire/"
-                  className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-secondary/30 hover:shadow-md"
+                  className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">
-                    Perthshire Region
+                    Perthshire Hub
                   </p>
                   <p className="text-xs text-zinc-500 mt-1 mb-3">
-                    Care across Crieff, Comrie, Muthill &amp; surrounds
+                    Overview of our Perthshire home care services
                   </p>
-                  <span className="inline-flex items-center gap-1 text-xs font-bold text-secondary">
-                    Home care across Perthshire <ArrowRight className="w-3 h-3" />
+                  <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">
+                    View Perthshire care <ArrowRight className="w-3 h-3" />
                   </span>
                 </Link>
                 <Link
                   href="/locations/perthshire/crieff/"
-                  className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-secondary/30 hover:shadow-md"
+                  className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">
                     Crieff
                   </p>
                   <p className="text-xs text-zinc-500 mt-1 mb-3">
-                    Our Perthshire office location on East High Street
+                    Home care across Crieff, Muthill, Braco &amp; Strathearn
                   </p>
-                  <span className="inline-flex items-center gap-1 text-xs font-bold text-secondary">
+                  <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">
                     Home care in Crieff <ArrowRight className="w-3 h-3" />
                   </span>
                 </Link>
               </div>
-            </div>
+            </AnimateContainer>
 
             {/* FINAL CTA BOX */}
-            <div className="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-secondary via-secondary/90 to-secondary/75 py-16 px-8 text-center text-white shadow-2xl shadow-secondary/20 md:py-24 max-w-5xl mx-auto">
-              <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
-              <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
-              <div className="relative z-10 mx-auto max-w-3xl space-y-6">
-                <h2 className="text-3xl font-black leading-tight min-[400px]:text-4xl sm:text-5xl lg:text-6xl">
-                  Speak to our team about care in Comrie
-                </h2>
-                <p className="text-base sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
-                  Our Crieff-based nursing team is ready to answer your questions
-                  and arrange a home assessment in Comrie.
-                </p>
-                <p className="text-sm font-semibold text-white/70 italic">
-                  No pressure. No obligation. Honest advice from our registered
-                  nurses.
-                </p>
-                <div className="flex flex-col items-center justify-center gap-4 pt-2 sm:flex-row sm:flex-wrap">
-                  <ModalButton
-                    type="assessment"
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-bold text-secondary shadow-xl transition-all hover:scale-105 cursor-pointer"
-                  >
-                    Book a free assessment <ArrowRight className="w-5 h-5" />
-                  </ModalButton>
-                  <a
-                    href={`tel:${crieffOffice.phone.replace(/\s+/g, "")}`}
-                    className="inline-flex items-center gap-2 rounded-full border-2 border-white/50 bg-transparent px-7 py-3.5 text-sm font-bold text-white transition-all hover:bg-white/10"
-                  >
-                    <Phone className="w-4 h-4 shrink-0" /> Call us:{" "}
-                    {crieffOffice.phone}
-                  </a>
-                </div>
-              </div>
-            </div>
+            <FinalCTASection
+              title="Speak to our Crieff team about care in Comrie"
+              subtitle="Our team is based on East High Street in Crieff and ready to arrange a home assessment at a time that suits you in Comrie."
+              tagline="No pressure. No obligation. Honest advice from our registered nurses."
+              phone={crieffOffice.phone}
+              ctaText="Book a free consultation"
+              ctaType="assessment"
+            />
           </div>
         </section>
       </main>

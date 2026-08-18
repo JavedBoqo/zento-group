@@ -51,6 +51,7 @@ export default function ServiceTabs({
         >
           <button
             ref={homeTabRef}
+            type="button"
             role="tab"
             id="tab-home"
             aria-selected={tab === "home"}
@@ -58,10 +59,10 @@ export default function ServiceTabs({
             tabIndex={tab === "home" ? 0 : -1}
             onClick={() => setTab("home")}
             onKeyDown={(e) => handleKeyDown(e, "home")}
-            className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs sm:px-6 sm:py-2.5 sm:text-sm font-bold transition-all cursor-pointer ${
+            className={`flex touch-manipulation items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold transition-all cursor-pointer sm:px-6 sm:py-2.5 sm:text-sm ${
               tab === "home"
                 ? "bg-primary text-white shadow-md shadow-primary/20"
-                : "text-zinc-600 hover:text-secondary hover:bg-zinc-100"
+                : "text-zinc-600 hover:bg-zinc-100 hover:text-secondary"
             }`}
           >
             <span>Home Care</span>
@@ -78,6 +79,7 @@ export default function ServiceTabs({
 
           <button
             ref={liveInTabRef}
+            type="button"
             role="tab"
             id="tab-live-in"
             aria-selected={tab === "live-in"}
@@ -85,10 +87,10 @@ export default function ServiceTabs({
             tabIndex={tab === "live-in" ? 0 : -1}
             onClick={() => setTab("live-in")}
             onKeyDown={(e) => handleKeyDown(e, "live-in")}
-            className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs sm:px-6 sm:py-2.5 sm:text-sm font-bold transition-all cursor-pointer ${
+            className={`flex touch-manipulation items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold transition-all cursor-pointer sm:px-6 sm:py-2.5 sm:text-sm ${
               tab === "live-in"
                 ? "bg-secondary text-white shadow-md shadow-secondary/20"
-                : "text-zinc-600 hover:text-secondary hover:bg-zinc-100"
+                : "text-zinc-600 hover:bg-zinc-100 hover:text-secondary"
             }`}
           >
             <span>Live-in Care</span>
@@ -105,12 +107,12 @@ export default function ServiceTabs({
         </div>
       </div>
 
-      {/* Both Panels present in HTML for SEO crawlers — toggled via hidden attribute */}
       <div
         id="panel-home"
         role="tabpanel"
         aria-labelledby="tab-home"
-        hidden={tab !== "home"}
+        className={tab === "home" ? "block" : "hidden"}
+        aria-hidden={tab !== "home"}
       >
         {homeCarePanel}
       </div>
@@ -119,7 +121,8 @@ export default function ServiceTabs({
         id="panel-live-in"
         role="tabpanel"
         aria-labelledby="tab-live-in"
-        hidden={tab !== "live-in"}
+        className={tab === "live-in" ? "block" : "hidden"}
+        aria-hidden={tab !== "live-in"}
       >
         {liveInCarePanel}
       </div>

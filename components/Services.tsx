@@ -13,6 +13,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import ServiceTabs from "@/components/ServiceTabs";
+import AnimateContainer from "@/components/AnimateContainer";
 
 interface ServiceItem {
   name: string;
@@ -170,7 +171,7 @@ export default function Services() {
     <section id="services" className="py-24 bg-zinc-50/50">
       <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
         {/* Section Title */}
-        <div className="mb-12 text-center">
+        <AnimateContainer animation="fade-up" className="mb-12 text-center">
           <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-3">
             Nurse-Led Care Options
           </span>
@@ -181,7 +182,7 @@ export default function Services() {
             Tailored home care and live-in care options designed around your personal health, comfort, and independence.
           </p>
           <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary"></div>
-        </div>
+        </AnimateContainer>
 
         {/* SEO-Safe Accessible Tabs & Panels */}
         <ServiceTabs

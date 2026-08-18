@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { Phone, Mail, MapPin } from "lucide-react";
 import ModalButton from "@/components/ModalButton";
+import AnimateContainer from "@/components/AnimateContainer";
 import {
   OFFICES,
   SERVICE_AREAS,
@@ -12,7 +15,11 @@ export default function ContactSection() {
     <section id="contact" className="py-24">
       <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
         <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-16 xl:gap-24">
-          <div className="relative aspect-[4/3] w-full max-w-2xl overflow-hidden rounded-3xl bg-zinc-100 shadow-2xl lg:aspect-square lg:w-1/2">
+
+          <AnimateContainer
+            animation="fade-right"
+            className="relative aspect-[4/3] w-full max-w-2xl overflow-hidden rounded-3xl bg-zinc-100 shadow-2xl lg:aspect-square lg:w-1/2"
+          >
             <Image
               src="/brand-image.png"
               alt="Zento care team in Edinburgh and Perthshire"
@@ -20,9 +27,13 @@ export default function ContactSection() {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
               className="object-cover"
             />
-          </div>
+          </AnimateContainer>
 
-          <div className="w-full space-y-8 text-center lg:w-1/2 lg:text-left">
+          <AnimateContainer
+            animation="fade-left"
+            delay={0.1}
+            className="w-full space-y-8 text-center lg:w-1/2 lg:text-left"
+          >
             <div>
               <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl">
                 Contact Us
@@ -74,7 +85,8 @@ export default function ContactSection() {
             >
               Send us a Message
             </ModalButton>
-          </div>
+          </AnimateContainer>
+
         </div>
       </div>
     </section>

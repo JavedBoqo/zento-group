@@ -16,6 +16,12 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ModalButton from "@/components/ModalButton";
+import AnimateContainer, { AnimateItem } from "@/components/AnimateContainer";
+import SignsSectionGrid from "@/components/SignsSectionGrid";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import { getTestimonials } from "@/lib/testimonials";
+import FaqAccordion from "@/components/FaqAccordion";
+import FinalCTASection from "@/components/FinalCTASection";
 import { OFFICES } from "@/constants";
 
 /* ─────────────────────────── SEO METADATA ─────────────────────────── */
@@ -89,23 +95,6 @@ const steps = [
     step: "04",
     title: "Care begins, and we review regularly",
     desc: "Support starts on an agreed schedule. Our nursing team reviews the plan regularly as needs change over time.",
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      "Mum's dementia meant she could become distressed by anyone unfamiliar, so carer consistency wasn't a nice-to-have for us — it was essential. She's had the same two carers for over a year now, and there's a trust there that took real time to build. The nurse reviews have caught changes before we even noticed them ourselves.",
-    author: "Janet S.",
-    location: "Colinton, Edinburgh",
-    source: "Google Review",
-  },
-  {
-    quote:
-      "What impressed me most was that the nurse who assessed Dad actually wanted to know who he was before his diagnosis — his career, what he loved, how he liked his routine. That understanding shows in how his carer works with him now. It doesn't feel like a task list. It feels like someone who genuinely knows him.",
-    author: "Michael A.",
-    location: "Crieff, Perthshire",
-    source: "homecare.co.uk",
   },
 ];
 
@@ -260,36 +249,22 @@ export default function DementiaCarePage() {
                 </p>
               </div>
 
-              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <div className="page-cta-group">
                 <ModalButton
                   type="assessment"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-bold text-white shadow-xl shadow-primary/30 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
+                  className="page-cta-primary"
                 >
                   Speak to our team <ArrowRight className="w-5 h-5" />
                 </ModalButton>
                 <a
                   href={OFFICES[0]?.phoneHref}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-secondary px-8 py-3.5 text-base font-bold text-secondary transition-all hover:bg-secondary hover:text-white"
+                  className="page-cta-phone"
                 >
                   <Phone className="w-4 h-4 shrink-0" />
                   Call Edinburgh: {OFFICES[0]?.phone}
                 </a>
               </div>
 
-              <div className="pt-2 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">Carer consistency priority</span>
-                </div>
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">NICE NG97 Person-centred framework</span>
-                </div>
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">Registered nurse clinical reviews</span>
-                </div>
-              </div>
             </div>
           </div>
         </section>
@@ -342,41 +317,16 @@ export default function DementiaCarePage() {
         </section>
 
         {/* ════════════════════════════════════════════════════════
-            SECTION 3 — SIGNS YOUR LOVED ONE MAY NEED DEMENTIA CARE
+            SECTION 3 — SIGNS TO LOOK FOR
         ════════════════════════════════════════════════════════ */}
-        <section className="bg-zinc-50 py-20 border-t border-zinc-100">
-          <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-3xl mx-auto">
-              <div className="mb-10 text-center">
-                <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
-                  Signs to Look For
-                </span>
-                <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl mb-4">
-                  Signs your loved one may need dementia care at home
-                </h2>
-                <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
-              </div>
-              <div className="space-y-3 mb-10">
-                {signs.map((sign, i) => (
-                  <div key={i} className="flex items-start gap-3 rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-sm">
-                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 mt-0.5">
-                      <CheckCircle2 className="w-4 h-4 text-primary" />
-                    </div>
-                    <p className="text-sm leading-relaxed text-zinc-700">{sign}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="text-center">
-                <ModalButton
-                  type="assessment"
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 font-bold text-white shadow-xl shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
-                >
-                  Speak to our team <ArrowRight className="w-5 h-5" />
-                </ModalButton>
-              </div>
-            </div>
-          </div>
-        </section>
+        <SignsSectionGrid
+          category="Signs to Look For"
+          title="Signs your loved one may need dementia care at home"
+          subtitle="Recognising the signs of progressing dementia helps families put support in place before difficulties escalate. Our registered nurses can visit you at home for a confidential assessment."
+          signs={signs}
+          ctaText="Speak to our team"
+          ctaType="assessment"
+        />
 
         {/* ════════════════════════════════════════════════════════
             SECTION 4 — WHAT'S INCLUDED
@@ -527,7 +477,7 @@ export default function DementiaCarePage() {
               </div>
               <ModalButton
                 type="assessment"
-                className="inline-flex items-center gap-2 rounded-full bg-secondary px-8 py-3.5 font-bold text-white shadow-lg transition-all hover:scale-105 hover:bg-secondary/90 cursor-pointer"
+                className="page-cta-secondary-inline"
               >
                 Speak to our team <ArrowRight className="w-5 h-5" />
               </ModalButton>
@@ -538,42 +488,12 @@ export default function DementiaCarePage() {
         {/* ════════════════════════════════════════════════════════
             SECTION 8 — TESTIMONIALS
         ════════════════════════════════════════════════════════ */}
-        <section className="bg-zinc-50 py-24 border-t border-zinc-100">
-          <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="mb-12 text-center">
-              <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-3">
-                Families We&apos;ve Supported
-              </span>
-              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl">
-                What families say about Zento&apos;s dementia care
-              </h2>
-              <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
-            </div>
-            <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
-              {testimonials.map((t, i) => (
-                <div key={i} className="flex flex-col rounded-3xl border border-zinc-200/80 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10">
-                  <div className="mb-5 flex gap-1">
-                    {Array.from({ length: 5 }).map((_, si) => (
-                      <Star key={si} className="w-4 h-4 fill-primary text-primary" />
-                    ))}
-                  </div>
-                  <p className="flex-1 text-sm leading-relaxed text-zinc-600 italic mb-6">&ldquo;{t.quote}&rdquo;</p>
-                  <div className="border-t border-zinc-200 pt-5 flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-base font-black text-primary">
-                      {t.author.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-secondary">{t.author}</p>
-                      <p className="text-xs text-zinc-500 flex items-center gap-1">
-                        <MapPin className="w-3 h-3 text-primary" /> {t.location} · {t.source}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <TestimonialsSection
+          category="Families We've Supported"
+          title="What families say about Zento's dementia care"
+          subtitle="Real stories from families navigating dementia who found comfort, safety and continuity with our nurse-led team."
+          testimonials={getTestimonials("homeCare.dementiaCare")}
+        />
 
         {/* ════════════════════════════════════════════════════════
             SECTION 9 — COVERAGE AREA
@@ -689,15 +609,15 @@ export default function DementiaCarePage() {
                 <p className="text-sm font-semibold text-white/70 italic">
                   No pressure. No obligation. Honest advice from our registered nurses.
                 </p>
-                <div className="flex flex-col items-center justify-center gap-4 pt-2 sm:flex-row sm:flex-wrap">
+                <div className="page-cta-group-dark">
                   <ModalButton
                     type="assessment"
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-bold text-primary shadow-xl transition-all hover:scale-105 cursor-pointer"
+                    className="page-cta-on-dark-primary"
                   >
                     Book a free assessment <ArrowRight className="w-5 h-5" />
                   </ModalButton>
                   {OFFICES.map((office) => (
-                    <a key={office.id} href={office.phoneHref} className="inline-flex items-center gap-2 rounded-full border-2 border-white/50 bg-transparent px-7 py-3.5 text-sm font-bold text-white transition-all hover:bg-white/10">
+                    <a key={office.id} href={office.phoneHref} className="page-cta-on-dark-outline">
                       <Phone className="w-4 h-4 shrink-0" />
                       {office.shortName}: {office.phone}
                     </a>

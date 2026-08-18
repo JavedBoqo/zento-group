@@ -16,6 +16,12 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ModalButton from "@/components/ModalButton";
+import AnimateContainer, { AnimateItem } from "@/components/AnimateContainer";
+import SignsSectionGrid from "@/components/SignsSectionGrid";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import { getTestimonials } from "@/lib/testimonials";
+import FaqAccordion from "@/components/FaqAccordion";
+import FinalCTASection from "@/components/FinalCTASection";
 import { OFFICES } from "@/constants";
 
 /* ─────────────────────────── SEO METADATA ─────────────────────────── */
@@ -123,30 +129,6 @@ const steps = [
     step: "04",
     title: "Support begins, and the nurse stays involved",
     desc: "Carers follow the protocol. Our nursing team reviews it whenever the prescription changes, and at regular planned intervals throughout the care relationship. Changes to the medication plan are always nurse-approved before they are implemented.",
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      "Dad takes seven different medications at three different times of day. After a near-miss where he doubled a dose of his heart medication, we knew something had to change. Zento sent a nurse to review everything before a carer even visited. The protocol she put together was thorough and Dad has been safe and consistent for nearly a year.",
-    author: "Margaret H.",
-    location: "Edinburgh",
-    source: "Google Review",
-  },
-  {
-    quote:
-      "Mum has dementia and managing her medication independently was no longer possible. What we needed wasn't just someone reminding her to take her tablets — we needed someone who understood what she was taking and why. The nurse at Zento did. The carer follows an actual clinical plan, not guesswork, and the difference it has made is significant.",
-    author: "Peter F.",
-    location: "Haddington, East Lothian",
-    source: "homecare.co.uk",
-  },
-  {
-    quote:
-      "After Mum's discharge from Perth Royal Infirmary, her medication had been changed significantly and she was confused about the new routine. Zento had a nurse assessment within 48 hours. The whole protocol was reviewed and a carer was visiting that same week. The peace of mind for all of us was enormous.",
-    author: "Sheena M.",
-    location: "Crieff, Perthshire",
-    source: "Google Review",
   },
 ];
 
@@ -284,7 +266,7 @@ export default function MedicationSupportPage() {
           <div className="pointer-events-none absolute -bottom-32 -left-32 h-[480px] w-[480px] rounded-full bg-secondary/5 blur-[100px]" />
 
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24 relative z-10 text-center">
-            <div className="mx-auto max-w-5xl space-y-6">
+            <AnimateContainer animation="fade-up" className="mx-auto max-w-5xl space-y-6">
               <div>
                 <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs sm:text-sm font-bold text-primary mb-4">
                   Nurse-Led Medication Support · Edinburgh, Lothian &amp; Perthshire
@@ -304,38 +286,24 @@ export default function MedicationSupportPage() {
                 </p>
               </div>
 
-              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <div className="page-cta-group">
                 <ModalButton
                   type="assessment"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-bold text-white shadow-xl shadow-primary/30 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
+                  className="page-cta-primary"
                 >
                   Speak to our nursing team <ArrowRight className="w-5 h-5" />
                 </ModalButton>
 
                 <a
                   href={OFFICES[0]?.phoneHref}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-secondary px-8 py-3.5 text-base font-bold text-secondary transition-all hover:bg-secondary hover:text-white"
+                  className="page-cta-phone"
                 >
                   <Phone className="w-4 h-4 shrink-0" />
                   Call Edinburgh: {OFFICES[0]?.phone}
                 </a>
               </div>
 
-              <div className="pt-2 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">Care Inspectorate registered</span>
-                </div>
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">Nurse-written protocols</span>
-                </div>
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">Clinical medication reviews</span>
-                </div>
-              </div>
-            </div>
+            </AnimateContainer>
           </div>
         </section>
 
@@ -345,7 +313,7 @@ export default function MedicationSupportPage() {
         <section className="bg-white py-20">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
-              <div className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
+              <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
                   src="/about-image.png"
                   alt="Registered nurse reviewing medication protocol with a home care client"
@@ -353,9 +321,9 @@ export default function MedicationSupportPage() {
                   sizes="(max-width: 768px) 100vw, 500px"
                   className="object-cover"
                 />
-              </div>
+              </AnimateContainer>
 
-              <div className="flex-1 space-y-6">
+              <AnimateContainer animation="fade-left" delay={0.1} className="flex-1 space-y-6">
                 <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">
                   What is medication support at home?
                 </h2>
@@ -380,10 +348,9 @@ export default function MedicationSupportPage() {
                 <p className="text-sm leading-relaxed text-zinc-600">
                   The distinction matters. Each level carries different responsibilities, different training
                   requirements and different clinical risks. At Zento, a registered nurse determines which level
-                  of medication support is appropriate for each client during the initial assessment — not a care
-                  coordinator, and not the carer who will be delivering the visits.
+                  of medication support is appropriate for each client during the initial assessment.
                 </p>
-              </div>
+              </AnimateContainer>
             </div>
           </div>
         </section>
@@ -391,44 +358,14 @@ export default function MedicationSupportPage() {
         {/* ════════════════════════════════════════════════════════
             SECTION 3 — SIGNS YOUR LOVED ONE NEEDS MEDICATION SUPPORT
         ════════════════════════════════════════════════════════ */}
-        <section className="bg-zinc-50 py-20 border-t border-zinc-100">
-          <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-3xl mx-auto">
-              <div className="mb-10 text-center">
-                <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
-                  Warning Signs
-                </span>
-                <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl mb-4">
-                  Signs your loved one may need medication support at home
-                </h2>
-                <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
-              </div>
-
-              <div className="space-y-3 mb-10">
-                {signs.map((sign, i) => (
-                  <div
-                    key={i}
-                    className="flex items-start gap-3 rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-sm"
-                  >
-                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 mt-0.5">
-                      <CheckCircle2 className="w-4 h-4 text-primary" />
-                    </div>
-                    <p className="text-sm leading-relaxed text-zinc-700">{sign}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="text-center">
-                <ModalButton
-                  type="assessment"
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 font-bold text-white shadow-xl shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
-                >
-                  Speak to our nursing team <ArrowRight className="w-5 h-5" />
-                </ModalButton>
-              </div>
-            </div>
-          </div>
-        </section>
+        <SignsSectionGrid
+          category="Warning Signs"
+          title="Signs your loved one may need medication support at home"
+          subtitle="Medication errors are one of the leading causes of avoidable hospital admissions in older adults. If any of these signs sound familiar, our nursing team can help."
+          signs={signs}
+          ctaText="Speak to our nursing team"
+          ctaType="assessment"
+        />
 
         {/* ════════════════════════════════════════════════════════
             SECTION 4 — WHAT'S INCLUDED
@@ -615,7 +552,7 @@ export default function MedicationSupportPage() {
               <div className="flex justify-center">
                 <ModalButton
                   type="assessment"
-                  className="inline-flex items-center gap-2 rounded-full bg-secondary px-8 py-3.5 font-bold text-white shadow-lg transition-all hover:scale-105 hover:bg-secondary/90 cursor-pointer"
+                  className="page-cta-secondary-inline"
                 >
                   Discuss your situation with our nursing team <ArrowRight className="w-5 h-5" />
                 </ModalButton>
@@ -627,55 +564,22 @@ export default function MedicationSupportPage() {
         {/* ════════════════════════════════════════════════════════
             SECTION 8 — TESTIMONIALS
         ════════════════════════════════════════════════════════ */}
-        <section className="bg-zinc-50 py-24 border-t border-zinc-100">
-          <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="mb-12 text-center">
-              <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-3">
-                Families We&apos;ve Supported
-              </span>
-              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl">
-                What families say about Zento&apos;s medication support
-              </h2>
-              <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
-            </div>
+        <TestimonialsSection
+          category="Families We've Supported"
+          title="What families say about Zento's medication support"
+          subtitle="How nurse-overseen medication administration and daily prompting provides complete reassurance to families."
+          testimonials={getTestimonials("homeCare.medicationSupport")}
+        />
 
-            <div className="grid gap-6 md:grid-cols-3">
-              {testimonials.map((t, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col rounded-3xl border border-zinc-200/80 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
-                >
-                  <div className="mb-5 flex gap-1">
-                    {Array.from({ length: 5 }).map((_, si) => (
-                      <Star key={si} className="w-4 h-4 fill-primary text-primary" />
-                    ))}
-                  </div>
-                  <p className="flex-1 text-sm leading-relaxed text-zinc-600 italic mb-6">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                  <div className="border-t border-zinc-200 pt-5 flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-base font-black text-primary">
-                      {t.author.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-secondary">{t.author}</p>
-                      <p className="text-xs text-zinc-500 flex items-center gap-1">
-                        <MapPin className="w-3 h-3 text-primary" /> {t.location} · {t.source}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
+        {/* ════════════════════════════════════════════════════════
+            SECTION 9 — COVERAGE AREA
+        ════════════════════════════════════════════════════════ */}
         {/* ════════════════════════════════════════════════════════
             SECTION 9 — COVERAGE AREA
         ════════════════════════════════════════════════════════ */}
         <section className="border-t border-zinc-100 bg-white py-20">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="text-center">
+            <AnimateContainer animation="fade-up" className="text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 Coverage
               </span>
@@ -699,7 +603,7 @@ export default function MedicationSupportPage() {
                   </Link>
                 ))}
               </div>
-            </div>
+            </AnimateContainer>
           </div>
         </section>
 
@@ -708,36 +612,11 @@ export default function MedicationSupportPage() {
         ════════════════════════════════════════════════════════ */}
         <section className="bg-zinc-50 py-24 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-3xl mx-auto">
-              <div className="mb-12 text-center">
-                <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-3">
-                  FAQs
-                </span>
-                <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl">
-                  Frequently asked questions about medication support at home
-                </h2>
-                <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
-              </div>
-
-              <div className="space-y-3">
-                {faqs.map((faq, i) => (
-                  <details
-                    key={i}
-                    className="group rounded-2xl border border-zinc-200 bg-white open:bg-white open:border-primary/30 open:shadow-lg open:shadow-primary/5 transition-all duration-200"
-                  >
-                    <summary className="flex cursor-pointer items-center justify-between gap-4 p-6 list-none">
-                      <h3 className="text-base font-bold text-secondary group-open:text-primary transition-colors">
-                        {faq.q}
-                      </h3>
-                      <ChevronDown className="w-5 h-5 shrink-0 text-zinc-400 transition-transform duration-300 group-open:rotate-180 group-open:text-primary" />
-                    </summary>
-                    <div className="px-6 pb-6">
-                      <p className="text-sm leading-relaxed text-zinc-600">{faq.a}</p>
-                    </div>
-                  </details>
-                ))}
-              </div>
-            </div>
+            <FaqAccordion
+              badge="FAQs"
+              title="Frequently asked questions about medication support at home"
+              faqs={faqs}
+            />
           </div>
         </section>
 
@@ -746,7 +625,7 @@ export default function MedicationSupportPage() {
         ════════════════════════════════════════════════════════ */}
         <section className="bg-white py-20 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="mb-10 text-center">
+            <AnimateContainer animation="fade-up" className="mb-10 text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 Related Services
               </span>
@@ -754,33 +633,34 @@ export default function MedicationSupportPage() {
                 Families often combine medication support with...
               </h2>
               <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
-            </div>
+            </AnimateContainer>
 
-            <div className="grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto">
+            <AnimateContainer animation="stagger" className="grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto">
               {relatedServices.map((service) => {
                 const IconComp = service.icon;
                 return (
-                  <Link
-                    key={service.title}
-                    href={service.href}
-                    className="group flex flex-col rounded-3xl border border-zinc-200/80 bg-zinc-50 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:bg-white hover:shadow-xl hover:shadow-primary/10"
-                  >
-                    <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
-                      <IconComp className="w-5 h-5" />
-                    </div>
-                    <h3 className="mb-2 text-base font-bold text-secondary group-hover:text-primary transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-zinc-600 flex-1">{service.desc}</p>
-                    <div className="mt-4 pt-4 border-t border-zinc-100">
-                      <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary">
-                        Learn more <ArrowRight className="w-3.5 h-3.5" />
-                      </span>
-                    </div>
-                  </Link>
+                  <AnimateItem key={service.title} className="h-full">
+                    <Link
+                      href={service.href}
+                      className="group flex h-full flex-col rounded-3xl border border-zinc-200/80 bg-zinc-50 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:bg-white hover:shadow-xl hover:shadow-primary/10"
+                    >
+                      <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                        <IconComp className="w-5 h-5" />
+                      </div>
+                      <h3 className="mb-2 text-base font-bold text-secondary group-hover:text-primary transition-colors">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-zinc-600 flex-1">{service.desc}</p>
+                      <div className="mt-4 pt-4 border-t border-zinc-100">
+                        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary">
+                          Learn more <ArrowRight className="w-3.5 h-3.5" />
+                        </span>
+                      </div>
+                    </Link>
+                  </AnimateItem>
                 );
               })}
-            </div>
+            </AnimateContainer>
           </div>
         </section>
 
@@ -789,43 +669,14 @@ export default function MedicationSupportPage() {
         ════════════════════════════════════════════════════════ */}
         <section className="py-24 bg-zinc-50 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-primary via-primary/90 to-primary/75 py-16 px-8 text-center text-white shadow-2xl shadow-primary/20 md:py-24">
-              <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
-              <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-secondary/20 blur-3xl" />
-
-              <div className="relative z-10 mx-auto max-w-3xl space-y-6">
-                <h2 className="text-3xl font-black leading-tight min-[400px]:text-4xl sm:text-5xl lg:text-6xl">
-                  Speak to our nursing team about medication support
-                </h2>
-                <p className="text-base sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
-                  Medication management is one of the areas where getting care right matters most. Our nursing
-                  team is here to review your loved one&apos;s situation, assess the appropriate level of support
-                  and put a proper clinical plan in place.
-                </p>
-                <p className="text-sm font-semibold text-white/70 italic">
-                  No pressure. No obligation. Honest advice from our registered nurses.
-                </p>
-
-                <div className="flex flex-col items-center justify-center gap-4 pt-2 sm:flex-row sm:flex-wrap">
-                  <ModalButton
-                    type="assessment"
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-bold text-primary shadow-xl transition-all hover:scale-105 cursor-pointer"
-                  >
-                    Book a free nursing assessment <ArrowRight className="w-5 h-5" />
-                  </ModalButton>
-                  {OFFICES.map((office) => (
-                    <a
-                      key={office.id}
-                      href={office.phoneHref}
-                      className="inline-flex items-center gap-2 rounded-full border-2 border-white/50 bg-transparent px-7 py-3.5 text-sm font-bold text-white transition-all hover:bg-white/10"
-                    >
-                      <Phone className="w-4 h-4 shrink-0" />
-                      {office.shortName}: {office.phone}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <FinalCTASection
+              title="Speak to our nursing team about medication support"
+              subtitle="Medication management is one of the areas where getting care right matters most. Our nursing team is here to review your loved one's situation, assess the appropriate level of support and put a proper clinical plan in place."
+              tagline="No pressure. No obligation. Honest advice from our registered nurses."
+              phone={OFFICES[0]?.phone}
+              ctaText="Book a free nursing assessment"
+              ctaType="assessment"
+            />
           </div>
         </section>
 

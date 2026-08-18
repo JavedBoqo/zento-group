@@ -17,7 +17,11 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ModalButton from "@/components/ModalButton";
+import SignsSectionGrid from "@/components/SignsSectionGrid";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import { getTestimonials } from "@/lib/testimonials";
 import { OFFICES } from "@/constants";
+import AnimateContainer, { AnimateItem } from "@/components/AnimateContainer";
 
 /* ─────────────────────────── SEO METADATA ─────────────────────────── */
 export const metadata: Metadata = {
@@ -89,23 +93,6 @@ const steps = [
     step: "04",
     title: "Cover begins, and you get your break",
     desc: "Regular updates are available if you'd like them. When you're back, we hand things over smoothly.",
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      "I hadn't had a proper week off in over two years of caring for my husband. Booking respite felt like admitting I couldn't cope, but it wasn't that at all — it meant I could actually keep going. The nurse who set up the handover plan clearly understood his routine before the carer even arrived. He barely noticed a change.",
-    author: "Linda P.",
-    location: "Portobello, Edinburgh",
-    source: "Google Review",
-  },
-  {
-    quote:
-      "My sister and I share Mum's care, and when she was hospitalised suddenly, I needed emergency cover within a day. Zento had someone briefed and in place faster than I expected — and more importantly, properly prepared, not just a stranger showing up. That mattered enormously in an already stressful week.",
-    author: "Kenneth R.",
-    location: "Comrie, Perthshire",
-    source: "homecare.co.uk",
   },
 ];
 
@@ -258,7 +245,7 @@ export default function RespiteCarePage() {
           <div className="pointer-events-none absolute -bottom-32 -left-32 h-[480px] w-[480px] rounded-full bg-secondary/5 blur-[100px]" />
 
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24 relative z-10 text-center">
-            <div className="mx-auto max-w-5xl space-y-6">
+            <AnimateContainer animation="fade-up" className="mx-auto max-w-5xl space-y-6">
               <div>
                 <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs sm:text-sm font-bold text-primary mb-4">
                   Respite Care · Edinburgh, Lothian &amp; Perthshire
@@ -274,44 +261,30 @@ export default function RespiteCarePage() {
                 </p>
               </div>
 
-              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <div className="page-cta-group">
                 <ModalButton
                   type="assessment"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-bold text-white shadow-xl shadow-primary/30 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
+                  className="page-cta-primary"
                 >
                   Speak to our team <ArrowRight className="w-5 h-5" />
                 </ModalButton>
                 <a
                   href={OFFICES[0]?.phoneHref}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-secondary px-8 py-3.5 text-base font-bold text-secondary transition-all hover:bg-secondary hover:text-white"
+                  className="page-cta-phone"
                 >
                   <Phone className="w-4 h-4 shrink-0" />
                   Call Edinburgh: {OFFICES[0]?.phone}
                 </a>
                 <a
                   href={OFFICES[1]?.phoneHref}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-secondary px-8 py-3.5 text-base font-bold text-secondary transition-all hover:bg-secondary hover:text-white"
+                  className="page-cta-phone"
                 >
                   <Phone className="w-4 h-4 shrink-0" />
                   Call Crieff: {OFFICES[1]?.phone}
                 </a>
               </div>
 
-              <div className="pt-2 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">Planned &amp; emergency cover</span>
-                </div>
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">Nurse-written handover plan</span>
-                </div>
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">Routine &amp; continuity preserved</span>
-                </div>
-              </div>
-            </div>
+            </AnimateContainer>
           </div>
         </section>
 
@@ -321,7 +294,7 @@ export default function RespiteCarePage() {
         <section className="bg-white py-20">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
-              <div className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
+              <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
                   src="/about-image.png"
                   alt="Carer providing supportive respite care at home"
@@ -329,8 +302,8 @@ export default function RespiteCarePage() {
                   sizes="(max-width: 768px) 100vw, 500px"
                   className="object-cover"
                 />
-              </div>
-              <div className="flex-1 space-y-6">
+              </AnimateContainer>
+              <AnimateContainer animation="fade-left" delay={0.1} className="flex-1 space-y-6">
                 <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">
                   What is respite care at home?
                 </h2>
@@ -357,7 +330,7 @@ export default function RespiteCarePage() {
                     care arrangement sustainable in the first place.
                   </p>
                 </div>
-              </div>
+              </AnimateContainer>
             </div>
           </div>
         </section>
@@ -365,46 +338,21 @@ export default function RespiteCarePage() {
         {/* ════════════════════════════════════════════════════════
             SECTION 3 — SIGNS YOU MAY NEED RESPITE CARE
         ════════════════════════════════════════════════════════ */}
-        <section className="bg-zinc-50 py-20 border-t border-zinc-100">
-          <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-3xl mx-auto">
-              <div className="mb-10 text-center">
-                <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
-                  Signs to Look For
-                </span>
-                <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl mb-4">
-                  Signs you or a family carer need a break
-                </h2>
-                <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
-              </div>
-              <div className="space-y-3 mb-10">
-                {signs.map((sign, i) => (
-                  <div key={i} className="flex items-start gap-3 rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-sm">
-                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 mt-0.5">
-                      <CheckCircle2 className="w-4 h-4 text-primary" />
-                    </div>
-                    <p className="text-sm leading-relaxed text-zinc-700">{sign}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="text-center">
-                <ModalButton
-                  type="assessment"
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 font-bold text-white shadow-xl shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
-                >
-                  Speak to our team <ArrowRight className="w-5 h-5" />
-                </ModalButton>
-              </div>
-            </div>
-          </div>
-        </section>
+        <SignsSectionGrid
+          category="Signs to Look For"
+          title="Signs you or a family carer need a break"
+          subtitle="Carer burnout happens quietly. If you or a family member caring for a loved one are feeling the strain, respite care provides safe, clinical support so you can rest."
+          signs={signs}
+          ctaText="Speak to our team"
+          ctaType="assessment"
+        />
 
         {/* ════════════════════════════════════════════════════════
             SECTION 4 — WHAT'S INCLUDED
         ════════════════════════════════════════════════════════ */}
         <section className="bg-white py-24 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="mb-12 text-center">
+            <AnimateContainer animation="fade-up" className="mb-12 text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 What We Provide
               </span>
@@ -412,17 +360,17 @@ export default function RespiteCarePage() {
                 What our respite care service includes
               </h2>
               <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2 max-w-4xl mx-auto mb-8">
+            </AnimateContainer>
+            <AnimateContainer animation="stagger" className="grid gap-4 sm:grid-cols-2 max-w-4xl mx-auto mb-8">
               {included.map((item, i) => (
-                <div key={i} className="flex items-start gap-3 rounded-2xl border border-zinc-200/80 bg-zinc-50 p-5 transition-all hover:border-primary/20 hover:bg-white hover:shadow-md">
+                <AnimateItem key={i} className="flex items-start gap-3 rounded-2xl border border-zinc-200/80 bg-zinc-50 p-5 transition-all hover:border-primary/20 hover:bg-white hover:shadow-md">
                   <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 mt-0.5">
                     <Sun className="w-3.5 h-3.5 text-primary" />
                   </div>
                   <p className="text-sm leading-relaxed text-zinc-700">{item}</p>
-                </div>
+                </AnimateItem>
               ))}
-            </div>
+            </AnimateContainer>
             <div className="max-w-4xl mx-auto rounded-2xl border border-secondary/20 bg-secondary/5 p-6">
               <p className="text-sm leading-relaxed text-secondary font-medium text-center">
                 The goal of every respite arrangement at Zento is continuity — your loved one&apos;s routine shouldn&apos;t feel disrupted just because you&apos;re taking a break.
@@ -440,7 +388,7 @@ export default function RespiteCarePage() {
 
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24 relative z-10">
             <div className="flex flex-col items-center gap-16 lg:flex-row lg:items-center lg:gap-20">
-              <div className="flex-1">
+              <AnimateContainer animation="fade-left" delay={0.1} className="flex-1">
                 <span className="inline-block rounded-full bg-primary/20 px-4 py-2 text-sm font-bold text-primary mb-6">
                   The Zento Difference
                 </span>
@@ -460,8 +408,8 @@ export default function RespiteCarePage() {
                     who understands what actually matters to get right.
                   </p>
                 </div>
-              </div>
-              <div className="relative aspect-square w-full max-w-xl flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl">
+              </AnimateContainer>
+              <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-xl flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl">
                 <div className="relative h-full w-full overflow-hidden rounded-[1.8rem]">
                   <Image
                     src="/brand-image.png"
@@ -471,7 +419,7 @@ export default function RespiteCarePage() {
                     className="object-cover"
                   />
                 </div>
-              </div>
+              </AnimateContainer>
             </div>
           </div>
         </section>
@@ -481,7 +429,7 @@ export default function RespiteCarePage() {
         ════════════════════════════════════════════════════════ */}
         <section className="bg-zinc-50 py-24">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="mb-16 text-center">
+            <AnimateContainer animation="fade-up" className="mb-16 text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 Getting Started
               </span>
@@ -489,10 +437,10 @@ export default function RespiteCarePage() {
                 How to arrange respite care with Zento
               </h2>
               <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
-            </div>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mb-16">
+            </AnimateContainer>
+            <AnimateContainer animation="stagger" className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mb-16">
               {steps.map((item, index) => (
-                <div key={index} className="relative flex flex-col">
+                <AnimateItem key={index} className="relative flex flex-col">
                   {index < steps.length - 1 && (
                     <div className="absolute top-8 left-[calc(50%+2rem)] hidden w-[calc(100%-4rem)] h-px bg-primary/20 lg:block" />
                   )}
@@ -503,9 +451,9 @@ export default function RespiteCarePage() {
                     <h3 className="mb-3 text-lg font-bold text-secondary">{item.title}</h3>
                     <p className="text-sm leading-relaxed text-zinc-600">{item.desc}</p>
                   </div>
-                </div>
+                </AnimateItem>
               ))}
-            </div>
+            </AnimateContainer>
             <div className="flex justify-center">
               <ModalButton
                 type="assessment"
@@ -522,7 +470,7 @@ export default function RespiteCarePage() {
         ════════════════════════════════════════════════════════ */}
         <section className="bg-white py-20 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-3xl mx-auto text-center">
+            <AnimateContainer animation="fade-up" className="max-w-3xl mx-auto text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 Funding &amp; Cost
               </span>
@@ -549,85 +497,55 @@ export default function RespiteCarePage() {
               </div>
               <ModalButton
                 type="assessment"
-                className="inline-flex items-center gap-2 rounded-full bg-secondary px-8 py-3.5 font-bold text-white shadow-lg transition-all hover:scale-105 hover:bg-secondary/90 cursor-pointer"
+                className="page-cta-secondary-inline"
               >
                 Speak to our team <ArrowRight className="w-5 h-5" />
               </ModalButton>
-            </div>
+            </AnimateContainer>
           </div>
         </section>
 
         {/* ════════════════════════════════════════════════════════
             SECTION 8 — TESTIMONIALS
         ════════════════════════════════════════════════════════ */}
-        <section className="bg-zinc-50 py-24 border-t border-zinc-100">
-          <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="mb-12 text-center">
-              <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-3">
-                Families We&apos;ve Supported
-              </span>
-              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl">
-                What families say about Zento&apos;s respite care
-              </h2>
-              <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
-            </div>
-            <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
-              {testimonials.map((t, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col rounded-3xl border border-zinc-200/80 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
-                >
-                  <div className="mb-5 flex gap-1">
-                    {Array.from({ length: 5 }).map((_, si) => (
-                      <Star key={si} className="w-4 h-4 fill-primary text-primary" />
-                    ))}
-                  </div>
-                  <p className="flex-1 text-sm leading-relaxed text-zinc-600 italic mb-6">&ldquo;{t.quote}&rdquo;</p>
-                  <div className="border-t border-zinc-200 pt-5 flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-base font-black text-primary">
-                      {t.author.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-secondary">{t.author}</p>
-                      <p className="text-xs text-zinc-500 flex items-center gap-1">
-                        <MapPin className="w-3 h-3 text-primary" /> {t.location} · {t.source}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <TestimonialsSection
+          category="Families We've Supported"
+          title="What families say about Zento's respite care"
+          subtitle="Real experiences from family carers across Edinburgh and Scotland who found breathing space and trust with our team."
+          testimonials={getTestimonials("homeCare.respiteCare")}
+        />
 
         {/* ════════════════════════════════════════════════════════
             SECTION 9 — COVERAGE AREA
         ════════════════════════════════════════════════════════ */}
         <section className="border-t border-zinc-100 bg-white py-20">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24 text-center">
-            <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
-              Coverage
-            </span>
-            <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl mb-4">
-              Where we provide respite care
-            </h2>
-            <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary mb-6" />
-            <p className="text-base leading-relaxed text-zinc-600 mb-6 max-w-2xl mx-auto">
-              Zento provides nurse-led respite care across Edinburgh and the Lothians from our Edinburgh office,
-              and across Perthshire from our Crieff office.
-            </p>
-            <div className="flex flex-wrap gap-3 justify-center">
-              {locationLinks.map((loc) => (
-                <Link
-                  key={loc.label}
-                  href={loc.href}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-50 px-5 py-2.5 text-sm font-bold text-secondary shadow-sm transition-all hover:border-primary/30 hover:bg-primary/5 hover:text-primary hover:shadow-md"
-                >
-                  <MapPin className="w-3.5 h-3.5 text-primary" />
-                  {loc.label}
-                </Link>
-              ))}
-            </div>
+            <AnimateContainer animation="fade-up">
+              <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
+                Coverage
+              </span>
+              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl mb-4">
+                Where we provide respite care
+              </h2>
+              <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary mb-6" />
+              <p className="text-base leading-relaxed text-zinc-600 mb-6 max-w-2xl mx-auto">
+                Zento provides nurse-led respite care across Edinburgh and the Lothians from our Edinburgh office,
+                and across Perthshire from our Crieff office.
+              </p>
+              <AnimateContainer animation="stagger" className="flex flex-wrap gap-3 justify-center">
+                {locationLinks.map((loc) => (
+                  <AnimateItem key={loc.label}>
+                    <Link
+                      href={loc.href}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-50 px-5 py-2.5 text-sm font-bold text-secondary shadow-sm transition-all hover:border-primary/30 hover:bg-primary/5 hover:text-primary hover:shadow-md"
+                    >
+                      <MapPin className="w-3.5 h-3.5 text-primary" />
+                      {loc.label}
+                    </Link>
+                  </AnimateItem>
+                ))}
+              </AnimateContainer>
+            </AnimateContainer>
           </div>
         </section>
 
@@ -637,7 +555,7 @@ export default function RespiteCarePage() {
         <section className="bg-zinc-50 py-24 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="max-w-3xl mx-auto">
-              <div className="mb-12 text-center">
+              <AnimateContainer animation="fade-up" className="mb-12 text-center">
                 <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-3">
                   FAQs
                 </span>
@@ -645,25 +563,26 @@ export default function RespiteCarePage() {
                   Frequently asked questions about respite care
                 </h2>
                 <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
-              </div>
-              <div className="space-y-3">
+              </AnimateContainer>
+              <AnimateContainer animation="stagger" className="space-y-3">
                 {faqs.map((faq, i) => (
-                  <details
-                    key={i}
-                    className="group rounded-2xl border border-zinc-200 bg-white open:bg-white open:border-primary/30 open:shadow-lg open:shadow-primary/5 transition-all duration-200"
-                  >
-                    <summary className="flex cursor-pointer items-center justify-between gap-4 p-6 list-none">
-                      <h3 className="text-base font-bold text-secondary group-open:text-primary transition-colors">
-                        {faq.q}
-                      </h3>
-                      <ChevronDown className="w-5 h-5 shrink-0 text-zinc-400 transition-transform duration-300 group-open:rotate-180 group-open:text-primary" />
-                    </summary>
-                    <div className="px-6 pb-6">
-                      <p className="text-sm leading-relaxed text-zinc-600">{faq.a}</p>
-                    </div>
-                  </details>
+                  <AnimateItem key={i}>
+                    <details
+                      className="group rounded-2xl border border-zinc-200 bg-white open:bg-white open:border-primary/30 open:shadow-lg open:shadow-primary/5 transition-all duration-200"
+                    >
+                      <summary className="flex cursor-pointer items-center justify-between gap-4 p-6 list-none">
+                        <h3 className="text-base font-bold text-secondary group-open:text-primary transition-colors">
+                          {faq.q}
+                        </h3>
+                        <ChevronDown className="w-5 h-5 shrink-0 text-zinc-400 transition-transform duration-300 group-open:rotate-180 group-open:text-primary" />
+                      </summary>
+                      <div className="px-6 pb-6">
+                        <p className="text-sm leading-relaxed text-zinc-600">{faq.a}</p>
+                      </div>
+                    </details>
+                  </AnimateItem>
                 ))}
-              </div>
+              </AnimateContainer>
             </div>
           </div>
         </section>
@@ -673,7 +592,7 @@ export default function RespiteCarePage() {
         ════════════════════════════════════════════════════════ */}
         <section className="bg-white py-20 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="mb-10 text-center">
+            <AnimateContainer animation="fade-up" className="mb-10 text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 Related Services
               </span>
@@ -681,32 +600,33 @@ export default function RespiteCarePage() {
                 Respite care often includes...
               </h2>
               <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
-            </div>
-            <div className="grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto">
+            </AnimateContainer>
+            <AnimateContainer animation="stagger" className="grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto">
               {relatedServices.map((service) => {
                 const IconComp = service.icon;
                 return (
-                  <Link
-                    key={service.title}
-                    href={service.href}
-                    className="group flex flex-col rounded-3xl border border-zinc-200/80 bg-zinc-50 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:bg-white hover:shadow-xl hover:shadow-primary/10"
-                  >
-                    <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
-                      <IconComp className="w-5 h-5" />
-                    </div>
-                    <h3 className="mb-2 text-base font-bold text-secondary group-hover:text-primary transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-zinc-600 flex-1">{service.desc}</p>
-                    <div className="mt-4 pt-4 border-t border-zinc-100">
-                      <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary">
-                        Learn more <ArrowRight className="w-3.5 h-3.5" />
-                      </span>
-                    </div>
-                  </Link>
+                  <AnimateItem key={service.title} className="h-full">
+                    <Link
+                      href={service.href}
+                      className="group flex flex-col h-full rounded-3xl border border-zinc-200/80 bg-zinc-50 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:bg-white hover:shadow-xl hover:shadow-primary/10"
+                    >
+                      <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                        <IconComp className="w-5 h-5" />
+                      </div>
+                      <h3 className="mb-2 text-base font-bold text-secondary group-hover:text-primary transition-colors">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-zinc-600 flex-1">{service.desc}</p>
+                      <div className="mt-4 pt-4 border-t border-zinc-100">
+                        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary">
+                          Learn more <ArrowRight className="w-3.5 h-3.5" />
+                        </span>
+                      </div>
+                    </Link>
+                  </AnimateItem>
                 );
               })}
-            </div>
+            </AnimateContainer>
           </div>
         </section>
 
@@ -718,7 +638,7 @@ export default function RespiteCarePage() {
             <div className="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-primary via-primary/90 to-primary/75 py-16 px-8 text-center text-white shadow-2xl shadow-primary/20 md:py-24">
               <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
               <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-secondary/20 blur-3xl" />
-              <div className="relative z-10 mx-auto max-w-3xl space-y-6">
+              <AnimateContainer animation="fade-up" className="relative z-10 mx-auto max-w-3xl space-y-6">
                 <h2 className="text-3xl font-black leading-tight min-[400px]:text-4xl sm:text-5xl lg:text-6xl">
                   Speak to our team about respite care
                 </h2>
@@ -729,10 +649,10 @@ export default function RespiteCarePage() {
                 <p className="text-sm font-semibold text-white/70 italic">
                   No pressure. No obligation. Honest advice from our registered nurses.
                 </p>
-                <div className="flex flex-col items-center justify-center gap-4 pt-2 sm:flex-row sm:flex-wrap">
+                <div className="page-cta-group-dark">
                   <ModalButton
                     type="assessment"
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-bold text-primary shadow-xl transition-all hover:scale-105 cursor-pointer"
+                    className="page-cta-on-dark-primary"
                   >
                     Book a free assessment <ArrowRight className="w-5 h-5" />
                   </ModalButton>
@@ -740,14 +660,14 @@ export default function RespiteCarePage() {
                     <a
                       key={office.id}
                       href={office.phoneHref}
-                      className="inline-flex items-center gap-2 rounded-full border-2 border-white/50 bg-transparent px-7 py-3.5 text-sm font-bold text-white transition-all hover:bg-white/10"
+                      className="page-cta-on-dark-outline"
                     >
                       <Phone className="w-4 h-4 shrink-0" />
                       {office.shortName}: {office.phone}
                     </a>
                   ))}
                 </div>
-              </div>
+              </AnimateContainer>
             </div>
           </div>
         </section>

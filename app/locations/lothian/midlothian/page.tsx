@@ -4,15 +4,11 @@ import Image from "next/image";
 import {
   ArrowRight,
   Phone,
-  Mail,
   Heart,
   ShieldCheck,
   Brain,
   Home,
   CheckCircle2,
-  Star,
-  ChevronDown,
-  MapPin,
   Clock4,
   Building2,
   Utensils,
@@ -22,6 +18,13 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ModalButton from "@/components/ModalButton";
+import AnimateContainer, { AnimateItem } from "@/components/AnimateContainer";
+import SectionHeader from "@/components/SectionHeader";
+import SignsSectionGrid from "@/components/SignsSectionGrid";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import { getTestimonials } from "@/lib/testimonials";
+import FaqAccordion from "@/components/FaqAccordion";
+import FinalCTASection from "@/components/FinalCTASection";
 import { OFFICES } from "@/constants";
 
 export const metadata: Metadata = {
@@ -128,6 +131,15 @@ const midlothianServices = [
   },
 ];
 
+const midlothianSigns = [
+  "Reduced mobility or safety concerns on stairs in Midlothian properties.",
+  "Medication errors, forgotten pills, or difficulty managing repeat prescriptions.",
+  "Signs of weight loss or an empty fridge with skipped meals.",
+  "Struggling with dressing, washing, or maintaining independent personal hygiene.",
+  "Increased confusion, memory lapses, or restlessness during evening hours.",
+  "Family members feeling stretched trying to manage care alongside work commitments.",
+];
+
 const midlothianSteps = [
   {
     step: "01",
@@ -148,20 +160,20 @@ const midlothianSteps = [
 
 const midlothianFaqs = [
   {
-    q: "Which towns in Midlothian does Zento cover?",
-    a: "We provide home care across Dalkeith, Penicuik, Bonnyrigg, Loanhead, Gorebridge, Newtongrange, Roslin and the surrounding areas. If you're unsure whether we cover your specific village, call us on 0131 210 0095 and we'll confirm straightaway.",
+    q: "How quickly can home care begin in Midlothian?",
+    a: "In most cases, we can complete a nurse assessment within a few days of your initial call. For urgent situations — including hospital discharge — we aim to arrange care within 24 to 48 hours.",
   },
   {
-    q: "Is home care in Midlothian managed by your Edinburgh office?",
-    a: "Yes. Our nursing team, based at Adit Place in Edinburgh, manages all care across Midlothian directly. A registered nurse visits clients at home for assessments and reviews — the same clinical process we use everywhere we work.",
+    q: "Which Midlothian towns does Zento cover?",
+    a: "We cover all of Midlothian including Dalkeith, Penicuik, Bonnyrigg, Loanhead, Gorebridge, Newtongrange, Roslin and Lasswade. If you're unsure whether we cover your specific address, call us on 0131 210 0095.",
   },
   {
-    q: "How do Midlothian residents arrange a council care assessment?",
-    a: "Care assessments in Midlothian are coordinated through Midlothian Health and Social Care Partnership (Midlothian HSCP). Unpaid carers can also access dedicated support through VOCAL Midlothian, which provides advice and assistance specifically for carers in the area.",
+    q: "Is nurse oversight included for all Midlothian clients?",
+    a: "Yes. Every care package in Midlothian is assessed, written and reviewed by a registered nurse. Clinical oversight is a standard part of our service, not an optional extra.",
   },
   {
-    q: "Can Midlothian residents access the same nurse-led care as Edinburgh clients?",
-    a: "Yes. There's no difference in the standard of care between our Edinburgh and Midlothian clients — the same nursing team, the same care planning process and the same clinical oversight apply throughout.",
+    q: "Can you provide live-in care in Midlothian?",
+    a: "Yes. We offer dedicated 24-hour live-in care across Midlothian, personally matched and clinically supervised by our nursing team.",
   },
 ];
 
@@ -304,7 +316,7 @@ export default function MidlothianLocationPage() {
           <div className="pointer-events-none absolute -top-32 -right-32 h-[480px] w-[480px] rounded-full bg-primary/5 blur-[100px]" />
           <div className="pointer-events-none absolute -bottom-32 -left-32 h-[480px] w-[480px] rounded-full bg-secondary/5 blur-[100px]" />
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24 relative z-10 text-center">
-            <div className="mx-auto max-w-5xl space-y-6">
+            <AnimateContainer animation="fade-up" className="mx-auto max-w-5xl space-y-6">
               <div>
                 <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs sm:text-sm font-bold text-primary mb-4">
                   Nurse-Led Home Care &middot; Midlothian
@@ -312,47 +324,34 @@ export default function MidlothianLocationPage() {
                 <h1 className="text-3xl font-black leading-tight text-secondary min-[400px]:text-4xl sm:text-5xl lg:text-6xl mb-6">
                   Home Care in Midlothian &mdash;{" "}
                   <span className="text-primary">
-                    Serving Dalkeith, Penicuik, Bonnyrigg &amp; Beyond
+                    Dalkeith, Penicuik, Bonnyrigg &amp; More
                   </span>
                 </h1>
                 <p className="text-base sm:text-lg leading-relaxed text-zinc-600 max-w-3xl mx-auto">
                   Zento provides nurse-led home care across Midlothian from our
-                  Edinburgh office. Whether your family is in Dalkeith, Penicuik,
-                  Bonnyrigg or one of the surrounding villages, care is planned
-                  by a registered nurse and delivered by a consistent, trained
-                  carer &mdash; not a rotating cast of strangers.
+                  Edinburgh office. From Dalkeith and Penicuik to Bonnyrigg,
+                  Loanhead and the surrounding villages, our registered nurses
+                  assess, write and review every care plan we deliver.
                 </p>
               </div>
-              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+
+
+              <div className="page-cta-group pt-2">
                 <ModalButton
                   type="assessment"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-bold text-white shadow-xl shadow-primary/30 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
+                  className="page-cta-primary"
                 >
                   Speak to our team <ArrowRight className="w-5 h-5" />
                 </ModalButton>
                 <a
                   href={`tel:${edinburghOffice.phone.replace(/\s+/g, "")}`}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-secondary px-8 py-3.5 text-base font-bold text-secondary transition-all hover:bg-secondary hover:text-white"
+                  className="page-cta-phone"
                 >
                   <Phone className="w-4 h-4 shrink-0" /> Call us:{" "}
                   {edinburghOffice.phone}
                 </a>
               </div>
-              <div className="pt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-xs">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">
-                    Care Inspectorate Registered
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-xs">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">
-                    Nurse-Led Care Planning
-                  </span>
-                </div>
-              </div>
-            </div>
+            </AnimateContainer>
           </div>
         </section>
 
@@ -360,7 +359,7 @@ export default function MidlothianLocationPage() {
         <section className="bg-white py-20 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
-              <div className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
+              <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
                   src="/about-image.png"
                   alt="Registered nurse conducting home care assessment in Midlothian"
@@ -368,8 +367,8 @@ export default function MidlothianLocationPage() {
                   sizes="(max-width: 768px) 100vw, 500px"
                   className="object-cover"
                 />
-              </div>
-              <div className="flex-1 space-y-6">
+              </AnimateContainer>
+              <AnimateContainer animation="fade-left" delay={0.1} className="flex-1 space-y-6">
                 <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider">
                   Area Overview
                 </span>
@@ -378,19 +377,20 @@ export default function MidlothianLocationPage() {
                 </h2>
                 <div className="space-y-4 text-base leading-relaxed text-zinc-600">
                   <p>
-                    Our nursing team provides home care across Midlothian, with
-                    every care plan written by a registered nurse and reviewed
-                    on a regular basis &mdash; the same clinical standard we
-                    apply everywhere we work, not a lighter touch for areas
-                    outside the city itself.
+                    Midlothian families have access to the full range of Zento
+                    home care services, backed by the clinical expertise of
+                    our Edinburgh nursing team. Every client receives a
+                    comprehensive in-person nursing assessment before care
+                    begins.
                   </p>
                   <p>
                     We&apos;re registered with the Care Inspectorate, and our
-                    nurses carry out home visits across Midlothian in person,
-                    rather than assessing needs over the phone.
+                    nurses review care plans regularly to ensure your loved
+                    one&apos;s changing needs are identified and supported
+                    promptly.
                   </p>
                 </div>
-              </div>
+              </AnimateContainer>
             </div>
           </div>
         </section>
@@ -399,7 +399,7 @@ export default function MidlothianLocationPage() {
         <section className="bg-zinc-50 py-20 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="max-w-4xl mx-auto space-y-8">
-              <div className="text-center space-y-4">
+              <AnimateContainer animation="fade-up" className="text-center space-y-4">
                 <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider">
                   Coverage
                 </span>
@@ -410,31 +410,31 @@ export default function MidlothianLocationPage() {
                 <p className="text-base text-zinc-600">
                   Our team provides home care throughout Midlothian, including:
                 </p>
-              </div>
+              </AnimateContainer>
 
-              <div className="rounded-3xl border border-zinc-200/80 bg-white p-8 shadow-sm">
+              <AnimateContainer animation="stagger" className="rounded-3xl border border-zinc-200/80 bg-white p-8 shadow-sm">
                 <div className="flex flex-wrap justify-center gap-3">
                   {midlothianTowns.map((town) => (
-                    <span
-                      key={town}
-                      className="rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-semibold text-zinc-800 shadow-xs"
-                    >
-                      {town}
-                    </span>
+                    <AnimateItem key={town}>
+                      <span
+                        className="rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-semibold text-zinc-800 shadow-xs"
+                      >
+                        {town}
+                      </span>
+                    </AnimateItem>
                   ))}
                   <span className="rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-semibold text-zinc-500 italic">
-                    &amp; surrounding areas
+                    &amp; surrounding villages
                   </span>
                 </div>
-              </div>
+              </AnimateContainer>
 
-              <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-xs leading-relaxed text-sm text-zinc-600">
+              <AnimateContainer animation="fade-up" className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-xs leading-relaxed text-sm text-zinc-600">
                 <p>
-                  Care assessments and support in Midlothian are coordinated
-                  through Midlothian Health and Social Care Partnership
-                  (Midlothian HSCP), which oversees adult social care across the
-                  area. If you&apos;re not sure whether we cover your specific
-                  village, call us on{" "}
+                  Midlothian Health and Social Care Partnership (Midlothian HSCP)
+                  coordinates statutory care assessments from Fairfield House in
+                  Dalkeith. If you&apos;re unsure whether we cover your specific
+                  address, call us on{" "}
                   <a
                     href={`tel:${edinburghOffice.phone.replace(/\s+/g, "")}`}
                     className="font-bold text-primary hover:underline"
@@ -443,7 +443,7 @@ export default function MidlothianLocationPage() {
                   </a>{" "}
                   and we&apos;ll confirm right away.
                 </p>
-              </div>
+              </AnimateContainer>
             </div>
           </div>
         </section>
@@ -451,56 +451,49 @@ export default function MidlothianLocationPage() {
         {/* SECTION 4 — SERVICES IN THIS AREA */}
         <section className="bg-white py-24 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="mb-16 text-center">
-              <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
-                Available Support
-              </span>
-              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl mb-4">
-                Home care services available in Midlothian
-              </h2>
-              <div className="mx-auto h-1.5 w-24 rounded-full bg-primary mb-6" />
-              <p className="text-base leading-relaxed text-zinc-600 max-w-2xl mx-auto">
-                Our Midlothian clients have access to the full range of Zento
-                services, all delivered under nurse-led oversight:
-              </p>
-            </div>
+            <SectionHeader
+              badge="Available Support"
+              title="Home care services available in Midlothian"
+              subtitle="Our Midlothian clients have access to the full range of Zento services, all delivered under nurse-led oversight:"
+            />
 
-            <div className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto mb-12">
+            <AnimateContainer animation="stagger" className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto mb-12">
               {midlothianServices.map((service) => {
                 const IconComp = service.icon;
                 return (
-                  <div
-                    key={service.name}
-                    className="flex flex-col justify-between rounded-3xl border border-zinc-200/80 bg-zinc-50/50 p-6 transition-all duration-300 hover:border-primary/30 hover:bg-white hover:shadow-xl hover:shadow-primary/5"
-                  >
-                    <div className="space-y-3">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                        <IconComp className="w-5 h-5" />
+                  <AnimateItem key={service.name} className="h-full">
+                    <div
+                      className="flex h-full flex-col justify-between rounded-3xl border border-zinc-200/80 bg-zinc-50/50 p-6 transition-all duration-300 hover:border-primary/30 hover:bg-white hover:shadow-xl hover:shadow-primary/5"
+                    >
+                      <div className="space-y-3">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                          <IconComp className="w-5 h-5" />
+                        </div>
+                        <h3 className="text-lg font-bold text-secondary">
+                          {service.name}
+                        </h3>
+                        <p className="text-xs text-zinc-600 leading-relaxed">
+                          {service.desc}
+                        </p>
                       </div>
-                      <h3 className="text-lg font-bold text-secondary">
-                        {service.name}
-                      </h3>
-                      <p className="text-xs text-zinc-600 leading-relaxed">
-                        {service.desc}
-                      </p>
+                      <div className="mt-4 pt-3 border-t border-zinc-200/60">
+                        <Link
+                          href={service.href}
+                          className="inline-flex items-center gap-1 text-xs font-bold text-primary hover:text-secondary transition-colors"
+                        >
+                          Learn more <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
                     </div>
-                    <div className="mt-4 pt-3 border-t border-zinc-200/60">
-                      <Link
-                        href={service.href}
-                        className="inline-flex items-center gap-1 text-xs font-bold text-primary hover:text-secondary transition-colors"
-                      >
-                        Learn more <ArrowRight className="w-3.5 h-3.5" />
-                      </Link>
-                    </div>
-                  </div>
+                  </AnimateItem>
                 );
               })}
-            </div>
+            </AnimateContainer>
 
             <div className="text-center">
               <Link
                 href="/home-care/"
-                className="inline-flex items-center gap-2 rounded-full bg-secondary px-8 py-3.5 text-sm font-bold text-white shadow-md transition-all hover:bg-secondary/90 hover:scale-105"
+                className="page-cta-secondary-inline"
               >
                 See all home care services <ArrowRight className="w-4 h-4" />
               </Link>
@@ -508,82 +501,28 @@ export default function MidlothianLocationPage() {
           </div>
         </section>
 
-        {/* SECTION 5 — NURSE-LED IN MIDLOTHIAN */}
-        <section className="bg-zinc-50 py-20 border-t border-zinc-100">
-          <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-3xl mx-auto text-center space-y-6">
-              <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider">
-                Clinical Standard
-              </span>
-              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">
-                What nurse-led care means in Midlothian
-              </h2>
-              <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
-              <p className="text-base leading-relaxed text-zinc-600">
-                Every care plan in Midlothian is written by a registered nurse
-                &mdash; not a coordinator working from a template. Our nurses visit
-                clients at home, understand the specifics of their situation, and
-                stay involved through regular reviews. If your loved one&apos;s
-                needs change, the plan changes with them.
-              </p>
-              <div className="pt-2">
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* SECTION 5 — SIGNS SECTION (Using SignsSectionGrid) */}
+        <SignsSectionGrid
+          category="Midlothian Care Observations"
+          title="Signs your loved one in Midlothian may need support at home"
+          subtitle="Recognising when a relative in Dalkeith, Penicuik, or Bonnyrigg needs compassionate assistance. Our registered nurses carry out comprehensive home assessments."
+          signs={midlothianSigns}
+          ctaText="Book a Midlothian assessment"
+          ctaType="assessment"
+        />
 
-        {/* SECTION 6 — LOCAL TESTIMONIAL */}
-        <section className="bg-white py-20 border-t border-zinc-100">
-          <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-3xl mx-auto text-center space-y-6">
-              <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider">
-                Local Feedback
-              </span>
-              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">
-                What Midlothian families say
-              </h2>
-              <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
-
-              <div className="rounded-3xl border border-zinc-200/80 bg-zinc-50/50 p-8 shadow-sm text-left">
-                <div className="mb-4 flex gap-1">
-                  {Array.from({ length: 5 }).map((_, si) => (
-                    <Star
-                      key={si}
-                      className="w-5 h-5 fill-primary text-primary"
-                    />
-                  ))}
-                </div>
-                <p className="text-base leading-relaxed text-zinc-700 italic mb-6">
-                  &ldquo;Dad&apos;s needed more support since his diagnosis and
-                  finding someone who actually understood Midlothian, not just
-                  Edinburgh, made a real difference to how quickly things got
-                  sorted. The nurse who assessed him in Dalkeith knew exactly
-                  what to look for, and his carer has been consistent from day
-                  one.&rdquo;
-                </p>
-                <div className="border-t border-zinc-200/60 pt-4 flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-base font-black text-primary">
-                    P
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-secondary">
-                      Pauline S.
-                    </p>
-                    <p className="text-xs text-zinc-500 flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-primary" /> Dalkeith,
-                      Midlothian &middot; Google Review
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* SECTION 6 — TESTIMONIALS (Using TestimonialsSection) */}
+        <TestimonialsSection
+          category="Midlothian Feedback"
+          title="What Midlothian families say"
+          subtitle="Real reviews from families across Dalkeith, Penicuik, and Bonnyrigg."
+          testimonials={getTestimonials("locations.lothian.midlothian")}
+        />
 
         {/* SECTION 7 — GETTING STARTED */}
         <section className="bg-zinc-50 py-24 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="mb-16 text-center">
+            <AnimateContainer animation="fade-up" className="mb-16 text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 3-Step Process
               </span>
@@ -591,11 +530,11 @@ export default function MidlothianLocationPage() {
                 How to arrange home care in Midlothian
               </h2>
               <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
-            </div>
+            </AnimateContainer>
 
-            <div className="grid gap-8 md:grid-cols-3 max-w-4xl mx-auto mb-12">
+            <AnimateContainer animation="stagger" className="grid gap-8 md:grid-cols-3 max-w-4xl mx-auto mb-12">
               {midlothianSteps.map((item, index) => (
-                <div key={index} className="relative flex flex-col text-center">
+                <AnimateItem key={index} className="relative flex flex-col text-center">
                   <div className="mx-auto mb-6 flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white text-2xl font-black text-primary shadow-md ring-1 ring-primary/10">
                     {item.step}
                   </div>
@@ -605,9 +544,9 @@ export default function MidlothianLocationPage() {
                   <p className="text-sm leading-relaxed text-zinc-600">
                     {item.desc}
                   </p>
-                </div>
+                </AnimateItem>
               ))}
-            </div>
+            </AnimateContainer>
 
             <div className="flex justify-center">
               <ModalButton
@@ -623,44 +562,18 @@ export default function MidlothianLocationPage() {
         {/* SECTION 8 — FAQ */}
         <section className="bg-white py-24 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-3xl mx-auto">
-              <div className="mb-12 text-center">
-                <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-3">
-                  Midlothian FAQs
-                </span>
-                <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl">
-                  Frequently asked questions about home care in Midlothian
-                </h2>
-                <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
-              </div>
-              <div className="space-y-3">
-                {midlothianFaqs.map((faq, i) => (
-                  <details
-                    key={i}
-                    className="group rounded-2xl border border-zinc-200 bg-white open:border-primary/30 open:shadow-lg open:shadow-primary/5 transition-all duration-200"
-                  >
-                    <summary className="flex cursor-pointer items-center justify-between gap-4 p-6 list-none">
-                      <h3 className="text-base font-bold text-secondary group-open:text-primary transition-colors">
-                        {faq.q}
-                      </h3>
-                      <ChevronDown className="w-5 h-5 shrink-0 text-zinc-400 transition-transform duration-300 group-open:rotate-180 group-open:text-primary" />
-                    </summary>
-                    <div className="px-6 pb-6">
-                      <p className="text-sm leading-relaxed text-zinc-600">
-                        {faq.a}
-                      </p>
-                    </div>
-                  </details>
-                ))}
-              </div>
-            </div>
+            <FaqAccordion
+              badge="Midlothian FAQs"
+              title="Frequently asked questions about home care in Midlothian"
+              faqs={midlothianFaqs}
+            />
           </div>
         </section>
 
         {/* SECTION 9 — NEARBY AREAS & FINAL CTA */}
         <section className="bg-zinc-50 py-20 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-4xl mx-auto text-center space-y-6 mb-16">
+            <AnimateContainer animation="fade-up" className="max-w-4xl mx-auto text-center space-y-6 mb-16">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider">
                 Explore Regional Care
               </span>
@@ -712,41 +625,17 @@ export default function MidlothianLocationPage() {
                   </span>
                 </Link>
               </div>
-            </div>
+            </AnimateContainer>
 
             {/* FINAL CTA BOX */}
-            <div className="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-primary via-primary/90 to-primary/75 py-16 px-8 text-center text-white shadow-2xl shadow-primary/20 md:py-24 max-w-5xl mx-auto">
-              <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
-              <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-secondary/20 blur-3xl" />
-              <div className="relative z-10 mx-auto max-w-3xl space-y-6">
-                <h2 className="text-3xl font-black leading-tight min-[400px]:text-4xl sm:text-5xl lg:text-6xl">
-                  Speak to our team about care in Midlothian
-                </h2>
-                <p className="text-base sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
-                  Our nursing team is ready to answer your questions and arrange
-                  a home assessment anywhere in Midlothian.
-                </p>
-                <p className="text-sm font-semibold text-white/70 italic">
-                  No pressure. No obligation. Honest advice from our registered
-                  nurses.
-                </p>
-                <div className="flex flex-col items-center justify-center gap-4 pt-2 sm:flex-row sm:flex-wrap">
-                  <ModalButton
-                    type="assessment"
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-bold text-primary shadow-xl transition-all hover:scale-105 cursor-pointer"
-                  >
-                    Book a free assessment <ArrowRight className="w-5 h-5" />
-                  </ModalButton>
-                  <a
-                    href={`tel:${edinburghOffice.phone.replace(/\s+/g, "")}`}
-                    className="inline-flex items-center gap-2 rounded-full border-2 border-white/50 bg-transparent px-7 py-3.5 text-sm font-bold text-white transition-all hover:bg-white/10"
-                  >
-                    <Phone className="w-4 h-4 shrink-0" /> Call us:{" "}
-                    {edinburghOffice.phone}
-                  </a>
-                </div>
-              </div>
-            </div>
+            <FinalCTASection
+              title="Speak to our team about care in Midlothian"
+              subtitle="Our nursing team is ready to answer your questions and arrange a home assessment anywhere in Midlothian."
+              tagline="No pressure. No obligation. Honest advice from our registered nurses."
+              phone={edinburghOffice.phone}
+              ctaText="Book a free assessment"
+              ctaType="assessment"
+            />
           </div>
         </section>
       </main>

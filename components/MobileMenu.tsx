@@ -104,9 +104,8 @@ export default function MobileMenu({ isOpen, onClose, onOpenModal }: MobileMenuP
                 >
                   <span>Services</span>
                   <ChevronDown
-                    className={`h-4 w-4 transition-transform duration-200 ${
-                      isServicesOpen ? "rotate-180 text-primary" : "text-zinc-400"
-                    }`}
+                    className={`h-4 w-4 transition-transform duration-200 ${isServicesOpen ? "rotate-180 text-primary" : "text-zinc-400"
+                      }`}
                   />
                 </button>
 
@@ -162,9 +161,8 @@ export default function MobileMenu({ isOpen, onClose, onOpenModal }: MobileMenuP
                 >
                   <span>Locations</span>
                   <ChevronDown
-                    className={`h-4 w-4 transition-transform duration-200 ${
-                      isLocationsOpen ? "rotate-180 text-primary" : "text-zinc-400"
-                    }`}
+                    className={`h-4 w-4 transition-transform duration-200 ${isLocationsOpen ? "rotate-180 text-primary" : "text-zinc-400"
+                      }`}
                   />
                 </button>
 

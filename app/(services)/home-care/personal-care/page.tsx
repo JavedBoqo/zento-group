@@ -16,6 +16,12 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ModalButton from "@/components/ModalButton";
+import AnimateContainer, { AnimateItem } from "@/components/AnimateContainer";
+import SignsSectionGrid from "@/components/SignsSectionGrid";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import { getTestimonials } from "@/lib/testimonials";
+import FaqAccordion from "@/components/FaqAccordion";
+import FinalCTASection from "@/components/FinalCTASection";
 import { OFFICES } from "@/constants";
 
 /* ─────────────────────────── SEO METADATA ─────────────────────────── */
@@ -110,30 +116,6 @@ const steps = [
     step: "04",
     title: "Care begins, and we stay involved",
     desc: "Your matched carer begins visits on the agreed schedule. Our nursing team reviews the care plan regularly and adjusts it when your loved one's needs change. You are not left to manage that alone.",
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      "Mum had been refusing help for months — she's fiercely independent and the idea of a stranger helping her bathe felt demeaning to her. The nurse who came for the assessment really understood that. The carer she matched has been coming every morning for six months and Mum genuinely looks forward to it. That relationship has made all the difference.",
-    author: "Anne D.",
-    location: "Morningside, Edinburgh",
-    source: "Google Review",
-  },
-  {
-    quote:
-      "We were worried about Dad's skin after he came home from hospital — he'd had some problems and we weren't sure a standard carer would know what to watch for. The nursing oversight at Zento was exactly what we needed. They flagged a minor skin concern at the three-week review that we hadn't noticed. It sounds small, but it mattered.",
-    author: "Gordon R.",
-    location: "Dalkeith, Midlothian",
-    source: "homecare.co.uk",
-  },
-  {
-    quote:
-      "Finding personal care in Crieff that actually felt right was harder than I expected. From the nurse assessment to the first few visits, Zento handled everything properly. My wife has had the same carer from the beginning, and the routine they've built together has been genuinely steadying for her.",
-    author: "Stuart T.",
-    location: "Crieff, Perthshire",
-    source: "Google Review",
   },
 ];
 
@@ -272,7 +254,7 @@ export default function PersonalCarePage() {
           <div className="pointer-events-none absolute -bottom-32 -left-32 h-[480px] w-[480px] rounded-full bg-secondary/5 blur-[100px]" />
 
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24 relative z-10 text-center">
-            <div className="mx-auto max-w-5xl space-y-6">
+            <AnimateContainer animation="fade-up" className="mx-auto max-w-5xl space-y-6">
               <div>
                 <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs sm:text-sm font-bold text-primary mb-4">
                   Nurse-Led Personal Care · Edinburgh, Lothian &amp; Perthshire
@@ -286,44 +268,28 @@ export default function PersonalCarePage() {
                 <p className="text-base sm:text-lg leading-relaxed text-zinc-600 max-w-3xl mx-auto">
                   Personal care at home provides practical, hands-on support with the activities of daily living —
                   bathing, dressing, continence, mobility and personal hygiene — delivered by a trained carer and
-                  overseen at every stage by a registered nurse. At Zento, the clinical standard behind your loved
-                  one&apos;s personal care is built into the arrangement before the first visit, not added as an
-                  afterthought if something goes wrong.
+                  overseen at every stage by a registered nurse.
                 </p>
               </div>
 
-              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <div className="page-cta-group">
                 <ModalButton
                   type="assessment"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-bold text-white shadow-xl shadow-primary/30 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
+                  className="page-cta-primary"
                 >
                   Speak to our nursing team <ArrowRight className="w-5 h-5" />
                 </ModalButton>
 
                 <a
                   href={OFFICES[0]?.phoneHref}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-secondary px-8 py-3.5 text-base font-bold text-secondary transition-all hover:bg-secondary hover:text-white"
+                  className="page-cta-phone"
                 >
                   <Phone className="w-4 h-4 shrink-0" />
                   Call Edinburgh: {OFFICES[0]?.phone}
                 </a>
               </div>
 
-              <div className="pt-2 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">Care Inspectorate registered</span>
-                </div>
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">Nurse-led care plans</span>
-                </div>
-                <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-2 shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-xs font-bold text-secondary">Consistent, matched carers</span>
-                </div>
-              </div>
-            </div>
+            </AnimateContainer>
           </div>
         </section>
 
@@ -333,7 +299,7 @@ export default function PersonalCarePage() {
         <section className="bg-white py-20">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
-              <div className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
+              <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
                   src="/about-image.png"
                   alt="Carer providing dignified personal care support at home"
@@ -341,9 +307,9 @@ export default function PersonalCarePage() {
                   sizes="(max-width: 768px) 100vw, 500px"
                   className="object-cover"
                 />
-              </div>
+              </AnimateContainer>
 
-              <div className="flex-1 space-y-6">
+              <AnimateContainer animation="fade-left" delay={0.1} className="flex-1 space-y-6">
                 <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">
                   What is personal care at home?
                 </h2>
@@ -361,18 +327,15 @@ export default function PersonalCarePage() {
                   </p>
                   <p>
                     For families in Edinburgh, Lothian and Perthshire, arranging personal care at home is often the
-                    first step in managing a loved one&apos;s changing needs. Done well, it preserves independence,
-                    protects dignity and prevents the deterioration that comes from unmanaged hygiene, continence
-                    or mobility.
+                    first step in managing a loved one&apos;s changing needs.
                   </p>
                   <p>
                     At Zento, personal care is nurse-led. A registered nurse assesses each client before care
                     begins, identifies any clinical risks and writes a care plan specific to that person&apos;s
-                    needs. The carer delivers the plan. The nurse reviews it regularly. It is an approach that most
-                    home care providers in Scotland do not offer.
+                    needs.
                   </p>
                 </div>
-              </div>
+              </AnimateContainer>
             </div>
           </div>
         </section>
@@ -380,49 +343,14 @@ export default function PersonalCarePage() {
         {/* ════════════════════════════════════════════════════════
             SECTION 3 — SIGNS YOUR LOVED ONE MAY NEED PERSONAL CARE
         ════════════════════════════════════════════════════════ */}
-        <section className="bg-zinc-50 py-20 border-t border-zinc-100">
-          <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-3xl mx-auto">
-              <div className="mb-10 text-center">
-                <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
-                  Warning Signs
-                </span>
-                <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl mb-4">
-                  Signs your loved one may need personal care at home
-                </h2>
-                <div className="mx-auto h-1.5 w-24 rounded-full bg-primary mb-6" />
-                <p className="text-base leading-relaxed text-zinc-600">
-                  Recognising when someone needs help with personal care is not always straightforward — many
-                  people find it difficult to accept and harder still to ask for. If any of the following are
-                  familiar, a nursing assessment is a sensible first step.
-                </p>
-              </div>
-
-              <div className="space-y-3 mb-10">
-                {signs.map((sign, i) => (
-                  <div
-                    key={i}
-                    className="flex items-start gap-3 rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-sm"
-                  >
-                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 mt-0.5">
-                      <CheckCircle2 className="w-4 h-4 text-primary" />
-                    </div>
-                    <p className="text-sm leading-relaxed text-zinc-700">{sign}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="text-center">
-                <ModalButton
-                  type="assessment"
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 font-bold text-white shadow-xl shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
-                >
-                  Book a free nursing assessment <ArrowRight className="w-5 h-5" />
-                </ModalButton>
-              </div>
-            </div>
-          </div>
-        </section>
+        <SignsSectionGrid
+          category="Warning Signs"
+          title="Signs your loved one may need personal care at home"
+          subtitle="Recognising when someone needs help with personal care is not always straightforward — many people find it difficult to accept and harder still to ask for. If any of the following are familiar, a nursing assessment is a sensible first step."
+          signs={signs}
+          ctaText="Book a free nursing assessment"
+          ctaType="assessment"
+        />
 
         {/* ════════════════════════════════════════════════════════
             SECTION 4 — WHAT'S INCLUDED
@@ -613,7 +541,7 @@ export default function PersonalCarePage() {
               <div className="flex justify-center">
                 <ModalButton
                   type="assessment"
-                  className="inline-flex items-center gap-2 rounded-full bg-secondary px-8 py-3.5 font-bold text-white shadow-lg transition-all hover:scale-105 hover:bg-secondary/90 cursor-pointer"
+                  className="page-cta-secondary-inline"
                 >
                   Speak to our team <ArrowRight className="w-5 h-5" />
                 </ModalButton>
@@ -625,55 +553,19 @@ export default function PersonalCarePage() {
         {/* ════════════════════════════════════════════════════════
             SECTION 8 — TESTIMONIALS
         ════════════════════════════════════════════════════════ */}
-        <section className="bg-zinc-50 py-24 border-t border-zinc-100">
-          <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="mb-12 text-center">
-              <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-3">
-                Families We&apos;ve Supported
-              </span>
-              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl">
-                What families say about Zento&apos;s personal care
-              </h2>
-              <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-3">
-              {testimonials.map((t, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col rounded-3xl border border-zinc-200/80 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
-                >
-                  <div className="mb-5 flex gap-1">
-                    {Array.from({ length: 5 }).map((_, si) => (
-                      <Star key={si} className="w-4 h-4 fill-primary text-primary" />
-                    ))}
-                  </div>
-                  <p className="flex-1 text-sm leading-relaxed text-zinc-600 italic mb-6">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                  <div className="border-t border-zinc-200 pt-5 flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-base font-black text-primary">
-                      {t.author.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-secondary">{t.author}</p>
-                      <p className="text-xs text-zinc-500 flex items-center gap-1">
-                        <MapPin className="w-3 h-3 text-primary" /> {t.location} · {t.source}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <TestimonialsSection
+          category="Families We've Supported"
+          title="What families say about Zento's personal care"
+          subtitle="Read how our nurse-led approach and matched carers make a meaningful difference for families across Edinburgh, Lothian, and Perthshire."
+          testimonials={getTestimonials("homeCare.personalCare")}
+        />
 
         {/* ════════════════════════════════════════════════════════
             SECTION 9 — COVERAGE AREA
         ════════════════════════════════════════════════════════ */}
         <section className="border-t border-zinc-100 bg-white py-20">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="text-center">
+            <AnimateContainer animation="fade-up" className="text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 Coverage
               </span>
@@ -697,7 +589,7 @@ export default function PersonalCarePage() {
                   </Link>
                 ))}
               </div>
-            </div>
+            </AnimateContainer>
           </div>
         </section>
 
@@ -706,36 +598,11 @@ export default function PersonalCarePage() {
         ════════════════════════════════════════════════════════ */}
         <section className="bg-zinc-50 py-24 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="max-w-3xl mx-auto">
-              <div className="mb-12 text-center">
-                <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-3">
-                  FAQs
-                </span>
-                <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl">
-                  Frequently asked questions about personal care at home
-                </h2>
-                <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
-              </div>
-
-              <div className="space-y-3">
-                {faqs.map((faq, i) => (
-                  <details
-                    key={i}
-                    className="group rounded-2xl border border-zinc-200 bg-white open:bg-white open:border-primary/30 open:shadow-lg open:shadow-primary/5 transition-all duration-200"
-                  >
-                    <summary className="flex cursor-pointer items-center justify-between gap-4 p-6 list-none">
-                      <h3 className="text-base font-bold text-secondary group-open:text-primary transition-colors">
-                        {faq.q}
-                      </h3>
-                      <ChevronDown className="w-5 h-5 shrink-0 text-zinc-400 transition-transform duration-300 group-open:rotate-180 group-open:text-primary" />
-                    </summary>
-                    <div className="px-6 pb-6">
-                      <p className="text-sm leading-relaxed text-zinc-600">{faq.a}</p>
-                    </div>
-                  </details>
-                ))}
-              </div>
-            </div>
+            <FaqAccordion
+              badge="FAQs"
+              title="Frequently asked questions about personal care at home"
+              faqs={faqs}
+            />
           </div>
         </section>
 
@@ -744,7 +611,7 @@ export default function PersonalCarePage() {
         ════════════════════════════════════════════════════════ */}
         <section className="bg-white py-20 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="mb-10 text-center">
+            <AnimateContainer animation="fade-up" className="mb-10 text-center">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">
                 Related Services
               </span>
@@ -752,33 +619,34 @@ export default function PersonalCarePage() {
                 Families often combine personal care with...
               </h2>
               <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
-            </div>
+            </AnimateContainer>
 
-            <div className="grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto">
+            <AnimateContainer animation="stagger" className="grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto">
               {relatedServices.map((service) => {
                 const IconComp = service.icon;
                 return (
-                  <Link
-                    key={service.title}
-                    href={service.href}
-                    className="group flex flex-col rounded-3xl border border-zinc-200/80 bg-zinc-50 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:bg-white hover:shadow-xl hover:shadow-primary/10"
-                  >
-                    <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
-                      <IconComp className="w-5 h-5" />
-                    </div>
-                    <h3 className="mb-2 text-base font-bold text-secondary group-hover:text-primary transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-zinc-600 flex-1">{service.desc}</p>
-                    <div className="mt-4 pt-4 border-t border-zinc-100">
-                      <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary">
-                        Learn more <ArrowRight className="w-3.5 h-3.5" />
-                      </span>
-                    </div>
-                  </Link>
+                  <AnimateItem key={service.title} className="h-full">
+                    <Link
+                      href={service.href}
+                      className="group flex h-full flex-col rounded-3xl border border-zinc-200/80 bg-zinc-50 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:bg-white hover:shadow-xl hover:shadow-primary/10"
+                    >
+                      <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                        <IconComp className="w-5 h-5" />
+                      </div>
+                      <h3 className="mb-2 text-base font-bold text-secondary group-hover:text-primary transition-colors">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-zinc-600 flex-1">{service.desc}</p>
+                      <div className="mt-4 pt-4 border-t border-zinc-100">
+                        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary">
+                          Learn more <ArrowRight className="w-3.5 h-3.5" />
+                        </span>
+                      </div>
+                    </Link>
+                  </AnimateItem>
                 );
               })}
-            </div>
+            </AnimateContainer>
           </div>
         </section>
 
@@ -787,43 +655,14 @@ export default function PersonalCarePage() {
         ════════════════════════════════════════════════════════ */}
         <section className="py-24 bg-zinc-50 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
-            <div className="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-primary via-primary/90 to-primary/75 py-16 px-8 text-center text-white shadow-2xl shadow-primary/20 md:py-24">
-              <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
-              <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-secondary/20 blur-3xl" />
-
-              <div className="relative z-10 mx-auto max-w-3xl space-y-6">
-                <h2 className="text-3xl font-black leading-tight min-[400px]:text-4xl sm:text-5xl lg:text-6xl">
-                  Speak to our nursing team about personal care
-                </h2>
-                <p className="text-base sm:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
-                  Finding the right personal care for a loved one takes time — and it should. Our nursing team is
-                  here to help you understand the options, answer your questions honestly and arrange the right
-                  level of support without pressure.
-                </p>
-                <p className="text-sm font-semibold text-white/70 italic">
-                  No pressure. No obligation. Honest advice from our registered nurses.
-                </p>
-
-                <div className="flex flex-col items-center justify-center gap-4 pt-2 sm:flex-row sm:flex-wrap">
-                  <ModalButton
-                    type="assessment"
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-bold text-primary shadow-xl transition-all hover:scale-105 cursor-pointer"
-                  >
-                    Book a free nursing assessment <ArrowRight className="w-5 h-5" />
-                  </ModalButton>
-                  {OFFICES.map((office) => (
-                    <a
-                      key={office.id}
-                      href={office.phoneHref}
-                      className="inline-flex items-center gap-2 rounded-full border-2 border-white/50 bg-transparent px-7 py-3.5 text-sm font-bold text-white transition-all hover:bg-white/10"
-                    >
-                      <Phone className="w-4 h-4 shrink-0" />
-                      {office.shortName}: {office.phone}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <FinalCTASection
+              title="Speak to our nursing team about personal care"
+              subtitle="Finding the right personal care for a loved one takes time — and it should. Our nursing team is here to help you understand the options, answer your questions honestly and arrange the right level of support without pressure."
+              tagline="No pressure. No obligation. Honest advice from our registered nurses."
+              phone={OFFICES[0]?.phone}
+              ctaText="Book a free nursing assessment"
+              ctaType="assessment"
+            />
           </div>
         </section>
 

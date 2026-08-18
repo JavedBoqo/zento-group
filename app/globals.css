@@ -36,3 +36,54 @@ body {
 button {
   cursor: pointer !important;
 }
+
+.scrollbar-none {
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE / Edge */
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;               /* Chrome / Safari */
+}
+
+@layer components {
+  /* Responsive hero / page CTA button groups */
+  .page-cta-group {
+    @apply flex flex-col items-stretch gap-3 w-full max-w-md mx-auto md:max-w-none md:items-center md:flex-row md:flex-wrap md:justify-center lg:gap-4;
+  }
+
+  .page-cta-group-dark {
+    @apply flex flex-col items-stretch gap-3 w-full max-w-md mx-auto pt-2 md:max-w-none md:items-center md:flex-row md:flex-wrap md:justify-center md:gap-4;
+  }
+
+  .page-cta-primary {
+    @apply inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-bold text-white shadow-xl shadow-primary/30 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer whitespace-normal text-center min-[400px]:px-6 min-[400px]:py-3.5 md:px-8 md:text-base;
+  }
+
+  .page-cta-phone {
+    @apply inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full border-2 border-secondary px-5 py-3 text-sm font-bold text-secondary transition-all hover:bg-secondary hover:text-white whitespace-normal text-center min-[400px]:px-6 min-[400px]:py-3.5 md:px-8 md:text-base;
+  }
+
+  .page-cta-on-dark-primary {
+    @apply inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-primary shadow-xl transition-all hover:scale-105 cursor-pointer whitespace-normal text-center min-[400px]:px-6 min-[400px]:py-3.5 md:px-8 md:py-4 md:text-base;
+  }
+
+  .page-cta-on-dark-outline {
+    @apply inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full border-2 border-white/50 bg-transparent px-5 py-3 text-sm font-bold text-white transition-all hover:bg-white/10 whitespace-normal text-center min-[400px]:px-6 min-[400px]:py-3.5 md:px-7;
+  }
+
+  .page-cta-secondary-solid {
+    @apply flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-secondary px-5 py-3 text-sm font-bold text-white shadow-lg transition-all hover:scale-105 whitespace-normal text-center min-[400px]:px-6 min-[400px]:py-3.5 md:px-8 md:py-4;
+  }
+
+  .page-cta-white-solid {
+    @apply flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-primary shadow-lg transition-all hover:scale-105 cursor-pointer whitespace-normal text-center min-[400px]:px-6 min-[400px]:py-3.5 md:px-8 md:py-4;
+  }
+
+  .page-cta-white-outline {
+    @apply flex w-full md:w-auto items-center justify-center gap-2 rounded-full border-2 border-white/30 bg-transparent px-5 py-3 text-sm font-bold text-white transition-all hover:bg-white/10 cursor-pointer whitespace-normal text-center min-[400px]:px-6 min-[400px]:py-3.5 md:px-8 md:py-4;
+  }
+
+  .page-cta-secondary-inline {
+    @apply inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-secondary px-5 py-3 text-sm font-bold text-white shadow-lg transition-all hover:scale-105 hover:bg-secondary/90 cursor-pointer whitespace-normal text-center min-[400px]:px-6 min-[400px]:py-3.5 md:px-8;
+  }
+}

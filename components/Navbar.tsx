@@ -242,8 +242,8 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
                 <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180 text-zinc-400 group-hover:text-primary" />
               </Link>
 
-              {/* Mega Dropdown Menu */}
-              <div className="absolute top-full -left-44 w-[760px] max-w-[calc(100vw-2rem)] pt-3 opacity-0 invisible translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
+              {/* Mega Dropdown Menu — pointer-events only on true hover devices */}
+              <div className="absolute top-full -left-44 w-[760px] max-w-[calc(100vw-2rem)] pt-3 opacity-0 invisible translate-y-2 pointer-events-none [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-hover:visible [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:pointer-events-auto transition-all duration-200 z-50">
                 <div className="overflow-hidden rounded-3xl border border-zinc-200/80 bg-white/98 backdrop-blur-2xl p-6 shadow-2xl ring-1 ring-black/5">
                   <div className="grid grid-cols-12 gap-8">
                     {/* Category 1: Home Care (6 Columns) */}
@@ -370,8 +370,8 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
                 <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180 text-zinc-400 group-hover:text-primary" />
               </Link>
 
-              {/* Locations Dropdown */}
-              <div className="absolute top-full left-0 w-72 sm:w-80 pt-3 opacity-0 invisible translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-[60]">
+              {/* Locations Dropdown — pointer-events only on true hover devices */}
+              <div className="absolute top-full left-0 w-72 sm:w-80 pt-3 opacity-0 invisible translate-y-2 pointer-events-none [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-hover:visible [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:pointer-events-auto transition-all duration-200 z-[60]">
                 <div className="rounded-3xl border border-zinc-200/80 bg-white p-4 shadow-2xl ring-1 ring-black/5">
                   <Link
                     href="/locations/"
@@ -484,11 +484,12 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
             </button>
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button — z-[70] ensures it always sits above any dropdown overlay */}
           <button
             aria-label="Open mobile menu"
-            className="p-2 md:hidden cursor-pointer"
+            className="relative z-[70] p-3 md:hidden cursor-pointer touch-manipulation"
             onClick={handleOpenMenu}
+            type="button"
           >
             <Menu className="w-6 h-6 text-secondary" />
           </button>

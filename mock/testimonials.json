@@ -1,0 +1,444 @@
+{
+  "services": {
+    "reviews": [
+      {
+        "quote": "Dad's care plan was written by an actual nurse, which gave us confidence from day one. Visits are mostly reliable and the carers seem to know him properly now.",
+        "author": "Margaret S.",
+        "location": "Morningside, Edinburgh",
+        "rating": 5
+      },
+      {
+        "quote": "We needed help quickly after Mum left hospital. It took a few days to get the routine fully settled, but once it did, things ran smoothly. Would recommend.",
+        "author": "David K.",
+        "location": "Crieff, Perthshire",
+        "rating": 4
+      },
+      {
+        "quote": "Good communication from the office and a proper assessment at the start. Not the cheapest option locally, but you can tell there's clinical oversight behind it.",
+        "author": "Helen C.",
+        "location": "West Lothian",
+        "rating": 4
+      }
+    ]
+  },
+  "homeCare": {
+    "reviews": [
+      {
+        "quote": "Dad's care plan was written by an actual nurse, which gave us confidence from day one. Visits are mostly reliable and the carers seem to know him properly now.",
+        "author": "Margaret S.",
+        "location": "Morningside, Edinburgh",
+        "rating": 5,
+        "source": "Google Review"
+      },
+      {
+        "quote": "We needed help quickly after Mum left hospital. It took a few days to get the routine fully settled, but once it did, things ran smoothly. Would recommend.",
+        "author": "David K.",
+        "location": "Crieff, Perthshire",
+        "rating": 4,
+        "source": "homecare.co.uk"
+      },
+      {
+        "quote": "Eight months in and we've had the same morning carer most weeks. Mum actually waits by the door now, which says more than I can.",
+        "author": "Sarah L.",
+        "location": "Musselburgh, East Lothian",
+        "rating": 5,
+        "source": "Google Review"
+      }
+    ],
+    "personalCare": [
+      {
+        "quote": "Mum hated the idea of help at first. The nurse who assessed her didn't rush it, and the carer they matched has been brilliant — same person every morning for six months.",
+        "author": "Anne D.",
+        "location": "Morningside, Edinburgh",
+        "rating": 5,
+        "source": "Google Review"
+      },
+      {
+        "quote": "Dad came home from hospital with fragile skin. The nurse picked up a small issue at the review visit that we'd missed. Small thing, but it mattered.",
+        "author": "Gordon R.",
+        "location": "Dalkeith, Midlothian",
+        "rating": 5,
+        "source": "homecare.co.uk"
+      },
+      {
+        "quote": "Took a bit longer than hoped to find the right fit in Crieff, but once sorted my wife has had consistent support. Steady routine has helped her a lot.",
+        "author": "Stuart T.",
+        "location": "Crieff, Perthshire",
+        "rating": 4,
+        "source": "Google Review"
+      }
+    ],
+    "medicationSupport": [
+      {
+        "quote": "Dad takes seven tablets a day and doubled up on one after a mix-up. Zento sent a nurse in first, built a clear protocol, and we've had no issues since.",
+        "author": "Margaret H.",
+        "location": "Edinburgh",
+        "rating": 5,
+        "source": "Google Review"
+      },
+      {
+        "quote": "With Mum's dementia we needed more than reminders — someone who understood what each medication was for. The carer follows a proper plan, not guesswork.",
+        "author": "Peter F.",
+        "location": "Haddington, East Lothian",
+        "rating": 5,
+        "source": "homecare.co.uk"
+      },
+      {
+        "quote": "After discharge from Perth Royal, Mum's meds had all changed. Nurse assessment within 48 hours and a carer visiting that week. Huge relief for the family.",
+        "author": "Sheena M.",
+        "location": "Crieff, Perthshire",
+        "rating": 5,
+        "source": "Google Review"
+      }
+    ],
+    "dementiaCare": [
+      {
+        "quote": "Carer consistency was non-negotiable for Mum — unfamiliar faces upset her. She's had the same two carers for over a year. That trust took time but it's there now.",
+        "author": "Janet S.",
+        "location": "Colinton, Edinburgh",
+        "rating": 5,
+        "source": "Google Review"
+      },
+      {
+        "quote": "The nurse asked about Dad's life before dementia — his job, his routines. You can tell the carer uses that. It doesn't feel like ticking boxes.",
+        "author": "Michael A.",
+        "location": "Crieff, Perthshire",
+        "rating": 5,
+        "source": "homecare.co.uk"
+      },
+      {
+        "quote": "We were told to look at care homes but Dad wanted to stay put. Routines are calmer now. Occasional carer swap is still hard for him, but overall much better.",
+        "author": "Helen R.",
+        "location": "Haddington, East Lothian",
+        "rating": 4,
+        "source": "Google Review"
+      }
+    ],
+    "companionship": [
+      {
+        "quote": "After Dad died, Mum was alone most days and wouldn't admit she was lonely. Her companion comes twice a week — crosswords, short walks. She looks forward to it.",
+        "author": "Fiona M.",
+        "location": "Bruntsfield, Edinburgh",
+        "rating": 5,
+        "source": "Google Review"
+      },
+      {
+        "quote": "The companion flagged that Mum had gone quiet about things she used to chat about. Turned out to be worth getting checked. That attentiveness made a difference.",
+        "author": "Robert K.",
+        "location": "Musselburgh, East Lothian",
+        "rating": 5,
+        "source": "homecare.co.uk"
+      },
+      {
+        "quote": "Dad was getting withdrawn in Livingston. Twice-weekly visits for cards and a shop run have helped. He's not suddenly social, but he's brighter.",
+        "author": "Janet W.",
+        "location": "Livingston, West Lothian",
+        "rating": 4,
+        "source": "Google Review"
+      }
+    ],
+    "mealPreparation": [
+      {
+        "quote": "Dad had lost weight and we hadn't clocked how little he was eating. Carer cooks a few times a week and sits with him. He's put a bit back on.",
+        "author": "Elaine C.",
+        "location": "Corstorphine, Edinburgh",
+        "rating": 5,
+        "source": "Google Review"
+      },
+      {
+        "quote": "Mealtimes with Mum's dementia were a nightmare — forgetting she'd eaten, refusing favourites. Her carer found what works and stuck with it. Much calmer now.",
+        "author": "Douglas W.",
+        "location": "Livingston, West Lothian",
+        "rating": 5,
+        "source": "homecare.co.uk"
+      },
+      {
+        "quote": "Mum's appetite dropped after Dad passed. Fresh lunches a few days a week have helped. Simple thing, but she talks about food again.",
+        "author": "Patricia N.",
+        "location": "Crieff, Perthshire",
+        "rating": 4,
+        "source": "Google Review"
+      }
+    ],
+    "hospitalDischarge": [
+      {
+        "quote": "Hip surgery discharge came with 48 hours' notice. I rang in a panic — nurse had a plan ready before Dad left the Royal Infirmary. Carer there when he got home.",
+        "author": "Claire B.",
+        "location": "Edinburgh",
+        "rating": 5,
+        "source": "Google Review"
+      },
+      {
+        "quote": "Mum was in Ninewells three weeks after a stroke. The nurse spoke to the ward before discharge. Meds and mobility support were in place day one. Still nerve-wracking, but handled well.",
+        "author": "Alistair D.",
+        "location": "Perth (Crieff-based team)",
+        "rating": 5,
+        "source": "homecare.co.uk"
+      },
+      {
+        "quote": "Knee replacement and I was dreading getting home. Coordination with the hospital was good. First week was still tough, but we weren't left on our own.",
+        "author": "George M.",
+        "location": "Midlothian",
+        "rating": 4,
+        "source": "Google Review"
+      }
+    ],
+    "respiteCare": [
+      {
+        "quote": "Two years without a proper break caring for my husband. Respite felt like admitting defeat — it wasn't. Handover was thorough and he barely noticed the change.",
+        "author": "Linda P.",
+        "location": "Portobello, Edinburgh",
+        "rating": 5,
+        "source": "Google Review"
+      },
+      {
+        "quote": "Sister hospitalised, needed cover within a day. Zento had someone briefed and in place faster than expected. Properly prepared, not just a warm body.",
+        "author": "Kenneth R.",
+        "location": "Comrie, Perthshire",
+        "rating": 5,
+        "source": "homecare.co.uk"
+      },
+      {
+        "quote": "Five days off while my wife was looked after. Expensive but worth it. Only gripe was one late handover call — otherwise very solid.",
+        "author": "William J.",
+        "location": "Edinburgh",
+        "rating": 4,
+        "source": "Google Review"
+      }
+    ]
+  },
+  "liveInCare": {
+    "reviews": [
+      {
+        "quote": "Care homes for both parents would have cost nearly double. One live-in carer let them stay in the house they've had for forty years. Not perfect every day, but right for them.",
+        "author": "Fiona L.",
+        "location": "Edinburgh",
+        "rating": 5
+      },
+      {
+        "quote": "Dad's dementia and a care home felt like a bad fit. One familiar carer at home works better than a rotating ward team for him.",
+        "author": "Robert T.",
+        "location": "Crieff, Perthshire",
+        "rating": 5
+      },
+      {
+        "quote": "Live-in care is a big step and a big cost. Mum's carer is capable and kind. We still visit a lot, but it's good knowing someone's there overnight.",
+        "author": "Catherine B.",
+        "location": "East Lothian",
+        "rating": 4
+      }
+    ],
+    "overnightCare": [
+      {
+        "quote": "Two night falls in a month — the nurse was clear Dad needed waking nights, not sleep-in. Three months on, no falls. We actually sleep again.",
+        "author": "Rachel N.",
+        "location": "Newington, Edinburgh",
+        "rating": 5,
+        "source": "Google Review"
+      },
+      {
+        "quote": "Nights with Mum were unpredictable. Started sleep-in, moved to waking nights after a nurse review. Sensible adjustment, not just selling the pricier option.",
+        "author": "Andrew C.",
+        "location": "Crieff, Perthshire",
+        "rating": 5,
+        "source": "homecare.co.uk"
+      },
+      {
+        "quote": "Dad wanders at night — we were shattered checking on him hourly. Waking carer has been a game changer. Not cheap, but nor is broken sleep.",
+        "author": "Marion T.",
+        "location": "Dalkeith, Midlothian",
+        "rating": 4,
+        "source": "Google Review"
+      }
+    ],
+    "twentyFourHourCare": [
+      {
+        "quote": "After Dad's second stroke one carer wasn't enough, especially at night. 24-hour team let him stay home. That mattered more than I can put into words.",
+        "author": "Elizabeth W.",
+        "location": "Merchiston, Edinburgh",
+        "rating": 5,
+        "source": "Google Review"
+      },
+      {
+        "quote": "Nurse was honest that live-in wasn't safe enough for Mum at night. 24-hour care blew the budget but someone awake at 3am is worth it.",
+        "author": "Thomas G.",
+        "location": "Crieff, Perthshire",
+        "rating": 4,
+        "source": "homecare.co.uk"
+      },
+      {
+        "quote": "We thought a care home was inevitable. The rotational team means Mum stays surrounded by her own things. Logistics are complex but well managed.",
+        "author": "Jennifer H.",
+        "location": "East Lothian",
+        "rating": 5,
+        "source": "Google Review"
+      }
+    ]
+  },
+  "locations": {
+    "edinburgh": [
+      {
+        "quote": "Tried another agency first — night and day difference. Carer knows how Mum takes her tea and when she likes to get up. Three months, no care home talk.",
+        "author": "Patricia H.",
+        "location": "Newington, Edinburgh",
+        "rating": 5
+      },
+      {
+        "quote": "Needed help fast after Dad's fall. Nurse assessment next day, carer by end of week. Having a nurse oversee it feels safer than a call centre.",
+        "author": "James A.",
+        "location": "Colinton, Edinburgh",
+        "rating": 5
+      },
+      {
+        "quote": "I manage Mum's care from London. Local team keeps me updated without me chasing. Still stressful from a distance, but much less than before.",
+        "author": "Sandra K.",
+        "location": "Portobello, Edinburgh",
+        "rating": 4
+      }
+    ],
+    "lothian": {
+      "reviews": [
+        {
+          "quote": "Dad's fall last winter — nurse in Dalkeith spotted things we'd missed. Same carer since February. His confidence at home is noticeably better.",
+          "author": "Helen B.",
+          "location": "Dalkeith, Midlothian",
+          "rating": 5
+        },
+        {
+          "quote": "A nurse came first, not a salesperson. Mum's had the same carer from the start. That consistency is harder to find than you'd think.",
+          "author": "David R.",
+          "location": "Haddington, East Lothian",
+          "rating": 5
+        },
+        {
+          "quote": "We coordinate from Australia. Nurse reviews every few months and we get notes. Visits when we're home look good — can't ask for more from abroad.",
+          "author": "Karen M.",
+          "location": "Livingston, West Lothian",
+          "rating": 4
+        }
+      ],
+      "midlothian": [
+        {
+          "quote": "Quick setup after Dad's fall. Nurse in Dalkeith was thorough. Same carer since February — he's much steadier on his feet now.",
+          "author": "Helen B.",
+          "location": "Dalkeith, Midlothian",
+          "rating": 5
+        },
+        {
+          "quote": "Nurse visit in Penicuik to build Mum's routine made a difference. Carers are gentle and on time. One swap took a week to sort, but resolved fine.",
+          "author": "Douglas T.",
+          "location": "Penicuik, Midlothian",
+          "rating": 4
+        },
+        {
+          "quote": "Used respite in Bonnyrigg twice. Knowing there's clinical backup lets us actually switch off for a few days.",
+          "author": "Morag K.",
+          "location": "Bonnyrigg, Midlothian",
+          "rating": 5
+        }
+      ],
+      "eastLothian": [
+        {
+          "quote": "Assumed we'd be an afterthought out in North Berwick. Wasn't the case — thorough assessment and carer's never late in eight months.",
+          "author": "Iain M.",
+          "location": "North Berwick, East Lothian",
+          "rating": 5
+        },
+        {
+          "quote": "Personal care in Haddington was a slog to arrange elsewhere. Nurse-led plan here and Dad feels treated with respect. That's what mattered.",
+          "author": "Fiona G.",
+          "location": "Haddington, East Lothian",
+          "rating": 5
+        },
+        {
+          "quote": "Musselburgh team were kind after Dad's hospital stay. Nurse oversight helped. Paperwork side was a bit slow, care side was good.",
+          "author": "Graeme S.",
+          "location": "Musselburgh, East Lothian",
+          "rating": 4
+        }
+      ],
+      "westLothian": [
+        {
+          "quote": "Managing from Australia isn't easy. Nurse reviews in Livingston and regular updates help. Mum seems well when we visit.",
+          "author": "Karen M.",
+          "location": "Livingston, West Lothian",
+          "rating": 4
+        },
+        {
+          "quote": "Carer in Linlithgow for Dad — patient, on time, no drama. Does what it says on the tin.",
+          "author": "Robert C.",
+          "location": "Linlithgow, West Lothian",
+          "rating": 5
+        },
+        {
+          "quote": "Short-notice respite in Bathgate. Nurse visit was reassuring. Would use again if we needed cover.",
+          "author": "Shona W.",
+          "location": "Bathgate, West Lothian",
+          "rating": 4
+        }
+      ]
+    },
+    "perthshire": {
+      "reviews": [
+        {
+          "quote": "Weeks trying to find care in Crieff. Colleague mentioned Zento — nurse visit within a week. Local High Street office makes a difference.",
+          "author": "Susan T.",
+          "location": "Crieff, Perthshire",
+          "rating": 5
+        },
+        {
+          "quote": "Comrie felt like it would be awkward to arrange. Wasn't. Nurse knew her stuff, same weekly carer since. Finally feels managed.",
+          "author": "Ian F.",
+          "location": "Comrie, Perthshire",
+          "rating": 5
+        },
+        {
+          "quote": "Mum home from Ninewells needing support fast. Carer next day, proper plan within the week. Nurse-led bit stops me worrying about meds.",
+          "author": "Patricia L.",
+          "location": "Muthill, Perthshire",
+          "rating": 5
+        }
+      ],
+      "crieff": [
+        {
+          "quote": "Couldn't find decent home care in Crieff for weeks. Zento had a nurse out within days. East High Street office is handy for popping in.",
+          "author": "Susan T.",
+          "location": "Crieff, Perthshire",
+          "rating": 5
+        },
+        {
+          "quote": "Post-hospital support for Mum was urgent. Carer next day, plan within the week. Still a worrying time, but we weren't left hanging.",
+          "author": "Patricia L.",
+          "location": "Muthill, Perthshire",
+          "rating": 4
+        },
+        {
+          "quote": "Dependable carers who get Dad's quirks. Rural cover can be patchy everywhere — here it's been consistent.",
+          "author": "Alistair M.",
+          "location": "Braco, Perthshire",
+          "rating": 4
+        }
+      ],
+      "comrie": [
+        {
+          "quote": "Expected arranging care in Comrie to be a faff. Nurse assessment was straightforward, same carer every week since.",
+          "author": "Ian F.",
+          "location": "Comrie, Perthshire",
+          "rating": 5
+        },
+        {
+          "quote": "St Fillans in winter — worried about missed visits. Haven't had one yet. Local team seems to plan routes properly.",
+          "author": "Catriona D.",
+          "location": "St Fillans, Perthshire",
+          "rating": 5
+        },
+        {
+          "quote": "Post-op recovery at home. Clinical oversight helped and office answers the phone. Mum's doing alright.",
+          "author": "Alan W.",
+          "location": "Comrie, Perthshire",
+          "rating": 4
+        }
+      ]
+    }
+  }
+}
