@@ -11,10 +11,12 @@ export interface OfficeLocation {
   phoneHref: string;
   email: string;
   mapEmbedUrl: string;
+  mapEmbedHref: string;
   googleMapsUrl: string;
 }
 
 export type Office = OfficeLocation;
+
 
 export const OFFICES: OfficeLocation[] = [
   {
@@ -29,8 +31,9 @@ export const OFFICES: OfficeLocation[] = [
     phone: "0131 210 0095",
     phoneHref: "tel:01312100095",
     email: "info@zentogroup.co.uk",
+    mapEmbedHref: "https://maps.app.goo.gl/v1nLY8Xg6VjUzhKJ9",
     mapEmbedUrl:
-      "https://maps.google.com/maps?q=Adit+Place+Edinburgh+EH17&t=&z=14&ie=UTF8&iwloc=&output=embed",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d103991.20702129533!2d-3.1640364089791353!3d55.8926557355164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xaf14cfe1e125191d%3A0x9cdbc1f03e81337c!2sZento%20Group!5e0!3m2!1sen!2s!4v1787141013636!5m2!1sen!2s",
     googleMapsUrl: "https://maps.google.com/?q=Adit+Place+Edinburgh+EH17",
   },
   {
@@ -45,8 +48,9 @@ export const OFFICES: OfficeLocation[] = [
     phone: "0176 479 0095",
     phoneHref: "tel:01764790095",
     email: "info@zentogroup.co.uk",
+    mapEmbedHref: "https://pinetechnologies.slack.com/archives/D04LVE6SPPG/p1787141509308139",
     mapEmbedUrl:
-      "https://maps.google.com/maps?q=East+High+Street+Crieff+PH7&t=&z=14&ie=UTF8&iwloc=&output=embed",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d816.856225207229!2d-3.837855724760665!3d56.372812241966066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48889b15bf9edec5%3A0x58d3cb79f013de85!2sZento%20Group!5e0!3m2!1sen!2s!4v1787140795353!5m2!1sen!2s",
     googleMapsUrl: "https://maps.google.com/?q=East+High+Street+Crieff+PH7",
   },
 ];
