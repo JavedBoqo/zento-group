@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://zentogroup.co.uk"),
-  title:"Zento Care | Nurse-Led Home Care in Edinburgh & Perthshire | Zento",
+  title: "Zento Care | Nurse-Led Home Care in Edinburgh & Perthshire | Zento",
   description:
     "Compassionate, nurse-led home care provider based in Edinburgh and Crieff, delivering safe, person-centred care across Edinburgh, Lothian, and Perthshire.",
   alternates: {
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   verification: {
-    google: "NSPYM3C7EhDLOjm4DtZrEX982WU-kM1EJhwhYkyj2fQ",
+    google: "jtwn42p9wCDqE8vnmhpOeWg-d8b_6ncXKaHnAbqfW7g",
   },
   openGraph: {
     title: "Zento Care | Nurse-Led Home Care in Edinburgh & Perthshire",
