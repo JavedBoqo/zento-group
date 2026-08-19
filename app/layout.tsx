@@ -117,6 +117,21 @@ export default function RootLayout({
             strategy="afterInteractive"
           />
         ) : null}
+
+        {/* Google Analytics (GA4) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-YP2KYRP25S"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-YP2KYRP25S');
+          `}
+        </Script>
+
         <Providers>{children}</Providers>
       </body>
     </html>
