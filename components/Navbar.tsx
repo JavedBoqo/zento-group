@@ -212,7 +212,7 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
               <Link href="/" aria-label="Zento Care home" className="relative block h-full w-full">
                 <Image
                   src="/logo.svg"
-                  alt="Zento Logo"
+                  alt="Nurse-Led Home Care in Edinburgh & Perthshire | Zento"
                   fill
                   priority
                   sizes="(max-width: 768px) 160px, 160px"
