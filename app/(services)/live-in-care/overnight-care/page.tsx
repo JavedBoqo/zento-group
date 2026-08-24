@@ -28,14 +28,14 @@ export const metadata: Metadata = {
   description:
     "Sleep-in and waking-night care from trained carers in Edinburgh and Lothian. Nurse-led oversight ensures your loved one is safe and supported through the night.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/live-in-care/overnight-care/",
+    canonical: "https://zentogroup.co.uk/live-in-care/overnight-care",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Overnight Care at Home | Nurse-Led Support | Zento",
     description:
       "Sleep-in and waking-night care from trained carers in Edinburgh and Lothian. Nurse-led oversight ensures your loved one is safe and supported through the night.",
-    url: "https://zentogroup.co.uk/live-in-care/overnight-care/",
+    url: "https://zentogroup.co.uk/live-in-care/overnight-care",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -96,9 +96,9 @@ const steps = [
 ];
 
 const locationLinks = [
-  { label: "Edinburgh", href: "/locations/edinburgh/" },
-  { label: "Midlothian", href: "/locations/lothian/midlothian/" },
-  { label: "Perthshire", href: "/locations/perthshire/" },
+  { label: "Edinburgh", href: "/locations/edinburgh" },
+  { label: "Midlothian", href: "/locations/lothian/midlothian" },
+  { label: "Perthshire", href: "/locations/perthshire" },
 ];
 
 const faqs = [
@@ -131,19 +131,19 @@ const faqs = [
 const relatedServices = [
   {
     title: "24-Hour Home Care",
-    href: "/live-in-care/24-hour-care/",
+    href: "/live-in-care/24-hour-care",
     desc: "For clients needing continuous round-the-clock support, not just overnight.",
     icon: Clock4,
   },
   {
     title: "Dementia Care at Home",
-    href: "/home-care/dementia-care/",
+    href: "/home-care/dementia-care",
     desc: "Consistent, nurse-led routines that extend into overnight support for dementia clients.",
     icon: Brain,
   },
   {
     title: "Personal Care at Home",
-    href: "/home-care/personal-care/",
+    href: "/home-care/personal-care",
     desc: "Daytime personal care that pairs naturally with overnight support.",
     icon: Heart,
   },
@@ -162,14 +162,14 @@ export default function OvernightCarePage() {
     },
     serviceType: "Overnight Care",
     areaServed: ["City of Edinburgh", "Midlothian", "East Lothian", "West Lothian", "Perthshire"],
-    url: "https://zentogroup.co.uk/live-in-care/overnight-care/",
+    url: "https://zentogroup.co.uk/live-in-care/overnight-care",
   };
 
   const medicalBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
     name: "Zento Care - Overnight Support",
-    url: "https://zentogroup.co.uk/live-in-care/overnight-care/",
+    url: "https://zentogroup.co.uk/live-in-care/overnight-care",
     telephone: "+441312100095",
     areaServed: ["Edinburgh", "Perthshire", "Lothians"],
     description: "Nurse-led sleep-in and waking-night care at home.",
@@ -189,9 +189,9 @@ export default function OvernightCarePage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk/" },
-      { "@type": "ListItem", position: 2, name: "Live-In Care", item: "https://zentogroup.co.uk/live-in-care/" },
-      { "@type": "ListItem", position: 3, name: "Overnight Care at Home", item: "https://zentogroup.co.uk/live-in-care/overnight-care/" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk" },
+      { "@type": "ListItem", position: 2, name: "Live-In Care", item: "https://zentogroup.co.uk/live-in-care" },
+      { "@type": "ListItem", position: 3, name: "Overnight Care at Home", item: "https://zentogroup.co.uk/live-in-care/overnight-care" },
     ],
   };
 
@@ -219,7 +219,7 @@ export default function OvernightCarePage() {
                   /
                 </li>
                 <li>
-                  <Link href="/live-in-care/" className="hover:text-primary transition-colors font-medium">
+                  <Link href="/live-in-care" className="hover:text-primary transition-colors font-medium">
                     Live-In Care
                   </Link>
                 </li>
@@ -295,7 +295,7 @@ export default function OvernightCarePage() {
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/about-image.png"
+                  src="/about-image.webp"
                   alt="Carer providing overnight care and night-time reassurance at home"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -414,7 +414,7 @@ export default function OvernightCarePage() {
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-xl flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl">
                 <div className="relative h-full w-full overflow-hidden rounded-[1.8rem]">
                   <Image
-                    src="/brand-image.png"
+                    src="/brand-image.webp"
                     alt="Registered nurse reviewing overnight risk profile and care protocol"
                     fill
                     sizes="(max-width: 768px) 100vw, 600px"

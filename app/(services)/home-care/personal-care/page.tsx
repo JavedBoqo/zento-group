@@ -30,14 +30,14 @@ export const metadata: Metadata = {
   description:
     "Our nurses oversee personal care across Edinburgh and Lothian — bathing, dressing, continence and mobility. Dignified, compassionate care at home. Call us.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/home-care/personal-care/",
+    canonical: "https://zentogroup.co.uk/home-care/personal-care",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Personal Care at Home | Nurse-Led Support | Zento",
     description:
       "Our nurses oversee personal care across Edinburgh and Lothian — bathing, dressing, continence and mobility. Dignified, compassionate care at home.",
-    url: "https://zentogroup.co.uk/home-care/personal-care/",
+    url: "https://zentogroup.co.uk/home-care/personal-care",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -120,11 +120,11 @@ const steps = [
 ];
 
 const locationLinks = [
-  { label: "Edinburgh", href: "/locations/edinburgh/" },
-  { label: "Midlothian", href: "/locations/lothian/midlothian/" },
-  { label: "East Lothian", href: "/locations/lothian/east-lothian/" },
-  { label: "West Lothian", href: "/locations/lothian/west-lothian/" },
-  { label: "Perthshire", href: "/locations/perthshire/" },
+  { label: "Edinburgh", href: "/locations/edinburgh" },
+  { label: "Midlothian", href: "/locations/lothian/midlothian" },
+  { label: "East Lothian", href: "/locations/lothian/east-lothian" },
+  { label: "West Lothian", href: "/locations/lothian/west-lothian" },
+  { label: "Perthshire", href: "/locations/perthshire" },
 ];
 
 const faqs = [
@@ -161,19 +161,19 @@ const faqs = [
 const relatedServices = [
   {
     title: "Medication Support at Home",
-    href: "/home-care/medication-support/",
+    href: "/home-care/medication-support",
     desc: "Nurse-designed medication prompting and administration — a clinical approach to one of the riskiest daily tasks.",
     icon: ShieldCheck,
   },
   {
     title: "Companionship Care",
-    href: "/home-care/companionship/",
+    href: "/home-care/companionship",
     desc: "Regular visits that go beyond physical tasks — building a genuine relationship alongside practical support.",
     icon: Users,
   },
   {
     title: "Hospital Discharge Support",
-    href: "/home-care/hospital-discharge/",
+    href: "/home-care/hospital-discharge",
     desc: "Nurse-led care planned before your loved one leaves hospital, ensuring a safe and supported transition home.",
     icon: Building2,
   },
@@ -192,7 +192,7 @@ export default function PersonalCarePage() {
     },
     serviceType: "Personal Care at Home",
     areaServed: ["City of Edinburgh", "Midlothian", "East Lothian", "West Lothian", "Perthshire"],
-    url: "https://zentogroup.co.uk/home-care/personal-care/",
+    url: "https://zentogroup.co.uk/home-care/personal-care",
   };
 
   const faqJsonLd = {
@@ -209,9 +209,9 @@ export default function PersonalCarePage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk/" },
-      { "@type": "ListItem", position: 2, name: "Home Care", item: "https://zentogroup.co.uk/home-care/" },
-      { "@type": "ListItem", position: 3, name: "Personal Care at Home", item: "https://zentogroup.co.uk/home-care/personal-care/" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk" },
+      { "@type": "ListItem", position: 2, name: "Home Care", item: "https://zentogroup.co.uk/home-care" },
+      { "@type": "ListItem", position: 3, name: "Personal Care at Home", item: "https://zentogroup.co.uk/home-care/personal-care" },
     ],
   };
 
@@ -235,7 +235,7 @@ export default function PersonalCarePage() {
                 </li>
                 <li aria-hidden="true" className="text-zinc-300">/</li>
                 <li>
-                  <Link href="/home-care/" className="hover:text-primary transition-colors font-medium">Home Care</Link>
+                  <Link href="/home-care" className="hover:text-primary transition-colors font-medium">Home Care</Link>
                 </li>
                 <li aria-hidden="true" className="text-zinc-300">/</li>
                 <li>
@@ -301,7 +301,7 @@ export default function PersonalCarePage() {
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/about-image.png"
+                  src="/about-image.webp"
                   alt="Carer providing dignified personal care support at home"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -433,7 +433,7 @@ export default function PersonalCarePage() {
               <div className="relative aspect-square w-full max-w-xl flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl">
                 <div className="relative h-full w-full overflow-hidden rounded-[1.8rem]">
                   <Image
-                    src="/brand-image.png"
+                    src="/brand-image.webp"
                     alt="Zento registered nurse conducting a clinical care assessment"
                     fill
                     sizes="(max-width: 768px) 100vw, 600px"

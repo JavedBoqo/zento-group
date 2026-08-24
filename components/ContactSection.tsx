@@ -20,7 +20,7 @@ export default function ContactSection() {
             className="relative aspect-[4/3] w-full max-w-2xl overflow-hidden rounded-3xl bg-zinc-100 shadow-2xl lg:aspect-square lg:w-1/2"
           >
             <Image
-              src="/brand-image.png"
+              src="/brand-image.webp"
               alt="Zento care team in Edinburgh and Perthshire"
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"

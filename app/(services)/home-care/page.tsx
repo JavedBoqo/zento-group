@@ -33,14 +33,14 @@ export const metadata: Metadata = {
   description:
     "Nurse-led home care services across Edinburgh, Lothian and Perthshire. Personal care, dementia support, respite and more — all overseen by registered nurses. Call us today.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/home-care/",
+    canonical: "https://zentogroup.co.uk/home-care",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Home Care Services | Nurse-Led Care at Home | Zento",
     description:
       "Nurse-led home care services across Edinburgh, Lothian and Perthshire. Personal care, dementia support, respite and more — all overseen by registered nurses.",
-    url: "https://zentogroup.co.uk/home-care/",
+    url: "https://zentogroup.co.uk/home-care",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -59,49 +59,49 @@ export const metadata: Metadata = {
 const homeCareServices = [
   {
     name: "Personal Care",
-    href: "/home-care/personal-care/",
+    href: "/home-care/personal-care",
     desc: "Support with bathing, dressing, continence, mobility and personal hygiene, delivered with patience and dignity.",
     ctaLabel: "Learn more",
     icon: Heart,
   },
   {
     name: "Medication Support",
-    href: "/home-care/medication-support/",
+    href: "/home-care/medication-support",
     desc: "Prompting, administering and monitoring medication under the oversight of a registered nurse.",
     ctaLabel: "Learn more",
     icon: ShieldCheck,
   },
   {
     name: "Companionship",
-    href: "/home-care/companionship/",
+    href: "/home-care/companionship",
     desc: "Regular social visits to reduce isolation, maintain routines and enjoy meaningful conversation and activities.",
     ctaLabel: "Learn more",
     icon: Users,
   },
   {
     name: "Meal Preparation",
-    href: "/home-care/meal-preparation/",
+    href: "/home-care/meal-preparation",
     desc: "Nutritious meals planned around dietary needs and personal preferences, prepared in the client's own kitchen.",
     ctaLabel: "Learn more",
     icon: Utensils,
   },
   {
     name: "Hospital Discharge Support",
-    href: "/home-care/hospital-discharge/",
+    href: "/home-care/hospital-discharge",
     desc: "Short-term intensive care to help your loved one settle back home safely after a hospital stay.",
     ctaLabel: "Learn more",
     icon: Building2,
   },
   {
     name: "Dementia Care",
-    href: "/home-care/dementia-care/",
+    href: "/home-care/dementia-care",
     desc: "Consistent carers and familiar routines to support people living with dementia at every stage.",
     ctaLabel: "Learn more",
     icon: Brain,
   },
   {
     name: "Respite Care",
-    href: "/home-care/respite-care/",
+    href: "/home-care/respite-care",
     desc: "Planned or emergency cover so family carers can take a genuine break, knowing their loved one is safe.",
     ctaLabel: "Learn more",
     icon: Sun,
@@ -141,12 +141,12 @@ const steps = [
 ];
 
 const locationLinks = [
-  { label: "Edinburgh", href: "/locations/edinburgh/" },
-  { label: "Midlothian", href: "/locations/lothian/midlothian/" },
-  { label: "East Lothian", href: "/locations/lothian/east-lothian/" },
-  { label: "West Lothian", href: "/locations/lothian/west-lothian/" },
-  { label: "Crieff", href: "/locations/perthshire/crieff/" },
-  { label: "Comrie", href: "/locations/perthshire/comrie/" },
+  { label: "Edinburgh", href: "/locations/edinburgh" },
+  { label: "Midlothian", href: "/locations/lothian/midlothian" },
+  { label: "East Lothian", href: "/locations/lothian/east-lothian" },
+  { label: "West Lothian", href: "/locations/lothian/west-lothian" },
+  { label: "Crieff", href: "/locations/perthshire/crieff" },
+  { label: "Comrie", href: "/locations/perthshire/comrie" },
 ];
 
 const faqs = [
@@ -181,7 +181,7 @@ export default function HomeCareHubPage() {
     },
     serviceType: "Nurse-Led Home Care",
     areaServed: ["City of Edinburgh", "Midlothian", "East Lothian", "West Lothian", "Perthshire"],
-    url: "https://zentogroup.co.uk/home-care/",
+    url: "https://zentogroup.co.uk/home-care",
   };
 
   const faqJsonLd = {
@@ -198,8 +198,8 @@ export default function HomeCareHubPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk/" },
-      { "@type": "ListItem", position: 2, name: "Home Care", item: "https://zentogroup.co.uk/home-care/" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk" },
+      { "@type": "ListItem", position: 2, name: "Home Care", item: "https://zentogroup.co.uk/home-care" },
     ],
   };
 
@@ -291,7 +291,7 @@ export default function HomeCareHubPage() {
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/about-image.png"
+                  src="/about-image.webp"
                   alt="Elderly client enjoying happy independent life at home"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -446,7 +446,7 @@ export default function HomeCareHubPage() {
               <AnimateContainer animation="fade-left" delay={0.1} className="relative aspect-square w-full max-w-xl flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl">
                 <div className="relative h-full w-full overflow-hidden rounded-[1.8rem]">
                   <Image
-                    src="/brand-image.png"
+                    src="/brand-image.webp"
                     alt="Zento Trusted Caregiver and Client Team"
                     fill
                     sizes="(max-width: 768px) 100vw, 600px"

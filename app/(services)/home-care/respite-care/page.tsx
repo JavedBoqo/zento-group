@@ -29,14 +29,14 @@ export const metadata: Metadata = {
   description:
     "Planned and emergency at-home respite care in Edinburgh and Scotland. Nurse oversight so family carers can take a genuine break with peace of mind. Call us.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/home-care/respite-care/",
+    canonical: "https://zentogroup.co.uk/home-care/respite-care",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Respite Care at Home | Nurse-Led Relief | Zento",
     description:
       "Planned and emergency at-home respite care in Edinburgh and Scotland. Nurse oversight so family carers can take a genuine break with peace of mind.",
-    url: "https://zentogroup.co.uk/home-care/respite-care/",
+    url: "https://zentogroup.co.uk/home-care/respite-care",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -97,9 +97,9 @@ const steps = [
 ];
 
 const locationLinks = [
-  { label: "Edinburgh", href: "/locations/edinburgh/" },
-  { label: "Midlothian", href: "/locations/lothian/midlothian/" },
-  { label: "Perthshire", href: "/locations/perthshire/" },
+  { label: "Edinburgh", href: "/locations/edinburgh" },
+  { label: "Midlothian", href: "/locations/lothian/midlothian" },
+  { label: "Perthshire", href: "/locations/perthshire" },
 ];
 
 const faqs = [
@@ -132,19 +132,19 @@ const faqs = [
 const relatedServices = [
   {
     title: "Dementia Care at Home",
-    href: "/home-care/dementia-care/",
+    href: "/home-care/dementia-care",
     desc: "Consistent, nurse-led support for clients living with dementia — including during respite periods.",
     icon: Brain,
   },
   {
     title: "Live-In Care",
-    href: "/live-in-care/",
+    href: "/live-in-care",
     desc: "For longer respite periods or ongoing 24-hour cover, a live-in carer may be the right next step.",
     icon: ShieldCheck,
   },
   {
     title: "Personal Care at Home",
-    href: "/home-care/personal-care/",
+    href: "/home-care/personal-care",
     desc: "Daily hands-on support maintained consistently throughout a respite arrangement.",
     icon: Heart,
   },
@@ -163,14 +163,14 @@ export default function RespiteCarePage() {
     },
     serviceType: "Respite Care",
     areaServed: ["City of Edinburgh", "Midlothian", "East Lothian", "West Lothian", "Perthshire"],
-    url: "https://zentogroup.co.uk/home-care/respite-care/",
+    url: "https://zentogroup.co.uk/home-care/respite-care",
   };
 
   const medicalBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
     name: "Zento Care - Respite Support",
-    url: "https://zentogroup.co.uk/home-care/respite-care/",
+    url: "https://zentogroup.co.uk/home-care/respite-care",
     telephone: "+441312100095",
     areaServed: ["Edinburgh", "Perthshire", "Lothians"],
     description: "Nurse-led planned and emergency respite care at home.",
@@ -190,9 +190,9 @@ export default function RespiteCarePage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk/" },
-      { "@type": "ListItem", position: 2, name: "Home Care", item: "https://zentogroup.co.uk/home-care/" },
-      { "@type": "ListItem", position: 3, name: "Respite Care at Home", item: "https://zentogroup.co.uk/home-care/respite-care/" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk" },
+      { "@type": "ListItem", position: 2, name: "Home Care", item: "https://zentogroup.co.uk/home-care" },
+      { "@type": "ListItem", position: 3, name: "Respite Care at Home", item: "https://zentogroup.co.uk/home-care/respite-care" },
     ],
   };
 
@@ -220,7 +220,7 @@ export default function RespiteCarePage() {
                   /
                 </li>
                 <li>
-                  <Link href="/home-care/" className="hover:text-primary transition-colors font-medium">
+                  <Link href="/home-care" className="hover:text-primary transition-colors font-medium">
                     Home Care
                   </Link>
                 </li>
@@ -296,7 +296,7 @@ export default function RespiteCarePage() {
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/about-image.png"
+                  src="/about-image.webp"
                   alt="Carer providing supportive respite care at home"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -412,7 +412,7 @@ export default function RespiteCarePage() {
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-xl flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl">
                 <div className="relative h-full w-full overflow-hidden rounded-[1.8rem]">
                   <Image
-                    src="/brand-image.png"
+                    src="/brand-image.webp"
                     alt="Registered nurse preparing handover plan for respite care"
                     fill
                     sizes="(max-width: 768px) 100vw, 600px"

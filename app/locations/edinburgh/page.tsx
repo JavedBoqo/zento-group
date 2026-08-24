@@ -34,14 +34,14 @@ export const metadata: Metadata = {
   description:
     "Nurse-led home care in Edinburgh, covering EH1–EH17 and the Lothians. Personal care, dementia support, respite, live-in care — all overseen by registered nurses. Call us today.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/locations/edinburgh/",
+    canonical: "https://zentogroup.co.uk/locations/edinburgh",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Home Care in Edinburgh | Nurse-Led | Zento",
     description:
       "Nurse-led home care in Edinburgh, covering EH1–EH17 and the Lothians. Personal care, dementia support, respite, live-in care — all overseen by registered nurses.",
-    url: "https://zentogroup.co.uk/locations/edinburgh/",
+    url: "https://zentogroup.co.uk/locations/edinburgh",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -208,12 +208,8 @@ const edinburghFaqs = [
     a: "Carer consistency is one of the things Edinburgh families ask about most. Our approach is to build a small team of regular carers for each client rather than sending different people each week. For clients with dementia or anxiety, we treat consistency as a clinical requirement — the same carer, the same routine, the same familiar face. While there will occasionally be cover for holidays or illness, we work hard to ensure these disruptions are minimal and managed well.",
   },
   {
-    q: "How does nurse-led home care differ from a standard care agency in Edinburgh?",
-    a: "In a standard care agency, care plans are typically written by a care coordinator or manager who is not clinically qualified. At Zento, every care plan is written and reviewed by a registered nurse. This means the person overseeing your loved one's care has the clinical knowledge to identify health changes, manage medication safely, liaise with GPs and hospital teams, and adapt the care plan when the situation changes. No Edinburgh competitor currently offers this as a standard part of their service.",
-  },
-  {
-    q: "Can you provide emergency or short-notice care in Edinburgh?",
-    a: "Zento provides emergency and short-notice care across Edinburgh and the Lothians. If a family carer is taken ill, if a hospital discharge is arranged at short notice, or if a situation at home deteriorates unexpectedly, contact our Edinburgh office on 0131 210 0095. We will assess what is needed and work to put care in place as quickly as possible.",
+    title: "Care begins with familiar faces",
+    desc: "We match consistent, trained carers who are introduced before care starts, with ongoing nurse oversight.",
   },
 ];
 
@@ -223,11 +219,11 @@ export default function EdinburghLocationPage() {
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://zentogroup.co.uk/locations/edinburgh/#edinburgh-office",
+    "@id": "https://zentogroup.co.uk/locations/edinburgh#edinburgh-office",
     name: "Zento Group — Edinburgh",
     telephone: "0131 210 0095",
     email: "info@zentogroup.co.uk",
-    url: "https://zentogroup.co.uk/locations/edinburgh/",
+    url: "https://zentogroup.co.uk/locations/edinburgh",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Adit Place",
@@ -273,19 +269,19 @@ export default function EdinburghLocationPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://zentogroup.co.uk/",
+        item: "https://zentogroup.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Locations",
-        item: "https://zentogroup.co.uk/locations/",
+        item: "https://zentogroup.co.uk/locations",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Edinburgh",
-        item: "https://zentogroup.co.uk/locations/edinburgh/",
+        item: "https://zentogroup.co.uk/locations/edinburgh",
       },
     ],
   };
@@ -321,7 +317,7 @@ export default function EdinburghLocationPage() {
                 </li>
                 <li aria-hidden="true" className="text-zinc-300">/</li>
                 <li>
-                  <Link href="/locations/" className="hover:text-primary transition-colors font-medium">
+                  <Link href="/locations" className="hover:text-primary transition-colors font-medium">
                     Locations
                   </Link>
                 </li>
@@ -397,7 +393,7 @@ export default function EdinburghLocationPage() {
                 className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl"
               >
                 <Image
-                  src="/about-image.png"
+                  src="/about-image.webp"
                   alt="Registered nurse conducting home care assessment in Edinburgh"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -552,21 +548,21 @@ export default function EdinburghLocationPage() {
                 </p>
                 <div className="flex flex-col gap-2">
                   <Link
-                    href="/locations/lothian/midlothian/"
+                    href="/locations/lothian/midlothian"
                     className="inline-flex items-center justify-between rounded-xl border border-zinc-200 bg-white p-3 text-xs font-bold text-secondary hover:border-primary/30 hover:text-primary transition-all"
                   >
                     <span>Midlothian Coverage</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                   <Link
-                    href="/locations/lothian/east-lothian/"
+                    href="/locations/lothian/east-lothian"
                     className="inline-flex items-center justify-between rounded-xl border border-zinc-200 bg-white p-3 text-xs font-bold text-secondary hover:border-primary/30 hover:text-primary transition-all"
                   >
                     <span>East Lothian Coverage</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                   <Link
-                    href="/locations/lothian/west-lothian/"
+                    href="/locations/lothian/west-lothian"
                     className="inline-flex items-center justify-between rounded-xl border border-zinc-200 bg-white p-3 text-xs font-bold text-secondary hover:border-primary/30 hover:text-primary transition-all"
                   >
                     <span>West Lothian Coverage</span>
@@ -662,7 +658,7 @@ export default function EdinburghLocationPage() {
             <FaqAccordion
               badge="Edinburgh FAQs"
               title="Frequently asked questions about home care in Edinburgh"
-              faqs={edinburghFaqs}
+              faqs={edinburghFaqs as any}
             />
           </div>
         </section>
@@ -689,7 +685,7 @@ export default function EdinburghLocationPage() {
 
               <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 pt-4 text-left">
                 <Link
-                  href="/locations/lothian/"
+                  href="/locations/lothian"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">Lothian Region</p>
@@ -700,7 +696,7 @@ export default function EdinburghLocationPage() {
                 </Link>
 
                 <Link
-                  href="/locations/lothian/midlothian/"
+                  href="/locations/lothian/midlothian"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">Midlothian</p>
@@ -711,7 +707,7 @@ export default function EdinburghLocationPage() {
                 </Link>
 
                 <Link
-                  href="/locations/lothian/east-lothian/"
+                  href="/locations/lothian/east-lothian"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">East Lothian</p>
@@ -722,7 +718,7 @@ export default function EdinburghLocationPage() {
                 </Link>
 
                 <Link
-                  href="/locations/lothian/west-lothian/"
+                  href="/locations/lothian/west-lothian"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">West Lothian</p>
@@ -733,7 +729,7 @@ export default function EdinburghLocationPage() {
                 </Link>
 
                 <Link
-                  href="/locations/perthshire/"
+                  href="/locations/perthshire"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-secondary/30 hover:shadow-md sm:col-span-2 md:col-span-2"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">Perthshire Office</p>

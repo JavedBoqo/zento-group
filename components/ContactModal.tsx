@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Phone, Calendar, ClipboardList } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { getRecaptchaToken } from "@/app/lib/recaptcha";
 import { useToast } from "@/components/ToastProvider";
 
@@ -18,6 +18,18 @@ export default function ContactModal({ isOpen, onClose, type }: ContactModalProp
   const [successMessage, setSuccessMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  const handleClose = useCallback(() => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setSubmissionStatus("idle");
+    setSuccessMessage("");
+    setIsSubmitting(false);
+    onClose();
+  }, [onClose]);
 
   useEffect(() => {
     return () => {
@@ -27,16 +39,37 @@ export default function ContactModal({ isOpen, onClose, type }: ContactModalProp
     };
   }, []);
 
-  const handleClose = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
-    setSubmissionStatus("idle");
-    setSuccessMessage("");
-    setIsSubmitting(false);
-    onClose();
-  };
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        handleClose();
+        return;
+      }
+
+      if (e.key === "Tab" && modalRef.current) {
+        const focusableElements = modalRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusableElements.length === 0) return;
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey && document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, handleClose]);
 
   const getContent = () => {
     switch (type) {
@@ -168,6 +201,10 @@ export default function ContactModal({ isOpen, onClose, type }: ContactModalProp
           />
           
           <motion.div
+            ref={modalRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -175,7 +212,8 @@ export default function ContactModal({ isOpen, onClose, type }: ContactModalProp
           >
             <button 
               onClick={handleClose}
-              className="absolute top-6 right-6 z-30 p-2 rounded-full hover:bg-zinc-100 transition-colors"
+              aria-label="Close modal"
+              className="absolute top-6 right-6 z-30 p-2 rounded-full hover:bg-zinc-100 transition-colors cursor-pointer"
             >
               <X className="w-5 h-5 text-zinc-400" />
             </button>
@@ -190,7 +228,7 @@ export default function ContactModal({ isOpen, onClose, type }: ContactModalProp
                   <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-100 text-green-600">
                     <Send className="w-10 h-10" />
                   </div>
-                  <h3 className="text-2xl font-bold text-secondary">Message Sent!</h3>
+                  <h3 id="modal-title" className="text-2xl font-bold text-secondary">Message Sent!</h3>
                   <p className="mt-4 text-zinc-600">{successMessage}</p>
                 </motion.div>
               ) : (
@@ -200,7 +238,7 @@ export default function ContactModal({ isOpen, onClose, type }: ContactModalProp
                       {content.icon}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-secondary leading-tight sm:text-2xl">{content.title}</h3>
+                      <h3 id="modal-title" className="text-xl font-bold text-secondary leading-tight sm:text-2xl">{content.title}</h3>
                       <p className="text-xs text-zinc-500 mt-1 sm:text-sm">{content.description}</p>
                     </div>
                   </div>

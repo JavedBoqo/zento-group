@@ -30,12 +30,12 @@ import { OFFICES } from "@/constants";
 export const metadata: Metadata = {
   title: "Home Care Across Lothian | Nurse-Led | Zento",
   description: "Covering Midlothian, East Lothian and West Lothian from our Edinburgh office. Nurse-led care for families across the Lothian region. Find your local area.",
-  alternates: { canonical: "https://zentogroup.co.uk/locations/lothian/" },
+  alternates: { canonical: "https://zentogroup.co.uk/locations/lothian" },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Home Care Across Lothian | Nurse-Led | Zento",
     description: "Covering Midlothian, East Lothian and West Lothian from our Edinburgh office. Nurse-led care for families across the Lothian region.",
-    url: "https://zentogroup.co.uk/locations/lothian/",
+    url: "https://zentogroup.co.uk/locations/lothian",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -52,12 +52,12 @@ export const metadata: Metadata = {
 const edinburghOffice = OFFICES[0];
 
 const lothianServices: ServiceCardItem[] = [
-  { id: "live-in-care", title: "Live-In Care Across Lothian", desc: "When daily visits aren't enough — when your loved one needs someone there through the night, or around the clock — live-in care is often the most practical and the most compassionate answer. A trained, carefully selected carer moves into the home and becomes part of the daily routine. For many Lothian families, it's the option that finally makes staying at home feel genuinely safe.", extraDesc: "Every live-in arrangement in Lothian is managed by our nursing team. They select the carer, oversee the clinical care plan, and review the arrangement regularly so families don't have to chase anyone for updates.", href: "/live-in-care/", linkText: "Learn more about live-in care" },
-  { id: "respite-care", title: "Respite Care Across Lothian", desc: "If you're a family carer in Lothian, a proper break isn't a luxury — it's a necessity. Zento provides planned and emergency respite care across Midlothian, East Lothian and West Lothian. Before cover begins, a nurse writes a care plan specific to the respite period, so there's genuine continuity rather than someone simply showing up and guessing what to do.", extraDesc: "Your loved one stays at home, with a consistent and carefully briefed carer. You get the break you need, knowing the standard of care hasn't dropped while you're away.", href: "/home-care/respite-care/", linkText: "Find out about respite care" },
-  { id: "dementia-care", title: "Dementia Care Across Lothian", desc: "For someone living with dementia, the details matter enormously — the same face at the door, the same order to the morning, the same small routines that make the day feel familiar and safe. Our nursing team designs dementia care plans with consistency at the centre, monitors for changes in behaviour and cognition, and adjusts the approach before small difficulties turn into significant ones.", extraDesc: "Whether your family member is in Dalkeith, Haddington or Livingston, the clinical care behind their daily support is the same.", href: "/home-care/dementia-care/", linkText: "About our dementia care service" },
-  { id: "personal-care", title: "Personal Care Across Lothian", desc: "Personal care visits across Lothian cover the practical daily tasks that allow your loved one to stay comfortably and safely at home — bathing, dressing, continence support, mobility assistance and medication prompting. A registered nurse writes the initial care plan and reviews it on a regular basis throughout.", extraDesc: "Nothing is left to the discretion of an individual carer working without clinical oversight.", href: "/home-care/personal-care/", linkText: "About personal care at home" },
-  { id: "overnight-care", title: "Overnight Care Across Lothian", desc: "Falls, medication needs, night-time confusion — the risks that worry families most often happen after dark. For Lothian families where overnight safety is a concern, we provide sleep-in and waking-night carers with care plans written specifically for the night hours and what they can bring.", extraDesc: "Support that's properly planned, not improvised.", href: "/live-in-care/overnight-care/", linkText: "About overnight care at home" },
-  { id: "hospital-discharge", title: "Hospital Discharge Support Across Lothian", desc: "Returning home after a hospital stay is one of the most vulnerable moments for an older person. Zento can liaise directly with NHS Lothian discharge teams to make sure the right care is in place before your loved one leaves hospital — not arranged in a rush the day they get home.", extraDesc: "In most cases we can have care in place within 24 to 48 hours of discharge, with a proper nursing care plan and a matched carer ready from day one.", href: "/home-care/hospital-discharge/", linkText: "About hospital discharge care" },
+  { id: "live-in-care", title: "Live-In Care Across Lothian", desc: "When daily visits aren't enough — when your loved one needs someone there through the night, or around the clock — live-in care is often the most practical and the most compassionate answer. A trained, carefully selected carer moves into the home and becomes part of the daily routine. For many Lothian families, it's the option that finally makes staying at home feel genuinely safe.", extraDesc: "Every live-in arrangement in Lothian is managed by our nursing team. They select the carer, oversee the clinical care plan, and review the arrangement regularly so families don't have to chase anyone for updates.", href: "/live-in-care", linkText: "Learn more about live-in care" },
+  { id: "respite-care", title: "Respite Care Across Lothian", desc: "If you're a family carer in Lothian, a proper break isn't a luxury — it's a necessity. Zento provides planned and emergency respite care across Midlothian, East Lothian and West Lothian. Before cover begins, a nurse writes a care plan specific to the respite period, so there's genuine continuity rather than someone simply showing up and guessing what to do.", extraDesc: "Your loved one stays at home, with a consistent and carefully briefed carer. You get the break you need, knowing the standard of care hasn't dropped while you're away.", href: "/home-care/respite-care", linkText: "Find out about respite care" },
+  { id: "dementia-care", title: "Dementia Care Across Lothian", desc: "For someone living with dementia, the details matter enormously — the same face at the door, the same order to the morning, the same small routines that make the day feel familiar and safe. Our nursing team designs dementia care plans with consistency at the centre, monitors for changes in behaviour and cognition, and adjusts the approach before small difficulties turn into significant ones.", extraDesc: "Whether your family member is in Dalkeith, Haddington or Livingston, the clinical care behind their daily support is the same.", href: "/home-care/dementia-care", linkText: "About our dementia care service" },
+  { id: "personal-care", title: "Personal Care Across Lothian", desc: "Personal care visits across Lothian cover the practical daily tasks that allow your loved one to stay comfortably and safely at home — bathing, dressing, continence support, mobility assistance and medication prompting. A registered nurse writes the initial care plan and reviews it on a regular basis throughout.", extraDesc: "Nothing is left to the discretion of an individual carer working without clinical oversight.", href: "/home-care/personal-care", linkText: "About personal care at home" },
+  { id: "overnight-care", title: "Overnight Care Across Lothian", desc: "Falls, medication needs, night-time confusion — the risks that worry families most often happen after dark. For Lothian families where overnight safety is a concern, we provide sleep-in and waking-night carers with care plans written specifically for the night hours and what they can bring.", extraDesc: "Support that's properly planned, not improvised.", href: "/live-in-care/overnight-care", linkText: "About overnight care at home" },
+  { id: "hospital-discharge", title: "Hospital Discharge Support Across Lothian", desc: "Returning home after a hospital stay is one of the most vulnerable moments for an older person. Zento can liaise directly with NHS Lothian discharge teams to make sure the right care is in place before your loved one leaves hospital — not arranged in a rush the day they get home.", extraDesc: "In most cases we can have care in place within 24 to 48 hours of discharge, with a proper nursing care plan and a matched carer ready from day one.", href: "/home-care/hospital-discharge", linkText: "About hospital discharge care" },
 ];
 
 const lothianSigns = [
@@ -93,11 +93,11 @@ export default function LothianLocationPage() {
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://zentogroup.co.uk/locations/lothian/#lothian-service",
+    "@id": "https://zentogroup.co.uk/locations/lothian#lothian-service",
     name: "Zento Group — Lothian",
     telephone: "0131 210 0095",
     email: "info@zentogroup.co.uk",
-    url: "https://zentogroup.co.uk/locations/lothian/",
+    url: "https://zentogroup.co.uk/locations/lothian",
     address: { "@type": "PostalAddress", streetAddress: "Adit Place", addressLocality: "Edinburgh", postalCode: "EH17", addressCountry: "GB" },
     areaServed: ["Midlothian", "East Lothian", "West Lothian"],
     serviceType: "Nurse-Led Home Care",
@@ -113,9 +113,9 @@ export default function LothianLocationPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk/" },
-      { "@type": "ListItem", position: 2, name: "Locations", item: "https://zentogroup.co.uk/locations/" },
-      { "@type": "ListItem", position: 3, name: "Lothian", item: "https://zentogroup.co.uk/locations/lothian/" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk" },
+      { "@type": "ListItem", position: 2, name: "Locations", item: "https://zentogroup.co.uk/locations" },
+      { "@type": "ListItem", position: 3, name: "Lothian", item: "https://zentogroup.co.uk/locations/lothian" },
     ],
   };
 
@@ -133,7 +133,7 @@ export default function LothianLocationPage() {
               <ol className="flex items-center gap-2 text-xs text-zinc-500">
                 <li><Link href="/" className="hover:text-primary transition-colors font-medium">Home</Link></li>
                 <li aria-hidden="true" className="text-zinc-300">/</li>
-                <li><Link href="/locations/" className="hover:text-primary transition-colors font-medium">Locations</Link></li>
+                <li><Link href="/locations" className="hover:text-primary transition-colors font-medium">Locations</Link></li>
                 <li aria-hidden="true" className="text-zinc-300">/</li>
                 <li><span className="font-semibold text-secondary" aria-current="page">Lothian</span></li>
               </ol>
@@ -178,7 +178,7 @@ export default function LothianLocationPage() {
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
-                <Image src="/about-image.png" alt="Registered nurse conducting home care assessment across Lothian" fill sizes="(max-width: 768px) 100vw, 500px" className="object-cover" />
+                <Image src="/about-image.webp" alt="Registered nurse conducting home care assessment across Lothian" fill sizes="(max-width: 768px) 100vw, 500px" className="object-cover" />
               </AnimateContainer>
               <AnimateContainer animation="fade-left" delay={0.1} className="flex-1 space-y-6">
                 <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider">Care Inspectorate Registered</span>
@@ -361,17 +361,17 @@ export default function LothianLocationPage() {
               <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
               <p className="text-base leading-relaxed text-zinc-600">For detailed local coverage, towns served and area-specific information:</p>
               <div className="grid gap-4 sm:grid-cols-3 pt-4 text-left">
-                <Link href="/locations/lothian/midlothian/" className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md">
+                <Link href="/locations/lothian/midlothian" className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md">
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">Midlothian</p>
                   <p className="text-xs text-zinc-500 mt-1 mb-3">Dalkeith, Penicuik, Bonnyrigg &amp; surrounding areas</p>
                   <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">Home care in Midlothian <ArrowRight className="w-3 h-3" /></span>
                 </Link>
-                <Link href="/locations/lothian/east-lothian/" className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md">
+                <Link href="/locations/lothian/east-lothian" className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md">
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">East Lothian</p>
                   <p className="text-xs text-zinc-500 mt-1 mb-3">Musselburgh, Haddington, North Berwick &amp; surrounding areas</p>
                   <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">Home care in East Lothian <ArrowRight className="w-3 h-3" /></span>
                 </Link>
-                <Link href="/locations/lothian/west-lothian/" className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md">
+                <Link href="/locations/lothian/west-lothian" className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md">
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">West Lothian</p>
                   <p className="text-xs text-zinc-500 mt-1 mb-3">Livingston, Bathgate, Linlithgow &amp; surrounding areas</p>
                   <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">Home care in West Lothian <ArrowRight className="w-3 h-3" /></span>

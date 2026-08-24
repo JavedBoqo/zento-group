@@ -32,14 +32,14 @@ export const metadata: Metadata = {
   description:
     "Zento provides nurse-led home care in Comrie and the surrounding Perthshire villages, from our nearby Crieff office. Call us to arrange a free home visit.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/locations/perthshire/comrie/",
+    canonical: "https://zentogroup.co.uk/locations/perthshire/comrie",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Home Care in Comrie, Perthshire | Nurse-Led | Zento",
     description:
       "Zento provides nurse-led home care in Comrie and the surrounding Perthshire villages, from our nearby Crieff office. Call us to arrange a free home visit.",
-    url: "https://zentogroup.co.uk/locations/perthshire/comrie/",
+    url: "https://zentogroup.co.uk/locations/perthshire/comrie",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -69,55 +69,55 @@ const comrieServices = [
   {
     name: "Personal Care",
     desc: "Bathing, dressing & daily mobility support",
-    href: "/home-care/personal-care/",
+    href: "/home-care/personal-care",
     icon: Heart,
   },
   {
     name: "Medication Support",
     desc: "Nurse-monitored administration & management",
-    href: "/home-care/medication-support/",
+    href: "/home-care/medication-support",
     icon: ShieldCheck,
   },
   {
     name: "Companionship",
     desc: "Social engagement & community activities",
-    href: "/home-care/companionship/",
+    href: "/home-care/companionship",
     icon: Users,
   },
   {
     name: "Meal Preparation",
     desc: "Nutritional support & home cooked meals",
-    href: "/home-care/meal-preparation/",
+    href: "/home-care/meal-preparation",
     icon: Utensils,
   },
   {
     name: "Hospital Discharge Support",
     desc: "Seamless, safe transition back home",
-    href: "/home-care/hospital-discharge/",
+    href: "/home-care/hospital-discharge",
     icon: Building2,
   },
   {
     name: "Dementia Care",
     desc: "Structured, familiar daily routines",
-    href: "/home-care/dementia-care/",
+    href: "/home-care/dementia-care",
     icon: Brain,
   },
   {
     name: "Respite Care",
     desc: "Short-term relief for family carers",
-    href: "/home-care/respite-care/",
+    href: "/home-care/respite-care",
     icon: Sun,
   },
   {
     name: "Overnight Care",
     desc: "Sleep-in or waking-night support",
-    href: "/live-in-care/overnight-care/",
+    href: "/live-in-care/overnight-care",
     icon: Clock4,
   },
   {
     name: "24-Hour Live-In Care",
     desc: "Continuous round-the-clock home care",
-    href: "/live-in-care/24-hour-care/",
+    href: "/live-in-care/24-hour-care",
     icon: Home,
   },
 ];
@@ -140,31 +140,31 @@ const comrieSteps = [
   {
     step: "02",
     title: "A nurse visits your loved one at home",
-    desc: "We arrange a proper assessment, in person, at your loved one's home in Comrie.",
+    desc: "One of our nurses from Crieff will visit your loved one in Comrie or St Fillans.",
   },
   {
     step: "03",
     title: "Care begins",
-    desc: "A care plan is written and a carer matched. Support starts on your agreed schedule.",
+    desc: "A care plan is written and a local carer matched. Support starts on your agreed schedule.",
   },
 ];
 
 const comrieFaqs = [
   {
-    q: "Does Zento provide home care in Comrie?",
-    a: "Yes. We provide nurse-led home care in Comrie and the surrounding villages, from our Crieff office nearby. Visit our Crieff page for more on our wider Perthshire coverage, or call us directly to discuss Comrie specifically.",
+    q: "Where is the nearest Zento office to Comrie?",
+    a: "Our local office is on East High Street in Crieff (PH7), just a 15-minute drive from Comrie. When you call us on 0176 479 0095, you're speaking to our local Strathearn team.",
   },
   {
-    q: "How far is Comrie from Zento's Perthshire office?",
-    a: "Our Perthshire office is based in Crieff, a short drive from Comrie. This proximity means our nurses and carers can visit regularly without long journey times affecting the consistency of care.",
+    q: "Do you cover St Fillans and other villages near Comrie?",
+    a: "Yes. We provide nurse-led home care across Comrie, St Fillans, Strowan and surrounding West Perthshire rural areas.",
   },
   {
-    q: "Do you cover St Fillans as well as Comrie?",
-    a: "Yes. We provide home care in St Fillans and along the Loch Earn corridor, managed by our Crieff nursing team.",
+    q: "Is nurse oversight included for all Comrie clients?",
+    a: "Yes. Every care package in Comrie is assessed, written and reviewed by a registered nurse based at our Crieff office.",
   },
   {
     q: "Can you provide live-in care in Comrie?",
-    a: "Yes. We provide full-time, 24-hour live-in care across Comrie and the wider Perthshire countryside, clinically managed and reviewed by registered nurses.",
+    a: "Yes. We offer dedicated 24-hour live-in care across Comrie and the surrounding rural Perthshire villages, personally matched and clinically supervised by our nursing team.",
   },
 ];
 
@@ -172,11 +172,11 @@ export default function ComrieLocationPage() {
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://zentogroup.co.uk/locations/perthshire/comrie/#crieff-office",
+    "@id": "https://zentogroup.co.uk/locations/perthshire/comrie#crieff-office",
     name: "Zento Group — Comrie & Perthshire Care",
     telephone: "0176 479 0095",
     email: "info@zentogroup.co.uk",
-    url: "https://zentogroup.co.uk/locations/perthshire/comrie/",
+    url: "https://zentogroup.co.uk/locations/perthshire/comrie",
     address: {
       "@type": "PostalAddress",
       streetAddress: "East High Street",
@@ -211,25 +211,25 @@ export default function ComrieLocationPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://zentogroup.co.uk/",
+        item: "https://zentogroup.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Locations",
-        item: "https://zentogroup.co.uk/locations/",
+        item: "https://zentogroup.co.uk/locations",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Perthshire",
-        item: "https://zentogroup.co.uk/locations/perthshire/",
+        item: "https://zentogroup.co.uk/locations/perthshire",
       },
       {
         "@type": "ListItem",
         position: 4,
         name: "Comrie",
-        item: "https://zentogroup.co.uk/locations/perthshire/comrie/",
+        item: "https://zentogroup.co.uk/locations/perthshire/comrie",
       },
     ],
   };
@@ -268,7 +268,7 @@ export default function ComrieLocationPage() {
                 </li>
                 <li>
                   <Link
-                    href="/locations/"
+                    href="/locations"
                     className="hover:text-primary transition-colors font-medium"
                   >
                     Locations
@@ -279,7 +279,7 @@ export default function ComrieLocationPage() {
                 </li>
                 <li>
                   <Link
-                    href="/locations/perthshire/"
+                    href="/locations/perthshire"
                     className="hover:text-primary transition-colors font-medium"
                   >
                     Perthshire
@@ -351,7 +351,7 @@ export default function ComrieLocationPage() {
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/about-image.png"
+                  src="/about-image.webp"
                   alt="Registered nurse conducting home care assessment in Comrie"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -571,7 +571,7 @@ export default function ComrieLocationPage() {
               <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
               <div className="grid gap-4 sm:grid-cols-2 pt-4 text-left">
                 <Link
-                  href="/locations/perthshire/"
+                  href="/locations/perthshire"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">
@@ -585,7 +585,7 @@ export default function ComrieLocationPage() {
                   </span>
                 </Link>
                 <Link
-                  href="/locations/perthshire/crieff/"
+                  href="/locations/perthshire/crieff"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">

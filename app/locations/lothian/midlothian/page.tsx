@@ -32,14 +32,14 @@ export const metadata: Metadata = {
   description:
     "Nurse-led home care across Midlothian — Dalkeith, Penicuik, Bonnyrigg, Loanhead and surrounding areas. Speak to our Edinburgh-based nursing team today.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/locations/lothian/midlothian/",
+    canonical: "https://zentogroup.co.uk/locations/lothian/midlothian",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Home Care in Midlothian | Nurse-Led | Zento",
     description:
       "Nurse-led home care across Midlothian — Dalkeith, Penicuik, Bonnyrigg, Loanhead and surrounding areas. Speak to our Edinburgh-based nursing team today.",
-    url: "https://zentogroup.co.uk/locations/lothian/midlothian/",
+    url: "https://zentogroup.co.uk/locations/lothian/midlothian",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -78,55 +78,55 @@ const midlothianServices = [
   {
     name: "Personal Care",
     desc: "Bathing, dressing & daily mobility assistance",
-    href: "/home-care/personal-care/",
+    href: "/home-care/personal-care",
     icon: Heart,
   },
   {
     name: "Medication Support",
     desc: "Nurse-monitored administration & management",
-    href: "/home-care/medication-support/",
+    href: "/home-care/medication-support",
     icon: ShieldCheck,
   },
   {
     name: "Companionship",
     desc: "Social engagement & community activities",
-    href: "/home-care/companionship/",
+    href: "/home-care/companionship",
     icon: Users,
   },
   {
     name: "Meal Preparation",
     desc: "Nutritional support & home cooked meals",
-    href: "/home-care/meal-preparation/",
+    href: "/home-care/meal-preparation",
     icon: Utensils,
   },
   {
     name: "Hospital Discharge Support",
     desc: "Seamless, safe recovery at home",
-    href: "/home-care/hospital-discharge/",
+    href: "/home-care/hospital-discharge",
     icon: Building2,
   },
   {
     name: "Dementia Care",
     desc: "Structured, familiar daily routines",
-    href: "/home-care/dementia-care/",
+    href: "/home-care/dementia-care",
     icon: Brain,
   },
   {
     name: "Respite Care",
     desc: "Short-term breaks for unpaid family carers",
-    href: "/home-care/respite-care/",
+    href: "/home-care/respite-care",
     icon: Sun,
   },
   {
     name: "Overnight Care",
     desc: "Sleep-in or waking-night support",
-    href: "/live-in-care/overnight-care/",
+    href: "/live-in-care/overnight-care",
     icon: Clock4,
   },
   {
     name: "24-Hour Live-In Care",
     desc: "Continuous round-the-clock home support",
-    href: "/live-in-care/24-hour-care/",
+    href: "/live-in-care/24-hour-care",
     icon: Home,
   },
 ];
@@ -181,11 +181,11 @@ export default function MidlothianLocationPage() {
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://zentogroup.co.uk/locations/lothian/midlothian/#midlothian-service",
+    "@id": "https://zentogroup.co.uk/locations/lothian/midlothian#midlothian-service",
     name: "Zento Group — Midlothian Home Care",
     telephone: "0131 210 0095",
     email: "info@zentogroup.co.uk",
-    url: "https://zentogroup.co.uk/locations/lothian/midlothian/",
+    url: "https://zentogroup.co.uk/locations/lothian/midlothian",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Adit Place",
@@ -221,25 +221,25 @@ export default function MidlothianLocationPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://zentogroup.co.uk/",
+        item: "https://zentogroup.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Locations",
-        item: "https://zentogroup.co.uk/locations/",
+        item: "https://zentogroup.co.uk/locations",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Lothian",
-        item: "https://zentogroup.co.uk/locations/lothian/",
+        item: "https://zentogroup.co.uk/locations/lothian",
       },
       {
         "@type": "ListItem",
         position: 4,
         name: "Midlothian",
-        item: "https://zentogroup.co.uk/locations/lothian/midlothian/",
+        item: "https://zentogroup.co.uk/locations/lothian/midlothian",
       },
     ],
   };
@@ -278,7 +278,7 @@ export default function MidlothianLocationPage() {
                 </li>
                 <li>
                   <Link
-                    href="/locations/"
+                    href="/locations"
                     className="hover:text-primary transition-colors font-medium"
                   >
                     Locations
@@ -289,7 +289,7 @@ export default function MidlothianLocationPage() {
                 </li>
                 <li>
                   <Link
-                    href="/locations/lothian/"
+                    href="/locations/lothian"
                     className="hover:text-primary transition-colors font-medium"
                   >
                     Lothian
@@ -361,7 +361,7 @@ export default function MidlothianLocationPage() {
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/about-image.png"
+                  src="/about-image.webp"
                   alt="Registered nurse conducting home care assessment in Midlothian"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -583,7 +583,7 @@ export default function MidlothianLocationPage() {
               <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
               <div className="grid gap-4 sm:grid-cols-3 pt-4 text-left">
                 <Link
-                  href="/locations/lothian/"
+                  href="/locations/lothian"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">
@@ -597,7 +597,7 @@ export default function MidlothianLocationPage() {
                   </span>
                 </Link>
                 <Link
-                  href="/locations/lothian/east-lothian/"
+                  href="/locations/lothian/east-lothian"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">
@@ -611,7 +611,7 @@ export default function MidlothianLocationPage() {
                   </span>
                 </Link>
                 <Link
-                  href="/locations/edinburgh/"
+                  href="/locations/edinburgh"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">

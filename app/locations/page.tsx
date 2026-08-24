@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Explore Zento nurse-led home care services across Edinburgh, Lothian, and Perthshire. Find local care teams near you.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/locations/",
+    canonical: "https://zentogroup.co.uk/locations",
   },
   robots: { index: true, follow: true },
 };
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 const locations = [
   {
     name: "Edinburgh",
-    href: "/locations/edinburgh/",
+    href: "/locations/edinburgh",
     desc: "Nurse-led home care across all Edinburgh postcodes (EH1–EH17).",
     badge: "Primary Location",
     office: OFFICES[0],
@@ -29,7 +29,7 @@ const locations = [
   },
   {
     name: "Lothian",
-    href: "/locations/lothian/",
+    href: "/locations/lothian",
     desc: "Comprehensive home care coverage for Midlothian, East Lothian & West Lothian.",
     badge: "Regional Hub",
     office: OFFICES[0],
@@ -38,7 +38,7 @@ const locations = [
   },
   {
     name: "Perthshire",
-    href: "/locations/perthshire/",
+    href: "/locations/perthshire",
     desc: "Caring for Crieff, Comrie, Muthill, Braco & surrounding Perthshire villages.",
     badge: "Regional Hub",
     office: OFFICES[1],

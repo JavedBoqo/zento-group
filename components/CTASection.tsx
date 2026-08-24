@@ -3,6 +3,7 @@
 import { Phone } from "lucide-react";
 import ModalButton from "@/components/ModalButton";
 import AnimateContainer from "@/components/AnimateContainer";
+import { CONTACT_NUMBER } from "@/constants";
 
 export default function CTASection() {
   return (
@@ -16,7 +17,7 @@ export default function CTASection() {
               </h2>
               <div className="page-cta-group">
                 <a
-                  href={`tel:${process.env.NEXT_PUBLIC_CONTACT_PHONE?.replace(/\s+/g, "") || "01312100095"}`}
+                  href={`tel:${CONTACT_NUMBER.replace(/\s+/g, "")}`}
                   className="page-cta-secondary-solid"
                 >
                   <Phone className="w-5 h-5" /> Call Now

@@ -173,7 +173,7 @@ export default async function BlogArticlePage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk/" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk" },
       { "@type": "ListItem", position: 2, name: "Blog", item: "https://zentogroup.co.uk/blog" },
       { "@type": "ListItem", position: 3, name: article.title, item: `https://zentogroup.co.uk/blog/${slug}` },
     ],

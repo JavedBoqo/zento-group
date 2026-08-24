@@ -30,12 +30,12 @@ import { OFFICES } from "@/constants";
 export const metadata: Metadata = {
   title: "Home Care in Perthshire | Nurse-Led | Zento",
   description: "Nurse-led home care across Perthshire from our Crieff office — covering Crieff, Comrie, Muthill, Braco and surrounding villages. Contact our Crieff team today.",
-  alternates: { canonical: "https://zentogroup.co.uk/locations/perthshire/" },
+  alternates: { canonical: "https://zentogroup.co.uk/locations/perthshire" },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Home Care in Perthshire | Nurse-Led | Zento",
     description: "Nurse-led home care across Perthshire from our Crieff office — covering Crieff, Comrie, Muthill, Braco and surrounding villages.",
-    url: "https://zentogroup.co.uk/locations/perthshire/",
+    url: "https://zentogroup.co.uk/locations/perthshire",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -52,12 +52,12 @@ export const metadata: Metadata = {
 const crieffOffice = OFFICES[1];
 
 const perthshireServices: ServiceCardItem[] = [
-  { id: "live-in-care", title: "Live-In Care in Perthshire", desc: "In rural Perthshire, where multiple daily visits can be complicated by distance, live-in care is often the most practical and the most compassionate arrangement available. A trained, nurse-selected carer moves into your loved one's home and provides round-the-clock support — so no one is ever alone, and no one is at risk between visits.", extraDesc: "Our Crieff nursing team manages every live-in arrangement personally, from the initial matching process through to regular care reviews. Families in Crieff, Comrie and the surrounding villages get the same standard of clinical oversight as they would anywhere.", href: "/live-in-care/", linkText: "About live-in care" },
-  { id: "respite-care", title: "Respite Care in Perthshire", desc: "Caring for a family member yourself is one of the most demanding things anyone can take on. Respite care gives you a genuine break — not just a few hours with someone sitting in the room, but properly planned cover with a nurse-led care plan in place before your carer even walks through the door.", extraDesc: "Zento provides planned and emergency respite care across Crieff, Comrie and the surrounding Perthshire villages. Your loved one stays at home, with a consistent and properly briefed carer, following the same routine. You get the time you need, knowing nothing important has been left to chance.", href: "/home-care/respite-care/", linkText: "About respite care" },
-  { id: "dementia-care", title: "Dementia Care in Perthshire", desc: "For someone living with dementia in Perthshire, the things that matter most are often invisible to the untrained eye — whether the routine is consistent, whether the carer is the same face every time, whether the environment feels familiar. Our nursing team builds that consistency into every dementia care plan from the start.", extraDesc: "We monitor for changes in behaviour and cognition, adjust care before problems develop, and keep families informed throughout. Clinical oversight isn't something you add later when things go wrong. It's built into the arrangement from day one.", href: "/home-care/dementia-care/", linkText: "About our dementia care service" },
-  { id: "personal-care", title: "Personal Care in Perthshire", desc: "Personal care visits across Perthshire cover the daily tasks that make independent life at home possible — bathing, dressing, continence support, mobility and medication. Every care plan is written by one of our Crieff nurses and reviewed on a regular basis. If anything needs to change between visits, our team is a phone call away on the same number you always use.", extraDesc: "For Perthshire families exploring council-funded care or Self-Directed Support through Perth and Kinross Council, we're happy to talk through what might be available from your very first conversation with us.", href: "/home-care/personal-care/", linkText: "About personal care at home" },
-  { id: "overnight-care", title: "Overnight Care in Perthshire", desc: "Night-time is when many families in Perthshire worry most — falls risk, medication needs, the anxiety of being alone in a rural area after dark. Overnight care from a trained, nurse-supervised carer provides the safety net that makes staying at home feel genuinely safe.", extraDesc: "We provide sleep-in and waking-night cover across Crieff, Comrie and surrounding villages, with care plans written specifically for overnight needs.", href: "/live-in-care/overnight-care/", linkText: "About overnight care at home" },
-  { id: "hospital-discharge", title: "Hospital Discharge Support in Perthshire", desc: "Coming home from Ninewells Hospital or Perth Royal Infirmary without the right care in place is a real risk — and one that happens more often than it should. Our Crieff nursing team can liaise directly with NHS Tayside discharge teams to ensure everything is ready before your loved one leaves hospital.", extraDesc: "In most cases, we can have care arranged within 24 to 48 hours of discharge, with a proper clinical care plan and a matched carer from our local team.", href: "/home-care/hospital-discharge/", linkText: "About hospital discharge care" },
+  { id: "live-in-care", title: "Live-In Care in Perthshire", desc: "In rural Perthshire, where multiple daily visits can be complicated by distance, live-in care is often the most practical and the most compassionate arrangement available. A trained, nurse-selected carer moves into your loved one's home and provides round-the-clock support — so no one is ever alone, and no one is at risk between visits.", extraDesc: "Our Crieff nursing team manages every live-in arrangement personally, from the initial matching process through to regular care reviews. Families in Crieff, Comrie and the surrounding villages get the same standard of clinical oversight as they would anywhere.", href: "/live-in-care", linkText: "About live-in care" },
+  { id: "respite-care", title: "Respite Care in Perthshire", desc: "Caring for a family member yourself is one of the most demanding things anyone can take on. Respite care gives you a genuine break — not just a few hours with someone sitting in the room, but properly planned cover with a nurse-led care plan in place before your carer even walks through the door.", extraDesc: "Zento provides planned and emergency respite care across Crieff, Comrie and the surrounding Perthshire villages. Your loved one stays at home, with a consistent and properly briefed carer, following the same routine. You get the time you need, knowing nothing important has been left to chance.", href: "/home-care/respite-care", linkText: "About respite care" },
+  { id: "dementia-care", title: "Dementia Care in Perthshire", desc: "For someone living with dementia in Perthshire, the things that matter most are often invisible to the untrained eye — whether the routine is consistent, whether the carer is the same face every time, whether the environment feels familiar. Our nursing team builds that consistency into every dementia care plan from the start.", extraDesc: "We monitor for changes in behaviour and cognition, adjust care before problems develop, and keep families informed throughout. Clinical oversight isn't something you add later when things go wrong. It's built into the arrangement from day one.", href: "/home-care/dementia-care", linkText: "About our dementia care service" },
+  { id: "personal-care", title: "Personal Care in Perthshire", desc: "Personal care visits across Perthshire cover the daily tasks that make independent life at home possible — bathing, dressing, continence support, mobility and medication. Every care plan is written by one of our Crieff nurses and reviewed on a regular basis. If anything needs to change between visits, our team is a phone call away on the same number you always use.", extraDesc: "For Perthshire families exploring council-funded care or Self-Directed Support through Perth and Kinross Council, we're happy to talk through what might be available from your very first conversation with us.", href: "/home-care/personal-care", linkText: "About personal care at home" },
+  { id: "overnight-care", title: "Overnight Care in Perthshire", desc: "Night-time is when many families in Perthshire worry most — falls risk, medication needs, the anxiety of being alone in a rural area after dark. Overnight care from a trained, nurse-supervised carer provides the safety net that makes staying at home feel genuinely safe.", extraDesc: "We provide sleep-in and waking-night cover across Crieff, Comrie and surrounding villages, with care plans written specifically for overnight needs.", href: "/live-in-care/overnight-care", linkText: "About overnight care at home" },
+  { id: "hospital-discharge", title: "Hospital Discharge Support in Perthshire", desc: "Coming home from Ninewells Hospital or Perth Royal Infirmary without the right care in place is a real risk — and one that happens more often than it should. Our Crieff nursing team can liaise directly with NHS Tayside discharge teams to ensure everything is ready before your loved one leaves hospital.", extraDesc: "In most cases, we can have care arranged within 24 to 48 hours of discharge, with a proper clinical care plan and a matched carer from our local team.", href: "/home-care/hospital-discharge", linkText: "About hospital discharge care" },
 ];
 
 const perthshireSigns = [
@@ -93,11 +93,11 @@ export default function PerthshireLocationPage() {
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://zentogroup.co.uk/locations/perthshire/#crieff-office",
+    "@id": "https://zentogroup.co.uk/locations/perthshire#crieff-office",
     name: "Zento Group — Crieff",
     telephone: "0176 479 0095",
     email: "info@zentogroup.co.uk",
-    url: "https://zentogroup.co.uk/locations/perthshire/",
+    url: "https://zentogroup.co.uk/locations/perthshire",
     address: { "@type": "PostalAddress", streetAddress: "East High Street", addressLocality: "Crieff", postalCode: "PH7", addressCountry: "GB" },
     areaServed: ["Crieff", "Comrie", "Muthill", "Braco", "Perthshire"],
     serviceType: "Nurse-Led Home Care",
@@ -112,9 +112,9 @@ export default function PerthshireLocationPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk/" },
-      { "@type": "ListItem", position: 2, name: "Locations", item: "https://zentogroup.co.uk/locations/" },
-      { "@type": "ListItem", position: 3, name: "Perthshire", item: "https://zentogroup.co.uk/locations/perthshire/" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk" },
+      { "@type": "ListItem", position: 2, name: "Locations", item: "https://zentogroup.co.uk/locations" },
+      { "@type": "ListItem", position: 3, name: "Perthshire", item: "https://zentogroup.co.uk/locations/perthshire" },
     ],
   };
 
@@ -132,7 +132,7 @@ export default function PerthshireLocationPage() {
               <ol className="flex items-center gap-2 text-xs text-zinc-500">
                 <li><Link href="/" className="hover:text-primary transition-colors font-medium">Home</Link></li>
                 <li aria-hidden="true" className="text-zinc-300">/</li>
-                <li><Link href="/locations/" className="hover:text-primary transition-colors font-medium">Locations</Link></li>
+                <li><Link href="/locations" className="hover:text-primary transition-colors font-medium">Locations</Link></li>
                 <li aria-hidden="true" className="text-zinc-300">/</li>
                 <li><span className="font-semibold text-secondary" aria-current="page">Perthshire</span></li>
               </ol>
@@ -177,7 +177,7 @@ export default function PerthshireLocationPage() {
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
-                <Image src="/about-image.png" alt="Registered nurse conducting home care assessment in Perthshire" fill sizes="(max-width: 768px) 100vw, 500px" className="object-cover" />
+                <Image src="/about-image.webp" alt="Registered nurse conducting home care assessment in Perthshire" fill sizes="(max-width: 768px) 100vw, 500px" className="object-cover" />
               </AnimateContainer>
               <AnimateContainer animation="fade-left" delay={0.1} className="flex-1 space-y-6">
                 <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider">Local Office &middot; Crieff PH7</span>
@@ -351,12 +351,12 @@ export default function PerthshireLocationPage() {
               <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
               <p className="text-base leading-relaxed text-zinc-600">Explore our local service details for specific Perthshire towns and communities:</p>
               <div className="grid gap-4 sm:grid-cols-2 pt-4 text-left">
-                <Link href="/locations/perthshire/crieff/" className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md">
+                <Link href="/locations/perthshire/crieff" className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md">
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">Crieff</p>
                   <p className="text-xs text-zinc-500 mt-1 mb-3">Nurse-led home care across Crieff, Muthill &amp; Braco</p>
                   <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">Home care in Crieff <ArrowRight className="w-3 h-3" /></span>
                 </Link>
-                <Link href="/locations/perthshire/comrie/" className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md">
+                <Link href="/locations/perthshire/comrie" className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md">
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">Comrie</p>
                   <p className="text-xs text-zinc-500 mt-1 mb-3">Home care for Comrie, St Fillans &amp; surrounding villages</p>
                   <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">Home care in Comrie <ArrowRight className="w-3 h-3" /></span>

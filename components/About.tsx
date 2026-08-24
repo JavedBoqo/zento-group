@@ -14,7 +14,7 @@ export default function About() {
             className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100"
           >
             <Image
-              src="/about-image.png"
+              src="/about-image.webp"
               alt="Elderly client enjoying happy independent life at home"
               fill
               sizes="(max-width: 768px) 100vw, 500px"

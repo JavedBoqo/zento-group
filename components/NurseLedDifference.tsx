@@ -50,7 +50,7 @@ export default function NurseLedDifference() {
           >
             <div className="relative h-full w-full overflow-hidden rounded-[1.8rem]">
               <Image
-                src="/brand-image.png"
+                src="/brand-image.webp"
                 alt="Zento Trusted Caregiver and Client Team"
                 fill
                 sizes="(max-width: 768px) 100vw, 600px"

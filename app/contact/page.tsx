@@ -9,6 +9,7 @@ import { FacebookIcon, LinkedinIcon, InstagramIcon } from "@/components/icons";
 import {
   SERVICE_AREAS,
   PERTHSHIRE_TAGLINE,
+  SOCIAL_LINKS,
 } from "@/constants";
 
 export const metadata: Metadata = {
@@ -139,27 +140,20 @@ export default function ContactPage() {
                 <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-xl">
                   <p className="text-xs text-zinc-500 mb-3">Also reach us on social media:</p>
                   <div className="flex items-center gap-2">
-                    <a
-                      href="#"
-                      aria-label="Facebook"
-                      className="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 transition-colors hover:bg-primary hover:text-white"
-                    >
-                      <FacebookIcon />
-                    </a>
-                    <a
-                      href="#"
-                      aria-label="LinkedIn"
-                      className="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 transition-colors hover:bg-primary hover:text-white"
-                    >
-                      <LinkedinIcon />
-                    </a>
-                    <a
-                      href="#"
-                      aria-label="Instagram"
-                      className="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 transition-colors hover:bg-primary hover:text-white"
-                    >
-                      <InstagramIcon />
-                    </a>
+                    {SOCIAL_LINKS.map((social) => (
+                      <a
+                        key={social.name}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.name}
+                        className="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 transition-colors hover:bg-primary hover:text-white"
+                      >
+                        {social.iconName === "facebook" && <FacebookIcon />}
+                        {social.iconName === "instagram" && <InstagramIcon />}
+                        {social.iconName === "linkedin" && <LinkedinIcon />}
+                      </a>
+                    ))}
                   </div>
                 </div>
               </AnimateContainer>

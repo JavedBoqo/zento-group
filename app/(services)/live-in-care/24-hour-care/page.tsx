@@ -28,14 +28,14 @@ export const metadata: Metadata = {
   description:
     "Continuous round-the-clock care at home in Edinburgh and across Scotland. Our nurse-led 24-hour service is the compassionate alternative to a care home.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/live-in-care/24-hour-care/",
+    canonical: "https://zentogroup.co.uk/live-in-care/24-hour-care",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "24-Hour Home Care | Round-the-Clock Support | Zento",
     description:
       "Continuous round-the-clock care at home in Edinburgh and across Scotland. Our nurse-led 24-hour service is the compassionate alternative to a care home.",
-    url: "https://zentogroup.co.uk/live-in-care/24-hour-care/",
+    url: "https://zentogroup.co.uk/live-in-care/24-hour-care",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -97,9 +97,9 @@ const steps = [
 ];
 
 const locationLinks = [
-  { label: "Edinburgh", href: "/locations/edinburgh/" },
-  { label: "Midlothian", href: "/locations/lothian/midlothian/" },
-  { label: "Perthshire", href: "/locations/perthshire/" },
+  { label: "Edinburgh", href: "/locations/edinburgh" },
+  { label: "Midlothian", href: "/locations/lothian/midlothian" },
+  { label: "Perthshire", href: "/locations/perthshire" },
 ];
 
 const faqs = [
@@ -132,19 +132,19 @@ const faqs = [
 const relatedServices = [
   {
     title: "Live-In Care",
-    href: "/live-in-care/",
+    href: "/live-in-care",
     desc: "A single, consistent carer for daily support and companionship, with scheduled overnight rest.",
     icon: Heart,
   },
   {
     title: "Overnight Care at Home",
-    href: "/live-in-care/overnight-care/",
+    href: "/live-in-care/overnight-care",
     desc: "Sleep-in or waking-night support alone, without full daytime coverage.",
     icon: Clock4,
   },
   {
     title: "Dementia Care at Home",
-    href: "/home-care/dementia-care/",
+    href: "/home-care/dementia-care",
     desc: "Consistent, nurse-led routines — often combined with 24-hour support for advanced needs.",
     icon: Brain,
   },
@@ -163,14 +163,14 @@ export default function TwentyFourHourCarePage() {
     },
     serviceType: "24-Hour Home Care",
     areaServed: ["City of Edinburgh", "Midlothian", "East Lothian", "West Lothian", "Perthshire"],
-    url: "https://zentogroup.co.uk/live-in-care/24-hour-care/",
+    url: "https://zentogroup.co.uk/live-in-care/24-hour-care",
   };
 
   const medicalBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
     name: "Zento Care - 24-Hour Home Support",
-    url: "https://zentogroup.co.uk/live-in-care/24-hour-care/",
+    url: "https://zentogroup.co.uk/live-in-care/24-hour-care",
     telephone: "+441312100095",
     areaServed: ["Edinburgh", "Perthshire", "Lothians"],
     description: "Nurse-led continuous 24-hour care at home.",
@@ -190,9 +190,9 @@ export default function TwentyFourHourCarePage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk/" },
-      { "@type": "ListItem", position: 2, name: "Live-In Care", item: "https://zentogroup.co.uk/live-in-care/" },
-      { "@type": "ListItem", position: 3, name: "24-Hour Home Care", item: "https://zentogroup.co.uk/live-in-care/24-hour-care/" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk" },
+      { "@type": "ListItem", position: 2, name: "Live-In Care", item: "https://zentogroup.co.uk/live-in-care" },
+      { "@type": "ListItem", position: 3, name: "24-Hour Home Care", item: "https://zentogroup.co.uk/live-in-care/24-hour-care" },
     ],
   };
 
@@ -220,7 +220,7 @@ export default function TwentyFourHourCarePage() {
                   /
                 </li>
                 <li>
-                  <Link href="/live-in-care/" className="hover:text-primary transition-colors font-medium">
+                  <Link href="/live-in-care" className="hover:text-primary transition-colors font-medium">
                     Live-In Care
                   </Link>
                 </li>
@@ -293,7 +293,7 @@ export default function TwentyFourHourCarePage() {
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/about-image.png"
+                  src="/about-image.webp"
                   alt="Carer providing round-the-clock 24-hour care and support at home"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -406,7 +406,7 @@ export default function TwentyFourHourCarePage() {
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-xl flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl">
                 <div className="relative h-full w-full overflow-hidden rounded-[1.8rem]">
                   <Image
-                    src="/brand-image.png"
+                    src="/brand-image.webp"
                     alt="Registered nurse reviewing 24-hour care plan and clinical protocol"
                     fill
                     sizes="(max-width: 768px) 100vw, 600px"

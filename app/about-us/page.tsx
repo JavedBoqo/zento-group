@@ -26,14 +26,14 @@ export const metadata: Metadata = {
   description:
     "Zento Group is nurse-led home care serving Edinburgh, Lothian and Perthshire. Meet the founders, our values and our Care Inspectorate registration. Call us.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/about-us/",
+    canonical: "https://zentogroup.co.uk/about-us",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "About Zento | Nurse-Led Care in Edinburgh & Perthshire",
     description:
       "Zento Group is nurse-led home care serving Edinburgh, Lothian and Perthshire. Meet the founders, our values and our Care Inspectorate registration.",
-    url: "https://zentogroup.co.uk/about-us/",
+    url: "https://zentogroup.co.uk/about-us",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -90,7 +90,7 @@ export default function AboutUsPage() {
     name: "About Zento Group",
     description:
       "Zento Group is a nurse-led care-at-home provider supporting adults across Edinburgh, East, Mid and West Lothian, and Perthshire, including Crieff and Comrie.",
-    url: "https://zentogroup.co.uk/about-us/",
+    url: "https://zentogroup.co.uk/about-us",
     provider: {
       "@type": "Organization",
       "@id": "https://zentogroup.co.uk/#organization",
@@ -106,13 +106,13 @@ export default function AboutUsPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://zentogroup.co.uk/",
+        item: "https://zentogroup.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "About Us",
-        item: "https://zentogroup.co.uk/about-us/",
+        item: "https://zentogroup.co.uk/about-us",
       },
     ],
   };
@@ -221,7 +221,7 @@ export default function AboutUsPage() {
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/about-image.png"
+                  src="/about-image.webp"
                   alt="Zento founders who are practising nurses delivering care"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -360,7 +360,7 @@ export default function AboutUsPage() {
               <AnimateContainer animation="fade-left" delay={0.1} className="relative aspect-square w-full max-w-xl flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl">
                 <div className="relative h-full w-full overflow-hidden rounded-[1.8rem]">
                   <Image
-                    src="/brand-image.png"
+                    src="/brand-image.webp"
                     alt="Zento nurse-led care team"
                     fill
                     sizes="(max-width: 768px) 100vw, 600px"
@@ -380,7 +380,7 @@ export default function AboutUsPage() {
             <div className="flex flex-col items-center gap-12 lg:flex-row-reverse lg:gap-16">
               <AnimateContainer animation="fade-left" className="relative aspect-[4/3] w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/brand-image.png"
+                  src="/brand-image.webp"
                   alt="Care Inspectorate regulated care provider"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -510,7 +510,7 @@ export default function AboutUsPage() {
                     </li>
                   </ul>
                   <Link
-                    href="/locations/edinburgh/"
+                    href="/locations/edinburgh"
                     className="mt-auto flex items-center gap-1.5 text-sm font-bold text-primary group-hover:text-secondary transition-colors"
                   >
                     Learn more about our Edinburgh team{" "}
@@ -548,7 +548,7 @@ export default function AboutUsPage() {
                     </li>
                   </ul>
                   <Link
-                    href="/locations/perthshire/crieff/"
+                    href="/locations/perthshire/crieff"
                     className="mt-auto flex items-center gap-1.5 text-sm font-bold text-secondary group-hover:text-primary transition-colors"
                   >
                     Learn more about our Crieff team{" "}

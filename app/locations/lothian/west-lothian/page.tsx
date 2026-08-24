@@ -32,14 +32,14 @@ export const metadata: Metadata = {
   description:
     "Nurse-led home care across West Lothian — Livingston, Bathgate, Linlithgow, Broxburn and Armadale. Our Edinburgh team covers the full West Lothian area.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/locations/lothian/west-lothian/",
+    canonical: "https://zentogroup.co.uk/locations/lothian/west-lothian",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Home Care in West Lothian | Nurse-Led | Zento",
     description:
       "Nurse-led home care across West Lothian — Livingston, Bathgate, Linlithgow, Broxburn and Armadale. Our Edinburgh team covers the full West Lothian area.",
-    url: "https://zentogroup.co.uk/locations/lothian/west-lothian/",
+    url: "https://zentogroup.co.uk/locations/lothian/west-lothian",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -76,55 +76,55 @@ const westLothianServices = [
   {
     name: "Personal Care",
     desc: "Bathing, dressing & daily mobility support",
-    href: "/home-care/personal-care/",
+    href: "/home-care/personal-care",
     icon: Heart,
   },
   {
     name: "Medication Support",
     desc: "Nurse-monitored administration & management",
-    href: "/home-care/medication-support/",
+    href: "/home-care/medication-support",
     icon: ShieldCheck,
   },
   {
     name: "Companionship",
     desc: "Social engagement & community activities",
-    href: "/home-care/companionship/",
+    href: "/home-care/companionship",
     icon: Users,
   },
   {
     name: "Meal Preparation",
     desc: "Nutritional support & home cooked meals",
-    href: "/home-care/meal-preparation/",
+    href: "/home-care/meal-preparation",
     icon: Utensils,
   },
   {
     name: "Hospital Discharge Support",
     desc: "Seamless, safe transition back home",
-    href: "/home-care/hospital-discharge/",
+    href: "/home-care/hospital-discharge",
     icon: Building2,
   },
   {
     name: "Dementia Care",
     desc: "Structured, familiar daily routines",
-    href: "/home-care/dementia-care/",
+    href: "/home-care/dementia-care",
     icon: Brain,
   },
   {
     name: "Respite Care",
     desc: "Short-term relief for family carers",
-    href: "/home-care/respite-care/",
+    href: "/home-care/respite-care",
     icon: Sun,
   },
   {
     name: "Overnight Care",
     desc: "Sleep-in or waking-night support",
-    href: "/live-in-care/overnight-care/",
+    href: "/live-in-care/overnight-care",
     icon: Clock4,
   },
   {
     name: "24-Hour Live-In Care",
     desc: "Continuous round-the-clock home care",
-    href: "/live-in-care/24-hour-care/",
+    href: "/live-in-care/24-hour-care",
     icon: Home,
   },
 ];
@@ -133,16 +133,16 @@ const westLothianSigns = [
   "Mobility difficulties or recent falls in Livingston or surrounding West Lothian homes.",
   "Medication issues — Missed doses, confusion around timings, or delayed renewals.",
   "Nutritional concerns — Skipping meals or struggling to cook hot food safely.",
-  "Difficulty maintaining personal care routines, bathing, and dressing independently.",
-  "Memory loss or disorientation — Getting confused outside familiar surroundings.",
-  "Family carer exhaustion — Needing reliable respite care and ongoing clinical advice.",
+  "Personal care challenges — Bathing, dressing, or daily personal hygiene requiring support.",
+  "Cognitive changes — Disorientation, evening restlessness, or memory lapses.",
+  "Family carer strain — Loved ones in West Lothian needing reliable respite.",
 ];
 
 const westLothianSteps = [
   {
     step: "01",
     title: "Call us",
-    desc: "A straightforward conversation about what you need. No pressure, no commitment.",
+    desc: "A quick, honest conversation about what you need. No pressure, no commitment.",
   },
   {
     step: "02",
@@ -158,12 +158,12 @@ const westLothianSteps = [
 
 const westLothianFaqs = [
   {
-    q: "Which towns in West Lothian does Zento cover?",
-    a: "We provide home care across Livingston, Bathgate, Linlithgow, Broxburn, Armadale, West Calder and the surrounding areas. If you're unsure whether we cover your specific town, call us on 0131 210 0095 and we'll confirm straightaway.",
+    q: "How quickly can home care begin in West Lothian?",
+    a: "In most cases, we can complete a nurse assessment within a few days of your initial call. For urgent situations — including hospital discharge — we aim to arrange care within 24 to 48 hours.",
   },
   {
-    q: "How quickly can care begin in West Lothian?",
-    a: "In most cases, we can complete a nurse assessment within a few days of your initial call. For urgent situations — including hospital discharge — we aim to arrange care within 24 to 48 hours.",
+    q: "Which West Lothian towns does Zento cover?",
+    a: "We cover all of West Lothian including Livingston, Bathgate, Linlithgow, Broxburn, Armadale and West Calder. If you're unsure whether we cover your specific address, call us on 0131 210 0095.",
   },
   {
     q: "Is nurse oversight included for all West Lothian clients?",
@@ -179,11 +179,11 @@ export default function WestLothianLocationPage() {
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://zentogroup.co.uk/locations/lothian/west-lothian/#west-lothian-service",
+    "@id": "https://zentogroup.co.uk/locations/lothian/west-lothian#west-lothian-service",
     name: "Zento Group — West Lothian Home Care",
     telephone: "0131 210 0095",
     email: "info@zentogroup.co.uk",
-    url: "https://zentogroup.co.uk/locations/lothian/west-lothian/",
+    url: "https://zentogroup.co.uk/locations/lothian/west-lothian",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Adit Place",
@@ -219,25 +219,25 @@ export default function WestLothianLocationPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://zentogroup.co.uk/",
+        item: "https://zentogroup.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Locations",
-        item: "https://zentogroup.co.uk/locations/",
+        item: "https://zentogroup.co.uk/locations",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Lothian",
-        item: "https://zentogroup.co.uk/locations/lothian/",
+        item: "https://zentogroup.co.uk/locations/lothian",
       },
       {
         "@type": "ListItem",
         position: 4,
         name: "West Lothian",
-        item: "https://zentogroup.co.uk/locations/lothian/west-lothian/",
+        item: "https://zentogroup.co.uk/locations/lothian/west-lothian",
       },
     ],
   };
@@ -276,7 +276,7 @@ export default function WestLothianLocationPage() {
                 </li>
                 <li>
                   <Link
-                    href="/locations/"
+                    href="/locations"
                     className="hover:text-primary transition-colors font-medium"
                   >
                     Locations
@@ -287,7 +287,7 @@ export default function WestLothianLocationPage() {
                 </li>
                 <li>
                   <Link
-                    href="/locations/lothian/"
+                    href="/locations/lothian"
                     className="hover:text-primary transition-colors font-medium"
                   >
                     Lothian
@@ -359,7 +359,7 @@ export default function WestLothianLocationPage() {
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/about-image.png"
+                  src="/about-image.webp"
                   alt="Registered nurse conducting home care assessment in West Lothian"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -581,7 +581,7 @@ export default function WestLothianLocationPage() {
               <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
               <div className="grid gap-4 sm:grid-cols-3 pt-4 text-left">
                 <Link
-                  href="/locations/lothian/"
+                  href="/locations/lothian"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">
@@ -595,7 +595,7 @@ export default function WestLothianLocationPage() {
                   </span>
                 </Link>
                 <Link
-                  href="/locations/lothian/midlothian/"
+                  href="/locations/lothian/midlothian"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">
@@ -609,7 +609,7 @@ export default function WestLothianLocationPage() {
                   </span>
                 </Link>
                 <Link
-                  href="/locations/edinburgh/"
+                  href="/locations/edinburgh"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">

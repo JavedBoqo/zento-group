@@ -48,7 +48,7 @@ export const OFFICES: OfficeLocation[] = [
     phone: "0176 479 0095",
     phoneHref: "tel:01764790095",
     email: "info@zentogroup.co.uk",
-    mapEmbedHref: "https://pinetechnologies.slack.com/archives/D04LVE6SPPG/p1787141509308139",
+    mapEmbedHref: "https://maps.google.com/?q=East+High+Street+Crieff+PH7",
     mapEmbedUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d816.856225207229!2d-3.837855724760665!3d56.372812241966066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48889b15bf9edec5%3A0x58d3cb79f013de85!2sZento%20Group!5e0!3m2!1sen!2s!4v1787140795353!5m2!1sen!2s",
     googleMapsUrl: "https://maps.google.com/?q=East+High+Street+Crieff+PH7",

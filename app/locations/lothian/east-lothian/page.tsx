@@ -32,14 +32,14 @@ export const metadata: Metadata = {
   description:
     "Home care visits across East Lothian — Musselburgh, Haddington, North Berwick, Tranent and Dunbar. Nurse-led team based in Edinburgh. Free initial consultation.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/locations/lothian/east-lothian/",
+    canonical: "https://zentogroup.co.uk/locations/lothian/east-lothian",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Home Care in East Lothian | Nurse-Led | Zento",
     description:
       "Home care visits across East Lothian — Musselburgh, Haddington, North Berwick, Tranent and Dunbar. Nurse-led team based in Edinburgh. Free initial consultation.",
-    url: "https://zentogroup.co.uk/locations/lothian/east-lothian/",
+    url: "https://zentogroup.co.uk/locations/lothian/east-lothian",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -78,73 +78,73 @@ const eastLothianServices = [
   {
     name: "Personal Care",
     desc: "Bathing, dressing & daily mobility support",
-    href: "/home-care/personal-care/",
+    href: "/home-care/personal-care",
     icon: Heart,
   },
   {
     name: "Medication Support",
     desc: "Nurse-monitored administration & management",
-    href: "/home-care/medication-support/",
+    href: "/home-care/medication-support",
     icon: ShieldCheck,
   },
   {
     name: "Companionship",
     desc: "Social engagement & community activities",
-    href: "/home-care/companionship/",
+    href: "/home-care/companionship",
     icon: Users,
   },
   {
     name: "Meal Preparation",
     desc: "Nutritional support & home cooked meals",
-    href: "/home-care/meal-preparation/",
+    href: "/home-care/meal-preparation",
     icon: Utensils,
   },
   {
     name: "Hospital Discharge Support",
     desc: "Seamless, safe transition back home",
-    href: "/home-care/hospital-discharge/",
+    href: "/home-care/hospital-discharge",
     icon: Building2,
   },
   {
     name: "Dementia Care",
     desc: "Structured, familiar daily routines",
-    href: "/home-care/dementia-care/",
+    href: "/home-care/dementia-care",
     icon: Brain,
   },
   {
     name: "Respite Care",
     desc: "Short-term relief for family carers",
-    href: "/home-care/respite-care/",
+    href: "/home-care/respite-care",
     icon: Sun,
   },
   {
     name: "Overnight Care",
     desc: "Sleep-in or waking-night support",
-    href: "/live-in-care/overnight-care/",
+    href: "/live-in-care/overnight-care",
     icon: Clock4,
   },
   {
     name: "24-Hour Live-In Care",
     desc: "Continuous round-the-clock home care",
-    href: "/live-in-care/24-hour-care/",
+    href: "/live-in-care/24-hour-care",
     icon: Home,
   },
 ];
 
 const eastLothianSigns = [
   "Difficulty managing coastal or multi-level East Lothian homes — Unsteadiness on stairs or navigating thresholds.",
-  "Medication oversights — Forgetting daily prescription schedules or needing regular nurse-led reviews.",
-  "Nutritional challenges — Skipping meals, reduced appetite, or difficulty getting to local shops in towns like Haddington or Dunbar.",
-  "Struggling with personal care and daily routines — Bathing, grooming, or dressing becoming physically demanding.",
-  "Memory lapses or disorientation — Forgetting recent events, feeling anxious, or wandering.",
-  "Family carer strain — Loved ones in East Lothian needing dependable respite and professional support.",
+  "Medication errors, forgotten doses, or struggle with blister pack organisation.",
+  "Weight loss or irregular meals — Difficulty shopping locally or preparing nutritious food.",
+  "Struggling with dressing, personal grooming, or maintaining hygiene independently.",
+  "Memory lapses, evening disorientation, or confusion around familiar surroundings.",
+  "Family members feeling stretched balancing work and caring responsibilities.",
 ];
 
 const eastLothianSteps = [
   {
     step: "01",
     title: "Call us",
-    desc: "A straightforward conversation about what you need. No pressure, no commitment.",
+    desc: "A quick, honest conversation about what you need. No pressure, no commitment.",
   },
   {
     step: "02",
@@ -164,8 +164,8 @@ const eastLothianFaqs = [
     a: "In most cases, we can complete a nurse assessment within a few days of your initial call. For urgent situations — including hospital discharge — we aim to arrange care within 24 to 48 hours.",
   },
   {
-    q: "Do you cover coastal East Lothian villages?",
-    a: "Yes. We cover towns and villages across East Lothian, from Musselburgh, Tranent and Prestonpans to North Berwick, Gullane and Dunbar. If you're unsure whether we cover your specific village, call our Edinburgh team on 0131 210 0095.",
+    q: "Which East Lothian towns does Zento cover?",
+    a: "We cover all of East Lothian including Musselburgh, Haddington, North Berwick, Dunbar, Tranent, Prestonpans, Gullane and East Linton. If you're unsure whether we cover your specific address, call us on 0131 210 0095.",
   },
   {
     q: "Is nurse oversight included for all East Lothian clients?",
@@ -181,11 +181,11 @@ export default function EastLothianLocationPage() {
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://zentogroup.co.uk/locations/lothian/east-lothian/#east-lothian-service",
+    "@id": "https://zentogroup.co.uk/locations/lothian/east-lothian#east-lothian-service",
     name: "Zento Group — East Lothian Home Care",
     telephone: "0131 210 0095",
     email: "info@zentogroup.co.uk",
-    url: "https://zentogroup.co.uk/locations/lothian/east-lothian/",
+    url: "https://zentogroup.co.uk/locations/lothian/east-lothian",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Adit Place",
@@ -221,25 +221,25 @@ export default function EastLothianLocationPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://zentogroup.co.uk/",
+        item: "https://zentogroup.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Locations",
-        item: "https://zentogroup.co.uk/locations/",
+        item: "https://zentogroup.co.uk/locations",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Lothian",
-        item: "https://zentogroup.co.uk/locations/lothian/",
+        item: "https://zentogroup.co.uk/locations/lothian",
       },
       {
         "@type": "ListItem",
         position: 4,
         name: "East Lothian",
-        item: "https://zentogroup.co.uk/locations/lothian/east-lothian/",
+        item: "https://zentogroup.co.uk/locations/lothian/east-lothian",
       },
     ],
   };
@@ -278,7 +278,7 @@ export default function EastLothianLocationPage() {
                 </li>
                 <li>
                   <Link
-                    href="/locations/"
+                    href="/locations"
                     className="hover:text-primary transition-colors font-medium"
                   >
                     Locations
@@ -289,7 +289,7 @@ export default function EastLothianLocationPage() {
                 </li>
                 <li>
                   <Link
-                    href="/locations/lothian/"
+                    href="/locations/lothian"
                     className="hover:text-primary transition-colors font-medium"
                   >
                     Lothian
@@ -363,7 +363,7 @@ export default function EastLothianLocationPage() {
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/about-image.png"
+                  src="/about-image.webp"
                   alt="Registered nurse conducting home care assessment in East Lothian"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -584,7 +584,7 @@ export default function EastLothianLocationPage() {
               <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
               <div className="grid gap-4 sm:grid-cols-3 pt-4 text-left">
                 <Link
-                  href="/locations/lothian/"
+                  href="/locations/lothian"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">
@@ -598,7 +598,7 @@ export default function EastLothianLocationPage() {
                   </span>
                 </Link>
                 <Link
-                  href="/locations/lothian/midlothian/"
+                  href="/locations/lothian/midlothian"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">
@@ -612,7 +612,7 @@ export default function EastLothianLocationPage() {
                   </span>
                 </Link>
                 <Link
-                  href="/locations/edinburgh/"
+                  href="/locations/edinburgh"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">

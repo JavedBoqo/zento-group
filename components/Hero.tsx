@@ -57,7 +57,7 @@ export default function Hero() {
             className="relative h-[380px] min-[400px]:h-[440px] sm:h-[480px] lg:h-[540px] w-full max-w-xl overflow-hidden rounded-3xl bg-zinc-200 shadow-xl lg:w-1/2"
           >
             <Image
-              src="/hero-image.png"
+              src="/hero-image.webp"
               alt="Zento Caregiver assisting elderly client with compassionate home care"
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"

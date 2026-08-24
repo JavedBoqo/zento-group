@@ -30,14 +30,14 @@ export const metadata: Metadata = {
   description:
     "Safe medication prompting and administration, overseen by our nurses. Reducing risks and giving families genuine peace of mind. Edinburgh & Lothian. Call us.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/home-care/medication-support/",
+    canonical: "https://zentogroup.co.uk/home-care/medication-support",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Medication Support at Home | Nurse-Led Care | Zento",
     description:
       "Safe medication prompting and administration, overseen by our nurses. Reducing risks and giving families genuine peace of mind. Edinburgh & Lothian.",
-    url: "https://zentogroup.co.uk/home-care/medication-support/",
+    url: "https://zentogroup.co.uk/home-care/medication-support",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -133,10 +133,10 @@ const steps = [
 ];
 
 const locationLinks = [
-  { label: "Edinburgh", href: "/locations/edinburgh/" },
-  { label: "Midlothian", href: "/locations/lothian/midlothian/" },
-  { label: "East Lothian", href: "/locations/lothian/east-lothian/" },
-  { label: "Perthshire", href: "/locations/perthshire/" },
+  { label: "Edinburgh", href: "/locations/edinburgh" },
+  { label: "Midlothian", href: "/locations/lothian/midlothian" },
+  { label: "East Lothian", href: "/locations/lothian/east-lothian" },
+  { label: "Perthshire", href: "/locations/perthshire" },
 ];
 
 const faqs = [
@@ -173,19 +173,19 @@ const faqs = [
 const relatedServices = [
   {
     title: "Personal Care at Home",
-    href: "/home-care/personal-care/",
+    href: "/home-care/personal-care",
     desc: "Daily personal care visits that include medication prompting as part of a broader nurse-led care plan.",
     icon: Heart,
   },
   {
     title: "Dementia Care at Home",
-    href: "/home-care/dementia-care/",
+    href: "/home-care/dementia-care",
     desc: "Nurse-led dementia care with consistent carers, safe medication management and regular clinical reviews.",
     icon: ShieldCheck,
   },
   {
     title: "Overnight Care at Home",
-    href: "/live-in-care/overnight-care/",
+    href: "/live-in-care/overnight-care",
     desc: "Sleep-in and waking-night care for clients with medication needs that extend into the night hours.",
     icon: Clock4,
   },
@@ -204,7 +204,7 @@ export default function MedicationSupportPage() {
     },
     serviceType: "Medication Support at Home",
     areaServed: ["City of Edinburgh", "Midlothian", "East Lothian", "West Lothian", "Perthshire"],
-    url: "https://zentogroup.co.uk/home-care/medication-support/",
+    url: "https://zentogroup.co.uk/home-care/medication-support",
   };
 
   const faqJsonLd = {
@@ -221,9 +221,9 @@ export default function MedicationSupportPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk/" },
-      { "@type": "ListItem", position: 2, name: "Home Care", item: "https://zentogroup.co.uk/home-care/" },
-      { "@type": "ListItem", position: 3, name: "Medication Support at Home", item: "https://zentogroup.co.uk/home-care/medication-support/" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk" },
+      { "@type": "ListItem", position: 2, name: "Home Care", item: "https://zentogroup.co.uk/home-care" },
+      { "@type": "ListItem", position: 3, name: "Medication Support at Home", item: "https://zentogroup.co.uk/home-care/medication-support" },
     ],
   };
 
@@ -247,7 +247,7 @@ export default function MedicationSupportPage() {
                 </li>
                 <li aria-hidden="true" className="text-zinc-300">/</li>
                 <li>
-                  <Link href="/home-care/" className="hover:text-primary transition-colors font-medium">Home Care</Link>
+                  <Link href="/home-care" className="hover:text-primary transition-colors font-medium">Home Care</Link>
                 </li>
                 <li aria-hidden="true" className="text-zinc-300">/</li>
                 <li>
@@ -315,7 +315,7 @@ export default function MedicationSupportPage() {
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/about-image.png"
+                  src="/about-image.webp"
                   alt="Registered nurse reviewing medication protocol with a home care client"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -452,7 +452,7 @@ export default function MedicationSupportPage() {
               <div className="relative aspect-square w-full max-w-xl flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl">
                 <div className="relative h-full w-full overflow-hidden rounded-[1.8rem]">
                   <Image
-                    src="/brand-image.png"
+                    src="/brand-image.webp"
                     alt="Zento registered nurse reviewing medication safety protocols"
                     fill
                     sizes="(max-width: 768px) 100vw, 600px"

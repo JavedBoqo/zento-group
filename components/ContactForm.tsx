@@ -130,11 +130,12 @@ export default function ContactForm({ activeOfficeName }: ContactFormProps) {
         <form onSubmit={handleFormSubmit} noValidate className="space-y-3">
           {/* Name */}
           <div className="space-y-1">
-            <label className="text-xs font-bold text-secondary">
+            <label htmlFor="contact-form-fullName" className="text-xs font-bold text-secondary">
               Full Name *
             </label>
             <input
               type="text"
+              id="contact-form-fullName"
               name="fullName"
               placeholder="Your full name"
               onChange={() =>
@@ -157,11 +158,12 @@ export default function ContactForm({ activeOfficeName }: ContactFormProps) {
           {/* Phone & Email */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-1">
-              <label className="text-xs font-bold text-secondary">
+              <label htmlFor="contact-form-phone" className="text-xs font-bold text-secondary">
                 Phone Number *
               </label>
               <input
                 type="tel"
+                id="contact-form-phone"
                 name="phone"
                 placeholder="0131 210 0095"
                 onChange={() =>
@@ -182,11 +184,12 @@ export default function ContactForm({ activeOfficeName }: ContactFormProps) {
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs font-bold text-secondary">
+              <label htmlFor="contact-form-email" className="text-xs font-bold text-secondary">
                 Email Address *
               </label>
               <input
                 type="email"
+                id="contact-form-email"
                 name="email"
                 placeholder="Email address"
                 onChange={() =>
@@ -209,11 +212,12 @@ export default function ContactForm({ activeOfficeName }: ContactFormProps) {
 
           {/* Message */}
           <div className="space-y-1">
-            <label className="text-xs font-bold text-secondary">
+            <label htmlFor="contact-form-message" className="text-xs font-bold text-secondary">
               Message / Care Inquiry *
             </label>
             <textarea
               rows={4}
+              id="contact-form-message"
               name="message"
               placeholder="How can our care team support you today?"
               onChange={() =>

@@ -11,29 +11,29 @@ import {
 } from "@/constants";
 
 const featuredServices = [
-  { name: "Home Care", href: "/home-care/" },
-  { name: "Live-in Care", href: "/live-in-care/" },
-  { name: "Personal Care", href: "/home-care/personal-care/" },
-  { name: "Dementia Care", href: "/home-care/dementia-care/" },
-  // { name: "Medication Support", href: "/home-care/medication-support/" },
-  // { name: "Respite Care", href: "/home-care/respite-care/" },
+  { name: "Home Care", href: "/home-care" },
+  { name: "Live-in Care", href: "/live-in-care" },
+  { name: "Personal Care", href: "/home-care/personal-care" },
+  { name: "Dementia Care", href: "/home-care/dementia-care" },
+  // { name: "Medication Support", href: "/home-care/medication-support" },
+  // { name: "Respite Care", href: "/home-care/respite-care" },
 ];
 
 const featuredLocations = [
-  { name: "Edinburgh", href: "/locations/edinburgh/" },
-  { name: "Lothian", href: "/locations/lothian/" },
-  { name: "Perthshire", href: "/locations/perthshire/" },
-  { name: "Crieff", href: "/locations/perthshire/crieff/" },
-  // { name: "Comrie", href: "/locations/perthshire/comrie/" },
+  { name: "Edinburgh", href: "/locations/edinburgh" },
+  { name: "Lothian", href: "/locations/lothian" },
+  { name: "Perthshire", href: "/locations/perthshire" },
+  { name: "Crieff", href: "/locations/perthshire/crieff" },
+  // { name: "Comrie", href: "/locations/perthshire/comrie" },
 ];
 
 const exploreLinks = [
   { name: "Home", href: "/" },
-  { name: "About Us", href: "/about-us/" },
-  { name: "Our Services", href: "/services/" },
+  { name: "About Us", href: "/about-us" },
+  { name: "Our Services", href: "/services" },
   // { name: "How It Works", href: "/#how-it-works" },
-  { name: "Blog", href: "/blog/" },
-  { name: "Contact", href: "/contact/" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Footer() {
@@ -105,7 +105,7 @@ export default function Footer() {
                 ))}
               </ul>
               <Link
-                href="/services/"
+                href="/services"
                 className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-primary transition-colors hover:text-secondary"
               >
                 View all services
@@ -128,7 +128,7 @@ export default function Footer() {
                 ))}
               </ul>
               <Link
-                href="/locations/"
+                href="/locations"
                 className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-primary transition-colors hover:text-secondary"
               >
                 View all locations

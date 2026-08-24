@@ -28,14 +28,14 @@ export const metadata: Metadata = {
   description:
     "Our carers prepare home-cooked meals tailored to dietary needs. Hydration, dementia-safe meal planning and encouragement to eat well. Edinburgh & Lothian. Call us today.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/home-care/meal-preparation/",
+    canonical: "https://zentogroup.co.uk/home-care/meal-preparation",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Meal Preparation & Nutrition Support | Home Care | Zento",
     description:
       "Our carers prepare home-cooked meals tailored to dietary needs. Hydration, dementia-safe meal planning and encouragement to eat well. Edinburgh & Lothian.",
-    url: "https://zentogroup.co.uk/home-care/meal-preparation/",
+    url: "https://zentogroup.co.uk/home-care/meal-preparation",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -97,9 +97,9 @@ const steps = [
 ];
 
 const locationLinks = [
-  { label: "Edinburgh", href: "/locations/edinburgh/" },
-  { label: "Midlothian", href: "/locations/lothian/midlothian/" },
-  { label: "Perthshire", href: "/locations/perthshire/" },
+  { label: "Edinburgh", href: "/locations/edinburgh" },
+  { label: "Midlothian", href: "/locations/lothian/midlothian" },
+  { label: "Perthshire", href: "/locations/perthshire" },
 ];
 
 const faqs = [
@@ -128,19 +128,19 @@ const faqs = [
 const relatedServices = [
   {
     title: "Personal Care at Home",
-    href: "/home-care/personal-care/",
+    href: "/home-care/personal-care",
     desc: "Daily hands-on support with bathing, dressing and hygiene, delivered under nurse-led oversight.",
     icon: Heart,
   },
   {
     title: "Companionship Care",
-    href: "/home-care/companionship/",
+    href: "/home-care/companionship",
     desc: "Regular, consistent visits that combine naturally with shared mealtimes.",
     icon: Users,
   },
   {
     title: "Dementia Care at Home",
-    href: "/home-care/dementia-care/",
+    href: "/home-care/dementia-care",
     desc: "Consistent routines and nurse-led planning for clients living with dementia.",
     icon: Brain,
   },
@@ -159,7 +159,7 @@ export default function MealPreparationPage() {
     },
     serviceType: "Meal Preparation and Nutrition Support",
     areaServed: ["City of Edinburgh", "Midlothian", "East Lothian", "West Lothian", "Perthshire"],
-    url: "https://zentogroup.co.uk/home-care/meal-preparation/",
+    url: "https://zentogroup.co.uk/home-care/meal-preparation",
   };
 
   const faqJsonLd = {
@@ -176,9 +176,9 @@ export default function MealPreparationPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk/" },
-      { "@type": "ListItem", position: 2, name: "Home Care", item: "https://zentogroup.co.uk/home-care/" },
-      { "@type": "ListItem", position: 3, name: "Meal Preparation Home Care", item: "https://zentogroup.co.uk/home-care/meal-preparation/" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk" },
+      { "@type": "ListItem", position: 2, name: "Home Care", item: "https://zentogroup.co.uk/home-care" },
+      { "@type": "ListItem", position: 3, name: "Meal Preparation Home Care", item: "https://zentogroup.co.uk/home-care/meal-preparation" },
     ],
   };
 
@@ -199,7 +199,7 @@ export default function MealPreparationPage() {
               <ol className="flex items-center gap-2 text-xs text-zinc-500">
                 <li><Link href="/" className="hover:text-primary transition-colors font-medium">Home</Link></li>
                 <li aria-hidden="true" className="text-zinc-300">/</li>
-                <li><Link href="/home-care/" className="hover:text-primary transition-colors font-medium">Home Care</Link></li>
+                <li><Link href="/home-care" className="hover:text-primary transition-colors font-medium">Home Care</Link></li>
                 <li aria-hidden="true" className="text-zinc-300">/</li>
                 <li><span className="font-semibold text-secondary" aria-current="page">Meal Preparation Home Care</span></li>
               </ol>
@@ -260,7 +260,7 @@ export default function MealPreparationPage() {
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/about-image.png"
+                  src="/about-image.webp"
                   alt="Carer preparing a fresh, nutritious home-cooked meal for a client"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -372,7 +372,7 @@ export default function MealPreparationPage() {
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-xl flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl">
                 <div className="relative h-full w-full overflow-hidden rounded-[1.8rem]">
                   <Image
-                    src="/brand-image.png"
+                    src="/brand-image.webp"
                     alt="Zento carer ensuring proper nutrition and hydration for a home care client"
                     fill
                     sizes="(max-width: 768px) 100vw, 600px"

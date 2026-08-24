@@ -18,40 +18,40 @@ export default function MobileMenu({ isOpen, onClose, onOpenModal }: MobileMenuP
   const [isLocationsOpen, setIsLocationsOpen] = useState(false);
 
   const homeCareLinks = [
-    { name: "Home Care Overview", href: "/home-care/" },
-    { name: "Personal Care", href: "/home-care/personal-care/" },
-    { name: "Medication Support", href: "/home-care/medication-support/" },
-    { name: "Dementia Care", href: "/home-care/dementia-care/" },
-    { name: "Companionship", href: "/home-care/companionship/" },
-    { name: "Meal Preparation", href: "/home-care/meal-preparation/" },
-    { name: "Hospital Discharge", href: "/home-care/hospital-discharge/" },
-    { name: "Respite Care", href: "/home-care/respite-care/" },
+    { name: "Home Care Overview", href: "/home-care" },
+    { name: "Personal Care", href: "/home-care/personal-care" },
+    { name: "Medication Support", href: "/home-care/medication-support" },
+    { name: "Dementia Care", href: "/home-care/dementia-care" },
+    { name: "Companionship", href: "/home-care/companionship" },
+    { name: "Meal Preparation", href: "/home-care/meal-preparation" },
+    { name: "Hospital Discharge", href: "/home-care/hospital-discharge" },
+    { name: "Respite Care", href: "/home-care/respite-care" },
   ];
 
   const liveInCareLinks = [
-    { name: "Live-in Care Overview", href: "/live-in-care/" },
-    { name: "Overnight Care", href: "/live-in-care/overnight-care/" },
-    { name: "24-Hour Care", href: "/live-in-care/24-hour-care/" },
+    { name: "Live-in Care Overview", href: "/live-in-care" },
+    { name: "Overnight Care", href: "/live-in-care/overnight-care" },
+    { name: "24-Hour Care", href: "/live-in-care/24-hour-care" },
   ];
 
   const mobileLocationGroups = [
-    { name: "All Service Areas", href: "/locations/" },
-    { name: "Edinburgh", href: "/locations/edinburgh/" },
+    { name: "All Service Areas", href: "/locations" },
+    { name: "Edinburgh", href: "/locations/edinburgh" },
     {
       name: "Lothian Region",
-      href: "/locations/lothian/",
+      href: "/locations/lothian",
       subAreas: [
-        { name: "Midlothian", href: "/locations/lothian/midlothian/" },
-        { name: "East Lothian", href: "/locations/lothian/east-lothian/" },
-        { name: "West Lothian", href: "/locations/lothian/west-lothian/" },
+        { name: "Midlothian", href: "/locations/lothian/midlothian" },
+        { name: "East Lothian", href: "/locations/lothian/east-lothian" },
+        { name: "West Lothian", href: "/locations/lothian/west-lothian" },
       ],
     },
     {
       name: "Perthshire Region",
-      href: "/locations/perthshire/",
+      href: "/locations/perthshire",
       subAreas: [
-        { name: "Crieff", href: "/locations/perthshire/crieff/" },
-        { name: "Comrie", href: "/locations/perthshire/comrie/" },
+        { name: "Crieff", href: "/locations/perthshire/crieff" },
+        { name: "Comrie", href: "/locations/perthshire/comrie" },
       ],
     },
   ];
@@ -78,7 +78,7 @@ export default function MobileMenu({ isOpen, onClose, onOpenModal }: MobileMenuP
                 />
               </Link>
             </div>
-            <button onClick={onClose} className="p-2 text-secondary cursor-pointer">
+            <button onClick={onClose} aria-label="Close mobile menu" className="p-2 text-secondary cursor-pointer">
               <X className="w-8 h-8" />
             </button>
           </div>
@@ -204,14 +204,14 @@ export default function MobileMenu({ isOpen, onClose, onOpenModal }: MobileMenuP
 
               {/* Other Navigation Links */}
               <Link
-                href="/about-us/"
+                href="/about-us"
                 onClick={onClose}
                 className="text-sm font-black uppercase tracking-[0.3em] text-secondary hover:text-primary transition-colors"
               >
                 About Us
               </Link>
               <Link
-                href="/blog/"
+                href="/blog"
                 onClick={onClose}
                 className="text-sm font-black uppercase tracking-[0.3em] text-secondary hover:text-primary transition-colors"
               >

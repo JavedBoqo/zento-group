@@ -58,43 +58,43 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
   const homeCareServices = [
     {
       name: "Personal Care",
-      href: "/home-care/personal-care/",
+      href: "/home-care/personal-care",
       desc: "Washing, dressing & mobility support",
       icon: Heart,
     },
     {
       name: "Medication Support",
-      href: "/home-care/medication-support/",
+      href: "/home-care/medication-support",
       desc: "Nurse-monitored administration",
       icon: ShieldCheck,
     },
     {
       name: "Dementia Care",
-      href: "/home-care/dementia-care/",
+      href: "/home-care/dementia-care",
       desc: "Structured, familiar daily routines",
       icon: Brain,
     },
     {
       name: "Companionship",
-      href: "/home-care/companionship/",
+      href: "/home-care/companionship",
       desc: "Social engagement & activities",
       icon: Users,
     },
     {
       name: "Meal Preparation",
-      href: "/home-care/meal-preparation/",
+      href: "/home-care/meal-preparation",
       desc: "Nutritional support & meal planning",
       icon: Utensils,
     },
     {
       name: "Hospital Discharge",
-      href: "/home-care/hospital-discharge/",
+      href: "/home-care/hospital-discharge",
       desc: "Safe transition back home",
       icon: Building2,
     },
     {
       name: "Respite Care",
-      href: "/home-care/respite-care/",
+      href: "/home-care/respite-care",
       desc: "Short-term relief for family carers",
       icon: Sun,
     },
@@ -103,19 +103,19 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
   const liveInCareServices = [
     {
       name: "Live-in Care Overview",
-      href: "/live-in-care/",
+      href: "/live-in-care",
       desc: "Round-the-clock dedicated caregiver",
       icon: Home,
     },
     {
       name: "Overnight Care",
-      href: "/live-in-care/overnight-care/",
+      href: "/live-in-care/overnight-care",
       desc: "Sleep-in or waking night support",
       icon: Moon,
     },
     {
       name: "24-Hour Care",
-      href: "/live-in-care/24-hour-care/",
+      href: "/live-in-care/24-hour-care",
       desc: "Continuous 24/7 rotational care",
       icon: Clock4,
     },
@@ -124,34 +124,34 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
   const locationGroups = [
     {
       region: "Edinburgh",
-      href: "/locations/edinburgh/",
+      href: "/locations/edinburgh",
       desc: "All Edinburgh postcodes",
       icon: Home,
       color: "primary" as const,
     },
     {
       region: "Lothian",
-      href: "/locations/lothian/",
+      href: "/locations/lothian",
       desc: "Midlothian, East & West Lothian",
       icon: MapPin,
       color: "primary" as const,
       subAreas: [
-        { name: "Lothian Region Hub", href: "/locations/lothian/", desc: "All Lothian regional care" },
-        { name: "Midlothian", href: "/locations/lothian/midlothian/", desc: "Dalkeith, Penicuik, Bonnyrigg" },
-        { name: "East Lothian", href: "/locations/lothian/east-lothian/", desc: "Musselburgh, Haddington, N. Berwick" },
-        { name: "West Lothian", href: "/locations/lothian/west-lothian/", desc: "Livingston, Bathgate, Linlithgow" },
+        { name: "Lothian Region Hub", href: "/locations/lothian", desc: "All Lothian regional care" },
+        { name: "Midlothian", href: "/locations/lothian/midlothian", desc: "Dalkeith, Penicuik, Bonnyrigg" },
+        { name: "East Lothian", href: "/locations/lothian/east-lothian", desc: "Musselburgh, Haddington, N. Berwick" },
+        { name: "West Lothian", href: "/locations/lothian/west-lothian", desc: "Livingston, Bathgate, Linlithgow" },
       ],
     },
     {
       region: "Perthshire",
-      href: "/locations/perthshire/",
+      href: "/locations/perthshire",
       desc: "Crieff, Comrie & surrounds",
       icon: MapPin,
       color: "secondary" as const,
       subAreas: [
-        { name: "Perthshire Region Hub", href: "/locations/perthshire/", desc: "All Perthshire regional care" },
-        { name: "Crieff", href: "/locations/perthshire/crieff/", desc: "Perthshire office & surrounds" },
-        { name: "Comrie", href: "/locations/perthshire/comrie/", desc: "Comrie, St Fillans & surrounds" },
+        { name: "Perthshire Region Hub", href: "/locations/perthshire", desc: "All Perthshire regional care" },
+        { name: "Crieff", href: "/locations/perthshire/crieff", desc: "Perthshire office & surrounds" },
+        { name: "Comrie", href: "/locations/perthshire/comrie", desc: "Comrie, St Fillans & surrounds" },
       ],
     },
   ];
@@ -250,7 +250,7 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
                     <div className="col-span-6 space-y-3">
                       <div className="flex items-center justify-between border-b border-zinc-100 pb-3">
                         <Link
-                          href="/home-care/"
+                          href="/home-care"
                           className="flex items-center gap-2.5 group/cat shrink-0"
                         >
                           <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover/cat:bg-primary group-hover/cat:text-white">
@@ -296,7 +296,7 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
                       <div>
                         <div className="flex items-center justify-between border-b border-zinc-100 pb-3">
                           <Link
-                            href="/live-in-care/"
+                            href="/live-in-care"
                             className="flex items-center gap-2.5 group/cat shrink-0"
                           >
                             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-secondary/10 text-secondary transition-colors group-hover/cat:bg-secondary group-hover/cat:text-white">
@@ -363,7 +363,7 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
             {/* 3. Locations Dropdown */}
             <div className="relative group py-2">
               <Link
-                href="/locations/"
+                href="/locations"
                 className="flex items-center gap-1 font-semibold text-secondary hover:text-primary transition-colors"
               >
                 Locations
@@ -374,7 +374,7 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
               <div className="absolute top-full left-0 w-72 sm:w-80 pt-3 opacity-0 invisible translate-y-2 pointer-events-none [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-hover:visible [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:pointer-events-auto transition-all duration-200 z-[60]">
                 <div className="rounded-3xl border border-zinc-200/80 bg-white p-4 shadow-2xl ring-1 ring-black/5">
                   <Link
-                    href="/locations/"
+                    href="/locations"
                     className="flex items-center gap-2 mb-3 pb-3 border-b border-zinc-100 group/all"
                   >
                     <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover/all:bg-primary group-hover/all:text-white">
@@ -459,13 +459,13 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
             </div>
 
             <Link
-              href="/about-us/"
+              href="/about-us"
               className="font-semibold text-secondary hover:text-primary transition-colors"
             >
               About Us
             </Link>
             <Link
-              href="/blog/"
+              href="/blog"
               className="font-semibold text-secondary hover:text-primary transition-colors"
             >
               Blog

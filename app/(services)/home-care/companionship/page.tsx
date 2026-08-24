@@ -28,14 +28,14 @@ export const metadata: Metadata = {
   description:
     "Regular companionship visits across Edinburgh and Lothian. Our carers build meaningful relationships — consistent faces your loved one can trust. Call us.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/home-care/companionship/",
+    canonical: "https://zentogroup.co.uk/home-care/companionship",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Companionship Care at Home | Nurse-Led | Zento",
     description:
       "Regular companionship visits across Edinburgh and Lothian. Our carers build meaningful relationships — consistent faces your loved one can trust.",
-    url: "https://zentogroup.co.uk/home-care/companionship/",
+    url: "https://zentogroup.co.uk/home-care/companionship",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -96,10 +96,10 @@ const steps = [
 ];
 
 const locationLinks = [
-  { label: "Edinburgh", href: "/locations/edinburgh/" },
-  { label: "Midlothian", href: "/locations/lothian/midlothian/" },
-  { label: "East Lothian", href: "/locations/lothian/east-lothian/" },
-  { label: "Perthshire", href: "/locations/perthshire/" },
+  { label: "Edinburgh", href: "/locations/edinburgh" },
+  { label: "Midlothian", href: "/locations/lothian/midlothian" },
+  { label: "East Lothian", href: "/locations/lothian/east-lothian" },
+  { label: "Perthshire", href: "/locations/perthshire" },
 ];
 
 const faqs = [
@@ -132,19 +132,19 @@ const faqs = [
 const relatedServices = [
   {
     title: "Personal Care at Home",
-    href: "/home-care/personal-care/",
+    href: "/home-care/personal-care",
     desc: "Daily hands-on support with bathing, dressing and hygiene, delivered under nurse-led oversight.",
     icon: Heart,
   },
   {
     title: "Respite Care at Home",
-    href: "/home-care/respite-care/",
+    href: "/home-care/respite-care",
     desc: "Planned or emergency cover for family carers, with the same consistent, nurse-led approach.",
     icon: Sun,
   },
   {
     title: "Dementia Care at Home",
-    href: "/home-care/dementia-care/",
+    href: "/home-care/dementia-care",
     desc: "Consistent carers and nurse-led routines for clients living with dementia.",
     icon: Brain,
   },
@@ -163,7 +163,7 @@ export default function CompanionshipCarePage() {
     },
     serviceType: "Companionship Care",
     areaServed: ["City of Edinburgh", "Midlothian", "East Lothian", "West Lothian", "Perthshire"],
-    url: "https://zentogroup.co.uk/home-care/companionship/",
+    url: "https://zentogroup.co.uk/home-care/companionship",
   };
 
   const faqJsonLd = {
@@ -180,9 +180,9 @@ export default function CompanionshipCarePage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk/" },
-      { "@type": "ListItem", position: 2, name: "Home Care", item: "https://zentogroup.co.uk/home-care/" },
-      { "@type": "ListItem", position: 3, name: "Companionship Care", item: "https://zentogroup.co.uk/home-care/companionship/" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk" },
+      { "@type": "ListItem", position: 2, name: "Home Care", item: "https://zentogroup.co.uk/home-care" },
+      { "@type": "ListItem", position: 3, name: "Companionship Care", item: "https://zentogroup.co.uk/home-care/companionship" },
     ],
   };
 
@@ -203,7 +203,7 @@ export default function CompanionshipCarePage() {
               <ol className="flex items-center gap-2 text-xs text-zinc-500">
                 <li><Link href="/" className="hover:text-primary transition-colors font-medium">Home</Link></li>
                 <li aria-hidden="true" className="text-zinc-300">/</li>
-                <li><Link href="/home-care/" className="hover:text-primary transition-colors font-medium">Home Care</Link></li>
+                <li><Link href="/home-care" className="hover:text-primary transition-colors font-medium">Home Care</Link></li>
                 <li aria-hidden="true" className="text-zinc-300">/</li>
                 <li><span className="font-semibold text-secondary" aria-current="page">Companionship Care</span></li>
               </ol>
@@ -264,7 +264,7 @@ export default function CompanionshipCarePage() {
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/about-image.png"
+                  src="/about-image.webp"
                   alt="Carer providing warm companionship to an elderly person at home"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -380,7 +380,7 @@ export default function CompanionshipCarePage() {
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-xl flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl">
                 <div className="relative h-full w-full overflow-hidden rounded-[1.8rem]">
                   <Image
-                    src="/brand-image.png"
+                    src="/brand-image.webp"
                     alt="Zento carer building a meaningful relationship with a client"
                     fill
                     sizes="(max-width: 768px) 100vw, 600px"

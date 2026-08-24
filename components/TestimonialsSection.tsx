@@ -117,10 +117,7 @@ export default function TestimonialsSection({
   const totalSlides = testimonials.length;
   const canScroll = totalSlides > slidesToShow;
   const maxIndex = Math.max(0, totalSlides - slidesToShow);
-
-  useEffect(() => {
-    setCurrentIndex((prev) => Math.min(prev, maxIndex));
-  }, [maxIndex]);
+  const safeIndex = Math.min(currentIndex, maxIndex);
 
   const goTo = useCallback(
     (index: number) => {
@@ -148,7 +145,7 @@ export default function TestimonialsSection({
 
   const trackWidthPercent = (totalSlides / slidesToShow) * 100;
   const slideWidthPercent = 100 / totalSlides;
-  const translateXPercent = (currentIndex / totalSlides) * 100;
+  const translateXPercent = (safeIndex / totalSlides) * 100;
 
   const averageRating =
     testimonials.length > 0

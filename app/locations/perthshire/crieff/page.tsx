@@ -32,14 +32,14 @@ export const metadata: Metadata = {
   description:
     "Our Crieff office provides nurse-led home care in Crieff, Comrie, Muthill and Braco. Personal care, medication support, live-in care and more — all locally managed.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/locations/perthshire/crieff/",
+    canonical: "https://zentogroup.co.uk/locations/perthshire/crieff",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Home Care in Crieff, Perthshire | Nurse-Led | Zento",
     description:
       "Our Crieff office provides nurse-led home care in Crieff, Comrie, Muthill and Braco. Personal care, medication support, live-in care and more — all locally managed.",
-    url: "https://zentogroup.co.uk/locations/perthshire/crieff/",
+    url: "https://zentogroup.co.uk/locations/perthshire/crieff",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -69,55 +69,55 @@ const crieffServices = [
   {
     name: "Personal Care",
     desc: "Bathing, dressing & daily mobility support",
-    href: "/home-care/personal-care/",
+    href: "/home-care/personal-care",
     icon: Heart,
   },
   {
     name: "Medication Support",
     desc: "Nurse-monitored administration & management",
-    href: "/home-care/medication-support/",
+    href: "/home-care/medication-support",
     icon: ShieldCheck,
   },
   {
     name: "Companionship",
     desc: "Social engagement & community activities",
-    href: "/home-care/companionship/",
+    href: "/home-care/companionship",
     icon: Users,
   },
   {
     name: "Meal Preparation",
     desc: "Nutritional support & home cooked meals",
-    href: "/home-care/meal-preparation/",
+    href: "/home-care/meal-preparation",
     icon: Utensils,
   },
   {
     name: "Hospital Discharge Support",
     desc: "Seamless, safe transition back home",
-    href: "/home-care/hospital-discharge/",
+    href: "/home-care/hospital-discharge",
     icon: Building2,
   },
   {
     name: "Dementia Care",
     desc: "Structured, familiar daily routines",
-    href: "/home-care/dementia-care/",
+    href: "/home-care/dementia-care",
     icon: Brain,
   },
   {
     name: "Respite Care",
     desc: "Short-term relief for family carers",
-    href: "/home-care/respite-care/",
+    href: "/home-care/respite-care",
     icon: Sun,
   },
   {
     name: "Overnight Care",
     desc: "Sleep-in or waking-night support",
-    href: "/live-in-care/overnight-care/",
+    href: "/live-in-care/overnight-care",
     icon: Clock4,
   },
   {
     name: "24-Hour Live-In Care",
     desc: "Continuous round-the-clock home care",
-    href: "/live-in-care/24-hour-care/",
+    href: "/live-in-care/24-hour-care",
     icon: Home,
   },
 ];
@@ -140,31 +140,31 @@ const crieffSteps = [
   {
     step: "02",
     title: "A nurse visits your loved one at home",
-    desc: "We arrange a proper assessment, in person, at your loved one's home in Crieff or the surrounding area.",
+    desc: "One of our Crieff nurses will visit for a proper needs assessment.",
   },
   {
     step: "03",
     title: "Care begins",
-    desc: "A care plan is written and a carer matched. Support starts on your agreed schedule.",
+    desc: "A care plan is written and a local carer matched. Support starts on your agreed schedule.",
   },
 ];
 
 const crieffFaqs = [
   {
-    q: "Do you have a local office in Crieff?",
-    a: "Yes. Our Perthshire team is based at East High Street, Crieff PH7. Your care is managed locally — care plans are written and reviewed by a nursing team based in the same town, not a remote office elsewhere in Scotland.",
+    q: "Where is the Zento office in Crieff?",
+    a: "Our Perthshire office is located on East High Street in Crieff (PH7). When you contact us, you're dealing directly with our local team — not a distant call centre. Pop in or call us on 0176 479 0095.",
   },
   {
-    q: "Which villages near Crieff does Zento cover?",
-    a: "From our Crieff office, we provide home care in Crieff, Muthill, Braco, Gilmerton and Comrie. If you're unsure whether we cover your specific village, call us on 0176 479 0095 and we'll confirm immediately.",
+    q: "Which villages around Crieff do you cover?",
+    a: "We cover Crieff and surrounding Strathearn communities including Muthill, Braco, Gilmerton, Comrie and St Fillans. If you're unsure whether we cover your specific location, call us on 0176 479 0095.",
   },
   {
-    q: "How quickly can care be arranged in Crieff?",
-    a: "In most cases, we can arrange a nursing assessment within a few days of your initial enquiry. For urgent requirements — such as hospital discharge from Ninewells or Perth Royal Infirmary — care can often begin within 24 to 48 hours.",
+    q: "Is nurse oversight included for all Crieff clients?",
+    a: "Yes. Every care package in Crieff and surrounding areas is assessed, written and reviewed by a registered nurse based at our East High Street office.",
   },
   {
-    q: "Do you provide live-in care across rural Perthshire?",
-    a: "Yes. We offer 24-hour live-in care across Crieff and surrounding rural Perthshire villages, clinically supervised by our registered nurses.",
+    q: "Can you provide live-in care in Crieff?",
+    a: "Yes. Live-in care is particularly popular in Perthshire, where rural distances can make multiple daily visits less practical. Every live-in arrangement is personally matched and clinically supervised by our Crieff nursing team.",
   },
 ];
 
@@ -172,11 +172,11 @@ export default function CrieffLocationPage() {
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://zentogroup.co.uk/locations/perthshire/crieff/#crieff-office",
+    "@id": "https://zentogroup.co.uk/locations/perthshire/crieff#crieff-office",
     name: "Zento Group — Crieff Office",
     telephone: "0176 479 0095",
     email: "info@zentogroup.co.uk",
-    url: "https://zentogroup.co.uk/locations/perthshire/crieff/",
+    url: "https://zentogroup.co.uk/locations/perthshire/crieff",
     address: {
       "@type": "PostalAddress",
       streetAddress: "East High Street",
@@ -211,25 +211,25 @@ export default function CrieffLocationPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://zentogroup.co.uk/",
+        item: "https://zentogroup.co.uk",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Locations",
-        item: "https://zentogroup.co.uk/locations/",
+        item: "https://zentogroup.co.uk/locations",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Perthshire",
-        item: "https://zentogroup.co.uk/locations/perthshire/",
+        item: "https://zentogroup.co.uk/locations/perthshire",
       },
       {
         "@type": "ListItem",
         position: 4,
         name: "Crieff",
-        item: "https://zentogroup.co.uk/locations/perthshire/crieff/",
+        item: "https://zentogroup.co.uk/locations/perthshire/crieff",
       },
     ],
   };
@@ -268,7 +268,7 @@ export default function CrieffLocationPage() {
                 </li>
                 <li>
                   <Link
-                    href="/locations/"
+                    href="/locations"
                     className="hover:text-primary transition-colors font-medium"
                   >
                     Locations
@@ -279,7 +279,7 @@ export default function CrieffLocationPage() {
                 </li>
                 <li>
                   <Link
-                    href="/locations/perthshire/"
+                    href="/locations/perthshire"
                     className="hover:text-primary transition-colors font-medium"
                   >
                     Perthshire
@@ -351,7 +351,7 @@ export default function CrieffLocationPage() {
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/about-image.png"
+                  src="/about-image.webp"
                   alt="Registered nurse conducting home care assessment in Crieff"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -570,7 +570,7 @@ export default function CrieffLocationPage() {
               <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
               <div className="grid gap-4 sm:grid-cols-2 pt-4 text-left">
                 <Link
-                  href="/locations/perthshire/"
+                  href="/locations/perthshire"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">
@@ -584,7 +584,7 @@ export default function CrieffLocationPage() {
                   </span>
                 </Link>
                 <Link
-                  href="/locations/perthshire/comrie/"
+                  href="/locations/perthshire/comrie"
                   className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md"
                 >
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">

@@ -34,14 +34,14 @@ export const metadata: Metadata = {
   description:
     "Explore Zento's full range of nurse-led home care services across Edinburgh, Lothian, and Perthshire. From personal care and dementia support to 24-hour live-in care.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/services/",
+    canonical: "https://zentogroup.co.uk/services",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Nurse-Led Care Services | Home Care & Live-In Care | Zento",
     description:
       "Explore Zento's full range of nurse-led home care services across Edinburgh, Lothian, and Perthshire. From personal care to 24-hour live-in care.",
-    url: "https://zentogroup.co.uk/services/",
+    url: "https://zentogroup.co.uk/services",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -60,49 +60,49 @@ export const metadata: Metadata = {
 const homeCareServices = [
   {
     name: "Personal Care",
-    href: "/home-care/personal-care/",
+    href: "/home-care/personal-care",
     desc: "Support with bathing, dressing, continence, mobility and personal hygiene, delivered with patience and dignity.",
     icon: Heart,
     tag: "Daily Visits",
   },
   {
     name: "Medication Support",
-    href: "/home-care/medication-support/",
+    href: "/home-care/medication-support",
     desc: "Prompting, administering and monitoring medication under the oversight of a registered nurse.",
     icon: ShieldCheck,
     tag: "Clinical Care",
   },
   {
     name: "Dementia Care",
-    href: "/home-care/dementia-care/",
+    href: "/home-care/dementia-care",
     desc: "Consistent carers and familiar routines to support people living with dementia at every stage.",
     icon: Brain,
     tag: "Specialist Support",
   },
   {
     name: "Companionship",
-    href: "/home-care/companionship/",
+    href: "/home-care/companionship",
     desc: "Regular social visits to reduce isolation, maintain routines and enjoy meaningful conversation and activities.",
     icon: Users,
     tag: "Wellbeing",
   },
   {
     name: "Meal Preparation",
-    href: "/home-care/meal-preparation/",
+    href: "/home-care/meal-preparation",
     desc: "Nutritious meals planned around dietary needs and personal preferences, prepared in the client's own kitchen.",
     icon: Utensils,
     tag: "Daily Living",
   },
   {
     name: "Hospital Discharge Support",
-    href: "/home-care/hospital-discharge/",
+    href: "/home-care/hospital-discharge",
     desc: "Short-term intensive care to help your loved one settle back home safely after a hospital stay.",
     icon: Building2,
     tag: "Reablement",
   },
   {
     name: "Respite Care",
-    href: "/home-care/respite-care/",
+    href: "/home-care/respite-care",
     desc: "Planned or emergency cover so family carers can take a genuine break, knowing their loved one is safe.",
     icon: Sun,
     tag: "Family Relief",
@@ -112,21 +112,21 @@ const homeCareServices = [
 const liveInServices = [
   {
     name: "Live-in Care",
-    href: "/live-in-care/",
+    href: "/live-in-care",
     desc: "A dedicated, nurse-selected carer living in the home to provide full daily support and companionship, with scheduled overnight rest.",
     icon: Home,
     tag: "Full-Time Residence",
   },
   {
     name: "Overnight Care",
-    href: "/live-in-care/overnight-care/",
+    href: "/live-in-care/overnight-care",
     desc: "Sleep-in or waking-night support through the dark hours so your loved one is never alone or unsafe overnight.",
     icon: Moon,
     tag: "Night-Time Safety",
   },
   {
     name: "24-Hour Care",
-    href: "/live-in-care/24-hour-care/",
+    href: "/live-in-care/24-hour-care",
     desc: "Continuous round-the-clock care delivered by a small rotating team of carers, ensuring someone is fully alert 24/7.",
     icon: Clock4,
     tag: "Continuous 24/7",
@@ -192,14 +192,14 @@ export default function ServicesOverviewPage() {
     },
     serviceType: "Nurse-Led Home Care & Live-In Care",
     areaServed: ["City of Edinburgh", "Midlothian", "East Lothian", "West Lothian", "Perthshire"],
-    url: "https://zentogroup.co.uk/services/",
+    url: "https://zentogroup.co.uk/services",
   };
 
   const medicalBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
     name: "Zento Group - Nurse-Led Care Services",
-    url: "https://zentogroup.co.uk/services/",
+    url: "https://zentogroup.co.uk/services",
     telephone: "+441312100095",
     areaServed: ["Edinburgh", "Perthshire", "Lothians"],
     description: "Nurse-led home care, live-in care, and specialist support services.",
@@ -219,8 +219,8 @@ export default function ServicesOverviewPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk/" },
-      { "@type": "ListItem", position: 2, name: "Our Services", item: "https://zentogroup.co.uk/services/" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk" },
+      { "@type": "ListItem", position: 2, name: "Our Services", item: "https://zentogroup.co.uk/services" },
     ],
   };
 
@@ -315,7 +315,7 @@ export default function ServicesOverviewPage() {
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/about-image.png"
+                  src="/about-image.webp"
                   alt="Zento registered nurse discussing care plan options with client at home"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -471,7 +471,7 @@ export default function ServicesOverviewPage() {
               <AnimateContainer animation="fade-left" delay={0.1} className="relative aspect-square w-full max-w-xl flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl">
                 <div className="relative h-full w-full overflow-hidden rounded-[1.8rem]">
                   <Image
-                    src="/brand-image.png"
+                    src="/brand-image.webp"
                     alt="Registered nurse assessing care plan options"
                     fill
                     sizes="(max-width: 768px) 100vw, 600px"

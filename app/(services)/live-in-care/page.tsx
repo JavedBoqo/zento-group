@@ -28,14 +28,14 @@ export const metadata: Metadata = {
   description:
     "Live-in care from our nurse-led team across Edinburgh, Lothian and Perthshire. Consistent carers, 24/7 support and genuine clinical oversight. Call us.",
   alternates: {
-    canonical: "https://zentogroup.co.uk/live-in-care/",
+    canonical: "https://zentogroup.co.uk/live-in-care",
   },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Live-In Care at Home | Nurse-Led 24/7 Support | Zento",
     description:
       "Live-in care from our nurse-led team across Edinburgh, Lothian and Perthshire. Consistent carers, 24/7 support and genuine clinical oversight.",
-    url: "https://zentogroup.co.uk/live-in-care/",
+    url: "https://zentogroup.co.uk/live-in-care",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
@@ -54,14 +54,14 @@ export const metadata: Metadata = {
 const liveInCareServices = [
   {
     name: "Overnight Care",
-    href: "/live-in-care/overnight-care/",
+    href: "/live-in-care/overnight-care",
     desc: "A trained carer present through the night — either a sleep-in carer, available if woken, or a waking-night carer, alert and monitoring throughout.",
     ctaLabel: "Learn more",
     icon: Moon,
   },
   {
     name: "24-Hour Home Care",
-    href: "/live-in-care/24-hour-care/",
+    href: "/live-in-care/24-hour-care",
     desc: "A small team of carers working rotating shifts, so someone is always fully awake and alert — day and night, with no gaps.",
     ctaLabel: "Learn more",
     icon: Clock4,
@@ -101,12 +101,12 @@ const steps = [
 ];
 
 const locationLinks = [
-  { label: "Edinburgh", href: "/locations/edinburgh/" },
-  { label: "Midlothian", href: "/locations/lothian/midlothian/" },
-  { label: "East Lothian", href: "/locations/lothian/east-lothian/" },
-  { label: "West Lothian", href: "/locations/lothian/west-lothian/" },
-  { label: "Crieff", href: "/locations/perthshire/crieff/" },
-  { label: "Comrie", href: "/locations/perthshire/comrie/" },
+  { label: "Edinburgh", href: "/locations/edinburgh" },
+  { label: "Midlothian", href: "/locations/lothian/midlothian" },
+  { label: "East Lothian", href: "/locations/lothian/east-lothian" },
+  { label: "West Lothian", href: "/locations/lothian/west-lothian" },
+  { label: "Crieff", href: "/locations/perthshire/crieff" },
+  { label: "Comrie", href: "/locations/perthshire/comrie" },
 ];
 
 const faqs = [
@@ -131,21 +131,21 @@ const faqs = [
 const relatedServices = [
   {
     name: "Overnight Care",
-    href: "/live-in-care/overnight-care/",
+    href: "/live-in-care/overnight-care",
     desc: "Sleep-in or waking-night support through the dark hours so your loved one is never unsafe.",
     icon: Moon,
     accent: "primary",
   },
   {
     name: "24-Hour Home Care",
-    href: "/live-in-care/24-hour-care/",
+    href: "/live-in-care/24-hour-care",
     desc: "Continuous round-the-clock support delivered by a small rotating team of carers.",
     icon: Clock4,
     accent: "secondary",
   },
   {
     name: "Visiting Home Care",
-    href: "/home-care/",
+    href: "/home-care",
     desc: "Flexible, visiting daytime care from personal support to companionship.",
     icon: Home,
     accent: "primary",
@@ -165,7 +165,7 @@ export default function LiveInCarePage() {
     },
     serviceType: "Nurse-Led Live-In Care",
     areaServed: ["City of Edinburgh", "Midlothian", "East Lothian", "West Lothian", "Perthshire"],
-    url: "https://zentogroup.co.uk/live-in-care/",
+    url: "https://zentogroup.co.uk/live-in-care",
   };
 
   const faqJsonLd = {
@@ -182,8 +182,8 @@ export default function LiveInCarePage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk/" },
-      { "@type": "ListItem", position: 2, name: "Live-In Care", item: "https://zentogroup.co.uk/live-in-care/" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://zentogroup.co.uk" },
+      { "@type": "ListItem", position: 2, name: "Live-In Care", item: "https://zentogroup.co.uk/live-in-care" },
     ],
   };
 
@@ -278,7 +278,7 @@ export default function LiveInCarePage() {
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
-                  src="/about-image.png"
+                  src="/about-image.webp"
                   alt="Elderly client enjoying happy independent life at home"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -420,7 +420,7 @@ export default function LiveInCarePage() {
               <AnimateContainer animation="fade-left" delay={0.1} className="relative aspect-square w-full max-w-xl flex-1 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-sm shadow-2xl">
                 <div className="relative h-full w-full overflow-hidden rounded-[1.8rem]">
                   <Image
-                    src="/brand-image.png"
+                    src="/brand-image.webp"
                     alt="Zento Trusted Caregiver and Client Team"
                     fill
                     sizes="(max-width: 768px) 100vw, 600px"

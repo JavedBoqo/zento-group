@@ -105,7 +105,7 @@ export default function AnimateContainer({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: viewportOnce, margin: viewportMargin as any }}
+      viewport={{ once: viewportOnce, margin: viewportMargin }}
       variants={containerVariants}
       className={className}
       {...rest}
