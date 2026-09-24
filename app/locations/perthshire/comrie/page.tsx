@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   },
 };
 
-const crieffOffice = OFFICES[1];
+const crieffOffice = OFFICES.find((o) => o.id === "crieff") ?? OFFICES[0];
 
 const comrieVillages = ["Comrie", "St Fillans", "Strowan"];
 

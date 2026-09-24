@@ -281,11 +281,11 @@ export default function PersonalCarePage() {
                 </ModalButton>
 
                 <a
-                  href={OFFICES[0]?.phoneHref}
+                  href={OFFICES.find((o) => o.id === "crieff")?.phoneHref}
                   className="page-cta-phone"
                 >
                   <Phone className="w-4 h-4 shrink-0" />
-                  Call Edinburgh: {OFFICES[0]?.phone}
+                  Call Crieff: {OFFICES.find((o) => o.id === "crieff")?.phone}
                 </a>
               </div>
 

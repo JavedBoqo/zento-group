@@ -20,7 +20,7 @@ export default function Hero() {
           >
             <div>
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs sm:text-sm font-bold text-primary mb-4">
-                Nurse-Led Home Care in Edinburgh &amp; Lothian
+                Nurse-Led Care in Perthshire &middot; Home Support in Edinburgh &amp; Lothian
               </span>
               <h1 className="text-4xl font-black leading-tight text-secondary min-[400px]:text-5xl sm:text-5xl lg:text-5xl xl:text-6xl">
                 Compassionate Care, <br />
@@ -45,7 +45,7 @@ export default function Hero() {
                 className="page-cta-phone"
               >
                 <Phone className="w-4 h-4 shrink-0" />
-                Call Now: {CONTACT_NUMBER}
+                Call Now: {primaryOffice?.phone || CONTACT_NUMBER}
               </a>
             </div>
           </AnimateContainer>

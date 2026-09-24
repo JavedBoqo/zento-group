@@ -5,13 +5,6 @@ import {
   ArrowRight,
   Phone,
   Mail,
-  Heart,
-  ShieldCheck,
-  Brain,
-  Home,
-  CheckCircle2,
-  Clock4,
-  Building2,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -20,53 +13,61 @@ import AnimateContainer, { AnimateItem } from "@/components/AnimateContainer";
 import SectionHeader from "@/components/SectionHeader";
 import ServiceCardsGrid, { ServiceCardItem } from "@/components/ServiceCardsGrid";
 import SignsSectionGrid from "@/components/SignsSectionGrid";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import { getTestimonials } from "@/lib/testimonials";
 import ProcessSteps from "@/components/ProcessSteps";
 import FaqAccordion from "@/components/FaqAccordion";
 import FinalCTASection from "@/components/FinalCTASection";
 import { OFFICES } from "@/constants";
 
 export const metadata: Metadata = {
-  title: "Home Care Across Lothian | Nurse-Led | Zento",
-  description: "Covering Midlothian, East Lothian and West Lothian from our Edinburgh office. Nurse-led care for families across the Lothian region. Find your local area.",
+  title: "Companionship & Meal Preparation Across Lothian | Zento",
+  description: "Non-regulated home support across Midlothian, East Lothian and West Lothian from our Edinburgh office. Friendly companionship and fresh meal preparation.",
   alternates: { canonical: "https://zentogroup.co.uk/locations/lothian" },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Home Care Across Lothian | Nurse-Led | Zento",
-    description: "Covering Midlothian, East Lothian and West Lothian from our Edinburgh office. Nurse-led care for families across the Lothian region.",
+    title: "Companionship & Meal Preparation Across Lothian | Zento",
+    description: "Non-regulated home support across Midlothian, East Lothian and West Lothian from our Edinburgh office. Friendly companionship and fresh meal preparation.",
     url: "https://zentogroup.co.uk/locations/lothian",
     siteName: "Zento Care",
     locale: "en_GB",
     type: "website",
-    images: [{ url: "/brand-image.png", width: 1200, height: 630, alt: "Zento Nurse-Led Home Care Across Lothian" }],
+    images: [{ url: "/brand-image.png", width: 1200, height: 630, alt: "Zento Home Support Across Lothian" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Home Care Across Lothian | Nurse-Led | Zento",
-    description: "Nurse-led home care across Midlothian, East Lothian and West Lothian.",
+    title: "Companionship & Meal Preparation Across Lothian | Zento",
+    description: "Non-regulated home support across Midlothian, East Lothian and West Lothian.",
     images: ["/brand-image.png"],
   },
 };
 
-const edinburghOffice = OFFICES[0];
+const edinburghOffice = OFFICES.find((o) => o.id === "edinburgh") ?? OFFICES[0];
 
 const lothianServices: ServiceCardItem[] = [
-  { id: "live-in-care", title: "Live-In Care Across Lothian", desc: "When daily visits aren't enough — when your loved one needs someone there through the night, or around the clock — live-in care is often the most practical and the most compassionate answer. A trained, carefully selected carer moves into the home and becomes part of the daily routine. For many Lothian families, it's the option that finally makes staying at home feel genuinely safe.", extraDesc: "Every live-in arrangement in Lothian is managed by our nursing team. They select the carer, oversee the clinical care plan, and review the arrangement regularly so families don't have to chase anyone for updates.", href: "/live-in-care", linkText: "Learn more about live-in care" },
-  { id: "respite-care", title: "Respite Care Across Lothian", desc: "If you're a family carer in Lothian, a proper break isn't a luxury — it's a necessity. Zento provides planned and emergency respite care across Midlothian, East Lothian and West Lothian. Before cover begins, a nurse writes a care plan specific to the respite period, so there's genuine continuity rather than someone simply showing up and guessing what to do.", extraDesc: "Your loved one stays at home, with a consistent and carefully briefed carer. You get the break you need, knowing the standard of care hasn't dropped while you're away.", href: "/home-care/respite-care", linkText: "Find out about respite care" },
-  { id: "dementia-care", title: "Dementia Care Across Lothian", desc: "For someone living with dementia, the details matter enormously — the same face at the door, the same order to the morning, the same small routines that make the day feel familiar and safe. Our nursing team designs dementia care plans with consistency at the centre, monitors for changes in behaviour and cognition, and adjusts the approach before small difficulties turn into significant ones.", extraDesc: "Whether your family member is in Dalkeith, Haddington or Livingston, the clinical care behind their daily support is the same.", href: "/home-care/dementia-care", linkText: "About our dementia care service" },
-  { id: "personal-care", title: "Personal Care Across Lothian", desc: "Personal care visits across Lothian cover the practical daily tasks that allow your loved one to stay comfortably and safely at home — bathing, dressing, continence support, mobility assistance and medication prompting. A registered nurse writes the initial care plan and reviews it on a regular basis throughout.", extraDesc: "Nothing is left to the discretion of an individual carer working without clinical oversight.", href: "/home-care/personal-care", linkText: "About personal care at home" },
-  { id: "overnight-care", title: "Overnight Care Across Lothian", desc: "Falls, medication needs, night-time confusion — the risks that worry families most often happen after dark. For Lothian families where overnight safety is a concern, we provide sleep-in and waking-night carers with care plans written specifically for the night hours and what they can bring.", extraDesc: "Support that's properly planned, not improvised.", href: "/live-in-care/overnight-care", linkText: "About overnight care at home" },
-  { id: "hospital-discharge", title: "Hospital Discharge Support Across Lothian", desc: "Returning home after a hospital stay is one of the most vulnerable moments for an older person. Zento can liaise directly with NHS Lothian discharge teams to make sure the right care is in place before your loved one leaves hospital — not arranged in a rush the day they get home.", extraDesc: "In most cases we can have care in place within 24 to 48 hours of discharge, with a proper nursing care plan and a matched carer ready from day one.", href: "/home-care/hospital-discharge", linkText: "About hospital discharge care" },
+  {
+    id: "companionship",
+    title: "Companionship Support Across Lothian",
+    desc: "Companionship is designed to support emotional wellbeing and reduce social isolation for older adults across Midlothian, East Lothian, and West Lothian. Regular visits from a dedicated, friendly companion provide meaningful social interaction, conversation, and shared activities.",
+    extraDesc: "Our local team carefully matches each client with a consistent companion who shares their interests. Whether enjoying a walk, sharing a cup of tea, or participating in hobbies, our companions bring reliable warmth and connection. (Please note: This is non-regulated social support and does not include personal care).",
+    href: "/home-care/companionship",
+    linkText: "Learn more about companionship support",
+  },
+  {
+    id: "meal-preparation",
+    title: "Meal Preparation Across Lothian",
+    desc: "Healthy nutrition and regular hydration are vital for staying well and energised at home. Our meal preparation service across Lothian supports your loved one with meal planning, grocery shopping, and cooking fresh, nutritious meals according to their personal tastes.",
+    extraDesc: "Visits are arranged around your loved one's preferred meal times, making daily dining enjoyable and stress-free. (Please note: This is non-regulated domestic and nutritional support).",
+    href: "/home-care/meal-preparation",
+    linkText: "Find out about meal preparation",
+  },
 ];
 
 const lothianSigns = [
-  "Mobility difficulties & increased falls risk — Unsteadiness on feet or struggling to navigate stairs in Lothian homes.",
-  "Medication challenges — Missed or incorrect dosage timings without regular clinical oversight.",
-  "Poor appetite or weight reduction — Difficulty preparing nutritious hot meals on a daily basis.",
-  "Struggling with hygiene and daily dressing — Needing dignified personal care support from a compassionate carer.",
-  "Cognitive changes or memory concerns — Feeling disoriented or overwhelmed by everyday household routines.",
-  "Carer burnout — Family members in Midlothian, East or West Lothian needing trusted respite and support.",
+  "Social isolation and loneliness — Spending long periods alone without regular conversation, social contact, or shared activities.",
+  "Poor appetite or weight reduction — Difficulty preparing nutritious hot meals or managing daily grocery shopping.",
+  "Mobility difficulties in the kitchen — Unsteadiness while standing to cook or struggling to prepare daily refreshments.",
+  "Pantry and kitchen routines slipping — Expired items in cupboards, skipped meals, or untidy cooking areas.",
+  "Family members needing reliable support — Balancing busy schedules while ensuring loved ones eat well and stay socially engaged.",
+  "Loss of enthusiasm for daily routines — Reluctance to cook, low motivation for hobbies, or needing gentle friendly encouragement.",
 ];
 
 const lothianAreasMidlothian = ["Dalkeith", "Penicuik", "Bonnyrigg", "Loanhead", "Gorebridge", "Newtongrange", "Roslin", "Lasswade"];
@@ -74,19 +75,18 @@ const lothianAreasEast = ["Musselburgh", "Haddington", "North Berwick", "Dunbar"
 const lothianAreasWest = ["Livingston", "Bathgate", "Linlithgow", "Broxburn", "Armadale", "West Calder"];
 
 const lothianSteps = [
-  { step: "01", title: "Call us or complete our enquiry form", desc: "We respond the same day. There's no obligation, no sales pitch and no pressure — just an honest conversation about what you need." },
-  { step: "02", title: "A registered nurse visits your loved one at home", desc: "We'll arrange for one of our nurses to visit — anywhere across Midlothian, East Lothian or West Lothian — for a proper needs assessment at the client's home." },
-  { step: "03", title: "We write the care plan and match a carer", desc: "The assessing nurse writes a personalised care plan. We then match a carer based on clinical need, personality and routine, and introduce them before care begins." },
-  { step: "04", title: "Care starts on your agreed schedule", desc: "Once care begins, our nursing team stays in contact. If anything changes, we review and adjust. You're not left to manage it on your own." },
+  { step: "01", title: "Call us or complete our enquiry form", desc: "We respond promptly. There's no obligation, no sales pitch and no pressure — just an honest conversation about what you need." },
+  { step: "02", title: "Introductory home consultation", desc: "We arrange a visit to the client's home anywhere across Midlothian, East Lothian or West Lothian to understand their companionship and daily routine preferences." },
+  { step: "03", title: "Support plan agreed and companion matched", desc: "We create a tailored support plan and match a companion based on personality, shared interests, and routine." },
+  { step: "04", title: "Support begins on your agreed schedule", desc: "Once visits begin, our local team stays in regular contact to ensure smooth, dependable support." },
 ];
 
 const lothianFaqs = [
-  { q: "Does Zento provide home care across all three Lothian council areas?", a: "Yes — Midlothian, East Lothian and West Lothian. We cover a wide range of towns and villages across all three areas. For specific coverage details, call us on 0131 210 0095 or see the areas section above." },
-  { q: "What makes Zento different from other home care providers in Lothian?", a: "Every care arrangement through Zento is planned and reviewed by a registered nurse — not a care coordinator or a scheduler. That means your loved one's care plan is clinically sound, their medication is properly overseen, and someone with genuine medical training reviews their care on a regular basis. Most home care agencies in Lothian don't offer that." },
-  { q: "How quickly can home care begin in Lothian?", a: "In most cases, we can arrange a nursing assessment within a few days of your first call. For urgent situations — including hospital discharge — we aim to have care in place within 24 to 48 hours." },
-  { q: "Will my loved one have the same carer for every visit?", a: "We work hard to ensure carer consistency, because we know how much it matters — particularly for clients with dementia or anxiety. Our nursing team matches carers based on clinical need and personal compatibility, and we aim to maintain the same carer throughout wherever it's possible." },
-  { q: "Do you provide live-in care in Lothian?", a: "Yes, across Midlothian, East Lothian and West Lothian. Every live-in arrangement is personally matched and clinically overseen by our nursing team. Visit our live-in care page for full details." },
-  { q: "How do I arrange a nurse-led home assessment in Lothian?", a: "Call us on 0131 210 0095 or complete our online enquiry form. We'll arrange a home visit from one of our registered nurses — anywhere across Lothian — at a time that suits you. It's free and there's no obligation." },
+  { q: "Does Zento provide home support across all three Lothian council areas?", a: "Yes — Midlothian, East Lothian and West Lothian. We cover a wide range of towns and villages across all three areas. For specific coverage details, call us on 0131 210 0095 or see the areas section above." },
+  { q: "Are the services provided in Lothian regulated personal care?", a: "No. Our services in Midlothian, East Lothian, and West Lothian focus exclusively on non-regulated home support — namely companionship, social engagement, grocery shopping, and meal preparation. We do not provide regulated personal care, bathing assistance, or clinical nursing in the Lothian region." },
+  { q: "How quickly can support visits begin in Lothian?", a: "In most cases, we can arrange an introductory home consultation within a few days of your first call and begin regular visits shortly thereafter." },
+  { q: "Will my loved one have the same companion for every visit?", a: "We work hard to ensure consistency, because we know how much familiarity matters. We match companions based on personality compatibility and aim to maintain the same companion throughout wherever possible." },
+  { q: "Can companionship and meal preparation visits be tailored to our schedule?", a: "Yes. We arrange visits around your loved one's preferred routines — whether that is daily visits for meal preparation, weekly companionship outings, or regular check-ins throughout the week." },
 ];
 
 export default function LothianLocationPage() {
@@ -98,11 +98,10 @@ export default function LothianLocationPage() {
     telephone: "0131 210 0095",
     email: "info@zentogroup.co.uk",
     url: "https://zentogroup.co.uk/locations/lothian",
-    address: { "@type": "PostalAddress", streetAddress: "Adit Place", addressLocality: "Edinburgh", postalCode: "EH17", addressCountry: "GB" },
+    address: { "@type": "PostalAddress", addressLocality: "Edinburgh", addressCountry: "GB" },
     areaServed: ["Midlothian", "East Lothian", "West Lothian"],
-    serviceType: "Nurse-Led Home Care",
+    serviceType: "Home Support Services",
     parentOrganization: { "@type": "Organization", "@id": "https://zentogroup.co.uk/#organization", name: "Zento Group" },
-    identifier: "CS2026000326",
   };
   const faqJsonLd = {
     "@context": "https://schema.org",
@@ -149,21 +148,26 @@ export default function LothianLocationPage() {
             <AnimateContainer animation="fade-up" className="mx-auto max-w-5xl space-y-6">
               <div>
                 <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs sm:text-sm font-bold text-primary mb-4">
-                  Nurse-Led Home Care &middot; Midlothian, East Lothian &amp; West Lothian
+                  Home Support &middot; Midlothian, East Lothian &amp; West Lothian
                 </span>
                 <h1 className="text-3xl font-black leading-tight text-secondary min-[400px]:text-4xl sm:text-5xl lg:text-6xl mb-6">
-                  Nurse-Led Home Care Across Lothian &mdash;{" "}
-                  <span className="text-primary">Midlothian, East Lothian and West Lothian</span>
+                  Companionship &amp; Meal Preparation Across Lothian &mdash;{" "}
+                  <span className="text-primary">Midlothian, East Lothian &amp; West Lothian</span>
                 </h1>
                 <p className="text-base sm:text-lg leading-relaxed text-zinc-600 max-w-3xl mx-auto">
-                  Zento provides nurse-led home care to families across Midlothian, East Lothian and West Lothian.
-                  Whether you&apos;re in Dalkeith, Musselburgh or Livingston, a registered nurse oversees every care
-                  plan we put in place &mdash; from the first assessment through to regular reviews.
+                  Zento provides dedicated, non-regulated companionship and meal preparation support to families across Midlothian, East Lothian, and West Lothian.
+                  Whether you&apos;re in Dalkeith, Musselburgh, or Livingston, our friendly local team is here to help your loved ones stay connected and well-supported at home.
                 </p>
               </div>
+
+              {/* Notice Banner */}
+              <div className="mx-auto max-w-2xl rounded-2xl border border-primary/20 bg-primary/5 p-4 text-xs sm:text-sm text-zinc-700">
+                <span className="font-bold text-secondary">Please Note:</span> Our Lothian services focus exclusively on non-regulated support (companionship, lifestyle assistance, and meal preparation) and do not include regulated personal care.
+              </div>
+
               <div className="page-cta-group">
-                <ModalButton type="assessment" className="page-cta-primary">
-                  Speak to our nursing team <ArrowRight className="w-5 h-5" />
+                <ModalButton type="general" className="page-cta-primary">
+                  Speak to our local team <ArrowRight className="w-5 h-5" />
                 </ModalButton>
                 <a href={`tel:${edinburghOffice.phone.replace(/\s+/g, "")}`} className="page-cta-phone">
                   <Phone className="w-4 h-4 shrink-0" />Call us: {edinburghOffice.phone}
@@ -178,14 +182,15 @@ export default function LothianLocationPage() {
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
-                <Image src="/about-image.webp" alt="Registered nurse conducting home care assessment across Lothian" fill sizes="(max-width: 768px) 100vw, 500px" className="object-cover" />
+                <Image src="/about-image.webp" alt="Home companion visiting client in Lothian" fill sizes="(max-width: 768px) 100vw, 500px" className="object-cover" />
               </AnimateContainer>
               <AnimateContainer animation="fade-left" delay={0.1} className="flex-1 space-y-6">
-                <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider">Care Inspectorate Registered</span>
-                <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">Nurse-Led Home Care for Lothian Families</h2>
+                <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider">Home Support</span>
+                <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">Support for Lothian Families</h2>
                 <div className="space-y-4 text-base leading-relaxed text-zinc-600">
-                  <p>Across Midlothian, East Lothian and West Lothian, Zento provides home care that&apos;s planned and overseen by registered nurses at every stage. Every care plan is written by a nurse, tailored to the individual, and reviewed on a regular basis &mdash; not handed to a carer and left to run on its own.</p>
-                  <p>We&apos;re registered with the Care Inspectorate, Scotland&apos;s independent regulator for health and care services, and we operate to the standards that registration requires. For Lothian families, that means genuine clinical oversight &mdash; not the appearance of it.</p>
+                  <p>Across Midlothian, East Lothian, and West Lothian, Zento provides friendly visiting companionship and practical meal preparation tailored to each person&apos;s lifestyle and preferences.</p>
+                  <p>Our companions are carefully selected, thoroughly vetted, and PVG-checked to provide safe, reliable, and friendly company. We help older adults enjoy home-cooked meals, stay active with local hobbies, and maintain regular social connections.</p>
+                  <p>Please note: All services provided across Midlothian, East Lothian, and West Lothian are non-regulated support services and do not include regulated personal care or nursing.</p>
                 </div>
               </AnimateContainer>
             </div>
@@ -196,11 +201,11 @@ export default function LothianLocationPage() {
         <section className="bg-zinc-50 py-20 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <AnimateContainer animation="fade-up" className="max-w-3xl mx-auto text-center space-y-6">
-              <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider">Clinical Difference</span>
+              <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider">Local Commitment</span>
               <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">Why Lothian families choose Zento</h2>
               <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
-              <p className="text-base leading-relaxed text-zinc-600">Most home care providers don&apos;t have a nurse behind them. Zento does. Every care arrangement in Lothian is planned by a registered nurse, reviewed by a registered nurse, and backed by clinical expertise that most families wouldn&apos;t expect to find in a home care provider.</p>
-              <p className="text-base leading-relaxed text-zinc-600">That matters more than it might seem. It means someone with medical training is watching your loved one&apos;s condition, adjusting the care plan when things change, and spotting problems before they become crises. Not every provider offers that. We think every family deserves it.</p>
+              <p className="text-base leading-relaxed text-zinc-600">Our local team understands the Lothian communities and provides responsive, relationship-focused companionship. We take the time to match companions based on personality and shared interests, making every visit enjoyable and meaningful.</p>
+              <p className="text-base leading-relaxed text-zinc-600">We keep families updated, ensure reliable arrival times, and provide friendly support you can depend on day in, day out.</p>
             </AnimateContainer>
           </div>
         </section>
@@ -209,9 +214,9 @@ export default function LothianLocationPage() {
         <section className="bg-white py-24 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <SectionHeader
-              badge="Full Range of Services"
-              title="Home care services across the Lothian region"
-              subtitle="From Bonnyrigg to Bathgate and Musselburgh to Dunbar, our nursing team provides the full range of Zento home care services across the Lothian region."
+              badge="Available Support"
+              title="Home support services across the Lothian region"
+              subtitle="From Bonnyrigg to Bathgate and Musselburgh to Dunbar, our team provides dedicated companionship and meal preparation support across the Lothian region."
             />
             <ServiceCardsGrid services={lothianServices} />
           </div>
@@ -219,12 +224,12 @@ export default function LothianLocationPage() {
 
         {/* SECTION 5 — SIGNS SECTION (Using SignsSectionGrid) */}
         <SignsSectionGrid
-          category="Lothian Clinical Assessment"
-          title="Signs your loved one in Lothian may need support at home"
-          subtitle="Recognising when a family member across Midlothian, East Lothian or West Lothian needs extra assistance. Our registered nurses can carry out a comprehensive at-home assessment."
+          category="Lothian Home Observations"
+          title="Signs your loved one in Lothian may benefit from support at home"
+          subtitle="Recognising when a family member across Midlothian, East Lothian or West Lothian could benefit from friendly company or a hand with cooking and shopping."
           signs={lothianSigns}
           ctaText="Book a Lothian consultation"
-          ctaType="assessment"
+          ctaType="general"
         />
 
         {/* SECTION 6 — AREAS */}
@@ -234,7 +239,7 @@ export default function LothianLocationPage() {
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-4">Full Coverage</span>
               <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl mb-4">Areas we cover across Lothian</h2>
               <div className="mx-auto h-1.5 w-24 rounded-full bg-primary mb-6" />
-              <p className="text-base leading-relaxed text-zinc-600 max-w-2xl mx-auto">Our nursing team provides home care across all three Lothian council areas:</p>
+              <p className="text-base leading-relaxed text-zinc-600 max-w-2xl mx-auto">Our team provides companionship and meal support across all three Lothian council areas:</p>
             </AnimateContainer>
 
             <AnimateContainer animation="stagger" className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto mb-12">
@@ -297,100 +302,87 @@ export default function LothianLocationPage() {
               <div className="grid gap-8 md:grid-cols-2 items-center">
                 <div className="space-y-4">
                   <span className="inline-block rounded-full bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary uppercase tracking-wider">Office Details</span>
-                  <h2 className="text-3xl font-black text-secondary">The team behind your care</h2>
-                  <p className="text-sm text-zinc-600 leading-relaxed">Our nursing team carries out home assessments and care plan reviews in person across Midlothian, East Lothian and West Lothian. Assessments are conducted at the client&apos;s home &mdash; not over the phone &mdash; and care plans are reviewed regularly throughout the care relationship.</p>
+                  <h2 className="text-3xl font-black text-secondary">The team behind your support</h2>
+                  <p className="text-sm text-zinc-600 leading-relaxed">Our local team coordinates companionship and meal preparation support across Midlothian, East Lothian, and West Lothian from our Edinburgh office.</p>
                 </div>
                 <div className="space-y-3 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
                   <div className="border-b border-zinc-100 pb-3">
                     <p className="text-base font-black text-secondary">{edinburghOffice.name}</p>
-                    <p className="text-xs text-zinc-500">{edinburghOffice.address}</p>
                     <p className="text-xs text-zinc-500 mt-0.5">Serving Midlothian, East Lothian &amp; West Lothian</p>
                   </div>
                   <div className="space-y-2 text-xs font-medium text-zinc-700">
                     <p className="flex items-center gap-2"><Phone className="w-4 h-4 text-primary shrink-0" /><a href={`tel:${edinburghOffice.phone.replace(/\s+/g, "")}`} className="hover:text-primary">Phone: {edinburghOffice.phone}</a></p>
                     <p className="flex items-center gap-2"><Mail className="w-4 h-4 text-primary shrink-0" /><a href={`mailto:${edinburghOffice.email}`} className="hover:text-primary">Email: {edinburghOffice.email}</a></p>
                   </div>
-                  <div className="border-t border-zinc-100 pt-3 text-[11px] text-zinc-500 leading-snug">
-                    <p><span className="font-bold text-secondary">Care Inspectorate:</span> CS2026000326 (Support Service)</p>
-                    <p>CS2026000325 (Housing Support Service)</p>
-                  </div>
                 </div>
               </div>
             </AnimateContainer>
           </div>
         </section>
 
-        {/* SECTION 8 — TESTIMONIALS (Using TestimonialsSection) */}
-        <TestimonialsSection
-          category="Lothian Family Feedback"
-          title="What Lothian families say about Zento"
-          subtitle="Direct feedback from family members across Midlothian, East Lothian and West Lothian."
-          testimonials={getTestimonials("locations.lothian")}
-        />
-
-        {/* SECTION 9 — GETTING STARTED (Using ProcessSteps) */}
+        {/* SECTION 8 — GETTING STARTED (Using ProcessSteps) */}
         <section className="bg-white py-24 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <ProcessSteps
               badge="4-Step Process"
-              title="How to arrange home care in Lothian"
+              title="How to arrange home support in Lothian"
               steps={lothianSteps}
               ctaText="Start with a free call"
-              ctaType="assessment"
+              ctaType="general"
             />
           </div>
         </section>
 
-        {/* SECTION 10 — FAQ (Using FaqAccordion) */}
+        {/* SECTION 9 — FAQ (Using FaqAccordion) */}
         <section className="bg-zinc-50 py-24 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <FaqAccordion
               badge="Lothian FAQs"
-              title="Frequently asked questions about home care in Lothian"
+              title="Frequently asked questions about support in Lothian"
               faqs={lothianFaqs}
             />
           </div>
         </section>
 
-        {/* SECTION 11 — NEARBY AREAS */}
+        {/* SECTION 10 — SPECIFIC AREA PAGES */}
         <section className="bg-white py-20 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <AnimateContainer animation="fade-up" className="max-w-4xl mx-auto text-center space-y-6">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider">Specific Area Pages</span>
-              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">Find home care in your specific Lothian area</h2>
+              <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">Find support in your specific Lothian area</h2>
               <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
               <p className="text-base leading-relaxed text-zinc-600">For detailed local coverage, towns served and area-specific information:</p>
               <div className="grid gap-4 sm:grid-cols-3 pt-4 text-left">
                 <Link href="/locations/lothian/midlothian" className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md">
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">Midlothian</p>
                   <p className="text-xs text-zinc-500 mt-1 mb-3">Dalkeith, Penicuik, Bonnyrigg &amp; surrounding areas</p>
-                  <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">Home care in Midlothian <ArrowRight className="w-3 h-3" /></span>
+                  <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">Support in Midlothian <ArrowRight className="w-3 h-3" /></span>
                 </Link>
                 <Link href="/locations/lothian/east-lothian" className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md">
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">East Lothian</p>
                   <p className="text-xs text-zinc-500 mt-1 mb-3">Musselburgh, Haddington, North Berwick &amp; surrounding areas</p>
-                  <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">Home care in East Lothian <ArrowRight className="w-3 h-3" /></span>
+                  <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">Support in East Lothian <ArrowRight className="w-3 h-3" /></span>
                 </Link>
                 <Link href="/locations/lothian/west-lothian" className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-primary/30 hover:shadow-md">
                   <p className="text-sm font-bold text-secondary group-hover:text-primary">West Lothian</p>
                   <p className="text-xs text-zinc-500 mt-1 mb-3">Livingston, Bathgate, Linlithgow &amp; surrounding areas</p>
-                  <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">Home care in West Lothian <ArrowRight className="w-3 h-3" /></span>
+                  <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">Support in West Lothian <ArrowRight className="w-3 h-3" /></span>
                 </Link>
               </div>
             </AnimateContainer>
           </div>
         </section>
 
-        {/* SECTION 12 — FINAL CTA (Using FinalCTASection) */}
+        {/* SECTION 11 — FINAL CTA (Using FinalCTASection) */}
         <section className="py-24 bg-zinc-50 border-t border-zinc-100">
           <FinalCTASection
-            title="Speak to our nursing team today"
-            subtitle="Our team is ready to answer your questions and arrange a home assessment anywhere across Midlothian, East Lothian or West Lothian."
-            tagline="No pressure. No obligation. Honest advice from our registered nurses."
+            title="Speak to our local team today"
+            subtitle="Our team is ready to answer your questions and arrange an introductory home consultation anywhere across Midlothian, East Lothian or West Lothian."
+            tagline="No pressure. No obligation. Friendly advice from our local Lothian team."
             phone={edinburghOffice.phone}
             email={edinburghOffice.email}
             ctaText="Book a free consultation"
-            ctaType="assessment"
+            ctaType="general"
           />
         </section>
       </main>

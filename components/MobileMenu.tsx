@@ -211,11 +211,11 @@ export default function MobileMenu({ isOpen, onClose, onOpenModal }: MobileMenuP
                 About Us
               </Link>
               <Link
-                href="/blog"
+                href="/careers"
                 onClick={onClose}
-                className="text-sm font-black uppercase tracking-[0.3em] text-secondary hover:text-primary transition-colors"
+                className="text-sm font-black uppercase tracking-[0.3em] text-secondary hover:text-primary transition-colors flex items-center justify-between"
               >
-                Blog
+                <span>Careers</span>
               </Link>
               <Link
                 href="/contact"

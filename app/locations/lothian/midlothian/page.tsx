@@ -4,16 +4,8 @@ import Image from "next/image";
 import {
   ArrowRight,
   Phone,
-  Heart,
-  ShieldCheck,
-  Brain,
-  Home,
-  CheckCircle2,
-  Clock4,
-  Building2,
   Utensils,
   Users,
-  Sun,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -21,24 +13,22 @@ import ModalButton from "@/components/ModalButton";
 import AnimateContainer, { AnimateItem } from "@/components/AnimateContainer";
 import SectionHeader from "@/components/SectionHeader";
 import SignsSectionGrid from "@/components/SignsSectionGrid";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import { getTestimonials } from "@/lib/testimonials";
 import FaqAccordion from "@/components/FaqAccordion";
 import FinalCTASection from "@/components/FinalCTASection";
 import { OFFICES } from "@/constants";
 
 export const metadata: Metadata = {
-  title: "Home Care in Midlothian | Nurse-Led | Zento",
+  title: "Companionship & Meal Preparation in Midlothian | Zento",
   description:
-    "Nurse-led home care across Midlothian — Dalkeith, Penicuik, Bonnyrigg, Loanhead and surrounding areas. Speak to our Edinburgh-based nursing team today.",
+    "Non-regulated home support across Midlothian — Dalkeith, Penicuik, Bonnyrigg, Loanhead and surrounding areas. Friendly companionship and fresh meal preparation.",
   alternates: {
     canonical: "https://zentogroup.co.uk/locations/lothian/midlothian",
   },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Home Care in Midlothian | Nurse-Led | Zento",
+    title: "Companionship & Meal Preparation in Midlothian | Zento",
     description:
-      "Nurse-led home care across Midlothian — Dalkeith, Penicuik, Bonnyrigg, Loanhead and surrounding areas. Speak to our Edinburgh-based nursing team today.",
+      "Non-regulated home support across Midlothian — Dalkeith, Penicuik, Bonnyrigg, Loanhead and surrounding areas. Friendly companionship and fresh meal preparation.",
     url: "https://zentogroup.co.uk/locations/lothian/midlothian",
     siteName: "Zento Care",
     locale: "en_GB",
@@ -48,20 +38,20 @@ export const metadata: Metadata = {
         url: "/brand-image.png",
         width: 1200,
         height: 630,
-        alt: "Zento Nurse-Led Home Care in Midlothian",
+        alt: "Zento Home Support in Midlothian",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Home Care in Midlothian | Nurse-Led | Zento",
+    title: "Companionship & Meal Preparation in Midlothian | Zento",
     description:
-      "Nurse-led home care across Midlothian — Dalkeith, Penicuik, Bonnyrigg, Loanhead and surrounding areas.",
+      "Non-regulated home support across Midlothian — Dalkeith, Penicuik, Bonnyrigg, Loanhead and surrounding areas.",
     images: ["/brand-image.png"],
   },
 };
 
-const edinburghOffice = OFFICES[0];
+const edinburghOffice = OFFICES.find((o) => o.id === "edinburgh") ?? OFFICES[0];
 
 const midlothianTowns = [
   "Dalkeith",
@@ -76,68 +66,26 @@ const midlothianTowns = [
 
 const midlothianServices = [
   {
-    name: "Personal Care",
-    desc: "Bathing, dressing & daily mobility assistance",
-    href: "/home-care/personal-care",
-    icon: Heart,
-  },
-  {
-    name: "Medication Support",
-    desc: "Nurse-monitored administration & management",
-    href: "/home-care/medication-support",
-    icon: ShieldCheck,
-  },
-  {
-    name: "Companionship",
-    desc: "Social engagement & community activities",
+    name: "Companionship Support",
+    desc: "Social engagement, friendly visits & community outings without personal care duties.",
     href: "/home-care/companionship",
     icon: Users,
   },
   {
-    name: "Meal Preparation",
-    desc: "Nutritional support & home cooked meals",
+    name: "Meal Preparation Support",
+    desc: "Nutritional support, fresh cooking, hydration check-ins & grocery assistance.",
     href: "/home-care/meal-preparation",
     icon: Utensils,
-  },
-  {
-    name: "Hospital Discharge Support",
-    desc: "Seamless, safe recovery at home",
-    href: "/home-care/hospital-discharge",
-    icon: Building2,
-  },
-  {
-    name: "Dementia Care",
-    desc: "Structured, familiar daily routines",
-    href: "/home-care/dementia-care",
-    icon: Brain,
-  },
-  {
-    name: "Respite Care",
-    desc: "Short-term breaks for unpaid family carers",
-    href: "/home-care/respite-care",
-    icon: Sun,
-  },
-  {
-    name: "Overnight Care",
-    desc: "Sleep-in or waking-night support",
-    href: "/live-in-care/overnight-care",
-    icon: Clock4,
-  },
-  {
-    name: "24-Hour Live-In Care",
-    desc: "Continuous round-the-clock home support",
-    href: "/live-in-care/24-hour-care",
-    icon: Home,
   },
 ];
 
 const midlothianSigns = [
-  "Reduced mobility or safety concerns on stairs in Midlothian properties.",
-  "Medication errors, forgotten pills, or difficulty managing repeat prescriptions.",
-  "Signs of weight loss or an empty fridge with skipped meals.",
-  "Struggling with dressing, washing, or maintaining independent personal hygiene.",
-  "Increased confusion, memory lapses, or restlessness during evening hours.",
-  "Family members feeling stretched trying to manage care alongside work commitments.",
+  "Feelings of loneliness or social isolation — Withdrawing from social activities or spending long days without meaningful company in Midlothian.",
+  "Signs of weight loss or an empty fridge — Difficulty cooking, missed meals, or lacking appetite for solo dining.",
+  "Struggling with kitchen tasks — Trouble preparing food safely, managing groceries, or standing for cooking sessions.",
+  "Reduced motivation for daily activities — Reluctance to engage with hobbies, read, or take short walks around Midlothian.",
+  "Family members feeling stretched — Trying to balance check-ins and meal support alongside busy work commitments.",
+  "Household routine slipping — Expired items in the pantry, neglected tea making, or untidiness around living areas.",
 ];
 
 const midlothianSteps = [
@@ -148,32 +96,32 @@ const midlothianSteps = [
   },
   {
     step: "02",
-    title: "A nurse visits your loved one at home",
-    desc: "We arrange a proper assessment, in person, wherever you are in Midlothian.",
+    title: "Introductory home consultation",
+    desc: "We arrange a visit to your loved one's home in Midlothian to understand their preferences and routine.",
   },
   {
     step: "03",
-    title: "Care begins",
-    desc: "A care plan is written and a carer matched. Support starts on your agreed schedule.",
+    title: "Support begins",
+    desc: "A tailored support plan is agreed and a compatible companion matched. Visits start on your schedule.",
   },
 ];
 
 const midlothianFaqs = [
   {
-    q: "How quickly can home care begin in Midlothian?",
-    a: "In most cases, we can complete a nurse assessment within a few days of your initial call. For urgent situations — including hospital discharge — we aim to arrange care within 24 to 48 hours.",
+    q: "How quickly can support visits begin in Midlothian?",
+    a: "In most cases, we can arrange an introductory consultation within a few days of your initial call and begin companionship or meal preparation visits shortly thereafter.",
   },
   {
     q: "Which Midlothian towns does Zento cover?",
     a: "We cover all of Midlothian including Dalkeith, Penicuik, Bonnyrigg, Loanhead, Gorebridge, Newtongrange, Roslin and Lasswade. If you're unsure whether we cover your specific address, call us on 0131 210 0095.",
   },
   {
-    q: "Is nurse oversight included for all Midlothian clients?",
-    a: "Yes. Every care package in Midlothian is assessed, written and reviewed by a registered nurse. Clinical oversight is a standard part of our service, not an optional extra.",
+    q: "Are the Midlothian services regulated personal care?",
+    a: "No. Our Midlothian services focus exclusively on non-regulated home support — namely social companionship, lifestyle assistance, grocery shopping, and meal preparation. We do not provide regulated personal care, bathing assistance, or clinical nursing in Midlothian.",
   },
   {
-    q: "Can you provide live-in care in Midlothian?",
-    a: "Yes. We offer dedicated 24-hour live-in care across Midlothian, personally matched and clinically supervised by our nursing team.",
+    q: "How flexible are companionship and meal preparation visits in Midlothian?",
+    a: "Visits can be arranged according to your loved one's schedule and lifestyle — from weekly companionship outings to regular meal preparation throughout the week.",
   },
 ];
 
@@ -182,25 +130,22 @@ export default function MidlothianLocationPage() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": "https://zentogroup.co.uk/locations/lothian/midlothian#midlothian-service",
-    name: "Zento Group — Midlothian Home Care",
+    name: "Zento Group — Midlothian Home Support",
     telephone: "0131 210 0095",
     email: "info@zentogroup.co.uk",
     url: "https://zentogroup.co.uk/locations/lothian/midlothian",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Adit Place",
       addressLocality: "Edinburgh",
-      postalCode: "EH17",
       addressCountry: "GB",
     },
     areaServed: "Midlothian",
-    serviceType: "Nurse-Led Home Care",
+    serviceType: "Home Support Services",
     parentOrganization: {
       "@type": "Organization",
       "@id": "https://zentogroup.co.uk/#organization",
       name: "Zento Group",
     },
-    identifier: "CS2026000326",
   };
 
   const faqJsonLd = {
@@ -258,7 +203,9 @@ export default function MidlothianLocationPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+
       <Navbar />
+
       <main className="flex-1">
         {/* BREADCRUMB */}
         <div className="border-b border-zinc-100 bg-zinc-50">
@@ -319,26 +266,29 @@ export default function MidlothianLocationPage() {
             <AnimateContainer animation="fade-up" className="mx-auto max-w-5xl space-y-6">
               <div>
                 <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs sm:text-sm font-bold text-primary mb-4">
-                  Nurse-Led Home Care &middot; Midlothian
+                  Home Support &middot; Midlothian
                 </span>
                 <h1 className="text-3xl font-black leading-tight text-secondary min-[400px]:text-4xl sm:text-5xl lg:text-6xl mb-6">
-                  Home Care in Midlothian &mdash;{" "}
+                  Companionship &amp; Meal Preparation in Midlothian &mdash;{" "}
                   <span className="text-primary">
                     Dalkeith, Penicuik, Bonnyrigg &amp; More
                   </span>
                 </h1>
                 <p className="text-base sm:text-lg leading-relaxed text-zinc-600 max-w-3xl mx-auto">
-                  Zento provides nurse-led home care across Midlothian from our
-                  Edinburgh office. From Dalkeith and Penicuik to Bonnyrigg,
-                  Loanhead and the surrounding villages, our registered nurses
-                  assess, write and review every care plan we deliver.
+                  Zento provides dedicated, non-regulated companionship and meal preparation support
+                  across Midlothian from our Edinburgh office. From Dalkeith and Penicuik to Bonnyrigg,
+                  Loanhead and surrounding villages, our friendly team helps older adults stay well-supported and socially connected.
                 </p>
               </div>
 
+              {/* Notice Banner */}
+              <div className="mx-auto max-w-2xl rounded-2xl border border-primary/20 bg-primary/5 p-4 text-xs sm:text-sm text-zinc-700">
+                <span className="font-bold text-secondary">Please Note:</span> Services in Midlothian focus exclusively on non-regulated support (companionship, lifestyle assistance, and meal preparation) and do not include regulated personal care.
+              </div>
 
               <div className="page-cta-group pt-2">
                 <ModalButton
-                  type="assessment"
+                  type="general"
                   className="page-cta-primary"
                 >
                   Speak to our team <ArrowRight className="w-5 h-5" />
@@ -362,7 +312,7 @@ export default function MidlothianLocationPage() {
               <AnimateContainer animation="fade-right" className="relative aspect-square w-full max-w-md flex-1 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl">
                 <Image
                   src="/about-image.webp"
-                  alt="Registered nurse conducting home care assessment in Midlothian"
+                  alt="Home companion visiting older adult in Midlothian"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
                   className="object-cover"
@@ -373,21 +323,17 @@ export default function MidlothianLocationPage() {
                   Area Overview
                 </span>
                 <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">
-                  Nurse-led home care in Midlothian
+                  Friendly home support in Midlothian
                 </h2>
                 <div className="space-y-4 text-base leading-relaxed text-zinc-600">
                   <p>
-                    Midlothian families have access to the full range of Zento
-                    home care services, backed by the clinical expertise of
-                    our Edinburgh nursing team. Every client receives a
-                    comprehensive in-person nursing assessment before care
-                    begins.
+                    Midlothian families have access to dependable companionship and fresh meal preparation
+                    services delivered by our caring, PVG-vetted team. We help older adults enjoy home-cooked meals,
+                    maintain favorite pastimes, and stay connected with family and community.
                   </p>
                   <p>
-                    We&apos;re registered with the Care Inspectorate, and our
-                    nurses review care plans regularly to ensure your loved
-                    one&apos;s changing needs are identified and supported
-                    promptly.
+                    Please note: Our Midlothian services are non-regulated support services and do not include
+                    regulated personal care or nursing.
                   </p>
                 </div>
               </AnimateContainer>
@@ -408,7 +354,7 @@ export default function MidlothianLocationPage() {
                 </h2>
                 <div className="mx-auto h-1.5 w-24 rounded-full bg-primary" />
                 <p className="text-base text-zinc-600">
-                  Our team provides home care throughout Midlothian, including:
+                  Our team provides companionship and meal support throughout Midlothian, including:
                 </p>
               </AnimateContainer>
 
@@ -431,9 +377,7 @@ export default function MidlothianLocationPage() {
 
               <AnimateContainer animation="fade-up" className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-xs leading-relaxed text-sm text-zinc-600">
                 <p>
-                  Midlothian Health and Social Care Partnership (Midlothian HSCP)
-                  coordinates statutory care assessments from Fairfield House in
-                  Dalkeith. If you&apos;re unsure whether we cover your specific
+                  If you&apos;re unsure whether we cover your specific
                   address, call us on{" "}
                   <a
                     href={`tel:${edinburghOffice.phone.replace(/\s+/g, "")}`}
@@ -453,11 +397,11 @@ export default function MidlothianLocationPage() {
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <SectionHeader
               badge="Available Support"
-              title="Home care services available in Midlothian"
-              subtitle="Our Midlothian clients have access to the full range of Zento services, all delivered under nurse-led oversight:"
+              title="Home support services available in Midlothian"
+              subtitle="Our Midlothian clients have access to dedicated companionship and meal preparation services, all delivered by vetted, caring companions:"
             />
 
-            <AnimateContainer animation="stagger" className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto mb-12">
+            <AnimateContainer animation="stagger" className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto mb-12">
               {midlothianServices.map((service) => {
                 const IconComp = service.icon;
                 return (
@@ -495,7 +439,7 @@ export default function MidlothianLocationPage() {
                 href="/home-care/"
                 className="page-cta-secondary-inline"
               >
-                See all home care services <ArrowRight className="w-4 h-4" />
+                See all home services <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
@@ -503,23 +447,15 @@ export default function MidlothianLocationPage() {
 
         {/* SECTION 5 — SIGNS SECTION (Using SignsSectionGrid) */}
         <SignsSectionGrid
-          category="Midlothian Care Observations"
-          title="Signs your loved one in Midlothian may need support at home"
-          subtitle="Recognising when a relative in Dalkeith, Penicuik, or Bonnyrigg needs compassionate assistance. Our registered nurses carry out comprehensive home assessments."
+          category="Midlothian Observations"
+          title="Signs your loved one in Midlothian may benefit from support at home"
+          subtitle="Recognising when a relative in Dalkeith, Penicuik, or Bonnyrigg needs friendly companionship or assistance with daily cooking."
           signs={midlothianSigns}
-          ctaText="Book a Midlothian assessment"
-          ctaType="assessment"
+          ctaText="Book a Midlothian consultation"
+          ctaType="general"
         />
 
-        {/* SECTION 6 — TESTIMONIALS (Using TestimonialsSection) */}
-        <TestimonialsSection
-          category="Midlothian Feedback"
-          title="What Midlothian families say"
-          subtitle="Real reviews from families across Dalkeith, Penicuik, and Bonnyrigg."
-          testimonials={getTestimonials("locations.lothian.midlothian")}
-        />
-
-        {/* SECTION 7 — GETTING STARTED */}
+        {/* SECTION 6 — GETTING STARTED */}
         <section className="bg-zinc-50 py-24 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <AnimateContainer animation="fade-up" className="mb-16 text-center">
@@ -527,7 +463,7 @@ export default function MidlothianLocationPage() {
                 3-Step Process
               </span>
               <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl sm:text-5xl">
-                How to arrange home care in Midlothian
+                How to arrange support in Midlothian
               </h2>
               <div className="mx-auto mt-4 h-1.5 w-24 rounded-full bg-primary" />
             </AnimateContainer>
@@ -550,7 +486,7 @@ export default function MidlothianLocationPage() {
 
             <div className="flex justify-center">
               <ModalButton
-                type="assessment"
+                type="general"
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 font-bold text-white shadow-xl shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
               >
                 Start with a free call <ArrowRight className="w-5 h-5" />
@@ -559,23 +495,23 @@ export default function MidlothianLocationPage() {
           </div>
         </section>
 
-        {/* SECTION 8 — FAQ */}
+        {/* SECTION 7 — FAQ */}
         <section className="bg-white py-24 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <FaqAccordion
               badge="Midlothian FAQs"
-              title="Frequently asked questions about home care in Midlothian"
+              title="Frequently asked questions about support in Midlothian"
               faqs={midlothianFaqs}
             />
           </div>
         </section>
 
-        {/* SECTION 9 — NEARBY AREAS & FINAL CTA */}
+        {/* SECTION 8 — NEARBY AREAS & FINAL CTA */}
         <section className="bg-zinc-50 py-20 border-t border-zinc-100">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <AnimateContainer animation="fade-up" className="max-w-4xl mx-auto text-center space-y-6 mb-16">
               <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-wider">
-                Explore Regional Care
+                Explore Regional Support
               </span>
               <h2 className="text-3xl font-black text-secondary min-[400px]:text-4xl">
                 Nearby areas
@@ -593,7 +529,7 @@ export default function MidlothianLocationPage() {
                     Regional hub for Midlothian, East &amp; West Lothian
                   </p>
                   <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">
-                    Home care across Lothian <ArrowRight className="w-3 h-3" />
+                    Support across Lothian <ArrowRight className="w-3 h-3" />
                   </span>
                 </Link>
                 <Link
@@ -607,7 +543,7 @@ export default function MidlothianLocationPage() {
                     Musselburgh, Haddington, North Berwick &amp; Dunbar
                   </p>
                   <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">
-                    Home care in East Lothian <ArrowRight className="w-3 h-3" />
+                    Support in East Lothian <ArrowRight className="w-3 h-3" />
                   </span>
                 </Link>
                 <Link
@@ -621,7 +557,7 @@ export default function MidlothianLocationPage() {
                     All Edinburgh postcodes (EH1–EH17)
                   </p>
                   <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">
-                    Home care in Edinburgh <ArrowRight className="w-3 h-3" />
+                    Support in Edinburgh <ArrowRight className="w-3 h-3" />
                   </span>
                 </Link>
               </div>
@@ -629,12 +565,12 @@ export default function MidlothianLocationPage() {
 
             {/* FINAL CTA BOX */}
             <FinalCTASection
-              title="Speak to our team about care in Midlothian"
-              subtitle="Our nursing team is ready to answer your questions and arrange a home assessment anywhere in Midlothian."
-              tagline="No pressure. No obligation. Honest advice from our registered nurses."
+              title="Speak to our team about support in Midlothian"
+              subtitle="Our team is ready to answer your questions and arrange an introductory consultation anywhere in Midlothian."
+              tagline="No pressure. No obligation. Friendly advice from our local team."
               phone={edinburghOffice.phone}
-              ctaText="Book a free assessment"
-              ctaType="assessment"
+              ctaText="Book a free consultation"
+              ctaType="general"
             />
           </div>
         </section>

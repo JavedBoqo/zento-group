@@ -465,10 +465,10 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
               About Us
             </Link>
             <Link
-              href="/blog"
-              className="font-semibold text-secondary hover:text-primary transition-colors"
+              href="/careers"
+              className="font-semibold text-secondary hover:text-primary transition-colors flex items-center gap-1.5"
             >
-              Blog
+              Careers
             </Link>
             <Link
               href="/contact"

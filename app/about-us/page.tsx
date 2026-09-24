@@ -480,53 +480,20 @@ export default function AboutUsPage() {
             </AnimateContainer>
 
             <AnimateContainer animation="stagger" className="grid gap-6 sm:grid-cols-2 max-w-4xl mx-auto">
+              {/* Crieff Head Office First */}
               <AnimateItem className="h-full">
-                <div className="group flex flex-col rounded-3xl border border-zinc-200/80 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 h-full">
+                <div className="group flex flex-col rounded-3xl border border-primary/30 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-2xl hover:shadow-primary/10 h-full">
                   <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                     <Building2 className="w-7 h-7" />
                   </div>
-                  <h3 className="text-xl font-bold text-secondary mb-3">
-                    Edinburgh Office
-                  </h3>
-                  <ul className="space-y-2.5 mb-6">
-                    <li className="flex items-start gap-2">
-                      <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      <span className="text-sm leading-relaxed text-zinc-600">
-                        Adit Place, Edinburgh EH17
-                      </span>
-                    </li>
-                    <li>
-                      <a
-                        href={OFFICES[0]?.phoneHref}
-                        className="inline-flex items-center gap-2 text-sm font-bold text-secondary transition-colors hover:text-primary"
-                      >
-                        <Phone className="h-4 w-4 shrink-0 text-primary" />
-                        {OFFICES[0]?.phone}
-                      </a>
-                    </li>
-                    <li className="text-xs text-zinc-500 pt-1">
-                      Serving: City of Edinburgh, East Lothian, Midlothian, West
-                      Lothian
-                    </li>
-                  </ul>
-                  <Link
-                    href="/locations/edinburgh"
-                    className="mt-auto flex items-center gap-1.5 text-sm font-bold text-primary group-hover:text-secondary transition-colors"
-                  >
-                    Learn more about our Edinburgh team{" "}
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                  </Link>
-                </div>
-              </AnimateItem>
-
-              <AnimateItem className="h-full">
-                <div className="group flex flex-col rounded-3xl border border-zinc-200/80 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-2xl hover:shadow-secondary/10 h-full">
-                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-secondary/10 text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
-                    <MapPin className="w-7 h-7" />
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-xl font-bold text-secondary">
+                      Crieff Head Office
+                    </h3>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-0.5 rounded-full">
+                      Head Office
+                    </span>
                   </div>
-                  <h3 className="text-xl font-bold text-secondary mb-3">
-                    Crieff Office
-                  </h3>
                   <ul className="space-y-2.5 mb-6">
                     <li className="flex items-start gap-2">
                       <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
@@ -536,11 +503,11 @@ export default function AboutUsPage() {
                     </li>
                     <li>
                       <a
-                        href={OFFICES[1]?.phoneHref}
+                        href={OFFICES.find((o) => o.id === "crieff")?.phoneHref}
                         className="inline-flex items-center gap-2 text-sm font-bold text-secondary transition-colors hover:text-primary"
                       >
                         <Phone className="h-4 w-4 shrink-0 text-primary" />
-                        {OFFICES[1]?.phone}
+                        {OFFICES.find((o) => o.id === "crieff")?.phone}
                       </a>
                     </li>
                     <li className="text-xs text-zinc-500 pt-1">
@@ -549,9 +516,48 @@ export default function AboutUsPage() {
                   </ul>
                   <Link
                     href="/locations/perthshire/crieff"
-                    className="mt-auto flex items-center gap-1.5 text-sm font-bold text-secondary group-hover:text-primary transition-colors"
+                    className="mt-auto flex items-center gap-1.5 text-sm font-bold text-primary group-hover:text-secondary transition-colors"
                   >
                     Learn more about our Crieff team{" "}
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                  </Link>
+                </div>
+              </AnimateItem>
+
+              {/* Edinburgh Team Second */}
+              <AnimateItem className="h-full">
+                <div className="group flex flex-col rounded-3xl border border-zinc-200/80 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-2xl hover:shadow-secondary/10 h-full">
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-secondary/10 text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
+                    <MapPin className="w-7 h-7" />
+                  </div>
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-xl font-bold text-secondary">
+                      Edinburgh Team
+                    </h3>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-secondary bg-secondary/10 px-2.5 py-0.5 rounded-full">
+                      Home Support
+                    </span>
+                  </div>
+                  <ul className="space-y-2.5 mb-6">
+                    <li>
+                      <a
+                        href={OFFICES.find((o) => o.id === "edinburgh")?.phoneHref}
+                        className="inline-flex items-center gap-2 text-sm font-bold text-secondary transition-colors hover:text-primary"
+                      >
+                        <Phone className="h-4 w-4 shrink-0 text-primary" />
+                        {OFFICES.find((o) => o.id === "edinburgh")?.phone}
+                      </a>
+                    </li>
+                    <li className="text-xs text-zinc-500 pt-1">
+                      Serving: City of Edinburgh, East Lothian, Midlothian, West
+                      Lothian
+                    </li>
+                  </ul>
+                  <Link
+                    href="/locations/edinburgh"
+                    className="mt-auto flex items-center gap-1.5 text-sm font-bold text-secondary group-hover:text-primary transition-colors"
+                  >
+                    Learn more about our Edinburgh team{" "}
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                   </Link>
                 </div>
@@ -586,19 +592,7 @@ export default function AboutUsPage() {
 
                   <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 pt-2 max-w-3xl mx-auto">
                     <a
-                      href={OFFICES[0]?.phoneHref}
-                      className="flex flex-col items-center justify-center gap-1 rounded-2xl border border-white/20 bg-white/5 p-5 backdrop-blur-sm transition-all hover:bg-white/10 hover:scale-105"
-                    >
-                      <Phone className="w-5 h-5 text-white shrink-0 mb-1" />
-                      <p className="text-xs text-white/70 font-bold uppercase tracking-wider">
-                        Edinburgh
-                      </p>
-                      <p className="text-sm sm:text-base font-bold text-white">
-                        {OFFICES[0]?.phone}
-                      </p>
-                    </a>
-                    <a
-                      href={OFFICES[1]?.phoneHref}
+                      href={OFFICES.find((o) => o.id === "crieff")?.phoneHref}
                       className="flex flex-col items-center justify-center gap-1 rounded-2xl border border-white/20 bg-white/5 p-5 backdrop-blur-sm transition-all hover:bg-white/10 hover:scale-105"
                     >
                       <Phone className="w-5 h-5 text-white shrink-0 mb-1" />
@@ -606,7 +600,19 @@ export default function AboutUsPage() {
                         Crieff
                       </p>
                       <p className="text-sm sm:text-base font-bold text-white">
-                        {OFFICES[1]?.phone}
+                        {OFFICES.find((o) => o.id === "crieff")?.phone}
+                      </p>
+                    </a>
+                    <a
+                      href={OFFICES.find((o) => o.id === "edinburgh")?.phoneHref}
+                      className="flex flex-col items-center justify-center gap-1 rounded-2xl border border-white/20 bg-white/5 p-5 backdrop-blur-sm transition-all hover:bg-white/10 hover:scale-105"
+                    >
+                      <Phone className="w-5 h-5 text-white shrink-0 mb-1" />
+                      <p className="text-xs text-white/70 font-bold uppercase tracking-wider">
+                        Edinburgh
+                      </p>
+                      <p className="text-sm sm:text-base font-bold text-white">
+                        {OFFICES.find((o) => o.id === "edinburgh")?.phone}
                       </p>
                     </a>
                     <a

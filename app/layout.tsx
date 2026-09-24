@@ -77,7 +77,7 @@ export default function RootLayout({
     telephone: CONTACT_NUMBER,
     email: CONTACT_EMAIL,
     priceRange: "££",
-    address: OFFICES.map((office) => ({
+    address: OFFICES.filter((office) => office.streetAddress).map((office) => ({
       "@type": "PostalAddress",
       streetAddress: office.streetAddress,
       addressLocality: office.locality,

@@ -4,15 +4,16 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import NurseLedDifference from "@/components/NurseLedDifference";
 import About from "@/components/About";
+import TrustedBySection from "@/components/TrustedBySection";
 import Process from "@/components/Process";
 import CTASection from "@/components/CTASection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Nurse-Led Home Care in Edinburgh & Perthshire",
+  title: "Nurse-Led Care & Home Support | Edinburgh & Perthshire | Zento",
   description:
-    "Compassionate, nurse-led home care provider based in Edinburgh and Crieff, delivering safe, person-centred home care across Edinburgh, Lothian, and Perthshire.",
+    "Compassionate care provider based in Edinburgh and Crieff, delivering nurse-led care in Perthshire and dedicated home support in Edinburgh & Lothian.",
   alternates: {
     canonical: "https://zentogroup.co.uk",
   },
@@ -21,9 +22,9 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: "Nurse-Led Home Care in Edinburgh & Perthshire | Zento Care",
+    title: "Nurse-Led Care & Home Support | Edinburgh & Perthshire | Zento Care",
     description:
-      "Compassionate, nurse-led home care provider based in Edinburgh and Crieff, delivering safe, person-centred home care across Edinburgh, Lothian, and Perthshire.",
+      "Compassionate care provider based in Edinburgh and Crieff, delivering nurse-led care in Perthshire and dedicated home support in Edinburgh & Lothian.",
     url: "https://zentogroup.co.uk",
     siteName: "Zento Care",
     locale: "en_GB",
@@ -33,15 +34,15 @@ export const metadata: Metadata = {
         url: "/brand-image.png",
         width: 1200,
         height: 630,
-        alt: "Zento Nurse-Led Care Team",
+        alt: "Zento Care Team",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nurse-Led Home Care in Edinburgh & Perthshire | Zento Care",
+    title: "Nurse-Led Care & Home Support | Edinburgh & Perthshire | Zento Care",
     description:
-      "Compassionate, nurse-led home care provider delivering safe, person-centred home care across Edinburgh, Lothian, and Perthshire.",
+      "Compassionate care provider delivering nurse-led care in Perthshire and dedicated home support in Edinburgh & Lothian.",
     images: ["/brand-image.png"],
   },
 };
@@ -50,9 +51,9 @@ export default function Home() {
   const homeJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Zento Care - Nurse-Led Home Care",
+    name: "Zento Care - Nurse-Led Care & Home Support",
     description:
-      "Zento provides high-quality home care combining clinical oversight with compassionate, relationship-led support in Edinburgh, Lothian, and Perthshire.",
+      "Zento provides high-quality nurse-led care in Perthshire and dedicated companionship and meal support in Edinburgh and the Lothians.",
     url: "https://zentogroup.co.uk",
   };
 
@@ -69,6 +70,7 @@ export default function Home() {
         <Services />
         <NurseLedDifference />
         <About />
+        <TrustedBySection />
         <Process />
         <ContactSection />
         <CTASection />

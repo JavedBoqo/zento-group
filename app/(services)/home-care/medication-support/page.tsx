@@ -295,11 +295,18 @@ export default function MedicationSupportPage() {
                 </ModalButton>
 
                 <a
-                  href={OFFICES[0]?.phoneHref}
+                  href={OFFICES.find((o) => o.id === "crieff")?.phoneHref}
                   className="page-cta-phone"
                 >
                   <Phone className="w-4 h-4 shrink-0" />
-                  Call Edinburgh: {OFFICES[0]?.phone}
+                  Call Crieff: {OFFICES.find((o) => o.id === "crieff")?.phone}
+                </a>
+                <a
+                  href={OFFICES.find((o) => o.id === "edinburgh")?.phoneHref}
+                  className="page-cta-phone"
+                >
+                  <Phone className="w-4 h-4 shrink-0" />
+                  Call Edinburgh: {OFFICES.find((o) => o.id === "edinburgh")?.phone}
                 </a>
               </div>
 

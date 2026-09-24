@@ -31,9 +31,11 @@ const exploreLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about-us" },
   { name: "Our Services", href: "/services" },
-  // { name: "How It Works", href: "/#how-it-works" },
+  { name: "Careers / Vacancies", href: "/careers" },
   { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
+  { name: "Privacy Policy", href: "/privacy-policy" },
+  { name: "Modern Slavery", href: "/modern-slavery-statement" },
 ];
 
 export default function Footer() {
@@ -55,7 +57,7 @@ export default function Footer() {
               </Link>
             </div>
             <p className="text-sm leading-relaxed text-zinc-500">
-              Nurse-led home care across Edinburgh, Lothian, and Perthshire. Registered with the Care Inspectorate.
+              Nurse-led care in Perthshire and dedicated home support in Edinburgh and the Lothians. Registered with the Care Inspectorate.
             </p>
             <div className="flex justify-center gap-3 lg:justify-start">
               {SOCIAL_LINKS.map((social) => (
@@ -72,6 +74,46 @@ export default function Footer() {
                   {social.iconName === "linkedin" && <LinkedinIcon />}
                 </a>
               ))}
+            </div>
+
+            {/* Accreditation Logos & Widget */}
+            <div className="flex items-center justify-center gap-4 pt-12 lg:justify-start flex-nowrap">
+              <div className="relative flex h-12 w-20 shrink-0 items-center justify-center transition-all duration-300 hover:scale-105">
+                <Image
+                  src="/trustedby/disability-confident-clean.png"
+                  alt="Disability Confident Committed Employer Badge"
+                  width={110}
+                  height={52}
+                  className="max-h-8 w-auto object-contain"
+                />
+              </div>
+              <div className="relative flex h-12 w-24 shrink-0 items-center justify-center transition-all duration-300 hover:scale-105">
+                <Image
+                  src="/trustedby/disclosure-scotland-clean.png"
+                  alt="Disclosure Scotland PVG Scheme Logo"
+                  width={130}
+                  height={42}
+                  className="max-h-7 w-auto object-contain"
+                />
+              </div>
+              <a
+                href="https://www.careinspectorate.scot/find-care/search-for-care/care-services/CS2026000326/zento"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View Zento Care Inspectorate Registration"
+                className="group/ci relative block h-[62px] w-[60px] shrink-0 overflow-hidden rounded-md transition-all duration-300 hover:scale-105 cursor-pointer"
+              >
+                <div className="pointer-events-none absolute top-0 left-0 origin-top-left scale-[0.49]">
+                  <iframe
+                    title="Care Inspectorate Registration Widget"
+                    src="https://www.careinspectorate.scot/ciWidget/4/Q1MyMDI2MDAwMzI2X1NISGJRazJwTDNZSDhMMlU%3D"
+                    width="120"
+                    height="126"
+                    scrolling="no"
+                    style={{ border: 0 }}
+                  />
+                </div>
+              </a>
             </div>
           </div>
 
@@ -138,33 +180,39 @@ export default function Footer() {
           </div>
 
           {/* Get in Touch */}
-          <div className="space-y-5">
+          <div className="space-y-4">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Get in Touch</p>
-            <div className="space-y-4">
+            <div className="space-y-3.5">
               {OFFICES.map((office) => (
-                <div key={office.name} className="space-y-1">
+                <div key={office.id || office.name} className="space-y-1.5">
                   <p className="text-sm font-bold text-secondary">{office.name}</p>
-                  <p className="flex items-start justify-center gap-2 text-sm text-zinc-600 lg:justify-start">
-                    <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
-                    {office.address}
-                  </p>
-                  <a
-                    href={office.phoneHref}
-                    className="inline-flex items-center justify-center gap-2 text-sm font-medium text-zinc-700 transition-colors hover:text-primary lg:justify-start"
-                  >
-                    <Phone className="h-3.5 w-3.5 text-primary" />
-                    {office.phone}
-                  </a>
+                  {office.address ? (
+                    <p className="flex items-start justify-center gap-2 text-sm text-zinc-600 lg:justify-start">
+                      <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+                      {office.address}
+                    </p>
+                  ) : null}
+                  <div>
+                    <a
+                      href={office.phoneHref}
+                      className="inline-flex items-center justify-center gap-2 text-sm font-medium text-zinc-700 transition-colors hover:text-primary lg:justify-start"
+                    >
+                      <Phone className="h-3.5 w-3.5 text-primary" />
+                      {office.phone}
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="inline-flex items-center justify-center gap-2 text-sm font-medium text-zinc-700 transition-colors hover:text-primary lg:justify-start"
-            >
-              <Mail className="h-4 w-4 text-primary" />
-              {CONTACT_EMAIL}
-            </a>
+            <div>
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="inline-flex items-center justify-center gap-2 text-sm font-medium text-zinc-700 transition-colors hover:text-primary lg:justify-start"
+              >
+                <Mail className="h-4 w-4 text-primary" />
+                {CONTACT_EMAIL}
+              </a>
+            </div>
             <ModalButton
               type="general"
               className="rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary/90 cursor-pointer"
@@ -174,7 +222,29 @@ export default function Footer() {
           </div>
         </div>
 
-        <p className="mt-12 border-t border-zinc-200 pt-8 text-center text-xs leading-relaxed text-zinc-400">
+        {/* Bottom Legal & Copyright Bar */}
+        <div className="mt-12 border-t border-zinc-200 pt-8 flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left text-xs text-zinc-500">
+          <p>
+            &copy; {new Date().getFullYear()} Zento Group Limited. All rights reserved. Registered in Scotland (SC875709).
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-5 font-medium">
+            <Link
+              href="/privacy-policy"
+              className="transition-colors hover:text-primary"
+            >
+              Privacy Policy
+            </Link>
+            <span className="text-zinc-300 hidden sm:inline" aria-hidden="true">&bull;</span>
+            <Link
+              href="/modern-slavery-statement"
+              className="transition-colors hover:text-primary"
+            >
+              Modern Slavery Statement
+            </Link>
+          </div>
+        </div>
+
+        <p className="mt-4 text-center text-xs leading-relaxed text-zinc-400">
           Serving {SERVICE_AREAS}
         </p>
       </div>

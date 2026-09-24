@@ -8,8 +8,8 @@ interface Props {
 }
 
 export default function CtaSectionBlock({ section }: Props) {
-  const phone = OFFICES[0]?.phone ?? "0131 210 0095";
-  const phoneHref = OFFICES[0]?.phoneHref ?? "tel:01312100095";
+  const phone = OFFICES[0]?.phone ?? "0176 479 0095";
+  const phoneHref = OFFICES[0]?.phoneHref ?? "tel:01764790095";
 
   return (
     <div className="overflow-hidden rounded-2xl bg-secondary p-7 text-white sm:p-9 shadow-lg shadow-secondary/10">

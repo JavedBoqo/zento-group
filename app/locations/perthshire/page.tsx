@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
 };
 
-const crieffOffice = OFFICES[1];
+const crieffOffice = OFFICES.find((o) => o.id === "crieff") ?? OFFICES[0];
 
 const perthshireServices: ServiceCardItem[] = [
   { id: "live-in-care", title: "Live-In Care in Perthshire", desc: "In rural Perthshire, where multiple daily visits can be complicated by distance, live-in care is often the most practical and the most compassionate arrangement available. A trained, nurse-selected carer moves into your loved one's home and provides round-the-clock support — so no one is ever alone, and no one is at risk between visits.", extraDesc: "Our Crieff nursing team manages every live-in arrangement personally, from the initial matching process through to regular care reviews. Families in Crieff, Comrie and the surrounding villages get the same standard of clinical oversight as they would anywhere.", href: "/live-in-care", linkText: "About live-in care" },

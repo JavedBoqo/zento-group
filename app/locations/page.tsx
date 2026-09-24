@@ -8,9 +8,9 @@ import AnimateContainer, { AnimateItem } from "@/components/AnimateContainer";
 import { OFFICES, CONTACT_NUMBER } from "@/constants";
 
 export const metadata: Metadata = {
-  title: "Service Locations | Nurse-Led Home Care | Zento",
+  title: "Service Locations | Zento Care",
   description:
-    "Explore Zento nurse-led home care services across Edinburgh, Lothian, and Perthshire. Find local care teams near you.",
+    "Explore Zento home care and companionship support services across Edinburgh, Lothian, and Perthshire. Find local teams near you.",
   alternates: {
     canonical: "https://zentogroup.co.uk/locations",
   },
@@ -21,27 +21,27 @@ const locations = [
   {
     name: "Edinburgh",
     href: "/locations/edinburgh",
-    desc: "Nurse-led home care across all Edinburgh postcodes (EH1–EH17).",
-    badge: "Primary Location",
-    office: OFFICES[0],
+    desc: "Dedicated companionship and meal preparation support across all Edinburgh postcodes (EH1–EH17).",
+    badge: "Home Support",
+    office: OFFICES.find((o) => o.id === "edinburgh") ?? OFFICES[0],
     icon: Home,
     color: "primary",
   },
   {
     name: "Lothian",
     href: "/locations/lothian",
-    desc: "Comprehensive home care coverage for Midlothian, East Lothian & West Lothian.",
-    badge: "Regional Hub",
-    office: OFFICES[0],
+    desc: "Companionship and meal preparation support for Midlothian, East Lothian & West Lothian.",
+    badge: "Home Support",
+    office: OFFICES.find((o) => o.id === "edinburgh") ?? OFFICES[0],
     icon: MapPin,
     color: "primary",
   },
   {
     name: "Perthshire",
     href: "/locations/perthshire",
-    desc: "Caring for Crieff, Comrie, Muthill, Braco & surrounding Perthshire villages.",
-    badge: "Regional Hub",
-    office: OFFICES[1],
+    desc: "Nurse-led regulated care for Crieff, Comrie, Muthill, Braco & surrounding Perthshire villages.",
+    badge: "Nurse-Led Care",
+    office: OFFICES.find((o) => o.id === "crieff") ?? OFFICES[0],
     icon: Clock4,
     color: "secondary",
   },

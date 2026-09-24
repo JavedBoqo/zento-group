@@ -6,6 +6,7 @@ import ModalButton from "@/components/ModalButton";
 import AnimateContainer from "@/components/AnimateContainer";
 import {
   OFFICES,
+  CONTACT_EMAIL,
   SERVICE_AREAS,
   PERTHSHIRE_TAGLINE,
 } from "@/constants";
@@ -42,39 +43,44 @@ export default function ContactSection() {
 
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               {OFFICES.map((office) => (
-                <div key={office.name} className="space-y-2">
+                <div key={office.id || office.name} className="space-y-2">
                   <h3 className="text-base font-bold text-secondary">{office.name}</h3>
-                  <ul className="space-y-1.5">
-                    <li className="flex items-start justify-center gap-2 lg:justify-start">
-                      <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      <a
-                      href={office.mapEmbedHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm font-bold text-secondary transition-colors hover:text-primary"
-                      >{office.address}</a>
-                    </li>
+                  <ul className="space-y-2">
+                    {office.address ? (
+                      <li className="flex items-start justify-center gap-2 lg:justify-start">
+                        <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                        <a
+                          href={office.mapEmbedHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-sm font-medium text-zinc-700 transition-colors hover:text-primary"
+                        >
+                          {office.address}
+                        </a>
+                      </li>
+                    ) : null}
                     <li>
                       <a
                         href={office.phoneHref}
-                        className="inline-flex items-center gap-2 text-sm font-bold text-secondary transition-colors hover:text-primary"
+                        className="inline-flex items-center justify-center lg:justify-start gap-2 text-sm font-bold text-secondary transition-colors hover:text-primary"
                       >
                         <Phone className="h-4 w-4 shrink-0 text-primary" />
                         {office.phone}
                       </a>
                     </li>
-                    <li>
-                      <a
-                        href={`mailto:${office.email}`}
-                        className="inline-flex items-center gap-2 text-sm text-zinc-600 transition-colors hover:text-primary"
-                      >
-                        <Mail className="h-4 w-4 shrink-0 text-zinc-400" />
-                        {office.email}
-                      </a>
-                    </li>
                   </ul>
                 </div>
               ))}
+            </div>
+
+            <div className="flex items-center justify-center lg:justify-start gap-2 text-sm text-zinc-600">
+              <Mail className="h-4 w-4 text-primary shrink-0" />
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="font-medium text-zinc-700 transition-colors hover:text-primary"
+              >
+                {CONTACT_EMAIL}
+              </a>
             </div>
 
             <p className="text-sm leading-relaxed text-zinc-500">Serving {SERVICE_AREAS}</p>

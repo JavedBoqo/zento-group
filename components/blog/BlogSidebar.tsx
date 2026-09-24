@@ -22,8 +22,8 @@ const SERVICES = [
 
 export default function BlogSidebar() {
   const primaryOffice = OFFICES[0] ?? {
-    phone: "0131 210 0095",
-    phoneHref: "tel:01312100095",
+    phone: "0176 479 0095",
+    phoneHref: "tel:01764790095",
   };
 
   return (

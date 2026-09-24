@@ -13,9 +13,9 @@ import {
 } from "@/constants";
 
 export const metadata: Metadata = {
-  title: "Contact Zento Care | Edinburgh & Crieff Offices | Zento",
+  title: "Contact Zento Care | Head Office in Crieff | Zento",
   description:
-    "Get in touch with Zento Care. Offices in Edinburgh (EH17) and Crieff (PH7). Call 0131 210 0095 or send a message for nurse-led home care inquiries.",
+    "Get in touch with Zento Care. Head office in Crieff (PH7). Call 0176 479 0095 or send a message for nurse-led home care inquiries.",
   alternates: {
     canonical: "https://zentogroup.co.uk/contact",
   },
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: "Contact Zento Care | Edinburgh & Crieff Offices",
+    title: "Contact Zento Care | Head Office in Crieff",
     description:
-      "Get in touch with Zento Care. Offices in Edinburgh (EH17) and Crieff (PH7). Call 0131 210 0095 or send a message for nurse-led home care inquiries.",
+      "Get in touch with Zento Care. Head office in Crieff (PH7). Call 0176 479 0095 or send a message for nurse-led home care inquiries.",
     url: "https://zentogroup.co.uk/contact",
     siteName: "Zento Care",
     locale: "en_GB",
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Zento Care | Edinburgh & Crieff Offices",
+    title: "Contact Zento Care | Head Office in Crieff",
     description:
-      "Get in touch with Zento Care. Offices in Edinburgh (EH17) and Crieff (PH7). Call 0131 210 0095 or send a message.",
+      "Get in touch with Zento Care. Head office in Crieff (PH7). Call 0176 479 0095 or send a message.",
     images: ["/brand-image.png"],
   },
 };
@@ -54,25 +54,17 @@ export default function ContactPage() {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     name: "Contact Zento Care",
-    description: "Contact details and inquiry form for Zento Care home care services in Edinburgh and Perthshire.",
+    description: "Contact details and inquiry form for Zento Care nurse-led home care services.",
     url: "https://zentogroup.co.uk/contact",
     mainEntity: {
       "@type": "Organization",
       name: "Zento Care",
-      telephone: "0131 210 0095",
+      telephone: "0176 479 0095",
       email: "info@zentogroup.co.uk",
       address: [
         {
           "@type": "PostalAddress",
-          name: "Edinburgh Office",
-          streetAddress: "Adit Place",
-          addressLocality: "Edinburgh",
-          postalCode: "EH17",
-          addressCountry: "GB",
-        },
-        {
-          "@type": "PostalAddress",
-          name: "Crieff Office",
+          name: "Crieff Head Office",
           streetAddress: "East High Street",
           addressLocality: "Crieff",
           postalCode: "PH7",
@@ -96,7 +88,7 @@ export default function ContactPage() {
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24 text-center">
             <AnimateContainer animation="fade-up">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary">
-                <Sparkles className="h-3.5 w-3.5" /> Nurse-Led Care in Edinburgh &amp; Perthshire
+                <Sparkles className="h-3.5 w-3.5" /> Nurse-Led Care Head Office in Perthshire
               </span>
               <h1 className="mt-3 text-3xl font-black text-secondary sm:text-4xl">
                 Contact Zento Care
@@ -134,7 +126,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Form Card Component */}
-                <ContactForm activeOfficeName="Edinburgh Office" />
+                <ContactForm activeOfficeName="Crieff Head Office" />
 
                 {/* Social Media Card */}
                 <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-xl">

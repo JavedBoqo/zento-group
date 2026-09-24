@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllArticles } from "@/lib/blog";
+import { getAllJobs } from "@/lib/jobs";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://zentogroup.co.uk";
@@ -145,6 +146,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${baseUrl}/careers`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/careers/apply`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    ...getAllJobs().map((job) => ({
+      url: `${baseUrl}/careers/${job.slug}`,
+      lastModified: currentDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
+    })),
+    {
       url: `${baseUrl}/contact`,
       lastModified: currentDate,
       changeFrequency: "monthly",
@@ -162,5 +181,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
+    {
+      url: `${baseUrl}/privacy-policy`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/modern-slavery-statement`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
   ];
 }
