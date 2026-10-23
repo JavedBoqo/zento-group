@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Phone, Mail, ChevronDown, Home, Clock4, MapPin } from "lucide-react";
 import { OFFICES, CONTACT_EMAIL } from "@/constants";
+import { PERTHSHIRE_NAV_LINKS } from "@/lib/navigation";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -49,10 +50,7 @@ export default function MobileMenu({ isOpen, onClose, onOpenModal }: MobileMenuP
     {
       name: "Perthshire Region",
       href: "/locations/perthshire",
-      subAreas: [
-        { name: "Crieff", href: "/locations/perthshire/crieff" },
-        { name: "Comrie", href: "/locations/perthshire/comrie" },
-      ],
+      subAreas: PERTHSHIRE_NAV_LINKS,
     },
   ];
 
@@ -157,6 +155,7 @@ export default function MobileMenu({ isOpen, onClose, onOpenModal }: MobileMenuP
                 <button
                   type="button"
                   onClick={() => setIsLocationsOpen(!isLocationsOpen)}
+                  aria-expanded={isLocationsOpen}
                   className="flex w-full items-center justify-between text-sm font-black uppercase tracking-[0.3em] text-secondary hover:text-primary transition-colors cursor-pointer"
                 >
                   <span>Locations</span>
@@ -184,14 +183,29 @@ export default function MobileMenu({ isOpen, onClose, onOpenModal }: MobileMenuP
                           {group.subAreas && (
                             <div className="pl-3 border-l border-zinc-200 space-y-1 my-1">
                               {group.subAreas.map((sub) => (
-                                <Link
-                                  key={sub.name}
-                                  href={sub.href}
-                                  onClick={onClose}
-                                  className="block text-[11px] font-medium text-zinc-600 hover:text-primary transition-colors py-0.5"
-                                >
-                                  {sub.name}
-                                </Link>
+                                <div key={sub.name}>
+                                  <Link
+                                    href={sub.href}
+                                    onClick={onClose}
+                                    className="block py-2 text-xs font-medium text-zinc-600 hover:text-primary transition-colors"
+                                  >
+                                    {sub.name}
+                                  </Link>
+                                  {"children" in sub && sub.children && (
+                                    <div className="ml-2 border-l border-primary/20 pl-3">
+                                      {sub.children.map((service) => (
+                                        <Link
+                                          key={service.href}
+                                          href={service.href}
+                                          onClick={onClose}
+                                          className="block py-2 text-xs font-medium text-zinc-600 transition-colors hover:text-primary"
+                                        >
+                                          {service.name}
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
                               ))}
                             </div>
                           )}

@@ -68,7 +68,9 @@ export default function RootLayout({
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": ["HomeHealthCare", "MedicalBusiness"],
+    "@id": "https://zentogroup.co.uk/#organization",
     name: "Zento Care",
+    legalName: "Zento Group Limited",
     url: "https://zentogroup.co.uk",
     logo: "https://zentogroup.co.uk/logo.svg",
     image: "https://zentogroup.co.uk/brand-image.png",

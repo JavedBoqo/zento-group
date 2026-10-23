@@ -25,6 +25,7 @@ import {
 import { OFFICES, CONTACT_EMAIL, SOCIAL_LINKS } from "@/constants";
 import { FacebookIcon, InstagramIcon, LinkedinIcon } from "@/components/icons";
 import { useModal } from "@/components/ModalContext";
+import { PERTHSHIRE_NAV_LINKS } from "@/lib/navigation";
 
 interface NavbarProps {
   onMenuOpen?: () => void;
@@ -148,11 +149,7 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
       desc: "Crieff, Comrie & surrounds",
       icon: MapPin,
       color: "secondary" as const,
-      subAreas: [
-        { name: "Perthshire Region Hub", href: "/locations/perthshire", desc: "All Perthshire regional care" },
-        { name: "Crieff", href: "/locations/perthshire/crieff", desc: "Perthshire office & surrounds" },
-        { name: "Comrie", href: "/locations/perthshire/comrie", desc: "Comrie, St Fillans & surrounds" },
-      ],
+      subAreas: PERTHSHIRE_NAV_LINKS,
     },
   ];
 
@@ -371,8 +368,8 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
               </Link>
 
               {/* Locations Dropdown — pointer-events only on true hover devices */}
-              <div className="absolute top-full left-0 w-72 sm:w-80 pt-3 opacity-0 invisible translate-y-2 pointer-events-none [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-hover:visible [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:pointer-events-auto transition-all duration-200 z-[60]">
-                <div className="rounded-3xl border border-zinc-200/80 bg-white p-4 shadow-2xl ring-1 ring-black/5">
+              <div className="absolute top-full left-0 w-72 sm:w-80 pt-3 opacity-0 invisible translate-y-2 pointer-events-none [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-hover:visible [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:pointer-events-auto transition-all duration-200 z-[60]">
+                <div className="max-h-[calc(100dvh-8rem)] overflow-y-auto overscroll-contain rounded-3xl border border-zinc-200/80 bg-white p-4 shadow-2xl ring-1 ring-black/5">
                   <Link
                     href="/locations"
                     className="flex items-center gap-2 mb-3 pb-3 border-b border-zinc-100 group/all"
@@ -427,24 +424,39 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
 
                           {hasSubAreas && (
                             <div className={`grid overflow-hidden transition-all duration-200 ease-out ${isExpanded ? "grid-rows-[1fr] mt-1" : "grid-rows-[0fr]"}`}>
-                              <div className="min-h-0 overflow-hidden">
+                              <div className="min-h-0 overflow-hidden" inert={!isExpanded}>
                                 <div className="ml-9 mr-2 border-l border-zinc-200 pl-3 space-y-1 pb-1">
                                   {group.subAreas.map((sub) => (
-                                    <Link
-                                      key={sub.name}
-                                      href={sub.href}
-                                      className="group/item flex items-center justify-between rounded-lg py-1.5 px-2 transition-all hover:bg-primary/5"
-                                    >
-                                      <div className="min-w-0 flex-1">
-                                        <p className="text-[11px] font-bold text-secondary truncate group-hover/item:text-primary transition-colors">
-                                          {sub.name}
-                                        </p>
-                                        <p className="text-[10px] text-zinc-500 truncate leading-tight">
-                                          {sub.desc}
-                                        </p>
-                                      </div>
-                                      <ArrowRight className="w-3 h-3 text-zinc-400 group-hover/item:text-primary group-hover/item:translate-x-0.5 transition-all shrink-0" />
-                                    </Link>
+                                    <div key={sub.name}>
+                                      <Link
+                                        href={sub.href}
+                                        className="group/item flex items-center justify-between rounded-lg py-1.5 px-2 transition-all hover:bg-primary/5"
+                                      >
+                                        <div className="min-w-0 flex-1">
+                                          <p className="text-[11px] font-bold text-secondary truncate group-hover/item:text-primary transition-colors">
+                                            {sub.name}
+                                          </p>
+                                          <p className="text-[10px] text-zinc-500 truncate leading-tight">
+                                            {sub.desc}
+                                          </p>
+                                        </div>
+                                        <ArrowRight className="w-3 h-3 text-zinc-400 group-hover/item:text-primary group-hover/item:translate-x-0.5 transition-all shrink-0" />
+                                      </Link>
+                                      {"children" in sub && sub.children && (
+                                        <div className="ml-2 mb-2 border-l border-primary/20 pl-2">
+                                          {sub.children.map((service) => (
+                                            <Link
+                                              key={service.href}
+                                              href={service.href}
+                                              className="flex items-center justify-between gap-2 rounded-lg px-2 py-2 text-[11px] font-medium text-zinc-600 transition-colors hover:bg-primary/5 hover:text-primary"
+                                            >
+                                              {service.name}
+                                              <ArrowRight className="h-3 w-3 shrink-0" />
+                                            </Link>
+                                          ))}
+                                        </div>
+                                      )}
+                                    </div>
                                   ))}
                                 </div>
                               </div>

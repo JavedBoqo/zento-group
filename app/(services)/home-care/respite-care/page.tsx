@@ -99,7 +99,7 @@ const steps = [
 const locationLinks = [
   { label: "Edinburgh", href: "/locations/edinburgh" },
   { label: "Midlothian", href: "/locations/lothian/midlothian" },
-  { label: "Perthshire", href: "/locations/perthshire" },
+  { label: "Respite care in Perthshire", href: "/locations/perthshire/respite-care" },
 ];
 
 const faqs = [

@@ -99,13 +99,13 @@ const crieffServices = [
   {
     name: "Dementia Care",
     desc: "Structured, familiar daily routines",
-    href: "/home-care/dementia-care",
+    href: "/locations/perthshire/crieff/dementia-care",
     icon: Brain,
   },
   {
     name: "Respite Care",
     desc: "Short-term relief for family carers",
-    href: "/home-care/respite-care",
+    href: "/locations/perthshire/crieff/respite-care",
     icon: Sun,
   },
   {
@@ -115,9 +115,9 @@ const crieffServices = [
     icon: Clock4,
   },
   {
-    name: "24-Hour Live-In Care",
-    desc: "Continuous round-the-clock home care",
-    href: "/live-in-care/24-hour-care",
+    name: "Live-In Care in Crieff",
+    desc: "Personalised live-in support with nurse-led care planning",
+    href: "/locations/perthshire/crieff/live-in-care/",
     icon: Home,
   },
 ];
