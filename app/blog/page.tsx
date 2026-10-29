@@ -1,3 +1,5 @@
+export const revalidate = 60;
+export const runtime = "nodejs";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Sparkles } from "lucide-react";
@@ -6,7 +8,7 @@ import Footer from "@/components/Footer";
 import ModalButton from "@/components/ModalButton";
 import BlogCard from "@/components/blog/BlogCard";
 import AnimateContainer, { AnimateItem } from "@/components/AnimateContainer";
-import { getAllArticles } from "@/lib/blog";
+import { getAllArticles } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Care Advice & Guides | Nurse-Led Blog",
@@ -42,8 +44,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
-  const articles = getAllArticles();
+export default async function BlogPage() {
+  const articles = await getAllArticles();
   const featured = articles.find((a) => a.featured) ?? articles[0];
   const rest = articles.filter((a) => a !== featured);
 
@@ -111,8 +113,8 @@ export default function BlogPage() {
                 Zento Care Blog
               </h1>
               <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base">
-                Practical guidance for families navigating home care — written by
-                our nurse-led team in Edinburgh and Perthshire.
+                Practical guidance for families navigating home care — written
+                by our nurse-led team in Edinburgh and Perthshire.
               </p>
             </AnimateContainer>
           </div>
@@ -143,7 +145,10 @@ export default function BlogPage() {
 
                 {/* Remaining articles — 2-column grid */}
                 {rest.length > 0 && (
-                  <AnimateContainer animation="stagger" className="grid gap-8 sm:grid-cols-2">
+                  <AnimateContainer
+                    animation="stagger"
+                    className="grid gap-8 sm:grid-cols-2"
+                  >
                     {rest.map((article) => (
                       <AnimateItem key={article.slug}>
                         <BlogCard article={article} />
@@ -171,15 +176,16 @@ export default function BlogPage() {
                   </h2>
                   <p className="mx-auto max-w-xl text-base text-white/90">
                     Our registered nurses in Edinburgh and Perthshire are here
-                    to help you understand your care options with honest, clinical
-                    guidance.
+                    to help you understand your care options with honest,
+                    clinical guidance.
                   </p>
                   <div className="page-cta-group">
                     <ModalButton
                       type="assessment"
                       className="page-cta-on-dark-primary"
                     >
-                      Book a free consultation <ArrowRight className="h-5 w-5" />
+                      Book a free consultation{" "}
+                      <ArrowRight className="h-5 w-5" />
                     </ModalButton>
                     <ModalButton
                       type="callback"

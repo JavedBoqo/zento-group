@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {
-  Phone,
   ArrowRight,
   ShieldCheck,
   Clock,
@@ -9,25 +8,22 @@ import {
   ChevronRight,
 } from "lucide-react";
 import ModalButton from "@/components/ModalButton";
-import { OFFICES } from "@/constants";
 
 const SERVICES = [
   { name: "Personal Care & Hygiene", href: "/home-care/personal-care/" },
   { name: "Dementia & Memory Care", href: "/home-care/dementia-care/" },
   { name: "Companionship & Wellbeing", href: "/home-care/companionship/" },
   { name: "Respite & Family Relief", href: "/home-care/respite-care/" },
-  { name: "Medication & Health Support", href: "/home-care/medication-support/" },
+  {
+    name: "Medication & Health Support",
+    href: "/home-care/medication-support/",
+  },
   { name: "Overnight & 24/7 Care", href: "/live-in-care/overnight-care/" },
 ];
 
 export default function BlogSidebar() {
-  const primaryOffice = OFFICES[0] ?? {
-    phone: "0176 479 0095",
-    phoneHref: "tel:01764790095",
-  };
-
   return (
-    <aside className="space-y-5">
+    <aside className="min-w-0 space-y-5 break-words">
       {/* ── Card 1: Contact / CTA ── */}
       <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition-all hover:shadow-md">
         <div className="h-1.5 w-full bg-secondary" />
@@ -44,19 +40,6 @@ export default function BlogSidebar() {
             Speak directly with our registered nursing team across Edinburgh,
             the Lothians &amp; Perthshire.
           </p>
-
-          {/* <div className="mt-4 rounded-xl bg-zinc-50 p-1 text-center border border-zinc-100">
-            <span className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider">
-              Call Us Directly
-            </span>
-            <a
-              href={primaryOffice.phoneHref}
-              className="mt-1 inline-flex items-center justify-center gap-2 text-lg font-black text-secondary transition-colors hover:text-primary"
-            >
-              <Phone className="h-4 w-4 text-primary" />
-              {primaryOffice.phone}
-            </a>
-          </div> */}
 
           <div className="mt-3.5 space-y-2">
             <ModalButton
@@ -98,8 +81,8 @@ export default function BlogSidebar() {
               href={service.href}
               className="group flex items-center justify-between rounded-lg px-3.5 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-50 hover:text-secondary"
             >
-              <span>{service.name}</span>
-              <ChevronRight className="h-3.5 w-3.5 text-zinc-300 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+              <span className="min-w-0">{service.name}</span>
+              <ChevronRight className="h-3.5 w-3.5 shrink-0 text-zinc-300 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
             </Link>
           ))}
         </div>

@@ -1,0 +1,108 @@
+.admin-builder-header {
+  position: sticky;
+  top: 68px;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-inline: -4px;
+  padding: 16px 4px;
+  border-bottom: 1px solid #e6ece5;
+  background: #f5f7fa;
+}
+.admin-builder-sidebar {
+  min-width: 0;
+}
+.admin-builder-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  color: #526b46;
+}
+.admin-builder-icon:hover {
+  background: #eaf1e0;
+}
+.admin-builder-icon:disabled {
+  cursor: default !important;
+  opacity: 0.3;
+}
+.admin-rich-editor {
+  overflow-wrap: anywhere;
+}
+.admin-rich-editor p + p,
+.admin-rich-editor ul,
+.admin-rich-editor ol {
+  margin-top: 12px;
+}
+.admin-rich-editor ul {
+  list-style: none;
+  padding-left: 4px;
+}
+.admin-rich-editor ul > li {
+  position: relative;
+  padding-left: 28px;
+}
+.admin-rich-editor ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 18px;
+  height: 18px;
+  background: #79b22f;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/g%3E%3C/svg%3E")
+    center / contain no-repeat;
+}
+.admin-rich-editor ol {
+  list-style: decimal;
+  padding-left: 24px;
+}
+.admin-rich-editor a {
+  color: #2e5aa5;
+  text-decoration: underline;
+}
+@media (max-width: 640px) {
+  .admin-builder-header {
+    padding-block: 12px;
+  }
+  .admin-builder-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.admin-editor-workspace {
+  max-width: none;
+  margin-inline: auto;
+}
+.admin-editor-area {
+  border: 1px solid #e6ece5;
+  border-radius: 16px;
+  background: white;
+}
+.admin-article-title input {
+  font-size: clamp(23px, 3vw, 32px) !important;
+  font-weight: 750;
+  padding: 18px 20px !important;
+  letter-spacing: -0.035em;
+}
+.admin-rich-editor h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-block: 16px 8px;
+  border-bottom: 1px solid #e4e4e7;
+  padding-bottom: 8px;
+}
+.admin-rich-editor h4 {
+  font-size: 17px;
+  font-weight: 650;
+  margin-block: 14px 8px;
+  border-bottom: 1px solid #e4e4e7;
+  padding-bottom: 8px;
+}

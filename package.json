@@ -3,18 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
-    "build": "next build",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
     "start": "next start -p 3001",
-    "lint": "eslint"
+    "lint": "eslint",
+    "admin:create": "node --conditions=react-server --import tsx scripts/create-admin.ts",
+    "migrate:content": "node --conditions=react-server --import tsx scripts/migrate-content.ts",
+    "typecheck": "tsc --noEmit",
+    "format:check": "prettier --check app/admin app/api/admin app/api/analytics components/admin components/WebsiteAnalytics.tsx lib/db.ts lib/auth.ts lib/api.ts lib/admin-validation.ts lib/analytics.ts lib/content.ts lib/cv.ts lib/cloudinary.ts lib/media.ts models scripts tests/admin*.mjs tests/mock-email.cjs ADMIN.md package.json next.config.ts lib/article-editor.ts components/blog/ArticleContent.tsx components/blog/ArticleTemplate.tsx app/admin-preview tests/article-editor.test.ts lib/article-content.ts lib/rich-text-dom.ts components/blog/RichTextView.tsx components/blog/StructuredSection.tsx tests/article-builder.test.ts lib/authors.ts lib/article-people.ts components/blog/AuthorAttribution.tsx",
+    "test": "node --import tsx --test tests/admin-validation.test.mjs tests/email-api.test.mjs tests/article-editor.test.ts tests/article-builder.test.ts tests/career-import.test.ts tests/article-canvas.test.ts tests/public-ui.test.ts && node --conditions=react-server --import tsx --test tests/request-origin.test.ts",
+    "test:integration": "node --test tests/admin-integration.test.mjs",
+    "media:cleanup": "node --conditions=react-server --import tsx scripts/cleanup-media.ts"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.11.0",
     "framer-motion": "^12.38.0",
+    "iron-session": "^9.0.1",
     "lucide-react": "^1.14.0",
-    "next": "^16.3.1",
+    "mongoose": "^9.11.4",
+    "next": "^16.4.3",
     "nodemailer": "^9.0.0",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "recharts": "^3.10.1",
+    "server-only": "^0.0.1",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -24,7 +38,10 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "mongodb-memory-server-core": "^11.3.0",
+    "prettier": "^3.9.10",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }

@@ -1,3 +1,5 @@
+import { getAllJobs } from "@/lib/content";
+export const revalidate = 60;
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -14,7 +16,8 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export default function CareersApplyPage() {
+export default async function CareersApplyPage() {
+  const jobs = await getAllJobs();
   return (
     <div className="flex min-h-screen flex-col bg-white text-zinc-800">
       <Navbar />
@@ -26,19 +29,32 @@ export default function CareersApplyPage() {
             <nav aria-label="Breadcrumb">
               <ol className="flex items-center gap-2 text-xs text-zinc-500">
                 <li>
-                  <Link href="/" className="hover:text-primary transition-colors font-medium">
+                  <Link
+                    href="/"
+                    className="hover:text-primary transition-colors font-medium"
+                  >
                     Home
                   </Link>
                 </li>
-                <li aria-hidden="true" className="text-zinc-300">/</li>
+                <li aria-hidden="true" className="text-zinc-300">
+                  /
+                </li>
                 <li>
-                  <Link href="/careers" className="hover:text-primary transition-colors font-medium">
+                  <Link
+                    href="/careers"
+                    className="hover:text-primary transition-colors font-medium"
+                  >
                     Careers
                   </Link>
                 </li>
-                <li aria-hidden="true" className="text-zinc-300">/</li>
+                <li aria-hidden="true" className="text-zinc-300">
+                  /
+                </li>
                 <li>
-                  <span className="font-semibold text-secondary" aria-current="page">
+                  <span
+                    className="font-semibold text-secondary"
+                    aria-current="page"
+                  >
                     Apply Online
                   </span>
                 </li>
@@ -50,7 +66,7 @@ export default function CareersApplyPage() {
         {/* Application Canvas */}
         <section className="py-10 sm:py-14 md:py-20 bg-zinc-50/60">
           <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-24">
-            <ApplyPageClient />
+            <ApplyPageClient jobs={jobs} />
           </div>
         </section>
       </main>

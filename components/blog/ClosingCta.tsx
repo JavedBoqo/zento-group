@@ -1,3 +1,4 @@
+import ContentImage from "./ContentImage";
 import { ArrowRight, Phone } from "lucide-react";
 import ModalButton from "@/components/ModalButton";
 import { OFFICES } from "@/constants";
@@ -23,6 +24,7 @@ export default function ClosingCta({ cta }: Props) {
             <h2 className="text-2xl font-black leading-tight sm:text-3xl lg:text-5xl">
               {cta.heading}
             </h2>
+            <ContentImage image={cta.image} />
 
             <p className="mx-auto max-w-2xl text-sm leading-relaxed text-white/90 sm:text-base lg:text-lg">
               {cta.body}
@@ -33,13 +35,11 @@ export default function ClosingCta({ cta }: Props) {
                 type="assessment"
                 className="page-cta-secondary-solid cursor-pointer"
               >
-                Book a free consultation <ArrowRight className="h-4 w-4 shrink-0" />
+                Book a free consultation{" "}
+                <ArrowRight className="h-4 w-4 shrink-0" />
               </ModalButton>
 
-              <a
-                href={phoneHref}
-                className="page-cta-on-dark-outline"
-              >
+              <a href={phoneHref} className="page-cta-on-dark-outline">
                 <Phone className="h-4 w-4 shrink-0" />
                 Call {phone}
               </a>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { FacebookIcon, LinkedinIcon, InstagramIcon } from "@/components/icons";
 import ModalButton from "@/components/ModalButton";
+import CookiePreferences from "@/components/CookiePreferences";
 import {
   OFFICES,
   CONTACT_EMAIL,
@@ -46,7 +47,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="flex flex-col items-center space-y-5 lg:items-start">
             <div className="relative h-18 w-44 min-[400px]:w-52">
-              <Link href="/" aria-label="Zento Care home" className="relative block h-full w-full">
+              <Link
+                href="/"
+                aria-label="Zento Care home"
+                className="relative block h-full w-full"
+              >
                 <Image
                   src="/logo.svg"
                   alt="Zento Logo"
@@ -57,7 +62,8 @@ export default function Footer() {
               </Link>
             </div>
             <p className="text-sm leading-relaxed text-zinc-500">
-              Nurse-led care in Perthshire and dedicated home support in Edinburgh and the Lothians. Registered with the Care Inspectorate.
+              Nurse-led care in Perthshire and dedicated home support in
+              Edinburgh and the Lothians. Registered with the Care Inspectorate.
             </p>
             <div className="flex justify-center gap-3 lg:justify-start">
               {SOCIAL_LINKS.map((social) => (
@@ -119,12 +125,17 @@ export default function Footer() {
 
           {/* Explore */}
           <div className="space-y-5">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Explore</p>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">
+              Explore
+            </p>
             <nav aria-label="Footer navigation">
               <ul className="space-y-2.5">
                 {exploreLinks.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href} className="text-sm font-medium transition-colors hover:text-primary">
+                    <Link
+                      href={link.href}
+                      className="text-sm font-medium transition-colors hover:text-primary"
+                    >
                       {link.name}
                     </Link>
                   </li>
@@ -135,12 +146,17 @@ export default function Footer() {
 
           {/* Services */}
           <div className="space-y-5">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Services</p>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">
+              Services
+            </p>
             <nav aria-label="Footer services">
               <ul className="space-y-2.5">
                 {featuredServices.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-sm font-medium transition-colors hover:text-primary">
+                    <Link
+                      href={link.href}
+                      className="text-sm font-medium transition-colors hover:text-primary"
+                    >
                       {link.name}
                     </Link>
                   </li>
@@ -158,12 +174,17 @@ export default function Footer() {
 
           {/* Locations */}
           <div className="space-y-5">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Locations</p>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">
+              Locations
+            </p>
             <nav aria-label="Footer locations">
               <ul className="space-y-2.5">
                 {featuredLocations.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-sm font-medium transition-colors hover:text-primary">
+                    <Link
+                      href={link.href}
+                      className="text-sm font-medium transition-colors hover:text-primary"
+                    >
                       {link.name}
                     </Link>
                   </li>
@@ -181,11 +202,15 @@ export default function Footer() {
 
           {/* Get in Touch */}
           <div className="space-y-4">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">Get in Touch</p>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-secondary">
+              Get in Touch
+            </p>
             <div className="space-y-3.5">
               {OFFICES.map((office) => (
                 <div key={office.id || office.name} className="space-y-1.5">
-                  <p className="text-sm font-bold text-secondary">{office.name}</p>
+                  <p className="text-sm font-bold text-secondary">
+                    {office.name}
+                  </p>
                   {office.address ? (
                     <p className="flex items-start justify-center gap-2 text-sm text-zinc-600 lg:justify-start">
                       <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
@@ -225,7 +250,8 @@ export default function Footer() {
         {/* Bottom Legal & Copyright Bar */}
         <div className="mt-12 border-t border-zinc-200 pt-8 flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left text-xs text-zinc-500">
           <p>
-            &copy; {new Date().getFullYear()} Zento Group Limited. All rights reserved. Registered in Scotland (SC875709).
+            &copy; {new Date().getFullYear()} Zento Group Limited. All rights
+            reserved. Registered in Scotland (SC875709).
           </p>
           <div className="flex flex-wrap items-center justify-center gap-5 font-medium">
             <Link
@@ -234,13 +260,16 @@ export default function Footer() {
             >
               Privacy Policy
             </Link>
-            <span className="text-zinc-300 hidden sm:inline" aria-hidden="true">&bull;</span>
+            <span className="text-zinc-300 hidden sm:inline" aria-hidden="true">
+              &bull;
+            </span>
             <Link
               href="/modern-slavery-statement"
               className="transition-colors hover:text-primary"
             >
               Modern Slavery Statement
             </Link>
+            <CookiePreferences />
           </div>
         </div>
 

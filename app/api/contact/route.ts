@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { sendEmail } from "@/app/lib/email";
 import { verifyRecaptchaToken } from "@/app/lib/recaptcha-server";
 
 interface ContactPayload {
@@ -44,7 +44,6 @@ export async function POST(req: Request) {
     const recaptchaResult = await verifyRecaptchaToken(
       String(body.recaptchaToken || "").trim()
     );
-    
 
     if (!recaptchaResult.valid) {
       return NextResponse.json(
@@ -65,34 +64,7 @@ export async function POST(req: Request) {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://zentogroup.co.uk";
     const safeSiteUrl = escapeHtml(siteUrl.replace(/\/$/, ""));
 
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT || 465),
-      secure: process.env.SMTP_SECURE === "true",
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-      connectionTimeout: 10000,
-      greetingTimeout: 10000,
-      socketTimeout: 15000,
-    });
-
-    await transporter.sendMail({
-      from: `"Zento Website" <${process.env.SMTP_USER}>`,
-      to: process.env.MAIL_TO || process.env.SMTP_USER,
-      replyTo: email,
-      subject: `New Care Enquiry: ${enquiryType}`,
-      text: [
-        `Type: ${enquiryType}`,
-        `Name: ${fullName}`,
-        `Phone: ${phone}`,
-        `Email: ${email}`,
-        "",
-        "Message:",
-        message,
-      ].join("\n"),
-      html: `
+    const html = `
 <!doctype html>
 <html>
   <body style="margin:0;padding:0;background:#f8fafc;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;color:#0f172a;">
@@ -164,7 +136,21 @@ export async function POST(req: Request) {
     </table>
   </body>
 </html>
-      `,
+`;
+
+    await sendEmail({
+      replyTo: email,
+      subject: `New Care Enquiry: ${enquiryType}`,
+      text: [
+        `Type: ${enquiryType}`,
+        `Name: ${fullName}`,
+        `Phone: ${phone}`,
+        `Email: ${email}`,
+        "",
+        "Message:",
+        message,
+      ].join("\n"),
+      html,
     });
 
     return NextResponse.json({

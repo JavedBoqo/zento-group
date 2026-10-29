@@ -1,0 +1,51 @@
+{
+  "id": "care-workers-perthshire",
+  "slug": "care-workers-crieff-perthshire",
+  "title": "Care Workers",
+  "location": "Crieff & Strathearn · Perthshire",
+  "region": "Perthshire",
+  "salary": "£14.50 - £16.50 / hour",
+  "salaryMin": 14.5,
+  "salaryMax": 16.5,
+  "contractTypes": ["Full-time", "Part-time", "Zero-hours"],
+  "office": "Crieff Office",
+  "phone": "01764 790095",
+  "phoneHref": "tel:01764790095",
+  "email": "info@zentogroup.co.uk",
+  "image": "/jobs/care-workers-crieff-perthshire.jpeg",
+  "referralBonus": "£200",
+  "highlights": [
+    "No experience needed – full paid training",
+    "Nurse-founded, friendly local team",
+    "Flexible hours to suit your life",
+    "Work close to home in your community",
+    "£200 when you refer a friend who joins"
+  ],
+  "overview": "Join our friendly nurse-led care team in Crieff, Strathearn, and surrounding Perthshire communities. Make a rewarding difference every day providing kind, person-centred home care to local clients with flexible hours, industry-leading hourly pay (£14.50 - £16.50/hr), and full paid training.",
+  "responsibilities": [
+    "Supporting clients with morning and evening routines, personal care, and washing",
+    "Medication prompting and assistance under nurse guidance",
+    "Preparing nutritious meals and encouraging hydration",
+    "Warm companionship, social interaction, and checking in on wellbeing",
+    "Light domestic tasks, tidying, and maintaining a comfortable home",
+    "Assisting with appointments and local shopping trips around Crieff"
+  ],
+  "whatWeOffer": [
+    "£14.50 to £16.50 per hour with enhanced holiday pay",
+    "£200 Refer a Friend cash bonus",
+    "Full paid training, induction, and shadowed shifts",
+    "SSSC registration support and fully funded SVQ qualifications",
+    "Generous mileage allowance (45p/mile) and paid travel time",
+    "Flexible shift patterns (mornings, evenings, weekends, or zero-hours)",
+    "Free uniform and full PPE kit provided",
+    "24/7 on-call nurse clinical guidance and support"
+  ],
+  "requirements": [
+    "A kind, caring nature with genuine empathy for others",
+    "Reliable, punctual, and good communication skills",
+    "Valid UK Driving Licence and access to a car is preferred for rural Perthshire rounds",
+    "Right to work in the UK",
+    "No prior care experience required — complete training provided"
+  ],
+  "isOpen": false
+}

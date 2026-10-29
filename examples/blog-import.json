@@ -1,0 +1,173 @@
+{
+  "content": {
+    "version": 1,
+    "introduction": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Planning care starts with a conversation about daily routines and personal preferences."
+          }
+        ]
+      }
+    ],
+    "summary": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Start with your family's preferences and the support that matters most."
+          }
+        ]
+      }
+    ],
+    "sections": [
+      {
+        "id": "everyday-support",
+        "title": "Understanding everyday support",
+        "layout": "standard",
+        "blocks": [
+          {
+            "id": "support-body",
+            "type": "richText",
+            "content": [
+              {
+                "type": "heading",
+                "level": 3,
+                "content": [
+                  {
+                    "text": "Talk about daily routines"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "Discuss what is working well and where a little help would be welcome."
+                  }
+                ]
+              },
+              {
+                "type": "bulletList",
+                "items": [
+                  [
+                    {
+                      "text": "Listen to the person's preferences."
+                    }
+                  ],
+                  [
+                    {
+                      "text": "Involve family with their permission."
+                    }
+                  ]
+                ]
+              }
+            ]
+          },
+          {
+            "id": "support-note",
+            "type": "callout",
+            "style": "info",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "For concerns about health, speak with an appropriate healthcare professional."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "type": "content"
+      },
+      {
+        "id": "planning-checklist",
+        "title": "Your planning checklist",
+        "layout": "standard",
+        "blocks": [],
+        "type": "checklist",
+        "items": [
+          {
+            "id": "planning-one",
+            "content": [
+              {
+                "text": "Write down the support you would like to discuss."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "zento-help",
+        "title": "How Zento Can Help",
+        "layout": "standard",
+        "blocks": [
+          {
+            "id": "zento-description",
+            "type": "richText",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "text": "Talk with our team about the support that may suit your family."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "type": "cta",
+        "variant": "blue",
+        "primaryAction": {
+          "type": "consultation",
+          "label": "Book a Free Consultation"
+        },
+        "secondaryAction": {
+          "type": "phone",
+          "label": "Call 0176 479 0095",
+          "destination": "tel:01764790095"
+        }
+      }
+    ],
+    "faqs": [
+      {
+        "id": "getting-started",
+        "question": "How do we get started?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "text": "Contact our team to discuss your preferences and care needs."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "cta": "consultation"
+  },
+  "excerpt": "A practical starting point for families.",
+  "canonicalUrl": "",
+  "slug": "planning-care-at-home-scotland",
+  "title": "Planning care at home in Scotland",
+  "featured": false,
+  "seoTitle": "Planning care at home in Scotland | Zento",
+  "metaDescription": "A reassuring guide to discussing care needs, exploring options and planning support at home in Scotland.",
+  "heroImage": {
+    "src": "",
+    "alt": ""
+  },
+  "intro": [],
+  "sections": [],
+  "faqs": [],
+  "closingCta": {
+    "heading": "Speak to Our Nursing Team",
+    "body": "If any of this feels familiar, you don't need to have all the answers today. Our nurse-led home care team can talk through what you're noticing, explain what support might help, and guide you through funding options for your area — with no pressure and no obligation. No pressure. No obligation. Honest advice from registered nurses."
+  },
+  "status": "draft"
+}

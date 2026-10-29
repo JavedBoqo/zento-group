@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import type { JobListing } from "@/lib/jobs";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -15,15 +16,20 @@ import {
   Check,
 } from "lucide-react";
 import { useToast } from "@/components/ToastProvider";
+import { getRecaptchaToken } from "@/app/lib/recaptcha";
 
 interface QuickApplyFormProps {
   initialRole?: string;
+  jobs: JobListing[];
+  initialJobSlug: string;
   onSuccess?: () => void;
 }
 
 export default function QuickApplyForm({
   initialRole = "Care Workers (Crieff & Perthshire)",
   onSuccess,
+  jobs,
+  initialJobSlug,
 }: QuickApplyFormProps) {
   const router = useRouter();
   const { showToast } = useToast();
@@ -36,13 +42,25 @@ export default function QuickApplyForm({
   const [countryCode, setCountryCode] = useState("+44");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const [role, setRole] = useState(initialRole);
+  const [jobSlug, setJobSlug] = useState(initialJobSlug);
+  const selectedJob = jobs.find((job) => job.slug === jobSlug);
+  const role = selectedJob
+    ? `${selectedJob.title} (${selectedJob.location})`
+    : initialRole;
 
   // Step 2: Questions
-  const [rightToWork, setRightToWork] = useState("Yes - UK Citizen / Settled / Visa");
-  const [drivingLicence, setDrivingLicence] = useState("Yes - Full UK Driving Licence");
-  const [careExperience, setCareExperience] = useState("No experience - Full paid training requested");
-  const [preferredPattern, setPreferredPattern] = useState("Flexible (Morning / Evening / Weekends)");
+  const [rightToWork, setRightToWork] = useState(
+    "Yes - UK Citizen / Settled / Visa",
+  );
+  const [drivingLicence, setDrivingLicence] = useState(
+    "Yes - Full UK Driving Licence",
+  );
+  const [careExperience, setCareExperience] = useState(
+    "No experience - Full paid training requested",
+  );
+  const [preferredPattern, setPreferredPattern] = useState(
+    "Flexible (Morning / Evening / Weekends)",
+  );
 
   // Step 3: Upload Documents & Notes
   const [cvFile, setCvFile] = useState<File | null>(null);
@@ -119,11 +137,18 @@ export default function QuickApplyForm({
 
     try {
       const formData = new FormData();
+      if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY) {
+        formData.append(
+          "recaptchaToken",
+          await getRecaptchaToken("careers_apply"),
+        );
+      }
       formData.append("fullName", fullName.trim());
       formData.append("phone", `${countryCode} ${phone.trim()}`);
       formData.append("email", email.trim());
       formData.append("address", address.trim());
       formData.append("role", role);
+      formData.append("jobSlug", jobSlug);
       formData.append("rightToWork", rightToWork);
       formData.append("drivingLicence", drivingLicence);
       formData.append("careExperience", careExperience);
@@ -145,14 +170,17 @@ export default function QuickApplyForm({
         showToast({
           type: "success",
           title: "Application Received!",
-          message: "Thank you for applying. A coordinator will call you shortly.",
+          message:
+            "Thank you for applying. A coordinator will call you shortly.",
         });
         if (onSuccess) onSuccess();
       } else {
         showToast({
           type: "error",
           title: "Submission failed",
-          message: data?.error || "Unable to submit application. Please try calling us.",
+          message:
+            data?.error ||
+            "Unable to submit application. Please try calling us.",
         });
       }
     } catch (err) {
@@ -181,10 +209,16 @@ export default function QuickApplyForm({
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
             <CheckCircle2 className="h-9 w-9" />
           </div>
-          <h3 className="text-2xl font-bold text-secondary">Application Received!</h3>
+          <h3 className="text-2xl font-bold text-secondary">
+            Application Received!
+          </h3>
           <p className="text-sm text-zinc-600 max-w-md mx-auto leading-relaxed">
-            Thank you, <span className="font-bold text-secondary">{fullName}</span>. We have received your application for <strong className="text-secondary">{role}</strong>.
-            Our local care management team will be in touch within 24 to 48 hours for a friendly phone chat.
+            Thank you,{" "}
+            <span className="font-bold text-secondary">{fullName}</span>. We
+            have received your application for{" "}
+            <strong className="text-secondary">{role}</strong>. Our local care
+            management team will be in touch within 24 to 48 hours for a
+            friendly phone chat.
           </p>
           <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
             <button
@@ -252,26 +286,29 @@ export default function QuickApplyForm({
                         setCurrentStep(step.num);
                       }
                     }}
-                    className={`relative z-10 flex flex-col items-center bg-transparent border-0 p-0 ${isClickable ? "cursor-pointer group" : "cursor-default"
-                      }`}
+                    className={`relative z-10 flex flex-col items-center bg-transparent border-0 p-0 ${
+                      isClickable ? "cursor-pointer group" : "cursor-default"
+                    }`}
                   >
                     <div
-                      className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold transition-all ${isCurrent
-                        ? "bg-primary text-white ring-4 ring-primary/20 shadow-md"
-                        : isCompleted
-                          ? "bg-primary text-white group-hover:scale-110"
-                          : "bg-white text-zinc-400 border-2 border-zinc-200"
-                        }`}
+                      className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold transition-all ${
+                        isCurrent
+                          ? "bg-primary text-white ring-4 ring-primary/20 shadow-md"
+                          : isCompleted
+                            ? "bg-primary text-white group-hover:scale-110"
+                            : "bg-white text-zinc-400 border-2 border-zinc-200"
+                      }`}
                     >
                       {isCompleted ? <Check className="h-4 w-4" /> : step.num}
                     </div>
                     <span
-                      className={`mt-2 text-xs sm:text-sm font-medium whitespace-nowrap ${isCurrent
-                        ? "font-bold text-zinc-900"
-                        : isCompleted
-                          ? "text-zinc-700 group-hover:text-primary"
-                          : "text-zinc-400"
-                        }`}
+                      className={`mt-2 text-xs sm:text-sm font-medium whitespace-nowrap ${
+                        isCurrent
+                          ? "font-bold text-zinc-900"
+                          : isCompleted
+                            ? "text-zinc-700 group-hover:text-primary"
+                            : "text-zinc-400"
+                      }`}
                     >
                       {step.label}
                     </span>
@@ -289,7 +326,10 @@ export default function QuickApplyForm({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Name * */}
                   <div className="space-y-1.5">
-                    <label htmlFor="apply-fullName" className="text-sm font-semibold text-zinc-800">
+                    <label
+                      htmlFor="apply-fullName"
+                      className="text-sm font-semibold text-zinc-800"
+                    >
                       Name *
                     </label>
                     <input
@@ -301,10 +341,11 @@ export default function QuickApplyForm({
                         setFullName(e.target.value);
                         setFormErrors((prev) => ({ ...prev, fullName: "" }));
                       }}
-                      className={`w-full rounded-xl border px-4 py-3 text-sm text-zinc-900 outline-none transition-all focus:bg-white ${formErrors.fullName
-                        ? "border-red-400 bg-red-50 focus:border-red-500"
-                        : "border-zinc-200 bg-white focus:border-primary focus:ring-2 focus:ring-primary/20"
-                        }`}
+                      className={`w-full rounded-xl border px-4 py-3 text-sm text-zinc-900 outline-none transition-all focus:bg-white ${
+                        formErrors.fullName
+                          ? "border-red-400 bg-red-50 focus:border-red-500"
+                          : "border-zinc-200 bg-white focus:border-primary focus:ring-2 focus:ring-primary/20"
+                      }`}
                     />
                     {formErrors.fullName && (
                       <p className="flex items-center gap-1 text-xs text-red-500 mt-1">
@@ -316,7 +357,10 @@ export default function QuickApplyForm({
 
                   {/* Email * */}
                   <div className="space-y-1.5">
-                    <label htmlFor="apply-email" className="text-sm font-semibold text-zinc-800">
+                    <label
+                      htmlFor="apply-email"
+                      className="text-sm font-semibold text-zinc-800"
+                    >
                       Email *
                     </label>
                     <input
@@ -328,10 +372,11 @@ export default function QuickApplyForm({
                         setEmail(e.target.value);
                         setFormErrors((prev) => ({ ...prev, email: "" }));
                       }}
-                      className={`w-full rounded-xl border px-4 py-3 text-sm text-zinc-900 outline-none transition-all focus:bg-white ${formErrors.email
-                        ? "border-red-400 bg-red-50 focus:border-red-500"
-                        : "border-zinc-200 bg-white focus:border-primary focus:ring-2 focus:ring-primary/20"
-                        }`}
+                      className={`w-full rounded-xl border px-4 py-3 text-sm text-zinc-900 outline-none transition-all focus:bg-white ${
+                        formErrors.email
+                          ? "border-red-400 bg-red-50 focus:border-red-500"
+                          : "border-zinc-200 bg-white focus:border-primary focus:ring-2 focus:ring-primary/20"
+                      }`}
                     />
                     {formErrors.email && (
                       <p className="flex items-center gap-1 text-xs text-red-500 mt-1">
@@ -343,7 +388,10 @@ export default function QuickApplyForm({
 
                   {/* Phone Number * (with Country prefix badge) */}
                   <div className="space-y-1.5">
-                    <label htmlFor="apply-phone" className="text-sm font-semibold text-zinc-800">
+                    <label
+                      htmlFor="apply-phone"
+                      className="text-sm font-semibold text-zinc-800"
+                    >
                       Phone Number *
                     </label>
                     <div className="flex rounded-xl border border-zinc-200 bg-white overflow-hidden focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all">
@@ -373,7 +421,10 @@ export default function QuickApplyForm({
 
                   {/* Address * */}
                   <div className="space-y-1.5">
-                    <label htmlFor="apply-address" className="text-sm font-semibold text-zinc-800">
+                    <label
+                      htmlFor="apply-address"
+                      className="text-sm font-semibold text-zinc-800"
+                    >
                       Address / Postcode *
                     </label>
                     <input
@@ -385,10 +436,11 @@ export default function QuickApplyForm({
                         setAddress(e.target.value);
                         setFormErrors((prev) => ({ ...prev, address: "" }));
                       }}
-                      className={`w-full rounded-xl border px-4 py-3 text-sm text-zinc-900 outline-none transition-all focus:bg-white ${formErrors.address
-                        ? "border-red-400 bg-red-50 focus:border-red-500"
-                        : "border-zinc-200 bg-white focus:border-primary focus:ring-2 focus:ring-primary/20"
-                        }`}
+                      className={`w-full rounded-xl border px-4 py-3 text-sm text-zinc-900 outline-none transition-all focus:bg-white ${
+                        formErrors.address
+                          ? "border-red-400 bg-red-50 focus:border-red-500"
+                          : "border-zinc-200 bg-white focus:border-primary focus:ring-2 focus:ring-primary/20"
+                      }`}
                     />
                     {formErrors.address && (
                       <p className="flex items-center gap-1 text-xs text-red-500 mt-1">
@@ -401,24 +453,23 @@ export default function QuickApplyForm({
 
                 {/* Role of Interest */}
                 <div className="space-y-1.5 pt-2">
-                  <label htmlFor="apply-role" className="text-sm font-semibold text-zinc-800">
+                  <label
+                    htmlFor="apply-role"
+                    className="text-sm font-semibold text-zinc-800"
+                  >
                     Role Applying For *
                   </label>
                   <select
                     id="apply-role"
-                    value={role}
-                    onChange={(e) => setRole(e.target.value)}
+                    value={jobSlug}
+                    onChange={(e) => setJobSlug(e.target.value)}
                     className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm text-zinc-900 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 cursor-pointer"
                   >
-                    <option value="Care Workers (Crieff & Strathearn · Perthshire)">
-                      Care Workers — Crieff &amp; Strathearn · Perthshire (£14.50–£16.50/hr)
-                    </option>
-                    <option value="Care Workers (Edinburgh · East Lothian · Midlothian)">
-                      Care Workers — Edinburgh · East Lothian · Midlothian (£14.50–£16.50/hr)
-                    </option>
-                    <option value="General Care Vacancies">
-                      General Care Vacancies / Register Interest
-                    </option>
+                    {jobs.map((job) => (
+                      <option key={job.slug} value={job.slug}>
+                        {job.title} ({job.location})
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -430,7 +481,10 @@ export default function QuickApplyForm({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Right to Work */}
                   <div className="space-y-1.5">
-                    <label htmlFor="apply-rightToWork" className="text-sm font-semibold text-zinc-800">
+                    <label
+                      htmlFor="apply-rightToWork"
+                      className="text-sm font-semibold text-zinc-800"
+                    >
                       Right to work in UK? *
                     </label>
                     <select
@@ -439,14 +493,21 @@ export default function QuickApplyForm({
                       onChange={(e) => setRightToWork(e.target.value)}
                       className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm text-zinc-900 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 cursor-pointer"
                     >
-                      <option value="Yes - UK Citizen / Settled / Visa">Yes (UK Citizen / Settled / Visa)</option>
-                      <option value="No - Require Sponsorship">No (Require Sponsorship)</option>
+                      <option value="Yes - UK Citizen / Settled / Visa">
+                        Yes (UK Citizen / Settled / Visa)
+                      </option>
+                      <option value="No - Require Sponsorship">
+                        No (Require Sponsorship)
+                      </option>
                     </select>
                   </div>
 
                   {/* Driving Licence */}
                   <div className="space-y-1.5">
-                    <label htmlFor="apply-driving" className="text-sm font-semibold text-zinc-800">
+                    <label
+                      htmlFor="apply-driving"
+                      className="text-sm font-semibold text-zinc-800"
+                    >
                       Do you hold a driving licence? *
                     </label>
                     <select
@@ -455,16 +516,27 @@ export default function QuickApplyForm({
                       onChange={(e) => setDrivingLicence(e.target.value)}
                       className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm text-zinc-900 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 cursor-pointer"
                     >
-                      <option value="Yes - Full UK Driving Licence">Yes (Full UK Licence with vehicle)</option>
-                      <option value="Yes - Licence without vehicle">Yes (Full UK Licence without vehicle)</option>
-                      <option value="Learning - In progress">In progress / Learning</option>
-                      <option value="No licence">No licence (Walking rounds)</option>
+                      <option value="Yes - Full UK Driving Licence">
+                        Yes (Full UK Licence with vehicle)
+                      </option>
+                      <option value="Yes - Licence without vehicle">
+                        Yes (Full UK Licence without vehicle)
+                      </option>
+                      <option value="Learning - In progress">
+                        In progress / Learning
+                      </option>
+                      <option value="No licence">
+                        No licence (Walking rounds)
+                      </option>
                     </select>
                   </div>
 
                   {/* Care Experience */}
                   <div className="space-y-1.5">
-                    <label htmlFor="apply-experience" className="text-sm font-semibold text-zinc-800">
+                    <label
+                      htmlFor="apply-experience"
+                      className="text-sm font-semibold text-zinc-800"
+                    >
                       Care experience? *
                     </label>
                     <select
@@ -487,7 +559,10 @@ export default function QuickApplyForm({
 
                   {/* Preferred Pattern */}
                   <div className="space-y-1.5">
-                    <label htmlFor="apply-pattern" className="text-sm font-semibold text-zinc-800">
+                    <label
+                      htmlFor="apply-pattern"
+                      className="text-sm font-semibold text-zinc-800"
+                    >
                       Preferred shift pattern
                     </label>
                     <select
@@ -496,9 +571,15 @@ export default function QuickApplyForm({
                       onChange={(e) => setPreferredPattern(e.target.value)}
                       className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm text-zinc-900 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 cursor-pointer"
                     >
-                      <option value="Flexible (Morning / Evening / Weekends)">Flexible (Morning / Evening / Weekends)</option>
-                      <option value="Full-Time (35+ hours)">Full-Time (35+ hours)</option>
-                      <option value="Part-Time (16-25 hours)">Part-Time (16-25 hours)</option>
+                      <option value="Flexible (Morning / Evening / Weekends)">
+                        Flexible (Morning / Evening / Weekends)
+                      </option>
+                      <option value="Full-Time (35+ hours)">
+                        Full-Time (35+ hours)
+                      </option>
+                      <option value="Part-Time (16-25 hours)">
+                        Part-Time (16-25 hours)
+                      </option>
                       <option value="Weekends Only">Weekends Only</option>
                     </select>
                   </div>
@@ -511,7 +592,10 @@ export default function QuickApplyForm({
               <div className="space-y-6">
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-zinc-800">
-                    Upload Documents (CV / Resume) <span className="text-zinc-400 font-normal">(Optional)</span>
+                    Upload Documents (CV / Resume){" "}
+                    <span className="text-zinc-400 font-normal">
+                      (Optional)
+                    </span>
                   </label>
                   {!cvFile ? (
                     <div
@@ -522,15 +606,21 @@ export default function QuickApplyForm({
                       <p className="text-sm font-bold text-secondary">
                         Click or drag &amp; drop to upload your CV
                       </p>
-                      <p className="text-xs text-zinc-400">PDF, DOC, DOCX up to 5MB</p>
+                      <p className="text-xs text-zinc-400">
+                        PDF, DOC, DOCX up to 5MB
+                      </p>
                     </div>
                   ) : (
                     <div className="flex items-center justify-between rounded-xl border border-primary/20 bg-primary/5 p-4 text-sm">
                       <div className="flex items-center gap-3 truncate">
                         <FileText className="h-5 w-5 text-primary shrink-0" />
                         <div>
-                          <p className="font-bold text-secondary truncate">{cvFile.name}</p>
-                          <p className="text-xs text-zinc-500">{(cvFile.size / 1024).toFixed(0)} KB</p>
+                          <p className="font-bold text-secondary truncate">
+                            {cvFile.name}
+                          </p>
+                          <p className="text-xs text-zinc-500">
+                            {(cvFile.size / 1024).toFixed(0)} KB
+                          </p>
                         </div>
                       </div>
                       <button
@@ -553,8 +643,14 @@ export default function QuickApplyForm({
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="apply-message" className="text-sm font-semibold text-zinc-800">
-                    Additional Message / Availability <span className="text-zinc-400 font-normal">(Optional)</span>
+                  <label
+                    htmlFor="apply-message"
+                    className="text-sm font-semibold text-zinc-800"
+                  >
+                    Additional Message / Availability{" "}
+                    <span className="text-zinc-400 font-normal">
+                      (Optional)
+                    </span>
                   </label>
                   <textarea
                     rows={3}
@@ -576,7 +672,8 @@ export default function QuickApplyForm({
                     Review your application
                   </h3>
                   <p className="text-xs sm:text-sm text-zinc-500">
-                    Please check all your details below. You can edit any section before submitting.
+                    Please check all your details below. You can edit any
+                    section before submitting.
                   </p>
                 </div>
 
@@ -584,7 +681,9 @@ export default function QuickApplyForm({
                   {/* Card 1: Personal Details */}
                   <div className="rounded-2xl border border-zinc-200 bg-zinc-50/70 p-5 sm:p-6 space-y-3 text-sm">
                     <div className="flex items-center justify-between border-b border-zinc-200/80 pb-3">
-                      <span className="font-bold text-secondary text-sm">Personal Details</span>
+                      <span className="font-bold text-secondary text-sm">
+                        Personal Details
+                      </span>
                       <button
                         type="button"
                         onClick={() => setCurrentStep(1)}
@@ -595,19 +694,29 @@ export default function QuickApplyForm({
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                       <div>
-                        <span className="text-xs text-zinc-400 font-medium">Full Name</span>
+                        <span className="text-xs text-zinc-400 font-medium">
+                          Full Name
+                        </span>
                         <p className="font-bold text-zinc-900">{fullName}</p>
                       </div>
                       <div>
-                        <span className="text-xs text-zinc-400 font-medium">Email Address</span>
+                        <span className="text-xs text-zinc-400 font-medium">
+                          Email Address
+                        </span>
                         <p className="font-bold text-zinc-900">{email}</p>
                       </div>
                       <div>
-                        <span className="text-xs text-zinc-400 font-medium">Phone Number</span>
-                        <p className="font-bold text-zinc-900">{countryCode} {phone}</p>
+                        <span className="text-xs text-zinc-400 font-medium">
+                          Phone Number
+                        </span>
+                        <p className="font-bold text-zinc-900">
+                          {countryCode} {phone}
+                        </p>
                       </div>
                       <div>
-                        <span className="text-xs text-zinc-400 font-medium">Address</span>
+                        <span className="text-xs text-zinc-400 font-medium">
+                          Address
+                        </span>
                         <p className="font-bold text-zinc-900">{address}</p>
                       </div>
                     </div>
@@ -616,7 +725,9 @@ export default function QuickApplyForm({
                   {/* Card 2: Role & Questions */}
                   <div className="rounded-2xl border border-zinc-200 bg-zinc-50/70 p-5 sm:p-6 space-y-3 text-sm">
                     <div className="flex items-center justify-between border-b border-zinc-200/80 pb-3">
-                      <span className="font-bold text-secondary text-sm">Role &amp; Questions</span>
+                      <span className="font-bold text-secondary text-sm">
+                        Role &amp; Questions
+                      </span>
                       <button
                         type="button"
                         onClick={() => setCurrentStep(2)}
@@ -627,24 +738,42 @@ export default function QuickApplyForm({
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                       <div>
-                        <span className="text-xs text-zinc-400 font-medium">Role Applying For</span>
+                        <span className="text-xs text-zinc-400 font-medium">
+                          Role Applying For
+                        </span>
                         <p className="font-bold text-primary">{role}</p>
                       </div>
                       <div>
-                        <span className="text-xs text-zinc-400 font-medium">Right to Work in UK</span>
-                        <p className="font-medium text-zinc-800">{rightToWork}</p>
+                        <span className="text-xs text-zinc-400 font-medium">
+                          Right to Work in UK
+                        </span>
+                        <p className="font-medium text-zinc-800">
+                          {rightToWork}
+                        </p>
                       </div>
                       <div>
-                        <span className="text-xs text-zinc-400 font-medium">Driving Licence</span>
-                        <p className="font-medium text-zinc-800">{drivingLicence}</p>
+                        <span className="text-xs text-zinc-400 font-medium">
+                          Driving Licence
+                        </span>
+                        <p className="font-medium text-zinc-800">
+                          {drivingLicence}
+                        </p>
                       </div>
                       <div>
-                        <span className="text-xs text-zinc-400 font-medium">Care Experience</span>
-                        <p className="font-medium text-zinc-800">{careExperience}</p>
+                        <span className="text-xs text-zinc-400 font-medium">
+                          Care Experience
+                        </span>
+                        <p className="font-medium text-zinc-800">
+                          {careExperience}
+                        </p>
                       </div>
                       <div className="sm:col-span-2">
-                        <span className="text-xs text-zinc-400 font-medium">Shift Pattern Preference</span>
-                        <p className="font-medium text-zinc-800">{preferredPattern}</p>
+                        <span className="text-xs text-zinc-400 font-medium">
+                          Shift Pattern Preference
+                        </span>
+                        <p className="font-medium text-zinc-800">
+                          {preferredPattern}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -652,7 +781,9 @@ export default function QuickApplyForm({
                   {/* Card 3: Documents & Message */}
                   <div className="rounded-2xl border border-zinc-200 bg-zinc-50/70 p-5 sm:p-6 space-y-3 text-sm">
                     <div className="flex items-center justify-between border-b border-zinc-200/80 pb-3">
-                      <span className="font-bold text-secondary text-sm">Documents &amp; Note</span>
+                      <span className="font-bold text-secondary text-sm">
+                        Documents &amp; Note
+                      </span>
                       <button
                         type="button"
                         onClick={() => setCurrentStep(3)}
@@ -663,15 +794,23 @@ export default function QuickApplyForm({
                     </div>
                     <div className="space-y-3 pt-1">
                       <div>
-                        <span className="text-xs text-zinc-400 font-medium">CV / Resume Document</span>
+                        <span className="text-xs text-zinc-400 font-medium">
+                          CV / Resume Document
+                        </span>
                         <p className="font-semibold text-secondary">
-                          {cvFile ? cvFile.name : "No file attached (details will be taken during phone interview)"}
+                          {cvFile
+                            ? cvFile.name
+                            : "No file attached (details will be taken during phone interview)"}
                         </p>
                       </div>
                       {message && (
                         <div>
-                          <span className="text-xs text-zinc-400 font-medium">Additional Message</span>
-                          <p className="text-xs text-zinc-700 whitespace-pre-wrap">{message}</p>
+                          <span className="text-xs text-zinc-400 font-medium">
+                            Additional Message
+                          </span>
+                          <p className="text-xs text-zinc-700 whitespace-pre-wrap">
+                            {message}
+                          </p>
                         </div>
                       )}
                     </div>
@@ -715,10 +854,11 @@ export default function QuickApplyForm({
                   type="button"
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className={`rounded-xl px-10 py-3 text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all flex items-center justify-center gap-2 ${isSubmitting
-                    ? "bg-primary/70 cursor-not-allowed"
-                    : "bg-primary hover:bg-primary/90 hover:scale-[1.01] cursor-pointer"
-                    }`}
+                  className={`rounded-xl px-10 py-3 text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all flex items-center justify-center gap-2 ${
+                    isSubmitting
+                      ? "bg-primary/70 cursor-not-allowed"
+                      : "bg-primary hover:bg-primary/90 hover:scale-[1.01] cursor-pointer"
+                  }`}
                 >
                   {isSubmitting ? (
                     <>

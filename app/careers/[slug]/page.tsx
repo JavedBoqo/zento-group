@@ -1,3 +1,5 @@
+export const revalidate = 60;
+export const runtime = "nodejs";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -22,20 +24,22 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimateContainer from "@/components/AnimateContainer";
-import { getAllJobs, getJobBySlug } from "@/lib/jobs";
+import { getAllJobs, getJobBySlug } from "@/lib/content";
 
 interface JobPageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  const jobs = getAllJobs();
+  const jobs = await getAllJobs();
   return jobs.map((job) => ({ slug: job.slug }));
 }
 
-export async function generateMetadata({ params }: JobPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: JobPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const job = getJobBySlug(slug);
+  const job = await getJobBySlug(slug);
 
   if (!job) {
     return { title: "Job Not Found | Zento Care" };
@@ -53,13 +57,13 @@ export async function generateMetadata({ params }: JobPageProps): Promise<Metada
 
 export default async function JobDetailPage({ params }: JobPageProps) {
   const { slug } = await params;
-  const job = getJobBySlug(slug);
+  const job = await getJobBySlug(slug);
 
   if (!job) {
     notFound();
   }
 
-  const allJobs = getAllJobs();
+  const allJobs = await getAllJobs();
   const otherJobs = allJobs.filter((j) => j.slug !== job.slug);
 
   return (
@@ -73,19 +77,32 @@ export default async function JobDetailPage({ params }: JobPageProps) {
             <nav aria-label="Breadcrumb">
               <ol className="flex items-center gap-2 text-xs text-zinc-500">
                 <li>
-                  <Link href="/" className="hover:text-primary transition-colors font-medium">
+                  <Link
+                    href="/"
+                    className="hover:text-primary transition-colors font-medium"
+                  >
                     Home
                   </Link>
                 </li>
-                <li aria-hidden="true" className="text-zinc-300">/</li>
+                <li aria-hidden="true" className="text-zinc-300">
+                  /
+                </li>
                 <li>
-                  <Link href="/careers" className="hover:text-primary transition-colors font-medium">
+                  <Link
+                    href="/careers"
+                    className="hover:text-primary transition-colors font-medium"
+                  >
                     Careers
                   </Link>
                 </li>
-                <li aria-hidden="true" className="text-zinc-300">/</li>
+                <li aria-hidden="true" className="text-zinc-300">
+                  /
+                </li>
                 <li>
-                  <span className="font-semibold text-secondary truncate max-w-[200px]" aria-current="page">
+                  <span
+                    className="font-semibold text-secondary truncate max-w-[200px]"
+                    aria-current="page"
+                  >
                     {job.title} ({job.location})
                   </span>
                 </li>
@@ -153,12 +170,13 @@ export default async function JobDetailPage({ params }: JobPageProps) {
         <section className="py-12 md:py-16 bg-white">
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-              
               {/* Left Column: Structured Job Details */}
               <div className="lg:col-span-8 space-y-10">
                 {/* About this role */}
                 <div className="space-y-3">
-                  <h2 className="text-xl font-bold text-secondary">About this role</h2>
+                  <h2 className="text-xl font-bold text-secondary">
+                    About this role
+                  </h2>
                   <p className="text-sm leading-relaxed text-zinc-600">
                     {job.overview}
                   </p>
@@ -171,7 +189,10 @@ export default async function JobDetailPage({ params }: JobPageProps) {
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {job.highlights.map((h, i) => (
-                      <div key={i} className="flex items-start gap-2 text-xs font-medium text-zinc-700">
+                      <div
+                        key={i}
+                        className="flex items-start gap-2 text-xs font-medium text-zinc-700"
+                      >
                         <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                         <span>{h}</span>
                       </div>
@@ -181,10 +202,15 @@ export default async function JobDetailPage({ params }: JobPageProps) {
 
                 {/* Key Responsibilities */}
                 <div className="space-y-3 border-t border-zinc-100 pt-8">
-                  <h2 className="text-xl font-bold text-secondary">Responsibilities</h2>
+                  <h2 className="text-xl font-bold text-secondary">
+                    Responsibilities
+                  </h2>
                   <ul className="space-y-2.5">
                     {job.responsibilities.map((r, i) => (
-                      <li key={i} className="flex items-start gap-3 text-sm text-zinc-600 leading-relaxed">
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-sm text-zinc-600 leading-relaxed"
+                      >
                         <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-bold mt-0.5">
                           ✓
                         </span>
@@ -196,10 +222,15 @@ export default async function JobDetailPage({ params }: JobPageProps) {
 
                 {/* What We Offer */}
                 <div className="space-y-3 border-t border-zinc-100 pt-8">
-                  <h2 className="text-xl font-bold text-secondary">What We Offer</h2>
+                  <h2 className="text-xl font-bold text-secondary">
+                    What We Offer
+                  </h2>
                   <ul className="space-y-2.5">
                     {job.whatWeOffer.map((o, i) => (
-                      <li key={i} className="flex items-start gap-3 text-sm text-zinc-600 leading-relaxed">
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-sm text-zinc-600 leading-relaxed"
+                      >
                         <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold mt-0.5">
                           ✓
                         </span>
@@ -211,10 +242,15 @@ export default async function JobDetailPage({ params }: JobPageProps) {
 
                 {/* Requirements & Qualifications */}
                 <div className="space-y-3 border-t border-zinc-100 pt-8">
-                  <h2 className="text-xl font-bold text-secondary">Requirements &amp; Qualifications</h2>
+                  <h2 className="text-xl font-bold text-secondary">
+                    Requirements &amp; Qualifications
+                  </h2>
                   <ul className="space-y-2.5">
                     {job.requirements.map((req, i) => (
-                      <li key={i} className="flex items-start gap-3 text-sm text-zinc-600 leading-relaxed">
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-sm text-zinc-600 leading-relaxed"
+                      >
                         <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-secondary/10 text-secondary text-xs font-bold mt-0.5">
                           ✓
                         </span>
@@ -226,7 +262,9 @@ export default async function JobDetailPage({ params }: JobPageProps) {
 
                 {/* Official Advert Graphic Attachment Card (Inspired by WerkLinker Attachment) */}
                 <div className="space-y-3 border-t border-zinc-100 pt-8">
-                  <h2 className="text-xl font-bold text-secondary">Official Job Advert</h2>
+                  <h2 className="text-xl font-bold text-secondary">
+                    Official Job Advert
+                  </h2>
                   <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-5 flex flex-col sm:flex-row items-center gap-5">
                     <div className="relative aspect-square w-36 h-36 rounded-xl overflow-hidden bg-secondary shrink-0 shadow-xs">
                       <Image
@@ -237,7 +275,9 @@ export default async function JobDetailPage({ params }: JobPageProps) {
                       />
                     </div>
                     <div className="space-y-2 text-center sm:text-left flex-1">
-                      <h4 className="text-sm font-bold text-secondary">{job.title} — Official Hiring Flyer</h4>
+                      <h4 className="text-sm font-bold text-secondary">
+                        {job.title} — Official Hiring Flyer
+                      </h4>
                       <p className="text-xs text-zinc-500">
                         {job.location} · {job.salary} · {job.office}
                       </p>
@@ -273,11 +313,15 @@ export default async function JobDetailPage({ params }: JobPageProps) {
                   <div className="rounded-xl bg-zinc-50 p-3.5 space-y-2 text-xs border border-zinc-100">
                     <div className="flex justify-between">
                       <span className="text-zinc-500">Rate:</span>
-                      <span className="font-bold text-primary">{job.salary}</span>
+                      <span className="font-bold text-primary">
+                        {job.salary}
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-zinc-500">Location:</span>
-                      <span className="font-semibold text-secondary">{job.location}</span>
+                      <span className="font-semibold text-secondary">
+                        {job.location}
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-zinc-500">Office:</span>
@@ -315,12 +359,20 @@ export default async function JobDetailPage({ params }: JobPageProps) {
                           className="rounded-xl border border-zinc-100 bg-zinc-50/70 p-4 transition-all hover:border-primary/30"
                         >
                           <div className="flex justify-between items-center mb-1">
-                            <span className="text-xs font-bold text-primary">{oj.location}</span>
-                            <span className="text-[11px] font-bold text-secondary">{oj.salary}</span>
+                            <span className="text-xs font-bold text-primary">
+                              {oj.location}
+                            </span>
+                            <span className="text-[11px] font-bold text-secondary">
+                              {oj.salary}
+                            </span>
                           </div>
-                          <h4 className="text-sm font-bold text-secondary">{oj.title}</h4>
+                          <h4 className="text-sm font-bold text-secondary">
+                            {oj.title}
+                          </h4>
                           <div className="mt-3 flex justify-between items-center text-xs">
-                            <span className="text-[11px] text-zinc-400">{oj.contractTypes[0]}</span>
+                            <span className="text-[11px] text-zinc-400">
+                              {oj.contractTypes[0]}
+                            </span>
                             <Link
                               href={`/careers/${oj.slug}`}
                               className="font-bold text-primary hover:underline"
@@ -334,7 +386,6 @@ export default async function JobDetailPage({ params }: JobPageProps) {
                   </div>
                 )}
               </div>
-
             </div>
           </div>
         </section>

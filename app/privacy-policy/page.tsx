@@ -574,7 +574,7 @@ export default function PrivacyPolicyPage() {
                   </div>
                   <div className="space-y-3 pl-0 sm:pl-12">
                     <p>
-                      Our website uses cookies and similar technologies to ensure proper operation and to understand how visitors engage with our pages.
+                      Our website stores your analytics preference for six months. With your consent, our first-party analytics records page paths, configured button actions and job context. It does not store visitor identifiers, query strings or form contents. Raw events are deleted after 90 days. Use the Privacy choices button to accept, reject or withdraw consent at any time.
                     </p>
                     <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-600 space-y-2">
                       <p>

@@ -1,3 +1,5 @@
+import { richTextPlainText } from "@/lib/article-content";
+import { plainArticleText } from "@/lib/article-editor";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
@@ -22,13 +24,18 @@ function getCleanExcerpt(text: string, maxLength: number): string {
   return trimmed + "…";
 }
 
-export default function BlogCard({
-  article,
-  featured = false,
-}: BlogCardProps) {
+export default function BlogCard({ article, featured = false }: BlogCardProps) {
   const imgSrc = article.heroImage?.src || FALLBACK_IMAGE;
   const imgAlt = article.heroImage?.alt || article.title;
-  const raw = article.intro[0] ?? "";
+  const summary = article.content
+    ? richTextPlainText(article.content.summary).trim()
+    : article.editorSource === undefined
+      ? (article.intro[0] ?? "").trim()
+      : plainArticleText(article.intro[0] ?? "").trim();
+  const raw =
+    summary ||
+    article.excerpt?.trim() ||
+    (article.content ? richTextPlainText(article.content.introduction) : "");
   const excerpt = getCleanExcerpt(raw, featured ? 200 : 160);
   const readingTime = estimateReadingTime(article);
   const href = `/blog/${article.slug}`;
@@ -54,7 +61,7 @@ export default function BlogCard({
           {/* Meta */}
           <div className="flex flex-wrap items-center gap-3">
             <span className="rounded-full bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary">
-              Nurse-Led Advice
+              Care guide
             </span>
             <span className="flex items-center gap-1 text-xs text-zinc-400">
               <Clock className="h-3.5 w-3.5" />
@@ -103,7 +110,7 @@ export default function BlogCard({
         {/* Meta */}
         <div className="mb-4 flex flex-wrap items-center gap-3">
           <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary">
-            Nurse-Led Advice
+            Care guide
           </span>
           <span className="flex items-center gap-1 text-xs text-zinc-400">
             <Clock className="h-3 w-3" />
@@ -135,4 +142,3 @@ export default function BlogCard({
     </article>
   );
 }
-

@@ -1,5 +1,3 @@
-import jobsData from "@/mock/jobs.json";
-
 export interface JobListing {
   id: string;
   slug: string;
@@ -21,14 +19,4 @@ export interface JobListing {
   responsibilities: string[];
   whatWeOffer: string[];
   requirements: string[];
-}
-
-const jobs: JobListing[] = jobsData as JobListing[];
-
-export function getAllJobs(): JobListing[] {
-  return jobs;
-}
-
-export function getJobBySlug(slug: string): JobListing | undefined {
-  return jobs.find((j) => j.slug === slug);
 }

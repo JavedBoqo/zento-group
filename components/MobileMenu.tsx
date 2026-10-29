@@ -266,6 +266,7 @@ export default function MobileMenu({ isOpen, onClose, onOpenModal }: MobileMenuP
               </div>
               <div className="mt-8 pb-8">
                 <button
+                  data-track-action="consultation"
                   onClick={onOpenModal}
                   className="w-full rounded-full bg-secondary py-4 text-[10px] font-black uppercase tracking-[0.2em] text-white shadow-2xl shadow-secondary/20 cursor-pointer"
                 >

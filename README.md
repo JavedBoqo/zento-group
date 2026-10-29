@@ -8,6 +8,11 @@ Create a `.env.local` file in the project root (this file is gitignored). Requir
 | --- | --- |
 | `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` | Google reCAPTCHA v3 site key (client-side) |
 | `RECAPTCHA_SECRET_KEY` | Google reCAPTCHA v3 secret key (server-only, never expose to the client) |
+| `RESEND_API_KEY` | Resend API key used by the contact and careers APIs (server-only) |
+| `MAIL_FROM` | Sender email address on a verified Resend domain |
+| `MAIL_TO` | Admin email address receiving contact enquiries and job applications |
+
+Both APIs use the shared `sendEmail` helper in `app/lib/email.ts`. Careers notifications include the applicant's details and an optional CV attachment (PDF, DOC or DOCX, up to 5MB). Missing mail configuration or a failed Resend request returns an error instead of acknowledging an unsent application. Careers reCAPTCHA verification is enforced when `RECAPTCHA_SECRET_KEY` is configured; set the public site key alongside it.
 
 Register keys at [Google reCAPTCHA Admin](https://www.google.com/recaptcha/admin) and choose **reCAPTCHA v3**.
 
@@ -47,3 +52,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Admin panel
+
+See [ADMIN.md](./ADMIN.md) for setup, migration, privacy controls, routes, and verification commands.

@@ -1,5 +1,15 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { createHash } from "node:crypto";
+import { cookies } from "next/headers";
+import Applicant from "@/models/Applicant";
+import Career from "@/models/Career";
+import Analytics from "@/models/Analytics";
+import { applicantInput } from "@/lib/admin-validation";
+import { apiError, checkOrigin, HttpError, rateLimit } from "@/lib/api";
+import { storeCV, deleteCV } from "@/lib/cv";
+
+export const runtime = "nodejs";
+import { sendEmail } from "@/app/lib/email";
 import { verifyRecaptchaToken } from "@/app/lib/recaptcha-server";
 
 function escapeHtml(value: string) {
@@ -13,11 +23,35 @@ function escapeHtml(value: string) {
 
 export async function POST(req: Request) {
   try {
+    checkOrigin(req);
+    await rateLimit(req, "applications", 20);
+    const reader = req.body?.getReader();
+    if (!reader) throw new HttpError(400, "Missing application");
+    const chunks: Uint8Array[] = [];
+    let size = 0;
+    while (true) {
+      const next = await reader.read();
+      if (next.done) break;
+      size += next.value.byteLength;
+      if (size > 6 * 1024 * 1024) {
+        await reader.cancel();
+        throw new HttpError(413, "Application is too large");
+      }
+      chunks.push(next.value);
+    }
+    req = new Request(req.url, {
+      method: "POST",
+      headers: req.headers,
+      body: Buffer.concat(chunks),
+    });
+    let jobSlug = "";
     let fullName = "";
     let email = "";
     let phone = "";
     let role = "";
     let location = "";
+    let address = "";
+    let preferredPattern = "";
     let rightToWork = "";
     let drivingLicence = "";
     let careExperience = "";
@@ -29,11 +63,14 @@ export async function POST(req: Request) {
 
     if (contentType.includes("multipart/form-data")) {
       const formData = await req.formData();
+      jobSlug = String(formData.get("jobSlug") || "").trim();
       fullName = String(formData.get("fullName") || "").trim();
       email = String(formData.get("email") || "").trim();
       phone = String(formData.get("phone") || "").trim();
       role = String(formData.get("role") || "").trim();
       location = String(formData.get("location") || "").trim();
+      address = String(formData.get("address") || "").trim();
+      preferredPattern = String(formData.get("preferredPattern") || "").trim();
       rightToWork = String(formData.get("rightToWork") || "").trim();
       drivingLicence = String(formData.get("drivingLicence") || "").trim();
       careExperience = String(formData.get("careExperience") || "").trim();
@@ -45,11 +82,14 @@ export async function POST(req: Request) {
       }
     } else {
       const body = await req.json();
+      jobSlug = String(body.jobSlug || "").trim();
       fullName = String(body.fullName || "").trim();
       email = String(body.email || "").trim();
       phone = String(body.phone || "").trim();
       role = String(body.role || "").trim();
       location = String(body.location || "").trim();
+      address = String(body.address || "").trim();
+      preferredPattern = String(body.preferredPattern || "").trim();
       rightToWork = String(body.rightToWork || "").trim();
       drivingLicence = String(body.drivingLicence || "").trim();
       careExperience = String(body.careExperience || "").trim();
@@ -62,14 +102,39 @@ export async function POST(req: Request) {
         {
           success: false,
           code: "validation",
-          error: "Please fill in all required fields (Name, Email, Phone, Role, Right to Work).",
+          error:
+            "Please fill in all required fields (Name, Email, Phone, Role, Right to Work).",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
-    // Optional reCAPTCHA verification if token provided or env set
-    if (recaptchaToken && process.env.RECAPTCHA_SECRET_KEY) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return NextResponse.json(
+        {
+          success: false,
+          code: "validation",
+          error: "Please enter a valid email address.",
+        },
+        { status: 400 },
+      );
+    }
+
+    if (
+      cvFile &&
+      (cvFile.size > 5 * 1024 * 1024 || !/\.(pdf|doc|docx)$/i.test(cvFile.name))
+    ) {
+      return NextResponse.json(
+        {
+          success: false,
+          code: "validation",
+          error: "Please upload a PDF, DOC or DOCX document up to 5MB.",
+        },
+        { status: 400 },
+      );
+    }
+
+    if (process.env.RECAPTCHA_SECRET_KEY) {
       const recaptchaResult = await verifyRecaptchaToken(recaptchaToken);
       if (!recaptchaResult.valid) {
         return NextResponse.json(
@@ -78,8 +143,76 @@ export async function POST(req: Request) {
             code: "verification",
             error: recaptchaResult.error,
           },
-          { status: 400 }
+          { status: 400 },
         );
+      }
+    }
+
+    const input = applicantInput.parse({
+      fullName,
+      email: email.toLowerCase(),
+      phone,
+      role,
+      jobSlug,
+      location,
+      address,
+      preferredPattern,
+      rightToWork,
+      drivingLicence,
+      careExperience,
+      message,
+    });
+    const job = await Career.findOne({
+      slug: input.jobSlug,
+      isOpen: true,
+    }).lean();
+    if (!job)
+      throw new HttpError(400, "This job is no longer accepting applications");
+    role = `${job.title} (${job.location})`;
+    const cvDigest = cvFile
+      ? createHash("sha256")
+          .update(Buffer.from(await cvFile.arrayBuffer()))
+          .digest("hex")
+      : "";
+    const submissionKey = createHash("sha256")
+      .update(JSON.stringify({ ...input, role, cvDigest }))
+      .digest("hex");
+    let application = await Applicant.findOne({ submissionKey });
+    if (application?.notificationSent)
+      return NextResponse.json({
+        success: true,
+        message: "Application received.",
+      });
+    if (!application) {
+      const cv = cvFile ? await storeCV(cvFile) : null;
+      try {
+        application = await Applicant.create({
+          ...input,
+          role,
+          job: job._id,
+          submissionKey,
+          ...(cv
+            ? {
+                cvPublicId: cv.public_id,
+                cvSecureUrl: cv.secure_url,
+                cvName: cv.name,
+              }
+            : {}),
+        });
+      } catch (error) {
+        if (cv)
+          await deleteCV(cv.public_id).catch(() =>
+            console.error("CV cleanup pending"),
+          );
+        throw error;
+      }
+      if ((await cookies()).get("zento-analytics")?.value === "accepted") {
+        await Analytics.create({
+          event: "job_application_submitted",
+          page: "/careers/apply",
+          job: job.slug,
+          action: "job_application",
+        }).catch(() => {});
       }
     }
 
@@ -88,61 +221,54 @@ export async function POST(req: Request) {
     const safePhone = escapeHtml(phone);
     const safeRole = escapeHtml(role);
     const safeLocation = escapeHtml(location || "Not specified");
+    const safeAddress = escapeHtml(address || "Not specified");
+    const safePreferredPattern = escapeHtml(
+      preferredPattern || "Not specified",
+    );
     const safeRightToWork = escapeHtml(rightToWork);
     const safeDrivingLicence = escapeHtml(drivingLicence || "Not specified");
     const safeCareExperience = escapeHtml(careExperience || "Not specified");
-    const safeMessage = escapeHtml(message || "No additional message provided.").replace(/\n/g, "<br/>");
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://zentogroup.co.uk";
+    const safeMessage = escapeHtml(
+      message || "No additional message provided.",
+    ).replace(/\n/g, "<br/>");
+    const siteUrl =
+      process.env.NEXT_PUBLIC_SITE_URL || "https://zentogroup.co.uk";
     const safeSiteUrl = escapeHtml(siteUrl.replace(/\/$/, ""));
 
     // Prepare attachment if CV is uploaded
-    const attachments: Array<{ filename: string; content: Buffer }> = [];
+    const attachments: Array<{ filename: string; content: string }> = [];
     if (cvFile) {
       const arrayBuffer = await cvFile.arrayBuffer();
       attachments.push({
         filename: cvFile.name,
-        content: Buffer.from(arrayBuffer),
+        content: Buffer.from(arrayBuffer).toString("base64"),
       });
     }
 
-    // If SMTP is configured, send email notification
-    if (process.env.SMTP_USER && process.env.SMTP_HOST) {
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT || 465),
-        secure: process.env.SMTP_SECURE === "true",
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
-        },
-        connectionTimeout: 10000,
-        greetingTimeout: 10000,
-        socketTimeout: 15000,
-      });
-
-      await transporter.sendMail({
-        from: `"Zento Careers" <${process.env.SMTP_USER}>`,
-        to: process.env.MAIL_TO || process.env.SMTP_USER,
-        replyTo: email,
-        subject: `New Job Application: ${safeRole} - ${safeName}`,
-        text: [
-          `New Job Application Received via Zento Website`,
-          `-------------------------------------------`,
-          `Role Applying For: ${role}`,
-          `Preferred Location: ${location || "Any"}`,
-          `Applicant Name: ${fullName}`,
-          `Email: ${email}`,
-          `Phone: ${phone}`,
-          `Right to Work in UK: ${rightToWork}`,
-          `Driving Licence: ${drivingLicence}`,
-          `Care Experience: ${careExperience}`,
-          `CV Attached: ${cvFile ? cvFile.name : "No file uploaded"}`,
-          ``,
-          `Message:`,
-          message || "(None)",
-        ].join("\n"),
-        attachments,
-        html: `
+    await sendEmail({
+      fromName: "Zento Careers",
+      replyTo: email,
+      subject: `New Job Application: ${role} - ${fullName}`,
+      text: [
+        `New Job Application Received via Zento Website`,
+        `-------------------------------------------`,
+        `Role Applying For: ${role}`,
+        `Preferred Location: ${location || "Any"}`,
+        `Applicant Name: ${fullName}`,
+        `Email: ${email}`,
+        `Phone: ${phone}`,
+        `Address / Postcode: ${address || "Not specified"}`,
+        `Preferred Work Pattern: ${preferredPattern || "Not specified"}`,
+        `Right to Work in UK: ${rightToWork}`,
+        `Driving Licence: ${drivingLicence}`,
+        `Care Experience: ${careExperience}`,
+        `CV Attached: ${cvFile ? cvFile.name : "No file uploaded"}`,
+        ``,
+        `Message:`,
+        message || "(None)",
+      ].join("\n"),
+      attachments,
+      html: `
 <!doctype html>
 <html>
   <body style="margin:0;padding:0;background:#f8fafc;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;color:#0f172a;">
@@ -190,6 +316,14 @@ export async function POST(req: Request) {
                     <td align="right" style="padding:10px 0;border-bottom:1px solid #eef2f7;font-size:14px;font-weight:600;color:#0f172a;">${safeLocation}</td>
                   </tr>
                   <tr>
+                    <td style="padding:10px 0;border-bottom:1px solid #eef2f7;font-size:13px;color:#64748b;">Address / Postcode</td>
+                    <td align="right" style="padding:10px 0;border-bottom:1px solid #eef2f7;font-size:14px;font-weight:600;color:#0f172a;">${safeAddress}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:10px 0;border-bottom:1px solid #eef2f7;font-size:13px;color:#64748b;">Preferred Work Pattern</td>
+                    <td align="right" style="padding:10px 0;border-bottom:1px solid #eef2f7;font-size:14px;font-weight:600;color:#0f172a;">${safePreferredPattern}</td>
+                  </tr>
+                  <tr>
                     <td style="padding:10px 0;border-bottom:1px solid #eef2f7;font-size:13px;color:#64748b;">Right to Work in UK</td>
                     <td align="right" style="padding:10px 0;border-bottom:1px solid #eef2f7;font-size:14px;font-weight:600;color:#0f172a;">${safeRightToWork}</td>
                   </tr>
@@ -224,23 +358,41 @@ export async function POST(req: Request) {
     </table>
   </body>
 </html>
-        `,
-      });
-    }
+      `,
+    });
+
+    await Applicant.updateOne(
+      { _id: application._id },
+      { $set: { notificationSent: true } },
+    );
 
     return NextResponse.json({
       success: true,
-      message: "Application received! Our recruitment team will review your details and contact you shortly.",
+      message:
+        "Application received! Our recruitment team will review your details and contact you shortly.",
     });
   } catch (error) {
-    console.error("Careers Apply API error:", error);
+    if (
+      error instanceof HttpError ||
+      (error instanceof Error && error.name === "ZodError") ||
+      (error &&
+        typeof error === "object" &&
+        "code" in error &&
+        error.code === 11000)
+    )
+      return apiError(error);
+    console.error(
+      "Careers Apply API error:",
+      error instanceof Error ? error.name : "UnknownError",
+    );
     return NextResponse.json(
       {
         success: false,
         code: "submission_failed",
-        error: "Application could not be submitted. Please call our office directly.",
+        error:
+          "Application could not be submitted. Please call our office directly.",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

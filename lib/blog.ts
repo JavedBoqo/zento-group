@@ -1,6 +1,8 @@
-import articlesData from "@/mock/blogs.json";
-
 // ─────────────────────────── Types ───────────────────────────
+
+import type { ArticleContent, RichText } from "./article-content";
+import { richTextPlainText } from "./article-content";
+import type { AuthorProfile } from "./authors";
 
 export interface BlogImage {
   src: string;
@@ -45,14 +47,13 @@ export interface CtaSectionData {
 }
 
 export type ArticleSection =
-  | SignsSectionData
-  | TextWithListSectionData
-  | TextSectionData
-  | CtaSectionData;
+  SignsSectionData | TextWithListSectionData | TextSectionData | CtaSectionData;
 
 export interface FaqItem {
+  id?: string;
   question: string;
   answer: string;
+  richAnswer?: RichText;
 }
 
 export interface ClosingCtaData {
@@ -62,6 +63,17 @@ export interface ClosingCtaData {
 }
 
 export interface Article {
+  updatedAt?: string;
+  authorId?: string;
+  reviewerId?: string;
+  verificationStatus?: "unverified" | "verified";
+  reviewedAt?: string | null;
+  author?: AuthorProfile;
+  reviewer?: AuthorProfile;
+  content?: ArticleContent;
+  excerpt?: string;
+  canonicalUrl?: string;
+  editorSource?: string;
   slug: string;
   featured?: boolean;
   seoTitle: string;
@@ -76,10 +88,43 @@ export interface Article {
 
 // ─────────────────────────── Helpers ───────────────────────────
 
-const articles = articlesData as Article[];
-
 /** Estimated reading time in minutes at 200 wpm */
 export function estimateReadingTime(article: Article): number {
+  if (article.content) {
+    const content = article.content;
+    const words = [
+      richTextPlainText(content.introduction),
+      richTextPlainText(content.summary),
+      ...content.sections.flatMap((section) => [
+        section.title,
+        ...(section.type === "checklist"
+          ? section.items.flatMap((item) =>
+              item.content.map((part) => part.text),
+            )
+          : []),
+        ...section.blocks.map((block) =>
+          block.type === "richText" || block.type === "callout"
+            ? richTextPlainText(block.content)
+            : block.type === "subheading"
+              ? block.text
+              : block.type === "list"
+                ? block.items
+                    .flat()
+                    .map((part) => part.text)
+                    .join(" ")
+                : block.alt,
+        ),
+      ]),
+      ...content.faqs.flatMap((faq) => [
+        faq.question,
+        richTextPlainText(faq.answer),
+      ]),
+    ]
+      .join(" ")
+      .trim()
+      .split(/\s+/).length;
+    return Math.max(1, Math.round(words / 200));
+  }
   const chunks: string[] = [
     ...article.intro,
     ...article.sections.flatMap((s) => {
@@ -96,24 +141,4 @@ export function estimateReadingTime(article: Article): number {
   ];
   const wordCount = chunks.join(" ").trim().split(/\s+/).length;
   return Math.max(1, Math.round(wordCount / 200));
-}
-
-/** Returns all articles — used by the listing page and sitemap */
-export function getAllArticles(): Article[] {
-  return articles;
-}
-
-/** Returns the featured article or the first article as fallback */
-export function getFeaturedArticle(): Article | undefined {
-  return articles.find((a) => a.featured) ?? articles[0];
-}
-
-/** Returns a single article by slug, or undefined if not found */
-export function getArticleBySlug(slug: string): Article | undefined {
-  return articles.find((a) => a.slug === slug);
-}
-
-/** Returns related articles excluding the current article slug */
-export function getRelatedArticles(currentSlug: string, count: number = 3): Article[] {
-  return articles.filter((a) => a.slug !== currentSlug).slice(0, count);
 }

@@ -3,12 +3,12 @@
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import QuickApplyForm from "@/components/careers/QuickApplyForm";
-import { getAllJobs } from "@/lib/jobs";
+import type { JobListing } from "@/lib/jobs";
 
-function ApplyFormContent() {
+function ApplyFormContent({ jobs }: { jobs: JobListing[] }) {
   const searchParams = useSearchParams();
   const jobSlug = searchParams.get("job");
-  const allJobs = getAllJobs();
+  const allJobs = jobs;
 
   const matchingJob = allJobs.find((j) => j.slug === jobSlug);
   const initialRole = matchingJob
@@ -17,12 +17,22 @@ function ApplyFormContent() {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <QuickApplyForm initialRole={initialRole} />
+      {jobs.length ? (
+        <QuickApplyForm
+          initialRole={initialRole}
+          jobs={jobs}
+          initialJobSlug={matchingJob?.slug || jobs[0].slug}
+        />
+      ) : (
+        <p className="rounded-2xl border p-8 text-center">
+          There are no open positions at the moment. Please check back soon.
+        </p>
+      )}
     </div>
   );
 }
 
-export default function ApplyPageClient() {
+export default function ApplyPageClient({ jobs }: { jobs: JobListing[] }) {
   return (
     <Suspense
       fallback={
@@ -31,7 +41,7 @@ export default function ApplyPageClient() {
         </div>
       }
     >
-      <ApplyFormContent />
+      <ApplyFormContent jobs={jobs} />
     </Suspense>
   );
 }

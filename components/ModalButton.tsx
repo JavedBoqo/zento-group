@@ -15,10 +15,17 @@ export default function ModalButton({
   children,
 }: ModalButtonProps) {
   const { openModal } = useModal();
+  const trackingAction = {
+    callback: "callback_request",
+    quote: "quote_request",
+    general: "contact",
+    assessment: "consultation",
+  }[type];
 
   return (
     <button
       type="button"
+      data-track-action={trackingAction}
       onClick={() => openModal(type)}
       className={className}
     >

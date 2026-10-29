@@ -345,6 +345,7 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
                         </p>
                         <button
                           type="button"
+                          data-track-action="consultation"
                           onClick={handleOpenModal}
                           className="mt-3 w-full rounded-full bg-primary py-2.5 text-xs font-bold text-white shadow-md shadow-primary/20 hover:bg-primary/90 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                         >
@@ -489,7 +490,8 @@ export default function Navbar({ onMenuOpen, onOpenModal }: NavbarProps = {}) {
               Contact
             </Link>
             <button
-              onClick={handleOpenModal}
+              data-track-action="consultation"
+                          onClick={handleOpenModal}
               className="rounded-full bg-primary px-5 py-2 text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90 cursor-pointer"
             >
               Book a Consultation

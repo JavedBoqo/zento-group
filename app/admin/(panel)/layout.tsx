@@ -1,0 +1,11 @@
+import { requireAdminPage } from "@/lib/auth";
+import AdminShell from "@/components/admin/AdminShell";
+
+export default async function PanelLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const admin = await requireAdminPage();
+  return <AdminShell admin={admin}>{children}</AdminShell>;
+}

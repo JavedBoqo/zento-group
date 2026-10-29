@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import Providers from "@/components/Providers";
 import { OFFICES, CONTACT_EMAIL, CONTACT_NUMBER } from "@/constants";
 import "./globals.css";
-
-const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -109,31 +106,12 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
         />
       </head>
       <body className="min-h-full flex flex-col">
-        {recaptchaSiteKey ? (
-          <Script
-            src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`}
-            strategy="afterInteractive"
-          />
-        ) : null}
-
-        {/* Google Analytics (GA4) */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-YP2KYRP25S"
-          strategy="afterInteractive"
-        />
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-YP2KYRP25S');
-          `}
-        </Script>
-
         <Providers>{children}</Providers>
       </body>
     </html>

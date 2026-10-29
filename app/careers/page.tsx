@@ -1,3 +1,5 @@
+export const revalidate = 60;
+export const runtime = "nodejs";
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
@@ -19,7 +21,7 @@ import SectionHeader from "@/components/SectionHeader";
 import FaqAccordion from "@/components/FaqAccordion";
 import AnimateContainer, { AnimateItem } from "@/components/AnimateContainer";
 import CareersListingClient from "@/components/careers/CareersListingClient";
-import { getAllJobs } from "@/lib/jobs";
+import { getAllJobs } from "@/lib/content";
 import { OFFICES } from "@/constants";
 
 export const metadata: Metadata = {
@@ -88,8 +90,8 @@ const candidateFaqs = [
   },
 ];
 
-export default function CareersPage() {
-  const jobs = getAllJobs();
+export default async function CareersPage() {
+  const jobs = await getAllJobs();
 
   return (
     <div className="flex min-h-screen flex-col bg-white text-zinc-800">
@@ -102,13 +104,21 @@ export default function CareersPage() {
             <nav aria-label="Breadcrumb">
               <ol className="flex items-center gap-2 text-xs text-zinc-500">
                 <li>
-                  <Link href="/" className="hover:text-primary transition-colors font-medium">
+                  <Link
+                    href="/"
+                    className="hover:text-primary transition-colors font-medium"
+                  >
                     Home
                   </Link>
                 </li>
-                <li aria-hidden="true" className="text-zinc-300">/</li>
+                <li aria-hidden="true" className="text-zinc-300">
+                  /
+                </li>
                 <li>
-                  <span className="font-semibold text-secondary" aria-current="page">
+                  <span
+                    className="font-semibold text-secondary"
+                    aria-current="page"
+                  >
                     Careers &amp; Vacancies
                   </span>
                 </li>
@@ -123,7 +133,10 @@ export default function CareersPage() {
           <div className="pointer-events-none absolute -bottom-32 -left-32 h-[480px] w-[480px] rounded-full bg-secondary/5 blur-[100px]" />
 
           <div className="container mx-auto px-6 sm:px-6 md:px-12 lg:px-24 relative z-10 text-center">
-            <AnimateContainer animation="fade-up" className="mx-auto max-w-3xl space-y-3">
+            <AnimateContainer
+              animation="fade-up"
+              className="mx-auto max-w-3xl space-y-3"
+            >
               <div>
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3.5 py-1 text-xs font-bold text-secondary shadow-xs mb-3">
                   <span className="flex h-2 w-2 rounded-full bg-primary" />
@@ -131,13 +144,15 @@ export default function CareersPage() {
                 </span>
 
                 <h1 className="text-3xl font-black leading-tight text-secondary min-[400px]:text-4xl sm:text-5xl lg:text-6xl">
-                  Join Our <span className="text-primary">Nurse-Led</span> Care Team
+                  Join Our <span className="text-primary">Nurse-Led</span> Care
+                  Team
                 </h1>
 
                 <div className="mx-auto mt-3 h-1.5 w-20 rounded-full bg-primary mb-4" />
 
                 <p className="text-base sm:text-lg text-zinc-600 max-w-xl mx-auto">
-                  We&apos;re looking for passionate people to join our care team across Perthshire, Edinburgh, and the Lothians.
+                  We&apos;re looking for passionate people to join our care team
+                  across Perthshire, Edinburgh, and the Lothians.
                 </p>
               </div>
             </AnimateContainer>
@@ -160,7 +175,10 @@ export default function CareersPage() {
               subtitle="We believe that outstanding care starts with valuing and supporting our care staff."
             />
 
-            <AnimateContainer animation="stagger" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <AnimateContainer
+              animation="stagger"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
               {benefits.map((b, i) => {
                 const Icon = b.icon;
                 return (
@@ -169,7 +187,9 @@ export default function CareersPage() {
                       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-4">
                         <Icon className="h-6 w-6" />
                       </div>
-                      <h3 className="text-lg font-bold text-secondary">{b.title}</h3>
+                      <h3 className="text-lg font-bold text-secondary">
+                        {b.title}
+                      </h3>
                       <p className="mt-2 text-xs sm:text-sm text-zinc-600 leading-relaxed">
                         {b.desc}
                       </p>
@@ -203,7 +223,8 @@ export default function CareersPage() {
                 Have questions before applying?
               </h2>
               <p className="text-sm text-zinc-600">
-                Give our local recruitment team a call to have an informal chat about hours and training.
+                Give our local recruitment team a call to have an informal chat
+                about hours and training.
               </p>
               <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
                 {OFFICES.map((office) => (

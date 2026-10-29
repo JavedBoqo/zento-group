@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/"],
+      disallow: ["/api/", "/admin/", "/admin-preview/"],
     },
     sitemap: "https://zentogroup.co.uk/sitemap.xml",
   };

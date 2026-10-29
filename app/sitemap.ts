@@ -1,8 +1,10 @@
+export const revalidate = 60;
+export const runtime = "nodejs";
 import type { MetadataRoute } from "next";
-import { getAllArticles } from "@/lib/blog";
-import { getAllJobs } from "@/lib/jobs";
+import { getAllArticles } from "@/lib/content";
+import { getAllJobs } from "@/lib/content";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://zentogroup.co.uk";
   const currentDate = new Date();
 
@@ -175,7 +177,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.85,
     },
-    ...getAllJobs().map((job) => ({
+    ...(await getAllJobs()).map((job) => ({
       url: `${baseUrl}/careers/${job.slug}`,
       lastModified: currentDate,
       changeFrequency: "weekly" as const,
@@ -193,7 +195,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    ...getAllArticles().map((article) => ({
+    ...(await getAllArticles()).map((article) => ({
       url: `${baseUrl}/blog/${article.slug}`,
       lastModified: currentDate,
       changeFrequency: "monthly" as const,
